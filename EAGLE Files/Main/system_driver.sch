@@ -3497,6 +3497,91 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="SparkFun-PowerIC">
+<description>&lt;h3&gt;SparkFun Electronics' preferred foot prints&lt;/h3&gt;
+In this library you'll find drivers, regulators, and amplifiers.&lt;br&gt;&lt;br&gt;
+We've spent an enormous amount of time creating and checking these footprints and parts, but it is the end user's responsibility to ensure correctness and suitablity for a given componet or application. If you enjoy using this library, please buy one of our products at www.sparkfun.com.
+&lt;br&gt;&lt;br&gt;
+&lt;b&gt;Licensing:&lt;/b&gt; Creative Commons ShareAlike 4.0 International - https://creativecommons.org/licenses/by-sa/4.0/ 
+&lt;br&gt;&lt;br&gt;
+You are welcome to use this library for commercial purposes. For attribution, we ask that when you begin to sell your device using our footprint, you email us with a link to the product being sold. We want bragging rights that we helped (in a very small part) to create your 8th world wonder. We would like the opportunity to feature your device on our homepage.</description>
+<packages>
+<package name="78XXL">
+<description>&lt;b&gt;VOLTAGE REGULATOR&lt;/b&gt;</description>
+<wire x1="-5.207" y1="-1.27" x2="5.207" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="5.207" y1="14.605" x2="-5.207" y2="14.605" width="0.1524" layer="21"/>
+<wire x1="5.207" y1="-1.27" x2="5.207" y2="11.176" width="0.1524" layer="21"/>
+<wire x1="5.207" y1="11.176" x2="4.318" y2="11.176" width="0.1524" layer="21"/>
+<wire x1="4.318" y1="11.176" x2="4.318" y2="12.7" width="0.1524" layer="21"/>
+<wire x1="4.318" y1="12.7" x2="5.207" y2="12.7" width="0.1524" layer="21"/>
+<wire x1="5.207" y1="12.7" x2="5.207" y2="14.605" width="0.1524" layer="21"/>
+<wire x1="-5.207" y1="-1.27" x2="-5.207" y2="11.176" width="0.1524" layer="21"/>
+<wire x1="-5.207" y1="11.176" x2="-4.318" y2="11.176" width="0.1524" layer="21"/>
+<wire x1="-4.318" y1="11.176" x2="-4.318" y2="12.7" width="0.1524" layer="21"/>
+<wire x1="-4.318" y1="12.7" x2="-5.207" y2="12.7" width="0.1524" layer="21"/>
+<wire x1="-5.207" y1="12.7" x2="-5.207" y2="14.605" width="0.1524" layer="21"/>
+<wire x1="-4.572" y1="-0.635" x2="4.572" y2="-0.635" width="0.0508" layer="21"/>
+<wire x1="4.572" y1="7.62" x2="4.572" y2="-0.635" width="0.0508" layer="21"/>
+<wire x1="4.572" y1="7.62" x2="-4.572" y2="7.62" width="0.0508" layer="21"/>
+<wire x1="-4.572" y1="-0.635" x2="-4.572" y2="7.62" width="0.0508" layer="21"/>
+<circle x="0" y="11.176" radius="1.8034" width="0.1524" layer="21"/>
+<circle x="0" y="11.176" radius="4.191" width="0" layer="42"/>
+<circle x="0" y="11.176" radius="4.191" width="0" layer="43"/>
+<pad name="IN" x="-2.54" y="-3.81" drill="1.016" shape="long" rot="R90"/>
+<pad name="GND" x="0" y="-3.81" drill="1.016" shape="long" rot="R90"/>
+<pad name="OUT" x="2.54" y="-3.81" drill="1.016" shape="long" rot="R90"/>
+<text x="-3.81" y="5.08" size="1.778" layer="25" ratio="10">&gt;NAME</text>
+<text x="-3.937" y="2.54" size="1.778" layer="27" ratio="10">&gt;VALUE</text>
+<text x="-4.445" y="7.874" size="0.9906" layer="21" ratio="10">A15,2mm</text>
+<text x="-0.508" y="0" size="1.27" layer="51" ratio="10">-</text>
+<text x="-3.048" y="0" size="1.27" layer="51" ratio="10">I</text>
+<text x="2.032" y="0" size="1.27" layer="51" ratio="10">O</text>
+<rectangle x1="1.905" y1="-2.159" x2="3.175" y2="-1.27" layer="21"/>
+<rectangle x1="1.905" y1="-3.81" x2="3.175" y2="-2.159" layer="51"/>
+<rectangle x1="-0.635" y1="-2.159" x2="0.635" y2="-1.27" layer="21"/>
+<rectangle x1="-3.175" y1="-2.159" x2="-1.905" y2="-1.27" layer="21"/>
+<rectangle x1="-0.635" y1="-3.81" x2="0.635" y2="-2.159" layer="51"/>
+<rectangle x1="-3.175" y1="-3.81" x2="-1.905" y2="-2.159" layer="51"/>
+<hole x="0" y="11.176" drill="3.302"/>
+</package>
+</packages>
+<symbols>
+<symbol name="78XX">
+<wire x1="-5.08" y1="-5.08" x2="5.08" y2="-5.08" width="0.4064" layer="94"/>
+<wire x1="5.08" y1="-5.08" x2="5.08" y2="2.54" width="0.4064" layer="94"/>
+<wire x1="5.08" y1="2.54" x2="-5.08" y2="2.54" width="0.4064" layer="94"/>
+<wire x1="-5.08" y1="2.54" x2="-5.08" y2="-5.08" width="0.4064" layer="94"/>
+<text x="2.54" y="-7.62" size="1.778" layer="95">&gt;NAME</text>
+<text x="2.54" y="-10.16" size="1.778" layer="96">&gt;VALUE</text>
+<text x="-2.032" y="-4.318" size="1.524" layer="95">GND</text>
+<text x="-4.445" y="-0.635" size="1.524" layer="95">IN</text>
+<text x="0.635" y="-0.635" size="1.524" layer="95">OUT</text>
+<pin name="IN" x="-7.62" y="0" visible="off" length="short" direction="in"/>
+<pin name="GND" x="0" y="-7.62" visible="off" length="short" direction="in" rot="R90"/>
+<pin name="OUT" x="7.62" y="0" visible="off" length="short" direction="pas" rot="R180"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="V_REG_LD1117VXX">
+<description>LD1117VXX voltage regulator. We carry the 3.3V version (COM-00526) in TO-220 package.</description>
+<gates>
+<gate name="G$1" symbol="78XX" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="78XXL">
+<connects>
+<connect gate="G$1" pin="GND" pad="IN"/>
+<connect gate="G$1" pin="IN" pad="OUT"/>
+<connect gate="G$1" pin="OUT" pad="GND"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -3519,24 +3604,22 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <part name="ICSP" library="SparkFun-Connectors" deviceset="M05" device="LOCK_LONGPADS"/>
 <part name="GND4" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="SUPPLY3" library="SparkFun-Aesthetics" deviceset="VCC" device=""/>
-<part name="ENCODERS" library="SparkFun-Connectors" deviceset="M03X2" device="FEMALE" value="FEMALE 2x3"/>
+<part name="ENCODERS" library="SparkFun-Connectors" deviceset="M03X2" device="FEMALE"/>
 <part name="GND5" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="GND6" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="MISC" library="SparkFun-Connectors" deviceset="M09" device="LONGPADS"/>
-<part name="INP2" library="SparkFun-Connectors" deviceset="M02" device="3.5MM"/>
-<part name="INP1" library="SparkFun-Connectors" deviceset="M02" device="LOCK_LONGPADS"/>
-<part name="SUPPLY4" library="SparkFun-Aesthetics" deviceset="VCC" device=""/>
-<part name="GND7" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
+<part name="BATT" library="SparkFun-Connectors" deviceset="M02" device="3.5MM"/>
 <part name="GND8" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="VBAT1" library="supply2" deviceset="V+" device="" value="VBAT"/>
 <part name="PI" library="SparkFun-Boards" deviceset="RASPBERRYPI-40-PIN-GPIO" device=""/>
 <part name="GND9" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="SUPPLY5" library="SparkFun-Aesthetics" deviceset="VCC" device=""/>
-<part name="PI1" library="SparkFun-Boards" deviceset="RASPBERRYPI-40-PIN-GPIO" device=""/>
-<part name="GND10" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
-<part name="SUPPLY6" library="SparkFun-Aesthetics" deviceset="VCC" device=""/>
-<part name="INP3" library="SparkFun-Connectors" deviceset="M02" device="3.5MM"/>
-<part name="INP4" library="SparkFun-Connectors" deviceset="M02" device="3.5MM"/>
+<part name="MOTORB" library="SparkFun-Connectors" deviceset="M02" device="3.5MM"/>
+<part name="MOTORA" library="SparkFun-Connectors" deviceset="M02" device="3.5MM"/>
+<part name="REG5V" library="SparkFun-PowerIC" deviceset="V_REG_LD1117VXX" device="" value="L7805"/>
+<part name="GND11" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
+<part name="VBAT2" library="supply2" deviceset="V+" device="" value="VBAT"/>
+<part name="SUPPLY7" library="SparkFun-Aesthetics" deviceset="VCC" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -3555,24 +3638,22 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <instance part="ICSP" gate="G$1" x="-17.78" y="12.7" rot="R270"/>
 <instance part="GND4" gate="1" x="-10.16" y="-2.54"/>
 <instance part="SUPPLY3" gate="G$1" x="-10.16" y="2.54" rot="R270"/>
-<instance part="ENCODERS" gate="G$1" x="-15.24" y="-43.18"/>
-<instance part="GND5" gate="1" x="5.08" y="-50.8"/>
-<instance part="GND6" gate="1" x="-35.56" y="-50.8"/>
+<instance part="ENCODERS" gate="G$1" x="-58.42" y="0"/>
+<instance part="GND5" gate="1" x="-38.1" y="-7.62"/>
+<instance part="GND6" gate="1" x="-78.74" y="-7.62"/>
 <instance part="MISC" gate="G$1" x="-17.78" y="-30.48" rot="R90"/>
-<instance part="INP2" gate="G$1" x="-22.86" y="73.66" rot="R270"/>
-<instance part="INP1" gate="G$1" x="-38.1" y="73.66" rot="R270"/>
-<instance part="SUPPLY4" gate="G$1" x="-38.1" y="66.04" rot="R180"/>
-<instance part="GND7" gate="1" x="-33.02" y="63.5"/>
+<instance part="BATT" gate="G$1" x="-22.86" y="73.66" rot="R270"/>
 <instance part="GND8" gate="1" x="-17.78" y="63.5"/>
 <instance part="VBAT1" gate="1" x="-22.86" y="63.5" rot="R180"/>
 <instance part="PI" gate="G$1" x="-71.12" y="50.8"/>
 <instance part="GND9" gate="1" x="-91.44" y="15.24"/>
 <instance part="SUPPLY5" gate="G$1" x="-88.9" y="78.74"/>
-<instance part="PI1" gate="G$1" x="-71.12" y="-22.86"/>
-<instance part="GND10" gate="1" x="-91.44" y="-58.42"/>
-<instance part="SUPPLY6" gate="G$1" x="-88.9" y="5.08"/>
-<instance part="INP3" gate="G$1" x="10.16" y="15.24" rot="R270"/>
-<instance part="INP4" gate="G$1" x="10.16" y="-5.08" rot="R270"/>
+<instance part="MOTORB" gate="G$1" x="10.16" y="15.24" rot="R270"/>
+<instance part="MOTORA" gate="G$1" x="10.16" y="-5.08" rot="R270"/>
+<instance part="REG5V" gate="G$1" x="-58.42" y="-15.24"/>
+<instance part="GND11" gate="1" x="-58.42" y="-27.94"/>
+<instance part="VBAT2" gate="1" x="-71.12" y="-15.24" rot="R90"/>
+<instance part="SUPPLY7" gate="G$1" x="-48.26" y="-15.24" rot="R270"/>
 </instances>
 <busses>
 </busses>
@@ -3608,10 +3689,6 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <wire x1="-12.7" y1="2.54" x2="-10.16" y2="2.54" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="INP1" gate="G$1" pin="1"/>
-<pinref part="SUPPLY4" gate="G$1" pin="VCC"/>
-</segment>
-<segment>
 <pinref part="PI" gate="G$1" pin="5V@2"/>
 <pinref part="SUPPLY5" gate="G$1" pin="VCC"/>
 <wire x1="-86.36" y1="76.2" x2="-88.9" y2="76.2" width="0.1524" layer="91"/>
@@ -3622,14 +3699,9 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <junction x="-88.9" y="76.2"/>
 </segment>
 <segment>
-<pinref part="PI1" gate="G$1" pin="5V@2"/>
-<pinref part="SUPPLY6" gate="G$1" pin="VCC"/>
-<wire x1="-86.36" y1="2.54" x2="-88.9" y2="2.54" width="0.1524" layer="91"/>
-<wire x1="-88.9" y1="2.54" x2="-88.9" y2="5.08" width="0.1524" layer="91"/>
-<pinref part="PI1" gate="G$1" pin="5V@4"/>
-<wire x1="-86.36" y1="0" x2="-88.9" y2="0" width="0.1524" layer="91"/>
-<wire x1="-88.9" y1="0" x2="-88.9" y2="2.54" width="0.1524" layer="91"/>
-<junction x="-88.9" y="2.54"/>
+<pinref part="REG5V" gate="G$1" pin="OUT"/>
+<pinref part="SUPPLY7" gate="G$1" pin="VCC"/>
+<wire x1="-48.26" y1="-15.24" x2="-50.8" y2="-15.24" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="MISC7" class="0">
@@ -3757,22 +3829,17 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <segment>
 <pinref part="ENCODERS" gate="G$1" pin="3"/>
 <pinref part="GND6" gate="1" pin="GND"/>
-<wire x1="-22.86" y1="-43.18" x2="-35.56" y2="-43.18" width="0.1524" layer="91"/>
-<wire x1="-35.56" y1="-43.18" x2="-35.56" y2="-48.26" width="0.1524" layer="91"/>
+<wire x1="-66.04" y1="0" x2="-78.74" y2="0" width="0.1524" layer="91"/>
+<wire x1="-78.74" y1="0" x2="-78.74" y2="-5.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="ENCODERS" gate="G$1" pin="4"/>
 <pinref part="GND5" gate="1" pin="GND"/>
-<wire x1="-7.62" y1="-43.18" x2="5.08" y2="-43.18" width="0.1524" layer="91"/>
-<wire x1="5.08" y1="-43.18" x2="5.08" y2="-48.26" width="0.1524" layer="91"/>
+<wire x1="-50.8" y1="0" x2="-38.1" y2="0" width="0.1524" layer="91"/>
+<wire x1="-38.1" y1="0" x2="-38.1" y2="-5.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="INP1" gate="G$1" pin="2"/>
-<pinref part="GND7" gate="1" pin="GND"/>
-<wire x1="-33.02" y1="66.04" x2="-35.56" y2="66.04" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="INP2" gate="G$1" pin="2"/>
+<pinref part="BATT" gate="G$1" pin="2"/>
 <pinref part="GND8" gate="1" pin="GND"/>
 <wire x1="-17.78" y1="66.04" x2="-20.32" y2="66.04" width="0.1524" layer="91"/>
 </segment>
@@ -3811,38 +3878,9 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <junction x="-91.44" y="35.56"/>
 </segment>
 <segment>
-<pinref part="PI1" gate="G$1" pin="GND@39"/>
-<pinref part="GND10" gate="1" pin="GND"/>
-<wire x1="-86.36" y1="-53.34" x2="-91.44" y2="-53.34" width="0.1524" layer="91"/>
-<wire x1="-91.44" y1="-53.34" x2="-91.44" y2="-55.88" width="0.1524" layer="91"/>
-<pinref part="PI1" gate="G$1" pin="GND@34"/>
-<wire x1="-86.36" y1="-50.8" x2="-91.44" y2="-50.8" width="0.1524" layer="91"/>
-<wire x1="-91.44" y1="-50.8" x2="-91.44" y2="-53.34" width="0.1524" layer="91"/>
-<junction x="-91.44" y="-53.34"/>
-<pinref part="PI1" gate="G$1" pin="GND@30"/>
-<wire x1="-86.36" y1="-48.26" x2="-91.44" y2="-48.26" width="0.1524" layer="91"/>
-<wire x1="-91.44" y1="-48.26" x2="-91.44" y2="-50.8" width="0.1524" layer="91"/>
-<junction x="-91.44" y="-50.8"/>
-<pinref part="PI1" gate="G$1" pin="GND@25"/>
-<wire x1="-86.36" y1="-45.72" x2="-91.44" y2="-45.72" width="0.1524" layer="91"/>
-<wire x1="-91.44" y1="-45.72" x2="-91.44" y2="-48.26" width="0.1524" layer="91"/>
-<junction x="-91.44" y="-48.26"/>
-<pinref part="PI1" gate="G$1" pin="GND@20"/>
-<wire x1="-86.36" y1="-43.18" x2="-91.44" y2="-43.18" width="0.1524" layer="91"/>
-<wire x1="-91.44" y1="-43.18" x2="-91.44" y2="-45.72" width="0.1524" layer="91"/>
-<junction x="-91.44" y="-45.72"/>
-<pinref part="PI1" gate="G$1" pin="GND@14"/>
-<wire x1="-86.36" y1="-40.64" x2="-91.44" y2="-40.64" width="0.1524" layer="91"/>
-<wire x1="-91.44" y1="-40.64" x2="-91.44" y2="-43.18" width="0.1524" layer="91"/>
-<junction x="-91.44" y="-43.18"/>
-<pinref part="PI1" gate="G$1" pin="GND@9"/>
-<wire x1="-86.36" y1="-38.1" x2="-91.44" y2="-38.1" width="0.1524" layer="91"/>
-<wire x1="-91.44" y1="-38.1" x2="-91.44" y2="-40.64" width="0.1524" layer="91"/>
-<junction x="-91.44" y="-40.64"/>
-<pinref part="PI1" gate="G$1" pin="GND@6"/>
-<wire x1="-86.36" y1="-35.56" x2="-91.44" y2="-35.56" width="0.1524" layer="91"/>
-<wire x1="-91.44" y1="-35.56" x2="-91.44" y2="-38.1" width="0.1524" layer="91"/>
-<junction x="-91.44" y="-38.1"/>
+<pinref part="REG5V" gate="G$1" pin="GND"/>
+<pinref part="GND11" gate="1" pin="GND"/>
+<wire x1="-58.42" y1="-25.4" x2="-58.42" y2="-22.86" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="V+" class="0">
@@ -3852,8 +3890,13 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <wire x1="2.54" y1="76.2" x2="2.54" y2="78.74" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="INP2" gate="G$1" pin="1"/>
+<pinref part="BATT" gate="G$1" pin="1"/>
 <pinref part="VBAT1" gate="1" pin="V+"/>
+</segment>
+<segment>
+<pinref part="REG5V" gate="G$1" pin="IN"/>
+<pinref part="VBAT2" gate="1" pin="V+"/>
+<wire x1="-68.58" y1="-15.24" x2="-66.04" y2="-15.24" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="XRES" class="0">
@@ -3875,7 +3918,7 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <label x="7.62" y="63.5" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="INP3" gate="G$1" pin="2"/>
+<pinref part="MOTORB" gate="G$1" pin="2"/>
 <wire x1="12.7" y1="7.62" x2="12.7" y2="5.08" width="0.1524" layer="91"/>
 <label x="12.7" y="0" size="1.778" layer="95" rot="R90"/>
 </segment>
@@ -3883,8 +3926,8 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <net name="ENC1A" class="0">
 <segment>
 <pinref part="ENCODERS" gate="G$1" pin="2"/>
-<wire x1="-7.62" y1="-40.64" x2="-5.08" y2="-40.64" width="0.1524" layer="91"/>
-<label x="-5.08" y="-40.64" size="1.778" layer="95"/>
+<wire x1="-50.8" y1="2.54" x2="-48.26" y2="2.54" width="0.1524" layer="91"/>
+<label x="-48.26" y="2.54" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="PSOC" gate="G$1" pin="23"/>
@@ -3895,8 +3938,8 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <net name="ENC1B" class="0">
 <segment>
 <pinref part="ENCODERS" gate="G$1" pin="6"/>
-<wire x1="-7.62" y1="-45.72" x2="-5.08" y2="-45.72" width="0.1524" layer="91"/>
-<label x="-5.08" y="-45.72" size="1.778" layer="95"/>
+<wire x1="-50.8" y1="-2.54" x2="-48.26" y2="-2.54" width="0.1524" layer="91"/>
+<label x="-48.26" y="-2.54" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="PSOC" gate="G$1" pin="22"/>
@@ -3907,8 +3950,8 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <net name="ENC2B" class="0">
 <segment>
 <pinref part="ENCODERS" gate="G$1" pin="5"/>
-<wire x1="-22.86" y1="-45.72" x2="-25.4" y2="-45.72" width="0.1524" layer="91"/>
-<label x="-33.02" y="-45.72" size="1.778" layer="95"/>
+<wire x1="-66.04" y1="-2.54" x2="-68.58" y2="-2.54" width="0.1524" layer="91"/>
+<label x="-76.2" y="-2.54" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="PSOC" gate="G$1" pin="7"/>
@@ -3919,8 +3962,8 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <net name="ENC2A" class="0">
 <segment>
 <pinref part="ENCODERS" gate="G$1" pin="1"/>
-<wire x1="-22.86" y1="-40.64" x2="-25.4" y2="-40.64" width="0.1524" layer="91"/>
-<label x="-33.02" y="-40.64" size="1.778" layer="95"/>
+<wire x1="-66.04" y1="2.54" x2="-68.58" y2="2.54" width="0.1524" layer="91"/>
+<label x="-76.2" y="2.54" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="PSOC" gate="G$1" pin="6"/>
@@ -3939,11 +3982,6 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <wire x1="-55.88" y1="68.58" x2="-53.34" y2="68.58" width="0.1524" layer="91"/>
 <label x="-53.34" y="68.58" size="1.778" layer="95"/>
 </segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="TXO"/>
-<wire x1="-55.88" y1="-5.08" x2="-53.34" y2="-5.08" width="0.1524" layer="91"/>
-<label x="-53.34" y="-5.08" size="1.778" layer="95"/>
-</segment>
 </net>
 <net name="TX" class="0">
 <segment>
@@ -3955,11 +3993,6 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <pinref part="PI" gate="G$1" pin="RXI"/>
 <wire x1="-55.88" y1="66.04" x2="-53.34" y2="66.04" width="0.1524" layer="91"/>
 <label x="-53.34" y="66.04" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="RXI"/>
-<wire x1="-55.88" y1="-7.62" x2="-53.34" y2="-7.62" width="0.1524" layer="91"/>
-<label x="-53.34" y="-7.62" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="MISC0" class="0">
@@ -4051,19 +4084,11 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <pinref part="PI" gate="G$1" pin="GP26"/>
 <wire x1="-86.36" y1="43.18" x2="-88.9" y2="43.18" width="0.1524" layer="91"/>
 </segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="GP26"/>
-<wire x1="-86.36" y1="-30.48" x2="-88.9" y2="-30.48" width="0.1524" layer="91"/>
-</segment>
 </net>
 <net name="GP21" class="0">
 <segment>
 <pinref part="PI" gate="G$1" pin="GP21"/>
 <wire x1="-86.36" y1="45.72" x2="-88.9" y2="45.72" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="GP21"/>
-<wire x1="-86.36" y1="-27.94" x2="-88.9" y2="-27.94" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="GP20" class="0">
@@ -4071,19 +4096,11 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <pinref part="PI" gate="G$1" pin="GP20"/>
 <wire x1="-86.36" y1="48.26" x2="-88.9" y2="48.26" width="0.1524" layer="91"/>
 </segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="GP20"/>
-<wire x1="-86.36" y1="-25.4" x2="-88.9" y2="-25.4" width="0.1524" layer="91"/>
-</segment>
 </net>
 <net name="GP19" class="0">
 <segment>
 <pinref part="PI" gate="G$1" pin="GP19"/>
 <wire x1="-86.36" y1="50.8" x2="-88.9" y2="50.8" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="GP19"/>
-<wire x1="-86.36" y1="-22.86" x2="-88.9" y2="-22.86" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="GP16" class="0">
@@ -4091,19 +4108,11 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <pinref part="PI" gate="G$1" pin="GP16"/>
 <wire x1="-86.36" y1="53.34" x2="-88.9" y2="53.34" width="0.1524" layer="91"/>
 </segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="GP16"/>
-<wire x1="-86.36" y1="-20.32" x2="-88.9" y2="-20.32" width="0.1524" layer="91"/>
-</segment>
 </net>
 <net name="GP13" class="0">
 <segment>
 <pinref part="PI" gate="G$1" pin="GP13"/>
 <wire x1="-86.36" y1="55.88" x2="-88.9" y2="55.88" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="GP13"/>
-<wire x1="-86.36" y1="-17.78" x2="-88.9" y2="-17.78" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="GP12" class="0">
@@ -4111,29 +4120,17 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <pinref part="PI" gate="G$1" pin="GP12"/>
 <wire x1="-86.36" y1="58.42" x2="-88.9" y2="58.42" width="0.1524" layer="91"/>
 </segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="GP12"/>
-<wire x1="-86.36" y1="-15.24" x2="-88.9" y2="-15.24" width="0.1524" layer="91"/>
-</segment>
 </net>
 <net name="GP6" class="0">
 <segment>
 <pinref part="PI" gate="G$1" pin="GP6"/>
 <wire x1="-86.36" y1="60.96" x2="-88.9" y2="60.96" width="0.1524" layer="91"/>
 </segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="GP6"/>
-<wire x1="-86.36" y1="-12.7" x2="-88.9" y2="-12.7" width="0.1524" layer="91"/>
-</segment>
 </net>
 <net name="GP5" class="0">
 <segment>
 <pinref part="PI" gate="G$1" pin="GP5"/>
 <wire x1="-86.36" y1="63.5" x2="-88.9" y2="63.5" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="GP5"/>
-<wire x1="-86.36" y1="-10.16" x2="-88.9" y2="-10.16" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="3.3V" class="0">
@@ -4145,23 +4142,11 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <pinref part="PI" gate="G$1" pin="3.3V@17"/>
 <wire x1="-86.36" y1="68.58" x2="-88.9" y2="68.58" width="0.1524" layer="91"/>
 </segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="3.3V@1"/>
-<wire x1="-86.36" y1="-2.54" x2="-88.9" y2="-2.54" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="3.3V@17"/>
-<wire x1="-86.36" y1="-5.08" x2="-88.9" y2="-5.08" width="0.1524" layer="91"/>
-</segment>
 </net>
 <net name="PI_SDA" class="0">
 <segment>
 <pinref part="PI" gate="G$1" pin="SDA"/>
 <wire x1="-55.88" y1="76.2" x2="-53.34" y2="76.2" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="SDA"/>
-<wire x1="-55.88" y1="2.54" x2="-53.34" y2="2.54" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="PI_SCL" class="0">
@@ -4169,19 +4154,11 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <pinref part="PI" gate="G$1" pin="SCL"/>
 <wire x1="-55.88" y1="73.66" x2="-53.34" y2="73.66" width="0.1524" layer="91"/>
 </segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="SCL"/>
-<wire x1="-55.88" y1="0" x2="-53.34" y2="0" width="0.1524" layer="91"/>
-</segment>
 </net>
 <net name="SCLK" class="0">
 <segment>
 <pinref part="PI" gate="G$1" pin="SCLK"/>
 <wire x1="-55.88" y1="60.96" x2="-53.34" y2="60.96" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="SCLK"/>
-<wire x1="-55.88" y1="-12.7" x2="-53.34" y2="-12.7" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="MISO" class="0">
@@ -4189,19 +4166,11 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <pinref part="PI" gate="G$1" pin="MISO"/>
 <wire x1="-55.88" y1="58.42" x2="-53.34" y2="58.42" width="0.1524" layer="91"/>
 </segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="MISO"/>
-<wire x1="-55.88" y1="-15.24" x2="-53.34" y2="-15.24" width="0.1524" layer="91"/>
-</segment>
 </net>
 <net name="MOSI" class="0">
 <segment>
 <pinref part="PI" gate="G$1" pin="MOSI"/>
 <wire x1="-55.88" y1="55.88" x2="-53.34" y2="55.88" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="MOSI"/>
-<wire x1="-55.88" y1="-17.78" x2="-53.34" y2="-17.78" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="CE0" class="0">
@@ -4209,19 +4178,11 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <pinref part="PI" gate="G$1" pin="CE0"/>
 <wire x1="-55.88" y1="53.34" x2="-53.34" y2="53.34" width="0.1524" layer="91"/>
 </segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="CE0"/>
-<wire x1="-55.88" y1="-20.32" x2="-53.34" y2="-20.32" width="0.1524" layer="91"/>
-</segment>
 </net>
 <net name="CE1" class="0">
 <segment>
 <pinref part="PI" gate="G$1" pin="CE1"/>
 <wire x1="-55.88" y1="50.8" x2="-53.34" y2="50.8" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="CE1"/>
-<wire x1="-55.88" y1="-22.86" x2="-53.34" y2="-22.86" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="GP4" class="0">
@@ -4229,19 +4190,11 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <pinref part="PI" gate="G$1" pin="GP4"/>
 <wire x1="-55.88" y1="45.72" x2="-53.34" y2="45.72" width="0.1524" layer="91"/>
 </segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="GP4"/>
-<wire x1="-55.88" y1="-27.94" x2="-53.34" y2="-27.94" width="0.1524" layer="91"/>
-</segment>
 </net>
 <net name="GP17" class="0">
 <segment>
 <pinref part="PI" gate="G$1" pin="GP17"/>
 <wire x1="-55.88" y1="43.18" x2="-53.34" y2="43.18" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="GP17"/>
-<wire x1="-55.88" y1="-30.48" x2="-53.34" y2="-30.48" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="GP18" class="0">
@@ -4249,19 +4202,11 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <pinref part="PI" gate="G$1" pin="GP18#"/>
 <wire x1="-55.88" y1="40.64" x2="-53.34" y2="40.64" width="0.1524" layer="91"/>
 </segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="GP18#"/>
-<wire x1="-55.88" y1="-33.02" x2="-53.34" y2="-33.02" width="0.1524" layer="91"/>
-</segment>
 </net>
 <net name="GP22" class="0">
 <segment>
 <pinref part="PI" gate="G$1" pin="GP22"/>
 <wire x1="-55.88" y1="38.1" x2="-53.34" y2="38.1" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="GP22"/>
-<wire x1="-55.88" y1="-35.56" x2="-53.34" y2="-35.56" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="GP23" class="0">
@@ -4269,19 +4214,11 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <pinref part="PI" gate="G$1" pin="GP23"/>
 <wire x1="-55.88" y1="35.56" x2="-53.34" y2="35.56" width="0.1524" layer="91"/>
 </segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="GP23"/>
-<wire x1="-55.88" y1="-38.1" x2="-53.34" y2="-38.1" width="0.1524" layer="91"/>
-</segment>
 </net>
 <net name="GP24" class="0">
 <segment>
 <pinref part="PI" gate="G$1" pin="GP24"/>
 <wire x1="-55.88" y1="33.02" x2="-53.34" y2="33.02" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="GP24"/>
-<wire x1="-55.88" y1="-40.64" x2="-53.34" y2="-40.64" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="GP25" class="0">
@@ -4289,19 +4226,11 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <pinref part="PI" gate="G$1" pin="GP25"/>
 <wire x1="-55.88" y1="30.48" x2="-53.34" y2="30.48" width="0.1524" layer="91"/>
 </segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="GP25"/>
-<wire x1="-55.88" y1="-43.18" x2="-53.34" y2="-43.18" width="0.1524" layer="91"/>
-</segment>
 </net>
 <net name="GP27" class="0">
 <segment>
 <pinref part="PI" gate="G$1" pin="GP27"/>
 <wire x1="-55.88" y1="27.94" x2="-53.34" y2="27.94" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="GP27"/>
-<wire x1="-55.88" y1="-45.72" x2="-53.34" y2="-45.72" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="ID_SD" class="0">
@@ -4309,19 +4238,11 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <pinref part="PI" gate="G$1" pin="ID_SD"/>
 <wire x1="-55.88" y1="22.86" x2="-53.34" y2="22.86" width="0.1524" layer="91"/>
 </segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="ID_SD"/>
-<wire x1="-55.88" y1="-50.8" x2="-53.34" y2="-50.8" width="0.1524" layer="91"/>
-</segment>
 </net>
 <net name="ID_SC" class="0">
 <segment>
 <pinref part="PI" gate="G$1" pin="ID_SC"/>
 <wire x1="-55.88" y1="20.32" x2="-53.34" y2="20.32" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="PI1" gate="G$1" pin="ID_SC"/>
-<wire x1="-55.88" y1="-53.34" x2="-53.34" y2="-53.34" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="PSDA" class="0">
@@ -4355,7 +4276,7 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <label x="7.62" y="68.58" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="INP4" gate="G$1" pin="1"/>
+<pinref part="MOTORA" gate="G$1" pin="1"/>
 <wire x1="10.16" y1="-12.7" x2="10.16" y2="-15.24" width="0.1524" layer="91"/>
 <label x="10.16" y="-20.32" size="1.778" layer="95" rot="R90"/>
 </segment>
@@ -4367,14 +4288,14 @@ Footprint designed for Sullins SBH11-NBPC-D20-SM-BK</description>
 <label x="7.62" y="60.96" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="INP3" gate="G$1" pin="1"/>
+<pinref part="MOTORB" gate="G$1" pin="1"/>
 <wire x1="10.16" y1="7.62" x2="10.16" y2="5.08" width="0.1524" layer="91"/>
 <label x="10.16" y="0" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="AO2" class="0">
 <segment>
-<pinref part="INP4" gate="G$1" pin="2"/>
+<pinref part="MOTORA" gate="G$1" pin="2"/>
 <wire x1="12.7" y1="-12.7" x2="12.7" y2="-15.24" width="0.1524" layer="91"/>
 <label x="12.7" y="-20.32" size="1.778" layer="95" rot="R90"/>
 </segment>
