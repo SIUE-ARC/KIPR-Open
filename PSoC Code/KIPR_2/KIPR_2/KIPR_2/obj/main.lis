@@ -1,0 +1,269 @@
+ 0000                   cpu LMM
+                        .module main.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile ./main.c
+                        .area data(ram, con, rel)
+ 0000                   .dbfile ./main.c
+ 0000           _count1::
+ 0000 00000000          .word 0,0
+ 0004                   .dbfile C:\Users\Hobo\DOCUME~1\PSOCDE~1.4PR\KIPR_2\KIPR_2\KIPR_2\main.c
+ 0004                   .dbsym e count1 _count1 L
+                        .area data(ram, con, rel)
+ 0000                   .dbfile C:\Users\Hobo\DOCUME~1\PSOCDE~1.4PR\KIPR_2\KIPR_2\KIPR_2\main.c
+                        .area data(ram, con, rel)
+ 0000                   .dbfile C:\Users\Hobo\DOCUME~1\PSOCDE~1.4PR\KIPR_2\KIPR_2\KIPR_2\main.c
+ 0000           _count2::
+ 0000 00000000          .word 0,0
+ 0004                   .dbsym e count2 _count2 L
+                        .area data(ram, con, rel)
+ 0000                   .dbfile C:\Users\Hobo\DOCUME~1\PSOCDE~1.4PR\KIPR_2\KIPR_2\KIPR_2\main.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile C:\Users\Hobo\DOCUME~1\PSOCDE~1.4PR\KIPR_2\KIPR_2\KIPR_2\main.c
+ 0000                   .dbfunc e main _main fV
+ 0000           _main::
+ 0000                   .dbline -1
+ 0000                   .dbline 25
+ 0000           ; //----------------------------------------------------------------------------
+ 0000           ; // C main line
+ 0000           ; //----------------------------------------------------------------------------
+ 0000           ; 
+ 0000           ; #include <m8c.h>        // part specific constants and macros
+ 0000           ; #include "PSoCAPI.h"    // PSoC API definitions for all User Modules
+ 0000           ; 
+ 0000           ; #pragma interrupt_handler encoder1_ISR
+ 0000           ; #pragma interrupt_handler encoder2_ISR
+ 0000           ; 
+ 0000           ; #define stateA1 0x20
+ 0000           ; #define stateB1 0x08
+ 0000           ; #define stateA2 0x10
+ 0000           ; #define stateB2 0x04
+ 0000           ; 
+ 0000           ; BYTE curPrt1;
+ 0000           ; BYTE prevPrt1;
+ 0000           ; BYTE curPrt2;
+ 0000           ; BYTE prevPrt2;
+ 0000           ; 
+ 0000           ; signed long int count1 = 0;
+ 0000           ; signed long int count2 = 0;
+ 0000           ; 
+ 0000           ; void main(void)
+ 0000           ; {
+ 0000                   .dbline 26
+ 0000           ;       M8C_EnableGInt ; // Uncomment this line to enable Global Interrupts
+ 0000 7101                      or  F, 01h
+ 0002           
+ 0002                   .dbline 27
+ 0002           ;       M8C_EnableIntMask(INT_MSK0, INT_MSK0_GPIO);
+ 0002 43E020            or REG[0xe0],32
+ 0005                   .dbline 28
+ 0005           ;       M8C_EnableIntMask(INT_MSK1, INT_MSK1_DBB00);
+ 0005 43E101            or REG[0xe1],1
+ 0008                   .dbline 29
+ 0008           ;       M8C_EnableIntMask(INT_MSK1, INT_MSK1_DBB11);
+ 0008 43E120            or REG[0xe1],32
+ 000B 8013              xjmp L3
+ 000D           L2:
+ 000D                   .dbline 34
+ 000D           ;       
+ 000D           ;       // Insert your main routine code here.
+ 000D           ;       
+ 000D           ;       while(1)
+ 000D           ;       {
+ 000D                   .dbline 35
+ 000D           ;               prevPrt1 = (ENC1A_Data_ADDR & (ENC1A_MASK | ENC1B_MASK));
+ 000D 5D08              mov A,REG[0x8]
+ 000F 2150              and A,80
+ 0011 62D000            mov REG[0xd0],>_prevPrt1
+ 0014 5300              mov [_prevPrt1],A
+ 0016                   .dbline 36
+ 0016           ;               prevPrt2 = (ENC2A_Data_ADDR & (ENC2A_MASK | ENC2B_MASK));
+ 0016 5D08              mov A,REG[0x8]
+ 0018 2128              and A,40
+ 001A 62D000            mov REG[0xd0],>_prevPrt2
+ 001D 5300              mov [_prevPrt2],A
+ 001F                   .dbline 37
+ 001F           ;       }
+ 001F           L3:
+ 001F                   .dbline 33
+ 001F 8FED              xjmp L2
+ 0021           X0:
+ 0021                   .dbline -2
+ 0021           L1:
+ 0021                   .dbline 0 ; func end
+ 0021 8FFF              jmp .
+ 0023                   .dbend
+ 0023                   .dbfunc e encoder1_ISR _encoder1_ISR fV
+ 0023           _encoder1_ISR::
+ 0023                   .dbline -1
+ 0023 71C0              or F,-64
+ 0025 08                push A
+ 0026 5DD0              mov A,REG[0xd0]
+ 0028 08                push A
+ 0029                   .dbline 41
+ 0029           ; }
+ 0029           ; 
+ 0029           ; void encoder1_ISR(void)
+ 0029           ; {
+ 0029                   .dbline 42
+ 0029           ;       curPrt1 = (ENC1A_Data_ADDR & (ENC1A_MASK | ENC1B_MASK));                // Setting prevPort to only bits 1[4] and 1[5]
+ 0029 5D08              mov A,REG[0x8]
+ 002B 2150              and A,80
+ 002D 62D000            mov REG[0xd0],>_curPrt1
+ 0030 5300              mov [_curPrt1],A
+ 0032                   .dbline 45
+ 0032           ;                                                                                                                               // of PRT1DR
+ 0032           ;               
+ 0032           ;       if ((prevPrt1 == 0x00) && (curPrt1 == stateA1)) // If prevPort is 0x00 and then after the interrupt curPrt is
+ 0032 62D000            mov REG[0xd0],>_prevPrt1
+ 0035 3C0000            cmp [_prevPrt1],0
+ 0038 B01A              jnz L6
+ 003A 62D000            mov REG[0xd0],>_curPrt1
+ 003D 3C0020            cmp [_curPrt1],32
+ 0040 B012              jnz L6
+ 0042                   .dbline 50
+ 0042           ;                                                                                               // 0x10 then A is high and B is low which means you wanted to
+ 0042           ;                                                                                               // increment by turning clockwise and hitting a rising edge on A
+ 0042           ;       {
+ 0042           ;               // Increasing the count when clockwise turn interrupt occurred
+ 0042           ;               count1++;
+ 0042                   .dbline 50
+ 0042 62D000            mov REG[0xd0],>_count1
+ 0045 060301            add [_count1+3],1
+ 0048 0E0200            adc [_count1+2],0
+ 004B 0E0100            adc [_count1+1],0
+ 004E 0E0000            adc [_count1],0
+ 0051                   .dbline 51
+ 0051           ;       }
+ 0051 8020              xjmp L7
+ 0053           L6:
+ 0053                   .dbline 52
+ 0053           ;       else if ((prevPrt1 == 0x00) && (curPrt1 == stateB1))    // If prevPort is 0x00 and then after the interrupt curPrt is
+ 0053 62D000            mov REG[0xd0],>_prevPrt1
+ 0056 3C0000            cmp [_prevPrt1],0
+ 0059 B018              jnz L8
+ 005B 62D000            mov REG[0xd0],>_curPrt1
+ 005E 3C0008            cmp [_curPrt1],8
+ 0061 B010              jnz L8
+ 0063                   .dbline 58
+ 0063           ;                                                                                                       // 0x20 then B is high and A is low which means you wanted to
+ 0063           ;                                                                                                       // decrement by turning counterclockwise and hitting 
+ 0063           ;                                                                                                       // a rising edge on B
+ 0063           ;       {
+ 0063           ;               // Decreasing the count when the counterclockwise interrupt occurred
+ 0063           ;               count1--;
+ 0063                   .dbline 58
+ 0063 62D000            mov REG[0xd0],>_count1
+ 0066 160301            sub [_count1+3],1
+ 0069 1E0200            sbb [_count1+2],0
+ 006C 1E0100            sbb [_count1+1],0
+ 006F 1E0000            sbb [_count1],0
+ 0072                   .dbline 59
+ 0072           ;       }
+ 0072           L8:
+ 0072           L7:
+ 0072                   .dbline -2
+ 0072           L5:
+ 0072 18                pop A
+ 0073 60D0              mov REG[208],A
+ 0075 18                pop A
+ 0076                   .dbline 0 ; func end
+ 0076 7E                reti
+ 0077                   .dbend
+ 0077                   .dbfunc e encoder2_ISR _encoder2_ISR fV
+ 0077           _encoder2_ISR::
+ 0077                   .dbline -1
+ 0077 71C0              or F,-64
+ 0079 08                push A
+ 007A 5DD0              mov A,REG[0xd0]
+ 007C 08                push A
+ 007D                   .dbline 64
+ 007D           ; }
+ 007D           ; 
+ 007D           ; 
+ 007D           ; void encoder2_ISR(void)
+ 007D           ; {
+ 007D                   .dbline 65
+ 007D           ;       curPrt2 = (ENC2A_Data_ADDR & (ENC2A_MASK | ENC2B_MASK));                // Setting prevPort to only bits 1[4] and 1[5]
+ 007D 5D08              mov A,REG[0x8]
+ 007F 2128              and A,40
+ 0081 62D000            mov REG[0xd0],>_curPrt2
+ 0084 5300              mov [_curPrt2],A
+ 0086                   .dbline 68
+ 0086           ;                                                                                                                               // of PRT1DR
+ 0086           ;               
+ 0086           ;       if ((prevPrt2 == 0x00) && (curPrt2 == stateA2)) // If prevPort is 0x00 and then after the interrupt curPrt is
+ 0086 62D000            mov REG[0xd0],>_prevPrt2
+ 0089 3C0000            cmp [_prevPrt2],0
+ 008C B01A              jnz L11
+ 008E 62D000            mov REG[0xd0],>_curPrt2
+ 0091 3C0010            cmp [_curPrt2],16
+ 0094 B012              jnz L11
+ 0096                   .dbline 73
+ 0096           ;                                                                                               // 0x10 then A is high and B is low which means you wanted to
+ 0096           ;                                                                                               // increment by turning clockwise and hitting a rising edge on A
+ 0096           ;       {
+ 0096           ;               // Increasing the count when clockwise turn interrupt occurred
+ 0096           ;               count2++;
+ 0096                   .dbline 73
+ 0096 62D000            mov REG[0xd0],>_count2
+ 0099 060301            add [_count2+3],1
+ 009C 0E0200            adc [_count2+2],0
+ 009F 0E0100            adc [_count2+1],0
+ 00A2 0E0000            adc [_count2],0
+ 00A5                   .dbline 74
+ 00A5           ;       }
+ 00A5 8020              xjmp L12
+ 00A7           L11:
+ 00A7                   .dbline 75
+ 00A7           ;       else if ((prevPrt2 == 0x00) && (curPrt2 == stateB2))    // If prevPort is 0x00 and then after the interrupt curPrt is
+ 00A7 62D000            mov REG[0xd0],>_prevPrt2
+ 00AA 3C0000            cmp [_prevPrt2],0
+ 00AD B018              jnz L13
+ 00AF 62D000            mov REG[0xd0],>_curPrt2
+ 00B2 3C0004            cmp [_curPrt2],4
+ 00B5 B010              jnz L13
+ 00B7                   .dbline 81
+ 00B7           ;                                                                                                       // 0x20 then B is high and A is low which means you wanted to
+ 00B7           ;                                                                                                       // decrement by turning counterclockwise and hitting 
+ 00B7           ;                                                                                                       // a rising edge on B
+ 00B7           ;       {
+ 00B7           ;               // Decreasing the count when the counterclockwise interrupt occurred
+ 00B7           ;               count2--;
+ 00B7                   .dbline 81
+ 00B7 62D000            mov REG[0xd0],>_count2
+ 00BA 160301            sub [_count2+3],1
+ 00BD 1E0200            sbb [_count2+2],0
+ 00C0 1E0100            sbb [_count2+1],0
+ 00C3 1E0000            sbb [_count2],0
+ 00C6                   .dbline 82
+ 00C6           ;       }
+ 00C6           L13:
+ 00C6           L12:
+ 00C6                   .dbline -2
+ 00C6           L10:
+ 00C6 18                pop A
+ 00C7 60D0              mov REG[208],A
+ 00C9 18                pop A
+ 00CA                   .dbline 0 ; func end
+ 00CA 7E                reti
+ 00CB                   .dbend
+                        .area data(ram, con, rel)
+ 0000                   .dbfile C:\Users\Hobo\DOCUME~1\PSOCDE~1.4PR\KIPR_2\KIPR_2\KIPR_2\main.c
+ 0000           _prevPrt2::
+ 0000 00                .byte 0
+ 0001                   .dbsym e prevPrt2 _prevPrt2 c
+                        .area data(ram, con, rel)
+ 0000                   .dbfile C:\Users\Hobo\DOCUME~1\PSOCDE~1.4PR\KIPR_2\KIPR_2\KIPR_2\main.c
+ 0000           _curPrt2::
+ 0000 00                .byte 0
+ 0001                   .dbsym e curPrt2 _curPrt2 c
+                        .area data(ram, con, rel)
+ 0000                   .dbfile C:\Users\Hobo\DOCUME~1\PSOCDE~1.4PR\KIPR_2\KIPR_2\KIPR_2\main.c
+ 0000           _prevPrt1::
+ 0000 00                .byte 0
+ 0001                   .dbsym e prevPrt1 _prevPrt1 c
+                        .area data(ram, con, rel)
+ 0000                   .dbfile C:\Users\Hobo\DOCUME~1\PSOCDE~1.4PR\KIPR_2\KIPR_2\KIPR_2\main.c
+ 0000           _curPrt1::
+ 0000 00                .byte 0
+ 0001                   .dbsym e curPrt1 _curPrt1 c
