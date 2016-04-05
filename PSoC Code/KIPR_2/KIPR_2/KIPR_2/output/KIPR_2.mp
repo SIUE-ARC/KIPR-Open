@@ -1,6 +1,6 @@
 Project:      output/KIPR_2
 Build Number: 0
-Date:         Fri Apr 01 00:00:36 2016
+Date:         Fri Apr 01 16:32:46 2016
 Compiler:     ICCM8C
 Version:      7.05.00
 
@@ -39,7 +39,7 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                     UserModules   03DD   0078 =    120. bytes (rel,con,rom,code)
+                     UserModules   03DD   0098 =    152. bytes (rel,con,rom,code)
 
        Addr  Global Symbol
       -----  --------------------------------
@@ -48,21 +48,37 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
        0452  _ServoA_ISR
        0453  _PWMB_ISR
        0454  _PWMA_ISR
-       0455  __UserModules_end
+       0455  ENC1B_BUF_EnableInt
+       0455  _ENC1B_BUF_EnableInt
+       0459  ENC1B_BUF_DisableInt
+       0459  _ENC1B_BUF_DisableInt
+       045D  ENC1B_BUF_Start
+       045D  _ENC1B_BUF_Start
+       0461  ENC1B_BUF_Stop
+       0461  _ENC1B_BUF_Stop
+       0465  _ENC1A_BUF_EnableInt
+       0465  ENC1A_BUF_EnableInt
+       0469  ENC1A_BUF_DisableInt
+       0469  _ENC1A_BUF_DisableInt
+       046D  _ENC1A_BUF_Start
+       046D  ENC1A_BUF_Start
+       0471  ENC1A_BUF_Stop
+       0471  _ENC1A_BUF_Stop
+       0475  __UserModules_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                            text   0455   00CB =    203. bytes (rel,con,rom,code)
+                            text   0475   00D9 =    217. bytes (rel,con,rom,code)
 
        Addr  Global Symbol
       -----  --------------------------------
-       0455  __text_start
-       0455  _main
-       0478  _encoder1_ISR
-       04CC  _encoder2_ISR
-       0520  __xidata_start
-       0520  __text_end
-       052A  __xidata_end
+       0475  __text_start
+       0475  _main
+       04A6  _encoder1_ISR
+       04FA  _encoder2_ISR
+       054E  __xidata_start
+       054E  __text_end
+       0558  __xidata_end
 
 Area                               Start  End    Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
@@ -123,8 +139,8 @@ Files Linked      [ module(s) ]
 
 ./obj/boot.o	[ boot.asm ]
 obj/main.o	[ main.c ]
-<library>	[ uartint.asm, servoaint.asm, pwmbint.asm, pwmaint.asm, psocconfigtbl.asm, psocconfig.asm, r1.asm ]
-[ r0.asm ]
+<library>	[ uartint.asm, servoaint.asm, pwmbint.asm, pwmaint.asm, psocconfigtbl.asm, psocconfig.asm, enc1b_buf.asm ]
+[ enc1a_buf.asm, r1.asm, r0.asm ]
 
 Area Definitions
 

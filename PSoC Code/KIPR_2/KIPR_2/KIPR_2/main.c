@@ -8,10 +8,10 @@
 #pragma interrupt_handler encoder1_ISR
 #pragma interrupt_handler encoder2_ISR
 
-#define stateA1 0x20
-#define stateB1 0x08
-#define stateA2 0x10
-#define stateB2 0x04
+#define stateA1 0x40
+#define stateB1 0x10
+#define stateA2 0x20
+#define stateB2 0x08
 
 BYTE curPrt1;
 BYTE prevPrt1;
@@ -27,6 +27,11 @@ void main(void)
 	M8C_EnableIntMask(INT_MSK0, INT_MSK0_GPIO);
 	M8C_EnableIntMask(INT_MSK1, INT_MSK1_DBB00);
 	M8C_EnableIntMask(INT_MSK1, INT_MSK1_DBB11);
+	
+	ENC1A_BUF_EnableInt();
+	ENC1B_BUF_EnableInt();
+	ENC1A_BUF_Start();
+	ENC1B_BUF_Start();
 	
 	while(1)
 	{
