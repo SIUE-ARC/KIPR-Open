@@ -1,0 +1,108 @@
+XH
+H 3 areas 24 global symbols
+M pwma.asm
+A text size 0 flags 0
+dbfile lib/pwma.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/pwma.asm
+dbfunc 0 ? 0 I
+dbfile PWMA.inc
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
+dbfunc 0 ? 0 I
+dbfile ./lib/PWMA.inc
+dbfunc 0 ? 0 I
+dbfile lib/pwma.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
+dbfunc 0 ? 0 I
+A kipr_2_RAM size 0 flags 20
+A UserModules size 46 flags 0
+dbfile lib/pwma.asm
+dbfunc 0 ? 0 I
+dbline 2 0
+dbline 5F 3
+dbline 2 4
+dbline 7B 7
+dbline 2 8
+dbline 98 B
+dbline 2 C
+dbline B4 F
+dbline D0 10
+dbline D2 12
+dbline EB 13
+dbline ED 15
+dbline 108 16
+dbline 10A 18
+dbline 12F 19
+dbline 130 1A
+dbline 131 1C
+dbline 2 1D
+dbline 2 20
+dbline 134 22
+dbline 135 24
+dbline 137 25
+dbline 2 28
+dbline 13A 2A
+dbline 13B 2C
+dbline 13C 2E
+dbline 13D 2F
+dbline 13E 31
+dbline 2 33
+dbline 140 35
+dbline 141 37
+dbline 2 39
+dbline 2 3B
+dbline 144 3E
+dbline 145 3F
+dbline 3 41
+dbline 4 43
+dbline 147 45
+S _PWMA_Start Def0008
+S PWMA_WritePeriod Def0010
+S PWMA_EnableInt Def0000
+S _PWMA_WritePulseWidth Def0013
+S $sb$PWMA_WritePeriod Def0010
+S $se$PWMA_WritePeriod Def0013
+S $sb$PWMA_EnableInt Def0000
+S $se$PWMA_EnableInt Def0004
+S PWMA_Stop Def000C
+S bPWMA_ReadCounter Def0019
+S PWMA_bReadCounter Def0019
+S $sb$PWMA_Stop Def000C
+S $se$PWMA_Stop Def0010
+S _PWMA_WritePeriod Def0010
+S _PWMA_EnableInt Def0000
+S $sb$PWMA_bReadCounter Def0019
+S $se$PWMA_bReadCounter Def0046
+S PWMA_DisableInt Def0004
+S bPWMA_ReadPulseWidth Def0016
+S PWMA_bReadPulseWidth Def0016
+S $sb$PWMA_DisableInt Def0004
+S $se$PWMA_DisableInt Def0008
+S $sb$PWMA_bReadPulseWidth Def0016
+S _PWMA_Stop Def000C
+S $se$PWMA_bReadPulseWidth Def0019
+S PWMA_Start Def0008
+S PWMA_WritePulseWidth Def0013
+S _bPWMA_ReadCounter Def0019
+S _PWMA_bReadCounter Def0019
+S $sb$PWMA_Start Def0008
+S $se$PWMA_Start Def000C
+S $sb$PWMA_WritePulseWidth Def0013
+S $se$PWMA_WritePulseWidth Def0016
+S _PWMA_DisableInt Def0004
+S _bPWMA_ReadPulseWidth Def0016
+S _PWMA_bReadPulseWidth Def0016
+T 00 00 43 E1 08 7F 41 E1 F7 7F 43 2F 01 7F 41 2F
+R 00 00 00 02
+T 00 0E FE 7F 60 2D 7F 60 2E 7F 5D 2E 7F 4F 5D 2E
+R 00 00 00 02
+T 00 1C 08 41 2F FE 71 10 5D 2D 08 62 2D 00 70 EF
+R 00 00 00 02
+T 00 2A 5D 2C 5D 2E 08 52 00 60 2E 71 10 52 01 60
+R 00 00 00 02
+T 00 38 2D 70 EF 43 2F 01 18 38 FE 70 3F 71 C0 7F
+R 00 00 00 02
