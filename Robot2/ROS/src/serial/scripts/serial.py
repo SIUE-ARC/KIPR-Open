@@ -3,7 +3,7 @@ import serial, rospy, time
 from std_msgs.msg import String
 
 SERIAL_PORT = ""
-BAUD_RATE = 19200
+BAUD_RATE = 115200
 
 RX_TOPIC = ""
 TX_TOPIC = ""
