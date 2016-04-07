@@ -11,7 +11,7 @@ M uartint.asm
 A text size 0 flags 0
 dbfile lib/uartint.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 dbfile lib/uartint.asm
 dbfunc 0 ? 0 I
@@ -132,7 +132,7 @@ dbfile memory.inc
 dbfunc 0 ? 0 I
 dbfile lib/uart.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 A UART_RAM size 1 flags 20
 A UserModules size 1EA flags 0
@@ -600,13 +600,13 @@ dbfile lib/servoaint.asm
 dbfunc 0 ? 0 I
 dbfile ServoA.inc
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 dbfile ./lib/ServoA.inc
 dbfunc 0 ? 0 I
 dbfile lib/servoaint.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 A InterruptRAM size 0 flags 20
 A UserModules size 1 flags 0
@@ -630,13 +630,13 @@ dbfile lib/servoa.asm
 dbfunc 0 ? 0 I
 dbfile ServoA.inc
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 dbfile ./lib/ServoA.inc
 dbfunc 0 ? 0 I
 dbfile lib/servoa.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 A kipr_2_RAM size 0 flags 20
 A UserModules size 5C flags 0
@@ -758,13 +758,13 @@ dbfile lib/pwmbint.asm
 dbfunc 0 ? 0 I
 dbfile PWMB.inc
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 dbfile ./lib/PWMB.inc
 dbfunc 0 ? 0 I
 dbfile lib/pwmbint.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 A InterruptRAM size 0 flags 20
 A UserModules size 1 flags 0
@@ -788,13 +788,13 @@ dbfile lib/pwmb.asm
 dbfunc 0 ? 0 I
 dbfile PWMB.inc
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 dbfile ./lib/PWMB.inc
 dbfunc 0 ? 0 I
 dbfile lib/pwmb.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 A kipr_2_RAM size 0 flags 20
 A UserModules size 46 flags 0
@@ -898,13 +898,13 @@ dbfile lib/pwmaint.asm
 dbfunc 0 ? 0 I
 dbfile PWMA.inc
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 dbfile ./lib/PWMA.inc
 dbfunc 0 ? 0 I
 dbfile lib/pwmaint.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 A InterruptRAM size 0 flags 20
 A UserModules size 1 flags 0
@@ -928,13 +928,13 @@ dbfile lib/pwma.asm
 dbfunc 0 ? 0 I
 dbfile PWMA.inc
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 dbfile ./lib/PWMA.inc
 dbfunc 0 ? 0 I
 dbfile lib/pwma.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 A kipr_2_RAM size 0 flags 20
 A UserModules size 46 flags 0
@@ -1037,7 +1037,7 @@ dbfile ./lib/PSoCGPIOINT.inc
 dbfunc 0 ? 0 I
 dbfile lib/psocgpioint.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 S PSoC_GPIO_ISR Def0000
 T 00 00 7E
@@ -1050,145 +1050,147 @@ M psocconfigtbl.asm
 A text size 0 flags 0
 dbfile lib/psocconfigtbl.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
-A lit size D4 flags 0
+A lit size EC flags 0
 S LoadConfigTBL_kipr_2_Bank0 Def0000
-S LoadConfigTBL_kipr_2_Bank1 Def007F
+S LoadConfigTBL_kipr_2_Bank1 Def008B
 A psoc_config size 105 flags 0
 dbfile lib/psocconfigtbl.asm
 dbfunc 0 ? 0 I
 dbline 2 0
-dbline A5 2
+dbline B9 2
 dbline 2 5
-dbline A7 7
-dbline A8 A
+dbline BB 7
+dbline BC A
 dbline 2 D
-dbline AA F
-dbline AB 12
+dbline BE F
+dbline BF 12
 dbline 2 15
-dbline AD 17
-dbline AE 1A
+dbline C1 17
+dbline C2 1A
 dbline 2 1D
-dbline B0 1F
-dbline B1 22
+dbline C4 1F
+dbline C5 22
 dbline 2 25
-dbline B3 27
-dbline B4 2A
+dbline C7 27
+dbline C8 2A
 dbline 2 2D
-dbline B6 2F
-dbline B7 32
+dbline CA 2F
+dbline CB 32
 dbline 2 35
-dbline B9 37
-dbline BA 3A
+dbline CD 37
+dbline CE 3A
 dbline 2 3D
-dbline BC 3F
-dbline BD 42
+dbline D0 3F
+dbline D1 42
 dbline 2 45
-dbline BF 47
-dbline C0 4A
+dbline D3 47
+dbline D4 4A
 dbline 2 4D
-dbline C2 4F
-dbline C3 52
+dbline D6 4F
+dbline D7 52
 dbline 2 55
-dbline C5 57
-dbline C6 5A
+dbline D9 57
+dbline DA 5A
 dbline 2 5D
-dbline C8 5F
-dbline C9 62
+dbline DC 5F
+dbline DD 62
 dbline 2 65
-dbline CB 67
-dbline CC 6A
+dbline DF 67
+dbline E0 6A
 dbline 2 6D
-dbline CE 6F
-dbline CF 72
+dbline E2 6F
+dbline E3 72
 dbline 2 75
-dbline D1 77
-dbline D2 7A
+dbline E5 77
+dbline E6 7A
 dbline 2 7D
-dbline D4 7F
-dbline D5 82
+dbline E8 7F
+dbline E9 82
 dbline 2 85
-dbline D7 87
-dbline D8 8A
+dbline EB 87
+dbline EC 8A
 dbline 2 8D
-dbline DA 8F
-dbline DB 92
+dbline EE 8F
+dbline EF 92
 dbline 2 95
-dbline DD 97
-dbline DE 9A
+dbline F1 97
+dbline F2 9A
 dbline 2 9D
-dbline E0 9F
-dbline E1 A2
+dbline F4 9F
+dbline F5 A2
 dbline 2 A5
-dbline E3 A7
-dbline E4 AA
+dbline F7 A7
+dbline F8 AA
 dbline 2 AD
-dbline E6 AF
-dbline E7 B2
+dbline FA AF
+dbline FB B2
 dbline 2 B5
-dbline E9 B7
-dbline EA BA
+dbline FD B7
+dbline FE BA
 dbline 2 BD
-dbline EC BF
-dbline ED C2
+dbline 100 BF
+dbline 101 C2
 dbline 2 C5
-dbline EF C7
-dbline F0 CA
+dbline 103 C7
+dbline 104 CA
 dbline 2 CD
-dbline F2 CF
-dbline F3 D2
+dbline 106 CF
+dbline 107 D2
 dbline 2 D5
-dbline F5 D7
-dbline F6 DA
+dbline 109 D7
+dbline 10A DA
 dbline 2 DD
-dbline F8 DF
-dbline F9 E2
+dbline 10C DF
+dbline 10D E2
 dbline 2 E5
-dbline FB E7
-dbline FC EA
+dbline 10F E7
+dbline 110 EA
 dbline 2 ED
-dbline FE EF
-dbline FF F2
+dbline 112 EF
+dbline 113 F2
 dbline 2 F5
-dbline 101 F7
-dbline 102 FA
+dbline 115 F7
+dbline 116 FA
 dbline 2 FD
-dbline 104 FF
+dbline 118 FF
 dbline 2 102
-dbline 106 104
+dbline 11A 104
 S LoadConfigTBL_kipr_2_Ordered Def0000
-T 00 00 23 03 21 00 22 00 37 03 35 00 36 00 2F 00
+T 00 00 33 00 31 00 32 00 23 03 21 00 22 00 47 00
 R 00 00 00 01
-T 00 0E 2D FF 2E 00 43 00 41 FF 42 00 27 00 25 1F
+T 00 0E 45 00 46 00 37 03 35 00 36 00 2F 00 2D FF
 R 00 00 00 01
-T 00 1C 26 E7 2B 00 29 4E 2A 03 3F 00 3D 00 3E 00
+T 00 1C 2E 00 43 00 41 FF 42 00 27 00 25 1F 26 E7
 R 00 00 00 01
-T 00 2A 3B 00 39 00 3A 00 60 28 66 00 63 05 65 00
+T 00 2A 2B 00 29 4E 2A 03 3F 00 3D 00 3E 00 3B 00
 R 00 00 00 01
-T 00 38 E6 00 E7 00 D6 00 B0 10 B1 00 B2 00 B3 33
+T 00 38 39 00 3A 00 60 28 66 00 63 05 65 00 E6 00
 R 00 00 00 01
-T 00 46 B4 33 B5 01 B6 10 B8 55 B9 00 BA 10 BB 33
+T 00 46 E7 00 D6 00 B0 10 B1 00 B2 00 B3 33 B4 33
 R 00 00 00 01
-T 00 54 BC 33 BD 10 BE 00 C0 00 C1 00 C2 20 C3 33
+T 00 54 B5 01 B6 10 B8 55 B9 00 BA 10 BB 33 BC 33
 R 00 00 00 01
-T 00 62 C4 33 C5 80 C6 00 C8 55 C9 00 CA 30 CB 33
+T 00 62 BD 10 BE 00 C0 01 C1 00 C2 20 C3 33 C4 33
 R 00 00 00 01
-T 00 70 CC 33 CD 00 CE 00 6C 00 6D 00 6E 00 6F 00
+T 00 70 C5 80 C6 00 C8 55 C9 00 CA 30 CB 33 CC 33
 R 00 00 00 01
-T 00 7E FF 20 22 21 E0 22 40 34 22 35 C0 36 40 2C
+T 00 7E CD 00 CE 00 6C 00 6D 00 6E 00 6F 00 FF 30
 R 00 00 00 01
-T 00 8C 21 2D 16 2E 44 40 21 41 11 42 45 24 01 25
+T 00 8C 20 31 0E 32 40 20 22 21 E0 22 40 44 20 45
 R 00 00 00 01
-T 00 9A 16 26 40 28 21 29 36 2A 47 3C 05 3D F1 3E
+T 00 9A 0C 46 40 34 22 35 C0 36 40 2C 21 2D 16 2E
 R 00 00 00 01
-T 00 A8 00 38 0D 39 01 3A 05 61 00 69 00 60 00 62
+T 00 A8 44 40 21 41 11 42 45 24 01 25 16 26 40 28
 R 00 00 00 01
-T 00 B6 00 67 33 68 33 63 00 66 00 D1 00 D3 00 D0
+T 00 B6 21 29 36 2A 47 3C 05 3D F1 3E 40 38 0D 39
 R 00 00 00 01
-T 00 C4 00 D2 00 E1 B1 E2 00 DF 19 DE 00 DD 00 E7
+T 00 C4 01 3A 45 61 00 69 00 60 00 62 00 67 33 68
 R 00 00 00 01
-T 00 D2 00 FF
+T 00 D2 33 63 00 66 00 D1 00 D3 00 D0 00 D2 00 E1
+R 00 00 00 01
+T 00 E0 B1 E2 00 DF 19 DE 00 DD 00 E7 00 FF
 R 00 00 00 01
 T 00 00 70 EF 62 00 00 71 10 62 00 0A 62 01 F5 70
 R 00 00 00 02
@@ -1247,7 +1249,7 @@ dbfile memory.inc
 dbfunc 0 ? 0 I
 dbfile lib/psocconfig.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 A psoc_config size 62 flags 0
 dbfile lib/psocconfig.asm
@@ -1337,49 +1339,49 @@ R 00 00 00 01
 .start
 XH
 H 3 areas 1 global symbols
-M enc1b_bufint.asm
+M enc1b_pedgeint.asm
 A text size 0 flags 0
-dbfile lib/enc1b_bufint.asm
+dbfile lib/enc1b_pedgeint.asm
 dbfunc 0 ? 0 I
 dbfile memory.inc
 dbfunc 0 ? 0 I
-dbfile lib/enc1b_bufint.asm
+dbfile lib/enc1b_pedgeint.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 A InterruptRAM size 0 flags 20
 A UserModules size 1 flags 0
-dbfile lib/enc1b_bufint.asm
+dbfile lib/enc1b_pedgeint.asm
 dbfunc 0 ? 0 I
 dbline 58 0
-S _ENC1B_BUF_ISR Def0000
+S _ENC1B_PEDGE_ISR Def0000
 T 00 00 7E
 R 00 00 00 02
 .end
 .start
 XH
 H 3 areas 10 global symbols
-M enc1b_buf.asm
+M enc1b_pedge.asm
 A text size 0 flags 0
-dbfile lib/enc1b_buf.asm
+dbfile lib/enc1b_pedge.asm
 dbfunc 0 ? 0 I
-dbfile ENC1B_BUF.inc
+dbfile ENC1B_PEDGE.inc
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
-dbfile ./lib/ENC1B_BUF.inc
+dbfile ./lib/ENC1B_PEDGE.inc
 dbfunc 0 ? 0 I
-dbfile lib/enc1b_buf.asm
+dbfile lib/enc1b_pedge.asm
 dbfunc 0 ? 0 I
 dbfile memory.inc
 dbfunc 0 ? 0 I
-dbfile lib/enc1b_buf.asm
+dbfile lib/enc1b_pedge.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 A bss size 0 flags 20
 A UserModules size 10 flags 0
-dbfile lib/enc1b_buf.asm
+dbfile lib/enc1b_pedge.asm
 dbfunc 0 ? 0 I
 dbline 2 0
 dbline 4D 3
@@ -1389,22 +1391,22 @@ dbline 2 8
 dbline 82 B
 dbline 2 C
 dbline 9C F
-S $sb$ENC1B_BUF_Start Def0008
-S $se$ENC1B_BUF_Start Def000C
-S _ENC1B_BUF_DisableInt Def0004
-S _ENC1B_BUF_Start Def0008
-S ENC1B_BUF_EnableInt Def0000
-S $sb$ENC1B_BUF_EnableInt Def0000
-S $se$ENC1B_BUF_EnableInt Def0004
-S ENC1B_BUF_Stop Def000C
-S $sb$ENC1B_BUF_Stop Def000C
-S $se$ENC1B_BUF_Stop Def0010
-S _ENC1B_BUF_EnableInt Def0000
-S ENC1B_BUF_DisableInt Def0004
-S $sb$ENC1B_BUF_DisableInt Def0004
-S $se$ENC1B_BUF_DisableInt Def0008
-S _ENC1B_BUF_Stop Def000C
-S ENC1B_BUF_Start Def0008
+S ENC1B_PEDGE_Stop Def000C
+S $sb$ENC1B_PEDGE_Stop Def000C
+S $se$ENC1B_PEDGE_Stop Def0010
+S _ENC1B_PEDGE_EnableInt Def0000
+S ENC1B_PEDGE_DisableInt Def0004
+S $sb$ENC1B_PEDGE_DisableInt Def0004
+S $se$ENC1B_PEDGE_DisableInt Def0008
+S _ENC1B_PEDGE_Stop Def000C
+S ENC1B_PEDGE_Start Def0008
+S $sb$ENC1B_PEDGE_Start Def0008
+S $se$ENC1B_PEDGE_Start Def000C
+S _ENC1B_PEDGE_DisableInt Def0004
+S _ENC1B_PEDGE_Start Def0008
+S ENC1B_PEDGE_EnableInt Def0000
+S $sb$ENC1B_PEDGE_EnableInt Def0000
+S $se$ENC1B_PEDGE_EnableInt Def0004
 T 00 00 43 E1 20 7F 41 E1 DF 7F 43 37 01 7F 41 37
 R 00 00 00 02
 T 00 0E FE 7F
@@ -1413,49 +1415,150 @@ R 00 00 00 02
 .start
 XH
 H 3 areas 1 global symbols
-M enc1a_bufint.asm
+M enc1b_fedgeint.asm
 A text size 0 flags 0
-dbfile lib/enc1a_bufint.asm
+dbfile lib/enc1b_fedgeint.asm
 dbfunc 0 ? 0 I
 dbfile memory.inc
 dbfunc 0 ? 0 I
-dbfile lib/enc1a_bufint.asm
+dbfile lib/enc1b_fedgeint.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfile ./lib/ENC1B_FEDGE.inc
+dbfunc 0 ? 0 I
+dbfile lib/enc1b_fedgeint.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 A InterruptRAM size 0 flags 20
 A UserModules size 1 flags 0
-dbfile lib/enc1a_bufint.asm
+dbfile lib/enc1b_fedgeint.asm
+dbfunc 0 ? 0 I
+dbline 5A 0
+S _ENC1B_FEDGE_ISR Def0000
+T 00 00 7E
+R 00 00 00 02
+.end
+.start
+XH
+H 2 areas 10 global symbols
+M enc1b_fedge.asm
+A text size 0 flags 0
+dbfile lib/enc1b_fedge.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/enc1b_fedge.asm
+dbfunc 0 ? 0 I
+dbfile ./lib/ENC1B_FEDGE.inc
+dbfunc 0 ? 0 I
+dbfile lib/enc1b_fedge.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
+dbfunc 0 ? 0 I
+A UserModules size 38 flags 0
+dbfile lib/enc1b_fedge.asm
+dbfunc 0 ? 0 I
+dbline 2 0
+dbline 49 3
+dbline 2 4
+dbline 66 7
+dbline 8C 8
+dbline 95 9
+dbline 96 B
+dbline 2 C
+dbline 2 F
+dbline 9C 11
+dbline 9D 13
+dbline 9F 14
+dbline A2 17
+dbline A3 19
+dbline A5 1A
+dbline 2 1D
+dbline A9 1F
+dbline 2 22
+dbline AD 24
+dbline AE 25
+dbline B1 27
+dbline B2 28
+dbline 2 2A
+dbline 2 2C
+dbline B9 2F
+dbline BA 30
+dbline BD 32
+dbline BF 33
+dbline DB 34
+dbline DD 37
+S ENC1B_FEDGE_Stop Def0034
+S $sb$ENC1B_FEDGE_Stop Def0034
+S $se$ENC1B_FEDGE_Stop Def0038
+S _ENC1B_FEDGE_EnableInt Def0000
+S ENC1B_FEDGE_DisableInt Def0004
+S $sb$ENC1B_FEDGE_DisableInt Def0004
+S $se$ENC1B_FEDGE_DisableInt Def0008
+S _ENC1B_FEDGE_Stop Def0034
+S ENC1B_FEDGE_Start Def0008
+S $sb$ENC1B_FEDGE_Start Def0008
+S $se$ENC1B_FEDGE_Start Def0034
+S _ENC1B_FEDGE_DisableInt Def0004
+S _ENC1B_FEDGE_Start Def0008
+S ENC1B_FEDGE_EnableInt Def0000
+S $sb$ENC1B_FEDGE_EnableInt Def0000
+S $se$ENC1B_FEDGE_EnableInt Def0004
+T 00 00 43 DF 02 7F 41 DF FD 7F 08 5D DF 08 41 DF
+R 00 00 00 01
+T 00 0E FD 71 10 5D 46 08 62 46 00 5D 45 08 62 45
+R 00 00 00 01
+T 00 1C 04 70 EF 43 47 01 71 10 18 60 45 18 60 46
+R 00 00 00 01
+T 00 2A 70 EF 62 DB FD 18 60 DF 18 7F 41 47 FE 7F
+R 00 00 00 01
+.end
+.start
+XH
+H 3 areas 1 global symbols
+M enc1a_pedgeint.asm
+A text size 0 flags 0
+dbfile lib/enc1a_pedgeint.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/enc1a_pedgeint.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
+dbfunc 0 ? 0 I
+A InterruptRAM size 0 flags 20
+A UserModules size 1 flags 0
+dbfile lib/enc1a_pedgeint.asm
 dbfunc 0 ? 0 I
 dbline 58 0
-S _ENC1A_BUF_ISR Def0000
+S _ENC1A_PEDGE_ISR Def0000
 T 00 00 7E
 R 00 00 00 02
 .end
 .start
 XH
 H 3 areas 10 global symbols
-M enc1a_buf.asm
+M enc1a_pedge.asm
 A text size 0 flags 0
-dbfile lib/enc1a_buf.asm
+dbfile lib/enc1a_pedge.asm
 dbfunc 0 ? 0 I
-dbfile ENC1A_BUF.inc
+dbfile ENC1A_PEDGE.inc
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
-dbfile ./lib/ENC1A_BUF.inc
+dbfile ./lib/ENC1A_PEDGE.inc
 dbfunc 0 ? 0 I
-dbfile lib/enc1a_buf.asm
+dbfile lib/enc1a_pedge.asm
 dbfunc 0 ? 0 I
 dbfile memory.inc
 dbfunc 0 ? 0 I
-dbfile lib/enc1a_buf.asm
+dbfile lib/enc1a_pedge.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 A bss size 0 flags 20
 A UserModules size 10 flags 0
-dbfile lib/enc1a_buf.asm
+dbfile lib/enc1a_pedge.asm
 dbfunc 0 ? 0 I
 dbline 2 0
 dbline 4D 3
@@ -1465,24 +1568,125 @@ dbline 2 8
 dbline 82 B
 dbline 2 C
 dbline 9C F
-S $sb$ENC1A_BUF_Start Def0008
-S $se$ENC1A_BUF_Start Def000C
-S _ENC1A_BUF_DisableInt Def0004
-S _ENC1A_BUF_Start Def0008
-S ENC1A_BUF_EnableInt Def0000
-S $sb$ENC1A_BUF_EnableInt Def0000
-S $se$ENC1A_BUF_EnableInt Def0004
-S ENC1A_BUF_Stop Def000C
-S $sb$ENC1A_BUF_Stop Def000C
-S $se$ENC1A_BUF_Stop Def0010
-S _ENC1A_BUF_EnableInt Def0000
-S ENC1A_BUF_DisableInt Def0004
-S $sb$ENC1A_BUF_DisableInt Def0004
-S $se$ENC1A_BUF_DisableInt Def0008
-S _ENC1A_BUF_Stop Def000C
-S ENC1A_BUF_Start Def0008
+S ENC1A_PEDGE_Stop Def000C
+S $sb$ENC1A_PEDGE_Stop Def000C
+S $se$ENC1A_PEDGE_Stop Def0010
+S _ENC1A_PEDGE_EnableInt Def0000
+S ENC1A_PEDGE_DisableInt Def0004
+S $sb$ENC1A_PEDGE_DisableInt Def0004
+S $se$ENC1A_PEDGE_DisableInt Def0008
+S _ENC1A_PEDGE_Stop Def000C
+S ENC1A_PEDGE_Start Def0008
+S $sb$ENC1A_PEDGE_Start Def0008
+S $se$ENC1A_PEDGE_Start Def000C
+S _ENC1A_PEDGE_DisableInt Def0004
+S _ENC1A_PEDGE_Start Def0008
+S ENC1A_PEDGE_EnableInt Def0000
+S $sb$ENC1A_PEDGE_EnableInt Def0000
+S $se$ENC1A_PEDGE_EnableInt Def0004
 T 00 00 43 E1 01 7F 41 E1 FE 7F 43 23 01 7F 41 23
 R 00 00 00 02
 T 00 0E FE 7F
 R 00 00 00 02
+.end
+.start
+XH
+H 3 areas 1 global symbols
+M enc1a_fedgeint.asm
+A text size 0 flags 0
+dbfile lib/enc1a_fedgeint.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/enc1a_fedgeint.asm
+dbfunc 0 ? 0 I
+dbfile ./lib/ENC1A_FEDGE.inc
+dbfunc 0 ? 0 I
+dbfile lib/enc1a_fedgeint.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
+dbfunc 0 ? 0 I
+A InterruptRAM size 0 flags 20
+A UserModules size 1 flags 0
+dbfile lib/enc1a_fedgeint.asm
+dbfunc 0 ? 0 I
+dbline 5A 0
+S _ENC1A_FEDGE_ISR Def0000
+T 00 00 7E
+R 00 00 00 02
+.end
+.start
+XH
+H 2 areas 10 global symbols
+M enc1a_fedge.asm
+A text size 0 flags 0
+dbfile lib/enc1a_fedge.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/enc1a_fedge.asm
+dbfunc 0 ? 0 I
+dbfile ./lib/ENC1A_FEDGE.inc
+dbfunc 0 ? 0 I
+dbfile lib/enc1a_fedge.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
+dbfunc 0 ? 0 I
+A UserModules size 38 flags 0
+dbfile lib/enc1a_fedge.asm
+dbfunc 0 ? 0 I
+dbline 2 0
+dbline 49 3
+dbline 2 4
+dbline 66 7
+dbline 8C 8
+dbline 95 9
+dbline 96 B
+dbline 2 C
+dbline 2 F
+dbline 9C 11
+dbline 9D 13
+dbline 9F 14
+dbline A2 17
+dbline A3 19
+dbline A5 1A
+dbline 2 1D
+dbline A9 1F
+dbline 2 22
+dbline AD 24
+dbline AE 25
+dbline B1 27
+dbline B2 28
+dbline 2 2A
+dbline 2 2C
+dbline B9 2F
+dbline BA 30
+dbline BD 32
+dbline BF 33
+dbline DB 34
+dbline DD 37
+S ENC1A_FEDGE_Stop Def0034
+S $sb$ENC1A_FEDGE_Stop Def0034
+S $se$ENC1A_FEDGE_Stop Def0038
+S _ENC1A_FEDGE_EnableInt Def0000
+S ENC1A_FEDGE_DisableInt Def0004
+S $sb$ENC1A_FEDGE_DisableInt Def0004
+S $se$ENC1A_FEDGE_DisableInt Def0008
+S _ENC1A_FEDGE_Stop Def0034
+S ENC1A_FEDGE_Start Def0008
+S $sb$ENC1A_FEDGE_Start Def0008
+S $se$ENC1A_FEDGE_Start Def0034
+S _ENC1A_FEDGE_DisableInt Def0004
+S _ENC1A_FEDGE_Start Def0008
+S ENC1A_FEDGE_EnableInt Def0000
+S $sb$ENC1A_FEDGE_EnableInt Def0000
+S $se$ENC1A_FEDGE_EnableInt Def0004
+T 00 00 43 E1 10 7F 41 E1 EF 7F 08 5D E1 08 41 E1
+R 00 00 00 01
+T 00 0E EF 71 10 5D 32 08 62 32 00 5D 31 08 62 31
+R 00 00 00 01
+T 00 1C 04 70 EF 43 33 01 71 10 18 60 31 18 60 32
+R 00 00 00 01
+T 00 2A 70 EF 62 DB EF 18 60 E1 18 7F 41 33 FE 7F
+R 00 00 00 01
 .end

@@ -1,0 +1,24 @@
+XH
+H 3 areas 1 global symbols
+M enc1a_fedgeint.asm
+A text size 0 flags 0
+dbfile lib/enc1a_fedgeint.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/enc1a_fedgeint.asm
+dbfunc 0 ? 0 I
+dbfile ./lib/ENC1A_FEDGE.inc
+dbfunc 0 ? 0 I
+dbfile lib/enc1a_fedgeint.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
+dbfunc 0 ? 0 I
+A InterruptRAM size 0 flags 20
+A UserModules size 1 flags 0
+dbfile lib/enc1a_fedgeint.asm
+dbfunc 0 ? 0 I
+dbline 5A 0
+S _ENC1A_FEDGE_ISR Def0000
+T 00 00 7E
+R 00 00 00 02

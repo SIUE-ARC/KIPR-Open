@@ -160,7 +160,7 @@ ENDIF
     reti
 
     org   30h                      ;PSoC Block DBB10 Interrupt Vector
-    `@INTERRUPT_12`
+    ljmp _encoder1_ISR
     reti
 
     org   34h                      ;PSoC Block DBB11 Interrupt Vector
@@ -196,7 +196,7 @@ ENDIF
     reti
 
     org   54h                      ;PSoC Block DBB31 Interrupt Vector
-    `@INTERRUPT_21`
+    ljmp _encoder1_ISR
     reti
 
     org   58h                      ;PSoC Block DCB32 Interrupt Vector

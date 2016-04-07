@@ -1,11 +1,12 @@
 XH
-H B areas 14 global symbols
+H B areas 15 global symbols
 M boot.asm
 S _main Ref0000
 S __text_end Ref0000
 S __r0 Ref0000
 S __r1 Ref0000
 S LoadConfigInit Ref0000
+S _ENC1B_FEDGE_ISR Ref0000
 S _encoder1_ISR Ref0000
 S _encoder2_ISR Ref0000
 S _PWMA_ISR Ref0000
@@ -32,7 +33,8 @@ dbline 9D 28
 dbline 9E 2B
 dbline A1 2C
 dbline A2 2F
-dbline A6 30
+dbline A5 30
+dbline A6 33
 dbline A9 34
 dbline AA 37
 dbline AD 38
@@ -41,11 +43,13 @@ dbline B1 3C
 dbline B2 3F
 dbline B5 40
 dbline B6 43
-dbline BA 44
+dbline B9 44
+dbline BA 47
 dbline BE 48
 dbline C2 4C
 dbline C6 50
-dbline CA 54
+dbline C9 54
+dbline CA 57
 dbline CE 58
 dbline D2 5C
 dbline D6 60
@@ -188,11 +192,11 @@ dbfile memory.inc
 dbfunc 0 ? 0 I
 dbfile ./boot.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8ssc.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8ssc.inc
 dbfunc 0 ? 0 I
 dbfile ./boot.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 dbfile ./boot.asm
 dbfunc 0 ? 0 I
@@ -214,35 +218,35 @@ R 00 00 00 00
 T 00 18 7E
 R 00 00 00 00
 T 00 1C 7D 00 00 7E
-R 00 00 00 00 02 03 00 06
+R 00 00 00 00 02 03 00 07
 T 00 20 7D 00 00 7E
-R 00 00 00 00 02 03 00 05
+R 00 00 00 00 02 03 00 06
 T 00 24 7E
 R 00 00 00 00
 T 00 28 7D 00 00 7E
-R 00 00 00 00 02 03 00 0B
+R 00 00 00 00 02 03 00 0C
 T 00 2C 7D 00 00 7E
-R 00 00 00 00 02 03 00 07
-T 00 30 7E
-R 00 00 00 00
-T 00 34 7D 00 00 7E
-R 00 00 00 00 02 03 00 05
-T 00 38 7D 00 00 7E
-R 00 00 00 00 02 03 00 0A
-T 00 3C 7D 00 00 7E
-R 00 00 00 00 02 03 00 09
-T 00 40 7D 00 00 7E
 R 00 00 00 00 02 03 00 08
-T 00 44 7E
-R 00 00 00 00
+T 00 30 7D 00 00 7E
+R 00 00 00 00 02 03 00 06
+T 00 34 7D 00 00 7E
+R 00 00 00 00 02 03 00 06
+T 00 38 7D 00 00 7E
+R 00 00 00 00 02 03 00 0B
+T 00 3C 7D 00 00 7E
+R 00 00 00 00 02 03 00 0A
+T 00 40 7D 00 00 7E
+R 00 00 00 00 02 03 00 09
+T 00 44 7D 00 00 7E
+R 00 00 00 00 02 03 00 05
 T 00 48 7E
 R 00 00 00 00
 T 00 4C 7E
 R 00 00 00 00
 T 00 50 7E
 R 00 00 00 00
-T 00 54 7E
-R 00 00 00 00
+T 00 54 7D 00 00 7E
+R 00 00 00 00 02 03 00 06
 T 00 58 7E
 R 00 00 00 00
 T 00 5C 7E
