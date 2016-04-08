@@ -33,7 +33,7 @@ UART_INT_MODE_TX_COMPLETE:                   equ 0x01
 
 UART_RX_IGNORE_BELOW:                        equ 0x20
 UART_RX_BUFFER_SIZE:                         equ 0x10
-UART_CMD_TERM:                               equ 0xd
+UART_CMD_TERM:                               equ 0x7
 UART_DELIMITER:                              equ 0x20
 UART_BACKSPACE_ENABLE:                       equ 0x0
 

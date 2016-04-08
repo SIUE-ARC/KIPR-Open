@@ -1111,7 +1111,7 @@
  0000           
  0020           UART_RX_IGNORE_BELOW:                        equ 0x20
  0010           UART_RX_BUFFER_SIZE:                         equ 0x10
- 000D           UART_CMD_TERM:                               equ 0xd
+ 0007           UART_CMD_TERM:                               equ 0x7
  0020           UART_DELIMITER:                              equ 0x20
  0000           UART_BACKSPACE_ENABLE:                       equ 0x0
  0000           

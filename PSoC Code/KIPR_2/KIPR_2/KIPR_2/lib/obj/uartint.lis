@@ -29,7 +29,7 @@
  0000           
  0020           UART_RX_IGNORE_BELOW:                        equ 0x20
  0010           UART_RX_BUFFER_SIZE:                         equ 0x10
- 000D           UART_CMD_TERM:                               equ 0xd
+ 0007           UART_CMD_TERM:                               equ 0x7
  0020           UART_DELIMITER:                              equ 0x20
  0000           UART_BACKSPACE_ENABLE:                       equ 0x0
  0000           
@@ -1399,7 +1399,7 @@
  002A 470001       tst  [UART_fStatus],UART_RX_BUF_CMDTERM                 ; Check for buffer full
  002D B041         jnz  .RESTORE_IDX_PP                                    ; All done
  002F           
- 002F 390D         cmp  A,UART_CMD_TERM                                    ; Check for End of command
+ 002F 3907         cmp  A,UART_CMD_TERM                                    ; Check for End of command
  0031 B014         jnz  .UARTRX_CHK_BACKSPACE
  0033 2E0001       or   [UART_fStatus],UART_RX_BUF_CMDTERM                 ; Set command ready bit
  0036           
