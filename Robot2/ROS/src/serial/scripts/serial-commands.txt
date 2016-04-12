@@ -1,0 +1,12 @@
+'a'; //Move at velocity
+'b'; //move at duty cycle
+'c'; //get velocity
+'d'; //set servo positions for servo 0
+'e'; //set servo positions for servo  1
+'f'; // set servo positions for servo 2
+'g'; // set servo positions for servo 3
+'h'; //get encoder1 count
+'i'; //get encoder2 count
+'j'; //reset encoder1 count
+'k'; //reset encoder2 count
+'l'; //stop motors
