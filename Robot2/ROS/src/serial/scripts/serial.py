@@ -5,8 +5,8 @@ from std_msgs.msg import String
 SERIAL_PORT = ""
 BAUD_RATE = 115200
 
-RX_TOPIC = ""
-TX_TOPIC = ""
+RX_TOPIC = "SERIAL_RX"
+TX_TOPIC = "SERIAL_TX"
 
 serial_connection = serial.Serial()
 
