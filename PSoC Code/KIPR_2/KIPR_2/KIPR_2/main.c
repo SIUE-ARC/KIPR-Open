@@ -1,6 +1,40 @@
-//----------------------------------------------------------------------------
-// C main line
-//----------------------------------------------------------------------------
+/**
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^Table of commands^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+MAV 	 		'a'; //Move at velocity
+MOV 	 		'b'; //move at duty cycle
+GETV 	 		'c'; //get velocity
+SRV0_POS 	 	'd'; //set servo positions for servo 0
+SRV1_POS 	 	'e'; // ' ' ' ' ' ' ' ' ' ' ' ' ' '  1
+SRV2_POS 		'f'; // ' ' ' ' ' ' ' ' ' ' ' ' ' '  2
+SRV3_POS 		'g'; // ' ' ' ' ' ' ' ' ' ' ' ' ' '  3
+GETC1	 		'h'; //get encoder1 count
+GETC2	 		'i'; //get encoder2 count
+RSTC1	 		'j'; //reset encoder1 count
+RSTC2	 		'k'; //reset encoder2 count
+STOP			'l'; //stop motors
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==============================================================================================================
+==============================================================================================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^Serial Limitations^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Baude rate			115200
+Buffer size			16 bytes
+
+Theoretically 115200 bytes can be sent in one second, at minimum, and 115216 at maximum before buffer overflow.
+*/
 
 #include <m8c.h>        // part specific constants and macros
 #include "PSoCAPI.h"    // PSoC API definitions for all User Modules
@@ -14,18 +48,9 @@
 #define 	stateA2 		0x10
 #define 	stateB2 		0x04
 
-const char 	MAV 	 	=	'a'; //Move at velocity
-const char 	MOV 	 	=	'b'; //move at duty cycle
-const char 	GETV 	 	=	'c'; //get velocity
-const char  SRV0_POS 	= 	'd'; //set servo positions for servo 0
-const char 	SRV1_POS 	= 	'e'; // ' ' ' ' ' ' ' ' ' ' ' ' ' '  1
-const char  SRV2_POS 	=	'f'; // ' ' ' ' ' ' ' ' ' ' ' ' ' '  2
-const char	SRV3_POS 	=	'g'; // ' ' ' ' ' ' ' ' ' ' ' ' ' '  3
-const char 	GETC1	 	=	'h'; //get encoder1 count
-const char  GETC2	 	=	'i'; //get encoder2 count
-const char 	RSTC1	 	=	'j'; //reset encoder1 count
-const char	RSTC2	 	=	'k'; //reset encoder2 count
-const char  STOP		=	'l'; //stop motors
+const char 	TEMRM		=	0x07;
+
+BOOL command_flag 		=	FALSE;
 
 
 int i = 0; //loop var
@@ -45,12 +70,7 @@ void main(void)
 {
 	char command;
 	char* param;
-	char* data;
-	
-	M8C_EnableGInt ;
-	M8C_EnableIntMask(INT_MSK0, INT_MSK0_GPIO);
-	M8C_EnableIntMask(INT_MSK1, INT_MSK1_DBB00);
-	M8C_EnableIntMask(INT_MSK1, INT_MSK1_DBB11);
+	char data;
 	
 	//enable the positive edge and falling edge paramers
 	ENC1A_PEDGE_Start();
@@ -72,11 +92,17 @@ void main(void)
 	ServoA_Start();
 	
 	//start the UART
-	UART_CmdReset();  // Reset command paramer  
-	UART_IntCntl(UART_ENABLE_RX_INT);
+	//UART_CmdReset();  // Reset command paramer  
+	//UART_IntCntl(UART_ENABLE_RX_INT);
 	UART_Start(UART_PARITY_NONE);
 	//UART_EnableInt();
 	
+	M8C_EnableIntMask(INT_MSK0, INT_MSK0_GPIO);
+	M8C_EnableIntMask(INT_MSK1, INT_MSK1_DBB00);
+	M8C_EnableIntMask(INT_MSK1, INT_MSK1_DBB11);
+	M8C_EnableGInt ;
+	
+	UART_PutCRLF();
 	UART_CPutString("KIPR bots roll out!");
 	UART_PutCRLF();
 	
@@ -85,21 +111,31 @@ void main(void)
 		prevPrt1 = (ENC1A_Data_ADDR & (ENC1A_MASK | ENC1B_MASK));
 		prevPrt2 = (ENC2A_Data_ADDR & (ENC2A_MASK | ENC2B_MASK));
 		
-		if(UART_bCmdCheck())
+		data = UART_cReadChar();
+		
+		if (!command_flag && data)
 		{
-			if(data = UART_szGetParam()) 
+			UART_PutChar(data);
+			command_flag = TRUE;
+			command = data;
+			data = '\0';
+		}
+		if (data && command_flag)
+		{
+			if (data == TEMRM)
 			{
-				command = *data;
-				
-				while (data = UART_szGetParam())
-				{
-					*param = *data;
-				}
+				command_flag = FALSE;
+				param[i] = '\0';
 				action(command, param, 1);
+				i = 0;
+			}
+			else 
+			{
+				param[i] = data;
+				UART_PutChar(data);
+				i++;
 			}
 		}
-		
-		UART_CmdReset();  // Reset command paramer  
 	}
 }
 
@@ -110,96 +146,124 @@ int getVelocity(void)
 
 void action(char command, char* param, BOOL debug)
 {	
-	if (debug)
+	if(debug)
 	{
-		UART_PutString(&command);
-		UART_CPutString(" ");
+		UART_PutCRLF();
+		UART_CPutString("Command: ");
+		UART_PutChar(command);
+		UART_PutCRLF();
+		UART_CPutString("Param: ");
 		UART_PutString(param);
+		UART_PutCRLF();
 	}
 	
 	switch (command)
 	{
-		MAV:
+		case 'a':
 			if (debug)
 			{
+				UART_PutCRLF();
 				UART_CPutString("Setting velocity to: ");
 				UART_PutSHexInt(atoi(param));
+				UART_PutCRLF();
 			}
 			
 			break;
-		MOV:
+		case 'b':
 			if (debug)
 			{
+				UART_PutCRLF();
 				UART_CPutString("Setting PWM duty cycle to: ");
 				UART_PutSHexInt(atoi(param));
+				UART_PutCRLF();
 			}
 			break;
-		GETV:
+		case 'c':
 			*param = 0;
+			UART_PutCRLF();
 			UART_PutString(itoa(param, getVelocity(), 10));
+			UART_PutCRLF();
 			break;
-		SRV0_POS:
+		case 'd':
 			if (debug)
 			{
+				UART_PutCRLF();
 				UART_CPutString("Setting servo 0 pulse width to: ");
 				UART_PutSHexInt(atoi(param));
+				UART_PutCRLF();
 			}
 			
 			ServoA_WritePulseWidth(atoi(param));
 			
 			break;
-		SRV1_POS:
+		case 'e':
 			if (debug)
 			{
+				UART_PutCRLF();
 				UART_CPutString("Setting servo 1 pulse width to: ");
 				UART_PutSHexInt(atoi(param));
+				UART_PutCRLF();
 			}
 			
 			break;
-		SRV2_POS:
+		case 'f':
 			if (debug)
 			{
+				UART_PutCRLF();
 				UART_CPutString("Setting servo 2 pulse width to: ");
 				UART_PutSHexInt(atoi(param));
+				UART_PutCRLF();
 			}
 			
 			break;
-		SRV3_POS:
+		case 'g':
 			if (debug)
 			{
+				UART_PutCRLF();
 				UART_CPutString("Setting servo 3 pulse width to: ");
 				UART_PutSHexInt(atoi(param));
+				UART_PutCRLF();
 			}
 			
 			break;
-		GETC1:
+		case 'h':
+			UART_PutCRLF();
 			UART_PutSHexInt(count1);
+			UART_PutCRLF();
 			break;
-		GETC2:
+		case 'i':
+			UART_PutCRLF();
 			UART_PutSHexInt(count2);
+			UART_PutCRLF();
 			break;
-		RSTC1:
+		case 'j':
 			if(debug)
 			{
+				UART_PutCRLF();
 				UART_CPutString("Resetting count1");
+				UART_PutCRLF();
 				count1 = 0;
 			}
 			
 			count1 = 0;
 			break;
-		RSTC2:
+		case 'k':
 			if(debug)
 			{
+				UART_PutCRLF();
 				UART_CPutString("Resetting count2");
+				UART_PutCRLF();
 				count2 = 0;
 			}
 			
 			count2 = 0;
 			break;
-		STOP:
+		case 'l':
 			if(debug)
 			{
+				UART_PutCRLF();
 				UART_CPutString("Stopping motors");
+				UART_PutCRLF();
 				PWMA_WritePulseWidth(0);
 				PWMB_WritePulseWidth(0);
 			}
@@ -208,7 +272,9 @@ void action(char command, char* param, BOOL debug)
 			PWMB_WritePulseWidth(0);
 			break;
 		default :
+			UART_PutCRLF();
 			UART_CPutString("fu1337"); //error code
+			UART_PutCRLF();
 			break;
 	}
 }

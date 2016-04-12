@@ -1,242 +1,231 @@
 Project:      output/KIPR_2
 Build Number: 0
-Date:         Thu Apr 07 19:34:39 2016
+Date:         Tue Apr 12 16:54:59 2016
 Compiler:     ICCM8C
 Version:      7.05.00
 
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                             lit   01A0   02FE =    766. bytes (rel,con,rom,lit)
+                             lit   01A0   0303 =    771. bytes (rel,con,rom,lit)
 
        Addr  Global Symbol
       -----  --------------------------------
-       01A0  _MAV
-       01A1  _MOV
-       01A2  _GETV
-       01A3  _SRV0_POS
-       01A4  _SRV1_POS
-       01A5  _SRV2_POS
-       01A6  _SRV3_POS
-       01A7  _GETC1
-       01A8  _GETC2
-       01A9  _RSTC1
-       01AA  _RSTC2
-       01AB  _STOP
-       02B1  LoadConfigTBL_kipr_2_Bank0
-       033C  LoadConfigTBL_kipr_2_Bank1
-       039D  __ctype
-       049E  __lit_end
+       01A0  _TEMRM
+       02B6  LoadConfigTBL_kipr_2_Bank0
+       0341  LoadConfigTBL_kipr_2_Bank1
+       03A2  __ctype
+       04A3  __lit_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                        func_lit   049E   0002 =      2. bytes (rel,con,rom,proclab)
+                        func_lit   04A3   0002 =      2. bytes (rel,con,rom,proclab)
 
        Addr  Global Symbol
       -----  --------------------------------
-       049E  __func_lit_start
-       04A0  __func_lit_end
+       04A3  __func_lit_start
+       04A5  __func_lit_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                     psoc_config   04A0   0167 =    359. bytes (rel,con,rom,code)
+                     psoc_config   04A5   0167 =    359. bytes (rel,con,rom,code)
 
        Addr  Global Symbol
       -----  --------------------------------
-       04A0  LoadConfigTBL_kipr_2_Ordered
-       05A5  _LoadConfigInit
-       05A5  LoadConfigInit
-       05AC  _LoadConfig_kipr_2
-       05AC  LoadConfig_kipr_2
-       0607  __psoc_config_end
+       04A5  LoadConfigTBL_kipr_2_Ordered
+       05AA  _LoadConfigInit
+       05AA  LoadConfigInit
+       05B1  _LoadConfig_kipr_2
+       05B1  LoadConfig_kipr_2
+       060C  __psoc_config_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                     UserModules   0607   03DB =    987. bytes (rel,con,rom,code)
+                     UserModules   060C   03DB =    987. bytes (rel,con,rom,code)
 
        Addr  Global Symbol
       -----  --------------------------------
-       0607  _UART_TX_ISR
-       0608  _UART_RX_ISR
-       067C  _UART_EnableInt
-       067C  UART_EnableInt
-       0683  UART_DisableInt
-       0683  _UART_DisableInt
-       068A  _UART_SetTxIntMode
-       068A  UART_SetTxIntMode
-       069C  _UART_Start
-       069C  UART_Start
-       06A5  _UART_Stop
-       06A5  UART_Stop
-       06AC  _UART_SendData
-       06AC  UART_SendData
-       06AF  _bUART_ReadTxStatus
-       06AF  UART_bReadTxStatus
-       06AF  bUART_ReadTxStatus
-       06AF  _UART_bReadTxStatus
-       06B2  bUART_ReadRxData
-       06B2  UART_bReadRxData
-       06B2  _bUART_ReadRxData
-       06B2  _UART_bReadRxData
-       06B5  bUART_ReadRxStatus
-       06B5  _UART_bReadRxStatus
-       06B5  _bUART_ReadRxStatus
-       06B5  UART_bReadRxStatus
-       06B8  _UART_TxIntMode
-       06B8  UART_TxIntMode
-       06CB  UART_IntCntl
-       06CB  _UART_IntCntl
-       06F6  _UART_PutSHexByte
-       06F6  UART_PutSHexByte
-       0709  _UART_PutSHexInt
-       0709  UART_PutSHexInt
-       0710  _UART_PutChar
-       0710  UART_PutChar
-       0718  UART_cGetChar
-       0718  _UART_cGetChar
-       0720  _UART_cReadChar
-       0720  UART_cReadChar
-       0737  UART_iReadChar
-       0737  _UART_iReadChar
-       074D  UART_PutString
-       074D  _UART_PutString
-       075F  UART_Write
-       075F  _UART_Write
-       0787  _UART_CWrite
-       0787  UART_CWrite
-       07B3  UART_CPutString
-       07B3  _UART_CPutString
-       07C5  UART_PutCRLF
-       07C5  _UART_PutCRLF
-       07CE  _UART_CmdReset
-       07CE  UART_CmdReset
-       07E4  UART_bCmdCheck
-       07E4  _UART_bCmdCheck
-       07EC  _UART_bErrCheck
-       07EC  UART_bErrCheck
-       07F7  UART_bCmdLength
-       07F7  _UART_bCmdLength
-       07FD  _UART_szGetParam
-       07FD  UART_szGetParam
-       085B  _UART_szGetRestOfParams
-       085B  UART_szGetRestOfParams
-       0866  _ServoA_ISR
-       0867  ServoA_EnableInt
-       0867  _ServoA_EnableInt
-       086B  ServoA_DisableInt
-       086B  _ServoA_DisableInt
-       086F  ServoA_Start
-       086F  _ServoA_Start
-       0873  _ServoA_Stop
-       0873  ServoA_Stop
-       0877  ServoA_WritePeriod
-       0877  _ServoA_WritePeriod
-       087D  ServoA_WritePulseWidth
-       087D  _ServoA_WritePulseWidth
-       0883  wServoA_ReadPulseWidth
-       0883  ServoA_wReadPulseWidth
-       0883  _ServoA_wReadPulseWidth
-       0883  _wServoA_ReadPulseWidth
-       0889  wServoA_ReadCounter
-       0889  _ServoA_wReadCounter
-       0889  _wServoA_ReadCounter
-       0889  ServoA_wReadCounter
-       08C3  _PWMB_ISR
-       08C4  PWMB_EnableInt
-       08C4  _PWMB_EnableInt
-       08C8  _PWMB_DisableInt
-       08C8  PWMB_DisableInt
-       08CC  PWMB_Start
-       08CC  _PWMB_Start
-       08D0  _PWMB_Stop
-       08D0  PWMB_Stop
-       08D4  _PWMB_WritePeriod
-       08D4  PWMB_WritePeriod
-       08D7  _PWMB_WritePulseWidth
-       08D7  PWMB_WritePulseWidth
-       08DA  _bPWMB_ReadPulseWidth
-       08DA  _PWMB_bReadPulseWidth
-       08DA  PWMB_bReadPulseWidth
-       08DA  bPWMB_ReadPulseWidth
-       08DD  PWMB_bReadCounter
-       08DD  _PWMB_bReadCounter
-       08DD  _bPWMB_ReadCounter
-       08DD  bPWMB_ReadCounter
-       090A  _PWMA_ISR
-       090B  PWMA_EnableInt
-       090B  _PWMA_EnableInt
-       090F  _PWMA_DisableInt
-       090F  PWMA_DisableInt
-       0913  PWMA_Start
-       0913  _PWMA_Start
-       0917  PWMA_Stop
-       0917  _PWMA_Stop
-       091B  _PWMA_WritePeriod
-       091B  PWMA_WritePeriod
-       091E  _PWMA_WritePulseWidth
-       091E  PWMA_WritePulseWidth
-       0921  _PWMA_bReadPulseWidth
-       0921  _bPWMA_ReadPulseWidth
-       0921  PWMA_bReadPulseWidth
-       0921  bPWMA_ReadPulseWidth
-       0924  bPWMA_ReadCounter
-       0924  _bPWMA_ReadCounter
-       0924  _PWMA_bReadCounter
-       0924  PWMA_bReadCounter
-       0951  _ENC1B_PEDGE_EnableInt
-       0951  ENC1B_PEDGE_EnableInt
-       0955  _ENC1B_PEDGE_DisableInt
-       0955  ENC1B_PEDGE_DisableInt
-       0959  ENC1B_PEDGE_Start
-       0959  _ENC1B_PEDGE_Start
-       095D  ENC1B_PEDGE_Stop
-       095D  _ENC1B_PEDGE_Stop
-       0961  _ENC1B_FEDGE_ISR
-       0962  ENC1B_FEDGE_EnableInt
-       0962  _ENC1B_FEDGE_EnableInt
-       0966  _ENC1B_FEDGE_DisableInt
-       0966  ENC1B_FEDGE_DisableInt
-       096A  ENC1B_FEDGE_Start
-       096A  _ENC1B_FEDGE_Start
-       0996  ENC1B_FEDGE_Stop
-       0996  _ENC1B_FEDGE_Stop
-       099A  _ENC1A_PEDGE_EnableInt
-       099A  ENC1A_PEDGE_EnableInt
-       099E  _ENC1A_PEDGE_DisableInt
-       099E  ENC1A_PEDGE_DisableInt
-       09A2  _ENC1A_PEDGE_Start
-       09A2  ENC1A_PEDGE_Start
-       09A6  _ENC1A_PEDGE_Stop
-       09A6  ENC1A_PEDGE_Stop
-       09AA  ENC1A_FEDGE_EnableInt
-       09AA  _ENC1A_FEDGE_EnableInt
-       09AE  ENC1A_FEDGE_DisableInt
-       09AE  _ENC1A_FEDGE_DisableInt
-       09B2  _ENC1A_FEDGE_Start
-       09B2  ENC1A_FEDGE_Start
-       09DE  ENC1A_FEDGE_Stop
-       09DE  _ENC1A_FEDGE_Stop
-       09E2  __UserModules_end
+       060C  _UART_TX_ISR
+       060D  _UART_RX_ISR
+       0681  _UART_EnableInt
+       0681  UART_EnableInt
+       0688  UART_DisableInt
+       0688  _UART_DisableInt
+       068F  _UART_SetTxIntMode
+       068F  UART_SetTxIntMode
+       06A1  _UART_Start
+       06A1  UART_Start
+       06AA  _UART_Stop
+       06AA  UART_Stop
+       06B1  _UART_SendData
+       06B1  UART_SendData
+       06B4  _bUART_ReadTxStatus
+       06B4  UART_bReadTxStatus
+       06B4  bUART_ReadTxStatus
+       06B4  _UART_bReadTxStatus
+       06B7  bUART_ReadRxData
+       06B7  UART_bReadRxData
+       06B7  _bUART_ReadRxData
+       06B7  _UART_bReadRxData
+       06BA  bUART_ReadRxStatus
+       06BA  _UART_bReadRxStatus
+       06BA  _bUART_ReadRxStatus
+       06BA  UART_bReadRxStatus
+       06BD  _UART_TxIntMode
+       06BD  UART_TxIntMode
+       06D0  UART_IntCntl
+       06D0  _UART_IntCntl
+       06FB  UART_PutSHexByte
+       06FB  _UART_PutSHexByte
+       070E  _UART_PutSHexInt
+       070E  UART_PutSHexInt
+       0715  _UART_PutChar
+       0715  UART_PutChar
+       071D  UART_cGetChar
+       071D  _UART_cGetChar
+       0725  _UART_cReadChar
+       0725  UART_cReadChar
+       073C  UART_iReadChar
+       073C  _UART_iReadChar
+       0752  UART_PutString
+       0752  _UART_PutString
+       0764  UART_Write
+       0764  _UART_Write
+       078C  _UART_CWrite
+       078C  UART_CWrite
+       07B8  UART_CPutString
+       07B8  _UART_CPutString
+       07CA  UART_PutCRLF
+       07CA  _UART_PutCRLF
+       07D3  _UART_CmdReset
+       07D3  UART_CmdReset
+       07E9  UART_bCmdCheck
+       07E9  _UART_bCmdCheck
+       07F1  _UART_bErrCheck
+       07F1  UART_bErrCheck
+       07FC  UART_bCmdLength
+       07FC  _UART_bCmdLength
+       0802  _UART_szGetParam
+       0802  UART_szGetParam
+       0860  _UART_szGetRestOfParams
+       0860  UART_szGetRestOfParams
+       086B  _ServoA_ISR
+       086C  ServoA_EnableInt
+       086C  _ServoA_EnableInt
+       0870  ServoA_DisableInt
+       0870  _ServoA_DisableInt
+       0874  ServoA_Start
+       0874  _ServoA_Start
+       0878  _ServoA_Stop
+       0878  ServoA_Stop
+       087C  ServoA_WritePeriod
+       087C  _ServoA_WritePeriod
+       0882  ServoA_WritePulseWidth
+       0882  _ServoA_WritePulseWidth
+       0888  wServoA_ReadPulseWidth
+       0888  ServoA_wReadPulseWidth
+       0888  _ServoA_wReadPulseWidth
+       0888  _wServoA_ReadPulseWidth
+       088E  wServoA_ReadCounter
+       088E  _ServoA_wReadCounter
+       088E  _wServoA_ReadCounter
+       088E  ServoA_wReadCounter
+       08C8  _PWMB_ISR
+       08C9  PWMB_EnableInt
+       08C9  _PWMB_EnableInt
+       08CD  _PWMB_DisableInt
+       08CD  PWMB_DisableInt
+       08D1  PWMB_Start
+       08D1  _PWMB_Start
+       08D5  _PWMB_Stop
+       08D5  PWMB_Stop
+       08D9  _PWMB_WritePeriod
+       08D9  PWMB_WritePeriod
+       08DC  _PWMB_WritePulseWidth
+       08DC  PWMB_WritePulseWidth
+       08DF  _bPWMB_ReadPulseWidth
+       08DF  _PWMB_bReadPulseWidth
+       08DF  PWMB_bReadPulseWidth
+       08DF  bPWMB_ReadPulseWidth
+       08E2  PWMB_bReadCounter
+       08E2  _PWMB_bReadCounter
+       08E2  _bPWMB_ReadCounter
+       08E2  bPWMB_ReadCounter
+       090F  _PWMA_ISR
+       0910  PWMA_EnableInt
+       0910  _PWMA_EnableInt
+       0914  _PWMA_DisableInt
+       0914  PWMA_DisableInt
+       0918  PWMA_Start
+       0918  _PWMA_Start
+       091C  PWMA_Stop
+       091C  _PWMA_Stop
+       0920  _PWMA_WritePeriod
+       0920  PWMA_WritePeriod
+       0923  _PWMA_WritePulseWidth
+       0923  PWMA_WritePulseWidth
+       0926  _PWMA_bReadPulseWidth
+       0926  _bPWMA_ReadPulseWidth
+       0926  PWMA_bReadPulseWidth
+       0926  bPWMA_ReadPulseWidth
+       0929  bPWMA_ReadCounter
+       0929  _bPWMA_ReadCounter
+       0929  _PWMA_bReadCounter
+       0929  PWMA_bReadCounter
+       0956  _ENC1B_PEDGE_EnableInt
+       0956  ENC1B_PEDGE_EnableInt
+       095A  _ENC1B_PEDGE_DisableInt
+       095A  ENC1B_PEDGE_DisableInt
+       095E  ENC1B_PEDGE_Start
+       095E  _ENC1B_PEDGE_Start
+       0962  ENC1B_PEDGE_Stop
+       0962  _ENC1B_PEDGE_Stop
+       0966  _ENC1B_FEDGE_ISR
+       0967  ENC1B_FEDGE_EnableInt
+       0967  _ENC1B_FEDGE_EnableInt
+       096B  _ENC1B_FEDGE_DisableInt
+       096B  ENC1B_FEDGE_DisableInt
+       096F  ENC1B_FEDGE_Start
+       096F  _ENC1B_FEDGE_Start
+       099B  ENC1B_FEDGE_Stop
+       099B  _ENC1B_FEDGE_Stop
+       099F  _ENC1A_PEDGE_EnableInt
+       099F  ENC1A_PEDGE_EnableInt
+       09A3  _ENC1A_PEDGE_DisableInt
+       09A3  ENC1A_PEDGE_DisableInt
+       09A7  _ENC1A_PEDGE_Start
+       09A7  ENC1A_PEDGE_Start
+       09AB  _ENC1A_PEDGE_Stop
+       09AB  ENC1A_PEDGE_Stop
+       09AF  ENC1A_FEDGE_EnableInt
+       09AF  _ENC1A_FEDGE_EnableInt
+       09B3  ENC1A_FEDGE_DisableInt
+       09B3  _ENC1A_FEDGE_DisableInt
+       09B7  _ENC1A_FEDGE_Start
+       09B7  ENC1A_FEDGE_Start
+       09E3  ENC1A_FEDGE_Stop
+       09E3  _ENC1A_FEDGE_Stop
+       09E7  __UserModules_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                            text   09E2   07B0 =   1968. bytes (rel,con,rom,code)
+                            text   09E7   08A7 =   2215. bytes (rel,con,rom,code)
 
        Addr  Global Symbol
       -----  --------------------------------
-       09E2  _main
-       09E2  __text_start
-       0AD2  _getVelocity
-       0ADC  _action
-       0D4A  _encoder1_ISR
-       0D9E  _encoder2_ISR
-       0E36  _atoi
-       0F77  _itoa
-       1150  _isdigit
-       1171  _isspace
-       1192  __text_end
-       1192  __xidata_start
-       119E  __xidata_end
+       09E7  _main
+       09E7  __text_start
+       0AFA  _getVelocity
+       0B04  _action
+       0E46  _encoder1_ISR
+       0E9A  _encoder2_ISR
+       0F32  _atoi
+       1073  _itoa
+       124C  _isdigit
+       126D  _isspace
+       128E  __text_end
+       128E  __xidata_start
+       129A  __xidata_end
 
 Area                               Start  End    Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
@@ -288,7 +277,7 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                            data   0000   000E =     14. bytes (rel,con,ram)
+                            data   0000   000F =     15. bytes (rel,con,ram)
 
        Addr  Global Symbol
       -----  --------------------------------
@@ -297,9 +286,10 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
        001F  _count1
        0023  _i
        0025  _curPrt1
-       0027  _prevPrt2
-       0028  _curPrt2
-       0029  _prevPrt1
+       0026  _command_flag
+       0028  _prevPrt2
+       0029  _curPrt2
+       002A  _prevPrt1
 
 Files Linked      [ module(s) ]
 
