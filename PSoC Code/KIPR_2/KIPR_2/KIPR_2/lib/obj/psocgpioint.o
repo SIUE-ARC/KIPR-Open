@@ -9,7 +9,7 @@ dbfile ./lib/PSoCGPIOINT.inc
 dbfunc 0 ? 0 I
 dbfile lib/psocgpioint.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 S PSoC_GPIO_ISR Def0000
 T 00 00 7E

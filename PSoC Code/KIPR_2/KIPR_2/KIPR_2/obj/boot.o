@@ -1,19 +1,20 @@
 XH
-H B areas 15 global symbols
+H B areas 16 global symbols
 M boot.asm
 S _main Ref0000
 S __text_end Ref0000
 S __r0 Ref0000
 S __r1 Ref0000
 S LoadConfigInit Ref0000
-S _ENC1B_FEDGE_ISR Ref0000
+S _ENC1B_NEDGE_ISR Ref0000
 S _encoder1_ISR Ref0000
 S _encoder2_ISR Ref0000
 S _PWMA_ISR Ref0000
 S _PWMB_ISR Ref0000
+S _Servo0_ISR Ref0000
+S _Servo1_ISR Ref0000
 S _UART_RX_ISR Ref0000
 S _UART_TX_ISR Ref0000
-S _ServoA_ISR Ref0000
 A TOP size 146 flags C
 dbfile ./boot.asm
 dbfunc 0 ? 0 I
@@ -46,7 +47,8 @@ dbline B6 43
 dbline B9 44
 dbline BA 47
 dbline BE 48
-dbline C2 4C
+dbline C1 4C
+dbline C2 4F
 dbline C6 50
 dbline C9 54
 dbline CA 57
@@ -192,11 +194,11 @@ dbfile memory.inc
 dbfunc 0 ? 0 I
 dbfile ./boot.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8ssc.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8ssc.inc
 dbfunc 0 ? 0 I
 dbfile ./boot.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 dbfile ./boot.asm
 dbfunc 0 ? 0 I
@@ -224,7 +226,7 @@ R 00 00 00 00 02 03 00 06
 T 00 24 7E
 R 00 00 00 00
 T 00 28 7D 00 00 7E
-R 00 00 00 00 02 03 00 0C
+R 00 00 00 00 02 03 00 0A
 T 00 2C 7D 00 00 7E
 R 00 00 00 00 02 03 00 08
 T 00 30 7D 00 00 7E
@@ -232,17 +234,17 @@ R 00 00 00 00 02 03 00 06
 T 00 34 7D 00 00 7E
 R 00 00 00 00 02 03 00 06
 T 00 38 7D 00 00 7E
-R 00 00 00 00 02 03 00 0B
+R 00 00 00 00 02 03 00 0D
 T 00 3C 7D 00 00 7E
-R 00 00 00 00 02 03 00 0A
+R 00 00 00 00 02 03 00 0C
 T 00 40 7D 00 00 7E
 R 00 00 00 00 02 03 00 09
 T 00 44 7D 00 00 7E
 R 00 00 00 00 02 03 00 05
 T 00 48 7E
 R 00 00 00 00
-T 00 4C 7E
-R 00 00 00 00
+T 00 4C 7D 00 00 7E
+R 00 00 00 00 02 03 00 0B
 T 00 50 7E
 R 00 00 00 00
 T 00 54 7D 00 00 7E
