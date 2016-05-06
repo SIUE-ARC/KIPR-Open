@@ -1,4 +1,9 @@
 from serialCommunication import BaseSerial
+import time
+
+time_for_ninety = 2
+time_for_one_eighty = 2 * time_for_ninety
+max_move_percentage = 255
 
 
 def move_at_velocity(serial, speed):
@@ -47,6 +52,34 @@ def turn_left(serial):
 
 def turn_right(serial):
     serial.send_command('p')
+
+
+def right_ninety(serial):
+    turn_right(serial)
+    move(serial, max_move_percentage)
+    time.sleep(time_for_ninety)
+    stop(serial)
+
+
+def left_ninety(serial):
+    turn_left(serial)
+    move(serial, max_move_percentage)
+    time.sleep(time_for_ninety)
+    stop(serial)
+
+
+def right_one_eighty(serial):
+    turn_right(serial)
+    move(serial, max_move_percentage)
+    time.sleep(time_for_one_eighty)
+    stop(serial)
+
+
+def left_one_eighty(serial):
+    turn_left(serial)
+    move(serial, max_move_percentage)
+    time.sleep(time_for_one_eighty)
+    stop(serial)
 
 
 port = "/dev/ttyUSB0"
