@@ -1,11 +1,12 @@
 from serialCommunication import BaseSerial
 import time
 
+# Constants
 time_for_ninety = 2
 time_for_one_eighty = 2 * time_for_ninety
 max_move_percentage = 255
 
-
+# Methods
 def move_at_velocity(serial, speed):
     serial.send_command('a' + str(speed))
 
@@ -91,4 +92,3 @@ print("Hello World")
 forward(serial_connection)
 move_at_velocity(serial_connection, 5)
 #print(serial_connection.get_response())
-
