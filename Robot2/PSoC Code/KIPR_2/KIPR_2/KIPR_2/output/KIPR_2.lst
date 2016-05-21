@@ -6430,7 +6430,7 @@ FILE: C:\Users\Hobo\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_
 (0109) const char 	TERM		=	0x07;
 (0110) 
 (0111) const double tick_time = 0.0000000208333333;
-(0112) const double encoder_res = 0.01;
+(0112) const double encoder_res = 0.0357142857142857;
 (0113) 
 (0114) BOOL command_flag 		=	FALSE;
 (0115) BOOL debug				=	FALSE;

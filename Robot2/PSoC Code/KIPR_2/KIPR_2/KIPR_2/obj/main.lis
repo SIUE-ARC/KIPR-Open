@@ -14,7 +14,7 @@
  0002 32B2F4FC          .word 0x32b2,0xf4fc
  0006                   .dbsym e tick_time _tick_time kD
  0006           _encoder_res::
- 0006 3C23D70A          .word 0x3c23,0xd70a
+ 0006 3D124925          .word 0x3d12,0x4925
  000A                   .dbsym e encoder_res _encoder_res kD
                         .area data(ram, con, rel)
  0000                   .dbfile C:\Users\Hobo\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
@@ -174,7 +174,7 @@
  0004           ; const char    TERM            =       0x07;
  0004           ; 
  0004           ; const double tick_time = 0.0000000208333333;
- 0004           ; const double encoder_res = 0.01;
+ 0004           ; const double encoder_res = 0.0357142857142857;
  0004           ; 
  0004           ; BOOL command_flag             =       FALSE;
  0004           ; BOOL debug                            =       FALSE;

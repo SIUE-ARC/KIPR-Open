@@ -109,7 +109,7 @@ const BYTE	debug_mask	=	MISC7_MASK | MISC8_MASK;
 const char 	TERM		=	0x07;
 
 const double tick_time = 0.0000000208333333;
-const double encoder_res = 0.01;
+const double encoder_res = 0.0357142857142857;
 
 BOOL command_flag 		=	FALSE;
 BOOL debug				=	FALSE;
