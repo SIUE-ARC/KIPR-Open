@@ -108,6 +108,9 @@ MISC8		P1[3]
 const BYTE	debug_mask	=	MISC7_MASK | MISC8_MASK;
 const char 	TERM		=	0x07;
 
+const double tick_time = 0.0000000208333333;
+const double encoder_res = 0.01;
+
 BOOL command_flag 		=	FALSE;
 BOOL debug				=	FALSE;
 
@@ -123,7 +126,7 @@ signed long int count2 = 0;
 
 void init(void);
 void action(char command, char* param);
-int getVelocity(void);
+double getVelocity(void);
 
 void main(void)
 {
@@ -198,6 +201,9 @@ void init(void)
 	//start the UART
 	UART_Start(UART_PARITY_NONE);
 	
+	//start the Velocity Timer
+	VelTimer_Start();
+	
 	//enable appropriate interrupts
 	M8C_EnableIntMask(INT_MSK0, INT_MSK0_GPIO);
 	M8C_EnableIntMask(INT_MSK1, INT_MSK1_DBB00);
@@ -249,9 +255,29 @@ void init(void)
 }
 
 /* Calculates the velocity in RPMs and returns the value */
-int getVelocity(void)
+double getVelocity(void)
 {
-	int vel = 0;
+	double vel = 0;
+	DWORD* endTicks; //ending value of counter
+	DWORD* initTicks; //initial counter reg value
+	DWORD ticksDone = 14; //number of ticks til done looping
+	DWORD diff = 0; //difference between current count reg and 
+	signed long initCount = 0;
+	
+	VelTimer_ReadTimer(initTicks); //read the counter
+	initCount = count1;
+	
+	//keep reading the value until the difference between first and current is large enough
+	do 
+	{
+		diff = abs(abs(count1) - abs(initCount));
+	}
+	while(diff > ticksDone);
+	
+	VelTimer_ReadTimer(endTicks);
+	
+	vel = encoder_res*diff/(abs(*initTicks - *endTicks)*tick_time);
+	
 	return vel;	
 }
 
@@ -292,12 +318,22 @@ void action(char command, char* param)
 				UART_PutSHexInt(atoi(param));
 				UART_PutCRLF();
 			}
+			
+			PWMA_WritePulseWidth(atoi(param));
+			PWMB_WritePulseWidth(atoi(param));
 			break;
 		case 'c': //GETV
 			*param = 0;
-			UART_PutCRLF();
-			UART_PutString(itoa(param, getVelocity(), 10));
-			UART_PutCRLF();
+			if (debug)
+			{
+				UART_PutCRLF();
+				UART_PutString(itoa(param, getVelocity(), 10));
+				UART_PutCRLF();
+			}
+			else 
+			{
+				UART_PutString(itoa(param, getVelocity(), 10));
+			}
 			break;
 		case 'd': //SRV0_POS
 			if (debug)

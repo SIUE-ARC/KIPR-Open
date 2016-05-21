@@ -6,111 +6,111 @@ dbfile lib/psocconfigtbl.asm
 dbfunc 0 ? 0 I
 dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
-A lit size 104 flags 0
+A lit size 134 flags 0
 S LoadConfigTBL_kipr_2_Bank0 Def0000
-S LoadConfigTBL_kipr_2_Bank1 Def0097
+S LoadConfigTBL_kipr_2_Bank1 Def00AF
 A psoc_config size 105 flags 0
 dbfile lib/psocconfigtbl.asm
 dbfunc 0 ? 0 I
 dbline 2 0
-dbline CB 2
+dbline ED 2
 dbline 2 5
-dbline CD 7
-dbline CE A
+dbline EF 7
+dbline F0 A
 dbline 2 D
-dbline D0 F
-dbline D1 12
+dbline F2 F
+dbline F3 12
 dbline 2 15
-dbline D3 17
-dbline D4 1A
+dbline F5 17
+dbline F6 1A
 dbline 2 1D
-dbline D6 1F
-dbline D7 22
+dbline F8 1F
+dbline F9 22
 dbline 2 25
-dbline D9 27
-dbline DA 2A
+dbline FB 27
+dbline FC 2A
 dbline 2 2D
-dbline DC 2F
-dbline DD 32
+dbline FE 2F
+dbline FF 32
 dbline 2 35
-dbline DF 37
-dbline E0 3A
+dbline 101 37
+dbline 102 3A
 dbline 2 3D
-dbline E2 3F
-dbline E3 42
+dbline 104 3F
+dbline 105 42
 dbline 2 45
-dbline E5 47
-dbline E6 4A
+dbline 107 47
+dbline 108 4A
 dbline 2 4D
-dbline E8 4F
-dbline E9 52
+dbline 10A 4F
+dbline 10B 52
 dbline 2 55
-dbline EB 57
-dbline EC 5A
+dbline 10D 57
+dbline 10E 5A
 dbline 2 5D
-dbline EE 5F
-dbline EF 62
+dbline 110 5F
+dbline 111 62
 dbline 2 65
-dbline F1 67
-dbline F2 6A
+dbline 113 67
+dbline 114 6A
 dbline 2 6D
-dbline F4 6F
-dbline F5 72
+dbline 116 6F
+dbline 117 72
 dbline 2 75
-dbline F7 77
-dbline F8 7A
+dbline 119 77
+dbline 11A 7A
 dbline 2 7D
-dbline FA 7F
-dbline FB 82
+dbline 11C 7F
+dbline 11D 82
 dbline 2 85
-dbline FD 87
-dbline FE 8A
+dbline 11F 87
+dbline 120 8A
 dbline 2 8D
-dbline 100 8F
-dbline 101 92
+dbline 122 8F
+dbline 123 92
 dbline 2 95
-dbline 103 97
-dbline 104 9A
+dbline 125 97
+dbline 126 9A
 dbline 2 9D
-dbline 106 9F
-dbline 107 A2
+dbline 128 9F
+dbline 129 A2
 dbline 2 A5
-dbline 109 A7
-dbline 10A AA
+dbline 12B A7
+dbline 12C AA
 dbline 2 AD
-dbline 10C AF
-dbline 10D B2
+dbline 12E AF
+dbline 12F B2
 dbline 2 B5
-dbline 10F B7
-dbline 110 BA
+dbline 131 B7
+dbline 132 BA
 dbline 2 BD
-dbline 112 BF
-dbline 113 C2
+dbline 134 BF
+dbline 135 C2
 dbline 2 C5
-dbline 115 C7
-dbline 116 CA
+dbline 137 C7
+dbline 138 CA
 dbline 2 CD
-dbline 118 CF
-dbline 119 D2
+dbline 13A CF
+dbline 13B D2
 dbline 2 D5
-dbline 11B D7
-dbline 11C DA
+dbline 13D D7
+dbline 13E DA
 dbline 2 DD
-dbline 11E DF
-dbline 11F E2
+dbline 140 DF
+dbline 141 E2
 dbline 2 E5
-dbline 121 E7
-dbline 122 EA
+dbline 143 E7
+dbline 144 EA
 dbline 2 ED
-dbline 124 EF
-dbline 125 F2
+dbline 146 EF
+dbline 147 F2
 dbline 2 F5
-dbline 127 F7
-dbline 128 FA
+dbline 149 F7
+dbline 14A FA
 dbline 2 FD
-dbline 12A FF
+dbline 14C FF
 dbline 2 102
-dbline 12C 104
+dbline 14E 104
 S LoadConfigTBL_kipr_2_Ordered Def0000
 T 00 00 33 00 31 00 32 00 23 03 21 00 22 00 47 00
 R 00 00 00 01
@@ -122,33 +122,39 @@ T 00 2A 2B 00 29 4E 2A 03 4B 00 49 1F 4A E7 4F 00
 R 00 00 00 01
 T 00 38 4D 4E 4E 03 3F 00 3D 00 3E 00 3B 00 39 00
 R 00 00 00 01
-T 00 46 3A 00 60 28 66 00 63 05 65 00 E6 00 E7 00
+T 00 46 3A 00 57 00 55 FF 56 00 5B 00 59 FF 5A 00
 R 00 00 00 01
-T 00 54 D6 00 B0 10 B1 00 B2 00 B3 33 B4 33 B5 01
+T 00 54 53 00 51 FF 52 00 5F 06 5D 7F 5E 00 60 28
 R 00 00 00 01
-T 00 62 B6 10 B8 55 B9 00 BA 10 BB 33 BC 33 BD 10
+T 00 62 66 00 63 05 65 00 E6 00 E7 00 D6 00 B0 10
 R 00 00 00 01
-T 00 70 BE 00 C0 01 C1 00 C2 20 C3 33 C4 33 C5 80
+T 00 70 B1 00 B2 00 B3 33 B4 33 B5 01 B6 10 B8 55
 R 00 00 00 01
-T 00 7E C6 20 C8 55 C9 00 CA 30 CB 33 CC 33 CD 00
+T 00 7E B9 00 BA 10 BB 33 BC 33 BD 10 BE 00 C0 01
 R 00 00 00 01
-T 00 8C CE 00 6C 00 6D 00 6E 00 6F 00 FF 30 20 31
+T 00 8C C1 00 C2 20 C3 33 C4 33 C5 80 C6 20 C8 55
 R 00 00 00 01
-T 00 9A 0E 32 40 20 22 21 E0 22 40 44 20 45 0C 46
+T 00 9A C9 00 CA 30 CB 33 CC 33 CD 00 CE 00 6C 00
 R 00 00 00 01
-T 00 A8 40 34 22 35 C0 36 40 2C 21 2D 16 2E 44 40
+T 00 A8 6D 00 6E 00 6F 00 FF 30 20 31 0E 32 40 20
 R 00 00 00 01
-T 00 B6 21 41 11 42 45 24 01 25 16 26 40 28 21 29
+T 00 B6 22 21 E0 22 40 44 20 45 0C 46 40 34 22 35
 R 00 00 00 01
-T 00 C4 36 2A 47 48 01 49 16 4A 40 4C 21 4D 36 4E
+T 00 C4 C0 36 40 2C 21 2D 16 2E 44 40 21 41 11 42
 R 00 00 00 01
-T 00 D2 47 3C 05 3D F1 3E 40 38 0D 39 01 3A 45 61
+T 00 D2 45 24 01 25 16 26 40 28 21 29 36 2A 47 48
 R 00 00 00 01
-T 00 E0 00 69 00 60 00 62 00 67 33 68 33 63 00 66
+T 00 E0 01 49 16 4A 40 4C 21 4D 36 4E 47 3C 05 3D
 R 00 00 00 01
-T 00 EE 00 D1 00 D3 00 D0 00 D2 00 E1 B1 E2 00 DF
+T 00 EE F1 3E 40 38 0D 39 01 3A 45 54 00 55 34 56
 R 00 00 00 01
-T 00 FC 19 DE 00 DD 00 E7 00 FF
+T 00 FC 80 58 00 59 34 5A 80 50 00 51 14 52 80 5C
+R 00 00 00 01
+T 01 0A 20 5D 34 5E 80 61 00 69 00 60 00 62 00 67
+R 00 00 00 01
+T 01 18 33 68 33 63 00 66 00 D1 00 D3 00 D0 00 D2
+R 00 00 00 01
+T 01 26 00 E1 B1 E2 00 DF 19 DE 00 DD 00 E7 00 FF
 R 00 00 00 01
 T 00 00 70 EF 62 00 00 71 10 62 00 8A 62 01 75 70
 R 00 00 00 02

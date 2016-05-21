@@ -27,5 +27,6 @@
 #include "Servo0.h"
 #include "Servo1.h"
 #include "UART.h"
+#include "VelTimer.h"
 
 #endif

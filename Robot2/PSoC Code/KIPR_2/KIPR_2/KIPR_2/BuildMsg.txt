@@ -45,6 +45,10 @@ lib/uartint.asm
 
 lib/uartplus.asm
 
+lib/veltimer.asm
+
+lib/veltimerint.asm
+
 ./boot.asm
 
 Linking..
@@ -53,13 +57,15 @@ LMM info: area 'InterruptRAM' uses 2 bytes in SRAM bank 0
 
 LMM info: area 'UART_RAM' item of 16 bytes allocated in SRAM page 0
 
-LMM info: area 'virtual_registers' uses 9 bytes in SRAM page 0
+LMM info: area 'virtual_registers' uses 15 bytes in SRAM page 0
 
 LMM info: area 'data' item of 4 bytes allocated in SRAM page 0
 
 LMM info: area 'data' item of 4 bytes allocated in SRAM page 0
 
 LMM info: area 'data' item of 2 bytes allocated in SRAM page 0
+
+LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
 
 LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
 
@@ -73,16 +79,14 @@ LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
 
 LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
 
-LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
-
 idata dump at output/KIPR_2.idata
 
-  ROM 16% full. 5002 out of 32768 bytes used (does not include absolute areas).
+  ROM 23% full. 7364 out of 32768 bytes used (does not include absolute areas).
 
-  RAM 3% full. 44 bytes used (does not include stack usage).
+  RAM 3% full. 50 bytes used (does not include stack usage).
 
 Built with ICCM8C STD V7.05.00
 
  
-KIPR_2 - 0 error(s) 0 warning(s) 21:19:20
+KIPR_2 - 0 error(s) 0 warning(s) 22:02:04
 
