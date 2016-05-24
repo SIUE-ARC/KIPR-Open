@@ -1,0 +1,126 @@
+XH
+H 3 areas 24 global symbols
+M servo1.asm
+A text size 0 flags 0
+dbfile lib/servo1.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/servo1.asm
+dbfunc 0 ? 0 I
+dbfile Servo1.inc
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfunc 0 ? 0 I
+dbfile ./lib/Servo1.inc
+dbfunc 0 ? 0 I
+dbfile lib/servo1.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfunc 0 ? 0 I
+A kipr_2_RAM size 0 flags 20
+A UserModules size 5C flags 0
+dbfile lib/servo1.asm
+dbfunc 0 ? 0 I
+dbline 2 0
+dbline 5F 3
+dbline 2 4
+dbline 7B 7
+dbline 2 8
+dbline 98 B
+dbline 2 C
+dbline B4 F
+dbline D0 10
+dbline D1 12
+dbline D2 13
+dbline D4 15
+dbline ED 16
+dbline EE 18
+dbline EF 19
+dbline F1 1B
+dbline 10C 1C
+dbline 10D 1E
+dbline 10E 1F
+dbline 110 21
+dbline 135 22
+dbline 136 23
+dbline 137 25
+dbline 138 26
+dbline 139 28
+dbline 2 29
+dbline 2 2C
+dbline 13C 2E
+dbline 13D 30
+dbline 13F 31
+dbline 2 34
+dbline 141 36
+dbline 142 38
+dbline 143 3A
+dbline 144 3B
+dbline 145 3D
+dbline 146 3F
+dbline 147 40
+dbline 148 42
+dbline 149 44
+dbline 14A 46
+dbline 2 48
+dbline 14C 4A
+dbline 14D 4C
+dbline 2 4E
+dbline 2 50
+dbline 150 53
+dbline 151 54
+dbline 152 55
+dbline 3 57
+dbline 4 59
+dbline 154 5B
+S _Servo1_Start Def0008
+S Servo1_WritePeriod Def0010
+S Servo1_EnableInt Def0000
+S _Servo1_WritePulseWidth Def0016
+S $sb$Servo1_WritePeriod Def0010
+S $se$Servo1_WritePeriod Def0016
+S $sb$Servo1_EnableInt Def0000
+S $se$Servo1_EnableInt Def0004
+S Servo1_Stop Def000C
+S $sb$Servo1_Stop Def000C
+S $se$Servo1_Stop Def0010
+S _Servo1_WritePeriod Def0010
+S _Servo1_EnableInt Def0000
+S wServo1_ReadCounter Def0022
+S Servo1_wReadCounter Def0022
+S Servo1_DisableInt Def0004
+S $sb$Servo1_wReadCounter Def0022
+S $se$Servo1_wReadCounter Def005C
+S $sb$Servo1_DisableInt Def0004
+S wServo1_ReadPulseWidth Def001C
+S Servo1_wReadPulseWidth Def001C
+S $se$Servo1_DisableInt Def0008
+S _Servo1_Stop Def000C
+S Servo1_Start Def0008
+S Servo1_WritePulseWidth Def0016
+S $sb$Servo1_wReadPulseWidth Def001C
+S $se$Servo1_wReadPulseWidth Def0022
+S $sb$Servo1_Start Def0008
+S $se$Servo1_Start Def000C
+S $sb$Servo1_WritePulseWidth Def0016
+S _wServo1_ReadCounter Def0022
+S _Servo1_wReadCounter Def0022
+S $se$Servo1_WritePulseWidth Def001C
+S _Servo1_DisableInt Def0004
+S _wServo1_ReadPulseWidth Def001C
+S _Servo1_wReadPulseWidth Def001C
+T 00 00 43 DF 08 7F 41 DF F7 7F 43 4B 01 7F 41 4B
+R 00 00 00 02
+T 00 0E FE 7F 60 49 5B 60 4D 7F 60 4A 5B 60 4E 7F
+R 00 00 00 02
+T 00 1C 5D 4E 5C 5D 4A 7F 4F 5D 4E 08 5D 4A 08 41
+R 00 00 00 02
+T 00 2A 4B FE 71 10 5D 49 08 62 49 00 70 EF 5D 4C
+R 00 00 00 02
+T 00 38 5D 4E 08 5D 48 5D 4A 08 52 00 60 4E 52 01
+R 00 00 00 02
+T 00 46 60 4A 71 10 52 02 60 49 70 EF 43 4B 01 18
+R 00 00 00 02
+T 00 54 20 38 FD 70 3F 71 C0 7F
+R 00 00 00 02

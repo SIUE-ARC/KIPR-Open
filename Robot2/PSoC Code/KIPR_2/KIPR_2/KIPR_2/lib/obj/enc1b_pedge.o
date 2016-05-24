@@ -1,0 +1,52 @@
+XH
+H 3 areas 10 global symbols
+M enc1b_pedge.asm
+A text size 0 flags 0
+dbfile lib/enc1b_pedge.asm
+dbfunc 0 ? 0 I
+dbfile ENC1B_PEDGE.inc
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfunc 0 ? 0 I
+dbfile ./lib/ENC1B_PEDGE.inc
+dbfunc 0 ? 0 I
+dbfile lib/enc1b_pedge.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/enc1b_pedge.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfunc 0 ? 0 I
+A bss size 0 flags 20
+A UserModules size 10 flags 0
+dbfile lib/enc1b_pedge.asm
+dbfunc 0 ? 0 I
+dbline 2 0
+dbline 4D 3
+dbline 2 4
+dbline 68 7
+dbline 2 8
+dbline 82 B
+dbline 2 C
+dbline 9C F
+S ENC1B_PEDGE_Stop Def000C
+S $sb$ENC1B_PEDGE_Stop Def000C
+S $se$ENC1B_PEDGE_Stop Def0010
+S _ENC1B_PEDGE_EnableInt Def0000
+S ENC1B_PEDGE_DisableInt Def0004
+S $sb$ENC1B_PEDGE_DisableInt Def0004
+S $se$ENC1B_PEDGE_DisableInt Def0008
+S _ENC1B_PEDGE_Stop Def000C
+S ENC1B_PEDGE_Start Def0008
+S $sb$ENC1B_PEDGE_Start Def0008
+S $se$ENC1B_PEDGE_Start Def000C
+S _ENC1B_PEDGE_DisableInt Def0004
+S _ENC1B_PEDGE_Start Def0008
+S ENC1B_PEDGE_EnableInt Def0000
+S $sb$ENC1B_PEDGE_EnableInt Def0000
+S $se$ENC1B_PEDGE_EnableInt Def0004
+T 00 00 43 E1 20 7F 41 E1 DF 7F 43 37 01 7F 41 37
+R 00 00 00 02
+T 00 0E FE 7F
+R 00 00 00 02
