@@ -6,7 +6,7 @@ dbfile lib/enc1b_pedge.asm
 dbfunc 0 ? 0 I
 dbfile ENC1B_PEDGE.inc
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 dbfile ./lib/ENC1B_PEDGE.inc
 dbfunc 0 ? 0 I
@@ -16,7 +16,7 @@ dbfile memory.inc
 dbfunc 0 ? 0 I
 dbfile lib/enc1b_pedge.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 A bss size 0 flags 20
 A UserModules size 10 flags 0

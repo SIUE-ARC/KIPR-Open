@@ -4,7 +4,7 @@ M psocconfigtbl.asm
 A text size 0 flags 0
 dbfile lib/psocconfigtbl.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 A lit size 104 flags 0
 S LoadConfigTBL_kipr_2_Bank0 Def0000

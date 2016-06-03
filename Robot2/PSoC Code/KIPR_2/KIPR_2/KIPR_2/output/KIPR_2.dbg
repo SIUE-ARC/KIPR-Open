@@ -157,12 +157,12 @@ LINE 676 141
 LINE 689 143
 LINE 690 145
 FILE memory.inc
-DIR C:\PROGRA~2\Cypress\PSOCDE~1\5.4\Common\CY110F~1\tools\include\CY8C29~1\
+DIR C:\PROGRA~2\Cypress\PSOCDE~1\5.4\Common\CYPRES~1\tools\include\CY8C29~1\
 FILE m8ssc.inc
 FILE m8c.inc
 DIR .\lib\
 FILE GlobalParams.inc
-DIR C:\Users\Hobo\DOCUME~1\GitHub\KIPR-O~1\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\
+DIR C:\Users\ryowens\Desktop\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\
 FILE main.c
 FUNC main B0B fV
 LINE 129 B0B
