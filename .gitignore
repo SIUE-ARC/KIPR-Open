@@ -35,3 +35,5 @@ Robot2/.smbdeleteAAA419633
 Robot2/PSoC/KIPR/KIPR/output
 *.log
 *.dbg
+*.orig
+*.cmx
