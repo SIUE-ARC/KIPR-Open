@@ -206,7 +206,7 @@ ENDIF
     reti
 
     org   5Ch                      ;PSoC Block DCB33 Interrupt Vector
-    // call	void_handler
+    ljmp	_VelTimer_ISR
     reti
 
     org   60h                      ;PSoC I2C Interrupt Vector

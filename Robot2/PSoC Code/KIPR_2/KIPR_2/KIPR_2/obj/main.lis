@@ -5,48 +5,54 @@
                         .area lit(rom, con, rel, lit)
  0000           _debug_mask::
  0000 0C                .byte 12
- 0001                   .dbfile C:\Users\ryowens\Desktop\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
+ 0001                   .dbfile C:\Users\Hobo\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
  0001                   .dbsym e debug_mask _debug_mask kc
  0001           _TERM::
  0001 07                .byte 7
  0002                   .dbsym e TERM _TERM kc
+ 0002           _tick_time::
+ 0002 32B2F4FC          .word 0x32b2,0xf4fc
+ 0006                   .dbsym e tick_time _tick_time kD
+ 0006           _encoder_res::
+ 0006 3D124925          .word 0x3d12,0x4925
+ 000A                   .dbsym e encoder_res _encoder_res kD
                         .area data(ram, con, rel)
- 0000                   .dbfile C:\Users\ryowens\Desktop\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
+ 0000                   .dbfile C:\Users\Hobo\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
  0000           _command_flag::
  0000 00                .byte 0
  0001                   .dbsym e command_flag _command_flag c
                         .area data(ram, con, rel)
- 0000                   .dbfile C:\Users\ryowens\Desktop\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
+ 0000                   .dbfile C:\Users\Hobo\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
                         .area data(ram, con, rel)
- 0000                   .dbfile C:\Users\ryowens\Desktop\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
+ 0000                   .dbfile C:\Users\Hobo\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
  0000           _debug::
  0000 00                .byte 0
  0001                   .dbsym e debug _debug c
                         .area data(ram, con, rel)
- 0000                   .dbfile C:\Users\ryowens\Desktop\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
+ 0000                   .dbfile C:\Users\Hobo\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
                         .area data(ram, con, rel)
- 0000                   .dbfile C:\Users\ryowens\Desktop\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
+ 0000                   .dbfile C:\Users\Hobo\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
  0000           _i::
  0000 0000              .word 0
  0002                   .dbsym e i _i I
                         .area data(ram, con, rel)
- 0000                   .dbfile C:\Users\ryowens\Desktop\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
+ 0000                   .dbfile C:\Users\Hobo\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
                         .area data(ram, con, rel)
- 0000                   .dbfile C:\Users\ryowens\Desktop\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
+ 0000                   .dbfile C:\Users\Hobo\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
  0000           _count1::
  0000 00000000          .word 0,0
  0004                   .dbsym e count1 _count1 L
                         .area data(ram, con, rel)
- 0000                   .dbfile C:\Users\ryowens\Desktop\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
+ 0000                   .dbfile C:\Users\Hobo\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
                         .area data(ram, con, rel)
- 0000                   .dbfile C:\Users\ryowens\Desktop\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
+ 0000                   .dbfile C:\Users\Hobo\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
  0000           _count2::
  0000 00000000          .word 0,0
  0004                   .dbsym e count2 _count2 L
                         .area data(ram, con, rel)
- 0000                   .dbfile C:\Users\ryowens\Desktop\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
+ 0000                   .dbfile C:\Users\Hobo\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
                         .area text(rom, con, rel)
- 0000                   .dbfile C:\Users\ryowens\Desktop\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
+ 0000                   .dbfile C:\Users\Hobo\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
  0000                   .dbfunc e main _main fV
  0000           ;          param -> X+2
  0000           ;        command -> X+1
@@ -646,633 +652,30 @@
                         .area text(rom, con, rel)
                 ;          param -> X-6
                 ;        command -> X-4
- 01C4           _action::
- 01C4                   .dbline -1
- 01C4 10                push X
- 01C5 4F                mov X,SP
- 01C6 3802              add SP,2
- 01C8                   .dbline 263
- 01C8           ; }
- 01C8           ; 
- 01C8           ; /* Action lookup. Takes the appropriate action for the given command and param.
- 01C8           ;  * command: the command read from the UART.
- 01C8           ;  * param: the data (if any) associated with the command.
- 01C8           ;  */
- 01C8           ; void action(char command, char* param)
- 01C8           ; {     
- 01C8                   .dbline 264
- 01C8           ;       if(debug)
- 01C8 62D000            mov REG[0xd0],>_debug
- 01CB 3C0000            cmp [_debug],0
- 01CE A033              jz L21
- 01D0                   .dbline 266
- 01D0           ;       {
- 01D0           ;               UART_PutCRLF();
- 01D0                   .dbline 266
- 01D0 10                push X
- 01D1 7C0000            xcall _UART_PutCRLF
- 01D4                   .dbline 267
- 01D4           ;               UART_CPutString("Command: ");
- 01D4 5087              mov A,>L23
- 01D6 08                push A
- 01D7 5087              mov A,<L23
- 01D9 5C                mov X,A
- 01DA 18                pop A
- 01DB 7C0000            xcall _UART_CPutString
- 01DE 20                pop X
- 01DF                   .dbline 268
- 01DF           ;               UART_PutChar(command);
- 01DF 10                push X
- 01E0 52FC              mov A,[X-4]
- 01E2 7C0000            xcall _UART_PutChar
- 01E5                   .dbline 269
- 01E5           ;               UART_PutCRLF();
- 01E5 7C0000            xcall _UART_PutCRLF
- 01E8                   .dbline 270
- 01E8           ;               UART_CPutString("Param: ");
- 01E8 507F              mov A,>L24
- 01EA 08                push A
- 01EB 507F              mov A,<L24
- 01ED 5C                mov X,A
- 01EE 18                pop A
- 01EF 7C0000            xcall _UART_CPutString
- 01F2 20                pop X
- 01F3                   .dbline 271
- 01F3           ;               UART_PutString(param);
- 01F3 10                push X
- 01F4 52FA              mov A,[X-6]
- 01F6 08                push A
- 01F7 52FB              mov A,[X-5]
- 01F9 5C                mov X,A
- 01FA 18                pop A
- 01FB 7C0000            xcall _UART_PutString
- 01FE                   .dbline 272
- 01FE           ;               UART_PutCRLF();
- 01FE 7C0000            xcall _UART_PutCRLF
- 0201 20                pop X
- 0202                   .dbline 273
- 0202           ;       }
- 0202           L21:
- 0202                   .dbline 275
- 0202           ;       
- 0202           ;       switch (command)
- 0202 52FC              mov A,[X-4]
- 0204 5401              mov [X+1],A
- 0206 560000            mov [X+0],0
- 0209 5201              mov A,[X+1]
- 020B 1161              sub A,97
- 020D 5200              mov A,[X+0]
- 020F 3180              xor A,-128
- 0211 1980              sbb A,(0 ^ 0x80)
- 0213 C399              jc L25
- 0215           X2:
- 0215 5070              mov A,112
- 0217 1301              sub A,[X+1]
- 0219 5200              mov A,[X+0]
- 021B 3180              xor A,-128
- 021D 62D000            mov REG[0xd0],>__r0
- 0220 5300              mov [__rX],A
- 0222 5080              mov A,(0 ^ 0x80)
- 0224 1A00              sbb A,[__rX]
- 0226 C386              jc L25
- 0228           X3:
- 0228 62D000            mov REG[0xd0],>__r0
- 022B 5201              mov A,[X+1]
- 022D 1161              sub A,97
- 022F 5300              mov [__r1],A
- 0231 5200              mov A,[X+0]
- 0233 1900              sbb A,0
- 0235 5300              mov [__r0],A
- 0237 6500              asl [__r1]
- 0239 6B00              rlc [__r0]
- 023B 060000            add [__r1],<L102
- 023E 0E0000            adc [__r0],>L102
- 0241 5100              mov A,[__r0]
- 0243 10                push X
- 0244 5800              mov X,[__r1]
- 0246 08                push A
- 0247 28                romx
- 0248 5300              mov [__r0],A
- 024A 18                pop A
- 024B 75                inc X
- 024C 0900              adc A,0
- 024E 28                romx
- 024F 5300              mov [__r1],A
- 0251 20                pop X
- 0252 5100              mov A,[__r0]
- 0254 08                push A
- 0255 5100              mov A,[__r1]
- 0257 08                push A
- 0258 7F                ret
- 0259           X1:
- 0259                   .dbfile C:\Users\ryowens\Desktop\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
- 0259                   .dbline 276
- 0259           ;       {
- 0259           L28:
- 0259                   .dbline 278
- 0259           ;               case 'a': //MAV
- 0259           ;                       if (debug)
- 0259 62D000            mov REG[0xd0],>_debug
- 025C 3C0000            cmp [_debug],0
- 025F A373              jz L26
- 0261                   .dbline 280
- 0261           ;                       {
- 0261           ;                               UART_PutCRLF();
- 0261                   .dbline 280
- 0261 10                push X
- 0262 7C0000            xcall _UART_PutCRLF
- 0265                   .dbline 281
- 0265           ;                               UART_CPutString("Setting velocity to: ");
- 0265 5069              mov A,>L31
- 0267 08                push A
- 0268 5069              mov A,<L31
- 026A 5C                mov X,A
- 026B 18                pop A
- 026C 7C0000            xcall _UART_CPutString
- 026F 20                pop X
- 0270                   .dbline 282
- 0270           ;                               UART_PutSHexInt(atoi(param));
- 0270 52FA              mov A,[X-6]
- 0272 08                push A
- 0273 52FB              mov A,[X-5]
- 0275 08                push A
- 0276 7C0000            xcall _atoi
- 0279 38FE              add SP,-2
- 027B 10                push X
- 027C 62D000            mov REG[0xd0],>__r0
- 027F 5100              mov A,[__r0]
- 0281 08                push A
- 0282 5100              mov A,[__r1]
- 0284 20                pop X
- 0285 7C0000            xcall _UART_PutSHexInt
- 0288                   .dbline 283
- 0288           ;                               UART_PutCRLF();
- 0288 7C0000            xcall _UART_PutCRLF
- 028B 20                pop X
- 028C                   .dbline 284
- 028C           ;                       }
- 028C                   .dbline 286
- 028C           ;                       
- 028C           ;                       break;
- 028C 8346              xjmp L26
- 028E           L32:
- 028E                   .dbline 288
- 028E           ;               case 'b': //MOV
- 028E           ;                       if (debug)
- 028E 62D000            mov REG[0xd0],>_debug
- 0291 3C0000            cmp [_debug],0
- 0294 A33E              jz L26
- 0296                   .dbline 290
- 0296           ;                       {
- 0296           ;                               UART_PutCRLF();
- 0296                   .dbline 290
- 0296 10                push X
- 0297 7C0000            xcall _UART_PutCRLF
- 029A                   .dbline 291
- 029A           ;                               UART_CPutString("Setting PWM duty cycle to: ");
- 029A 504D              mov A,>L35
- 029C 08                push A
- 029D 504D              mov A,<L35
- 029F 5C                mov X,A
- 02A0 18                pop A
- 02A1 7C0000            xcall _UART_CPutString
- 02A4 20                pop X
- 02A5                   .dbline 292
- 02A5           ;                               UART_PutSHexInt(atoi(param));
- 02A5 52FA              mov A,[X-6]
- 02A7 08                push A
- 02A8 52FB              mov A,[X-5]
- 02AA 08                push A
- 02AB 7C0000            xcall _atoi
- 02AE 38FE              add SP,-2
- 02B0 10                push X
- 02B1 62D000            mov REG[0xd0],>__r0
- 02B4 5100              mov A,[__r0]
- 02B6 08                push A
- 02B7 5100              mov A,[__r1]
- 02B9 20                pop X
- 02BA 7C0000            xcall _UART_PutSHexInt
- 02BD                   .dbline 293
- 02BD           ;                               UART_PutCRLF();
- 02BD 7C0000            xcall _UART_PutCRLF
- 02C0 20                pop X
- 02C1                   .dbline 294
- 02C1           ;                       }
- 02C1                   .dbline 295
- 02C1           ;                       break;
- 02C1 8311              xjmp L26
- 02C3           L36:
- 02C3                   .dbline 297
- 02C3           ;               case 'c': //GETV
- 02C3           ;                       *param = 0;
- 02C3 62D000            mov REG[0xd0],>__r0
- 02C6 52FB              mov A,[X-5]
- 02C8 5300              mov [__r1],A
- 02CA 52FA              mov A,[X-6]
- 02CC 60D5              mov REG[0xd5],A
- 02CE 5000              mov A,0
- 02D0 3F00              mvi [__r1],A
- 02D2                   .dbline 298
- 02D2           ;                       UART_PutCRLF();
- 02D2 10                push X
- 02D3 7C0000            xcall _UART_PutCRLF
- 02D6 20                pop X
- 02D7                   .dbline 299
- 02D7           ;                       UART_PutString(itoa(param, getVelocity(), 10));
- 02D7 9ED2              xcall _getVelocity
- 02D9 5000              mov A,0
- 02DB 08                push A
- 02DC 500A              mov A,10
- 02DE 08                push A
- 02DF 62D000            mov REG[0xd0],>__r0
- 02E2 5100              mov A,[__r0]
- 02E4 08                push A
- 02E5 5100              mov A,[__r1]
- 02E7 08                push A
- 02E8 52FA              mov A,[X-6]
- 02EA 08                push A
- 02EB 52FB              mov A,[X-5]
- 02ED 08                push A
- 02EE 7C0000            xcall _itoa
- 02F1 38FA              add SP,-6
- 02F3 10                push X
- 02F4 62D000            mov REG[0xd0],>__r0
- 02F7 5100              mov A,[__r0]
- 02F9 08                push A
- 02FA 5100              mov A,[__r1]
- 02FC 5C                mov X,A
- 02FD 18                pop A
- 02FE 7C0000            xcall _UART_PutString
- 0301                   .dbline 300
- 0301           ;                       UART_PutCRLF();
- 0301 7C0000            xcall _UART_PutCRLF
- 0304 20                pop X
- 0305                   .dbline 301
- 0305           ;                       break;
- 0305 82CD              xjmp L26
- 0307           L37:
- 0307                   .dbline 303
- 0307           ;               case 'd': //SRV0_POS
- 0307           ;                       if (debug)
- 0307 62D000            mov REG[0xd0],>_debug
- 030A 3C0000            cmp [_debug],0
- 030D A02C              jz L38
- 030F                   .dbline 305
- 030F           ;                       {
- 030F           ;                               UART_PutCRLF();
- 030F                   .dbline 305
- 030F 10                push X
- 0310 7C0000            xcall _UART_PutCRLF
- 0313                   .dbline 306
- 0313           ;                               UART_CPutString("Setting servo 0 pulse width to: ");
- 0313 502C              mov A,>L40
- 0315 08                push A
- 0316 502C              mov A,<L40
- 0318 5C                mov X,A
- 0319 18                pop A
- 031A 7C0000            xcall _UART_CPutString
- 031D 20                pop X
- 031E                   .dbline 307
- 031E           ;                               UART_PutSHexInt(atoi(param));
- 031E 52FA              mov A,[X-6]
- 0320 08                push A
- 0321 52FB              mov A,[X-5]
- 0323 08                push A
- 0324 7C0000            xcall _atoi
- 0327 38FE              add SP,-2
- 0329 10                push X
- 032A 62D000            mov REG[0xd0],>__r0
- 032D 5100              mov A,[__r0]
- 032F 08                push A
- 0330 5100              mov A,[__r1]
- 0332 20                pop X
- 0333 7C0000            xcall _UART_PutSHexInt
- 0336                   .dbline 308
- 0336           ;                               UART_PutCRLF();
- 0336 7C0000            xcall _UART_PutCRLF
- 0339 20                pop X
- 033A                   .dbline 309
- 033A           ;                       }
- 033A           L38:
- 033A                   .dbline 311
- 033A           ;                       
- 033A           ;                       if ((Servo0_CONTROL_LSB_REG & Servo0_CONTROL_REG_START_BIT) == 0x00) //servo has not been started
- 033A 5D27              mov A,REG[0x27]
- 033C 62D000            mov REG[0xd0],>__r0
- 033F 5300              mov [__r0],A
- 0341 470001            tst [__r0],1
- 0344 B006              jnz L41
- 0346                   .dbline 312
- 0346           ;                               Servo0_Start();
- 0346 10                push X
- 0347 7C0000            xcall _Servo0_Start
- 034A 20                pop X
- 034B           L41:
- 034B                   .dbline 314
- 034B           ;                       
- 034B           ;                       Servo0_WritePulseWidth(atoi(param));
- 034B 52FA              mov A,[X-6]
- 034D 08                push A
- 034E 52FB              mov A,[X-5]
- 0350 08                push A
- 0351 7C0000            xcall _atoi
- 0354 38FE              add SP,-2
- 0356 10                push X
- 0357 62D000            mov REG[0xd0],>__r0
- 035A 5100              mov A,[__r0]
- 035C 08                push A
- 035D 5100              mov A,[__r1]
- 035F 20                pop X
- 0360 7C0000            xcall _Servo0_WritePulseWidth
- 0363 20                pop X
- 0364                   .dbline 315
- 0364           ;                       break;
- 0364 826E              xjmp L26
- 0366           L43:
- 0366                   .dbline 317
- 0366           ;               case 'e': //SRV1_POS
- 0366           ;                       if (debug)
- 0366 62D000            mov REG[0xd0],>_debug
- 0369 3C0000            cmp [_debug],0
- 036C A02C              jz L44
- 036E                   .dbline 319
- 036E           ;                       {
- 036E           ;                               UART_PutCRLF();
- 036E                   .dbline 319
- 036E 10                push X
- 036F 7C0000            xcall _UART_PutCRLF
- 0372                   .dbline 320
- 0372           ;                               UART_CPutString("Setting servo 1 pulse width to: ");
- 0372 500B              mov A,>L46
- 0374 08                push A
- 0375 500B              mov A,<L46
- 0377 5C                mov X,A
- 0378 18                pop A
- 0379 7C0000            xcall _UART_CPutString
- 037C 20                pop X
- 037D                   .dbline 321
- 037D           ;                               UART_PutSHexInt(atoi(param));
- 037D 52FA              mov A,[X-6]
- 037F 08                push A
- 0380 52FB              mov A,[X-5]
- 0382 08                push A
- 0383 7C0000            xcall _atoi
- 0386 38FE              add SP,-2
- 0388 10                push X
- 0389 62D000            mov REG[0xd0],>__r0
- 038C 5100              mov A,[__r0]
- 038E 08                push A
- 038F 5100              mov A,[__r1]
- 0391 20                pop X
- 0392 7C0000            xcall _UART_PutSHexInt
- 0395                   .dbline 322
- 0395           ;                               UART_PutCRLF();
- 0395 7C0000            xcall _UART_PutCRLF
- 0398 20                pop X
- 0399                   .dbline 323
- 0399           ;                       }
- 0399           L44:
- 0399                   .dbline 325
- 0399           ;                       
- 0399           ;                       if ((Servo1_CONTROL_LSB_REG & Servo1_CONTROL_REG_START_BIT) == 0x00) //servo has not been started
- 0399 5D4B              mov A,REG[0x4b]
- 039B 62D000            mov REG[0xd0],>__r0
- 039E 5300              mov [__r0],A
- 03A0 470001            tst [__r0],1
- 03A3 B006              jnz L47
- 03A5                   .dbline 326
- 03A5           ;                               Servo1_Start();
- 03A5 10                push X
- 03A6 7C0000            xcall _Servo1_Start
- 03A9 20                pop X
- 03AA           L47:
- 03AA                   .dbline 328
- 03AA           ;                       
- 03AA           ;                       Servo1_WritePulseWidth(atoi(param));
- 03AA 52FA              mov A,[X-6]
- 03AC 08                push A
- 03AD 52FB              mov A,[X-5]
- 03AF 08                push A
- 03B0 7C0000            xcall _atoi
- 03B3 38FE              add SP,-2
- 03B5 10                push X
- 03B6 62D000            mov REG[0xd0],>__r0
- 03B9 5100              mov A,[__r0]
- 03BB 08                push A
- 03BC 5100              mov A,[__r1]
- 03BE 20                pop X
- 03BF 7C0000            xcall _Servo1_WritePulseWidth
- 03C2 20                pop X
- 03C3                   .dbline 329
- 03C3           ;                       break;
- 03C3 820F              xjmp L26
- 03C5           L49:
- 03C5                   .dbline 331
- 03C5           ;               case 'f': //SRV0_STP
- 03C5           ;                       if (debug)
- 03C5 62D000            mov REG[0xd0],>_debug
- 03C8 3C0000            cmp [_debug],0
- 03CB A013              jz L50
- 03CD                   .dbline 333
- 03CD           ;                       {
- 03CD           ;                               UART_PutCRLF();
- 03CD                   .dbline 333
- 03CD 10                push X
- 03CE 7C0000            xcall _UART_PutCRLF
- 03D1                   .dbline 334
- 03D1           ;                               UART_CPutString("Stopping PWM for servo 0.");
- 03D1 50F1              mov A,>L52
- 03D3 08                push A
- 03D4 50F1              mov A,<L52
- 03D6 5C                mov X,A
- 03D7 18                pop A
- 03D8 7C0000            xcall _UART_CPutString
- 03DB                   .dbline 335
- 03DB           ;                               UART_PutCRLF();
- 03DB 7C0000            xcall _UART_PutCRLF
- 03DE 20                pop X
- 03DF                   .dbline 336
- 03DF           ;                       }
- 03DF           L50:
- 03DF                   .dbline 338
- 03DF           ;                       
- 03DF           ;                       Servo0_Stop();;
- 03DF 10                push X
- 03E0 7C0000            xcall _Servo0_Stop
- 03E3 20                pop X
- 03E4                   .dbline 338
- 03E4                   .dbline 339
- 03E4           ;                       break;
- 03E4 81EE              xjmp L26
- 03E6           L53:
- 03E6                   .dbline 341
- 03E6           ;               case 'g': //SRV1_STP
- 03E6           ;                       if (debug)
- 03E6 62D000            mov REG[0xd0],>_debug
- 03E9 3C0000            cmp [_debug],0
- 03EC A013              jz L54
- 03EE                   .dbline 343
- 03EE           ;                       {
- 03EE           ;                               UART_PutCRLF();
- 03EE                   .dbline 343
- 03EE 10                push X
- 03EF 7C0000            xcall _UART_PutCRLF
- 03F2                   .dbline 344
- 03F2           ;                               UART_CPutString("Stopping PWM for servo 1.");
- 03F2 50D7              mov A,>L56
- 03F4 08                push A
- 03F5 50D7              mov A,<L56
- 03F7 5C                mov X,A
- 03F8 18                pop A
- 03F9 7C0000            xcall _UART_CPutString
- 03FC                   .dbline 345
- 03FC           ;                               UART_PutCRLF();
- 03FC 7C0000            xcall _UART_PutCRLF
- 03FF 20                pop X
- 0400                   .dbline 346
- 0400           ;                       }
- 0400           L54:
- 0400                   .dbline 348
- 0400           ;                       
- 0400           ;                       Servo1_Stop();
- 0400 10                push X
- 0401 7C0000            xcall _Servo1_Stop
- 0404 20                pop X
- 0405                   .dbline 349
- 0405           ;                       break;
- 0405 81CD              xjmp L26
- 0407           L57:
- 0407                   .dbline 351
- 0407           ;               case 'h': //GETC1
- 0407           ;                       if (debug)
- 0407 62D000            mov REG[0xd0],>_debug
- 040A 3C0000            cmp [_debug],0
- 040D A010              jz L58
- 040F                   .dbline 353
- 040F           ;                       {
- 040F           ;                               UART_PutCRLF();
- 040F                   .dbline 353
- 040F 10                push X
- 0410 7C0000            xcall _UART_PutCRLF
- 0413                   .dbline 354
- 0413           ;                               UART_CPutString("Encoder 1 count: ");
- 0413 50C5              mov A,>L60
- 0415 08                push A
- 0416 50C5              mov A,<L60
- 0418 5C                mov X,A
- 0419 18                pop A
- 041A 7C0000            xcall _UART_CPutString
- 041D 20                pop X
- 041E                   .dbline 355
- 041E           ;                       }
- 041E           L58:
- 041E                   .dbline 357
- 041E           ;                       
- 041E           ;                       UART_PutSHexInt(count1);
- 041E 62D000            mov REG[0xd0],>_count1
- 0421 5103              mov A,[_count1+3]
- 0423 62D000            mov REG[0xd0],>__r0
- 0426 5300              mov [__r1],A
- 0428 62D000            mov REG[0xd0],>_count1
- 042B 5102              mov A,[_count1+2]
- 042D 62D000            mov REG[0xd0],>__r0
- 0430 10                push X
- 0431 08                push A
- 0432 5100              mov A,[__r1]
- 0434 20                pop X
- 0435 7C0000            xcall _UART_PutSHexInt
- 0438 20                pop X
- 0439                   .dbline 359
- 0439           ;                       
- 0439           ;                       if (debug)
- 0439 62D000            mov REG[0xd0],>_debug
- 043C 3C0000            cmp [_debug],0
- 043F A193              jz L26
- 0441                   .dbline 360
- 0441           ;                               UART_PutCRLF();
- 0441 10                push X
- 0442 7C0000            xcall _UART_PutCRLF
- 0445 20                pop X
- 0446                   .dbline 361
- 0446           ;                       break;
- 0446 818C              xjmp L26
- 0448           L63:
- 0448                   .dbline 363
- 0448           ;               case 'i': //GETC2
- 0448           ;                       if (debug)
- 0448 62D000            mov REG[0xd0],>_debug
- 044B 3C0000            cmp [_debug],0
- 044E A010              jz L64
- 0450                   .dbline 365
- 0450           ;                       {
- 0450           ;                               UART_PutCRLF();
- 0450                   .dbline 365
- 0450 10                push X
- 0451 7C0000            xcall _UART_PutCRLF
- 0454                   .dbline 366
- 0454           ;                               UART_CPutString("Encoder 2 count: ");
- 0454 50B3              mov A,>L66
- 0456 08                push A
- 0457 50B3              mov A,<L66
- 0459 5C                mov X,A
- 045A 18                pop A
- 045B 7C0000            xcall _UART_CPutString
- 045E 20                pop X
- 045F                   .dbline 367
- 045F           ;                       }
- 045F           L64:
- 045F                   .dbline 368
- 045F           ;                       UART_PutSHexInt(count2);
- 045F 62D000            mov REG[0xd0],>_count2
- 0462 5103              mov A,[_count2+3]
- 0464 62D000            mov REG[0xd0],>__r0
- 0467 5300              mov [__r1],A
- 0469 62D000            mov REG[0xd0],>_count2
- 046C 5102              mov A,[_count2+2]
- 046E 62D000            mov REG[0xd0],>__r0
- 0471 10                push X
- 0472 08                push A
- 0473 5100              mov A,[__r1]
- 0475 20                pop X
- 0476 7C0000            xcall _UART_PutSHexInt
- 0479 20                pop X
- 047A                   .dbline 370
- 047A           ;                       
- 047A           ;                       if(debug)
- 047A 62D000            mov REG[0xd0],>_debug
- 047D 3C0000            cmp [_debug],0
- 0480 A152              jz L26
- 0482                   .dbline 371
- 0482           ;                               UART_PutCRLF();
- 0482 10                push X
- 0483 7C0000            xcall _UART_PutCRLF
- 0486 20                pop X
- 0487                   .dbline 372
- 0487           ;                       break;
- 0487 814B              xjmp L26
- 0489           L69:
- 0489                   .dbline 374
- 0489           ;               case 'j': //RSTC1
- 0489           ;                       if(debug)
- 0489 62D000            mov REG[0xd0],>_debug
- 048C 3C0000            cmp [_debug],0
- 048F A013              jz L70
- 0491                   .dbline 376
- 0491           ;                       {
- 0491           ;                               UART_PutCRLF();
- 0491                   .dbline 376
- 0491 10                push X
- 0492 7C0000            xcall _UART_PutCRLF
- 0495                   .dbline 377
- 0495           ;                               UART_CPutString("Resetting count1");
- 0495 50A2              mov A,>L72
- 0497 08                push A
- 0498 50A2              mov A,<L72
- 049A 5C                mov X,A
- 049B 18                pop A
- 049C 7C0000            xcall _UART_CPutString
- 049F                   .dbline 378
- 049F           ;                               UART_PutCRLF();
+ 0492           _action::
+ 0492                   .dbline -1
+ 0492 10                push X
+ 0493 4F                mov X,SP
+ 0494 3802              add SP,2
+ 0496                   .dbline 289
+ 0496           ; }
+ 0496           ; 
+ 0496           ; /* Action lookup. Takes the appropriate action for the given command and param.
+ 0496           ;  * command: the command read from the UART.
+ 0496           ;  * param: the data (if any) associated with the command.
+ 0496           ;  */
+ 0496           ; void action(char command, char* param)
+ 0496           ; {     
+ 0496                   .dbline 290
+ 0496           ;       if(debug)
+ 0496 62D000            mov REG[0xd0],>_debug
+ 0499 3C0000            cmp [_debug],0
+ 049C A033              jz L24
+ 049E                   .dbline 292
+ 049E           ;       {
+ 049E           ;               UART_PutCRLF();
+ 049E                   .dbline 292
+ 049E 10                push X
  049F 7C0000            xcall _UART_PutCRLF
  04A2 20                pop X
  04A3                   .dbline 379
@@ -1744,22 +1147,22 @@
  067E 7E                reti
  067F                   .dbend
                         .area data(ram, con, rel)
- 0000                   .dbfile C:\Users\ryowens\Desktop\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
+ 0000                   .dbfile C:\Users\Hobo\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
  0000           _prevPrt2::
  0000 00                .byte 0
  0001                   .dbsym e prevPrt2 _prevPrt2 c
                         .area data(ram, con, rel)
- 0000                   .dbfile C:\Users\ryowens\Desktop\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
+ 0000                   .dbfile C:\Users\Hobo\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
  0000           _curPrt2::
  0000 00                .byte 0
  0001                   .dbsym e curPrt2 _curPrt2 c
                         .area data(ram, con, rel)
- 0000                   .dbfile C:\Users\ryowens\Desktop\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
+ 0000                   .dbfile C:\Users\Hobo\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
  0000           _prevPrt1::
  0000 00                .byte 0
  0001                   .dbsym e prevPrt1 _prevPrt1 c
                         .area data(ram, con, rel)
- 0000                   .dbfile C:\Users\ryowens\Desktop\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
+ 0000                   .dbfile C:\Users\Hobo\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c
  0000           _curPrt1::
  0000 00                .byte 0
  0001                   .dbsym e curPrt1 _curPrt1 c

@@ -1554,9 +1554,9 @@
  0058 7E            reti
  0059           
                     org   5Ch                      ;PSoC Block DCB33 Interrupt Vector
-                    // call     void_handler
- 005C 7E            reti
- 005D           
+ 005C 7D0000        ljmp        _VelTimer_ISR
+ 005F 7E            reti
+ 0060           
                     org   60h                      ;PSoC I2C Interrupt Vector
                     // call     void_handler
  0060 7E            reti
