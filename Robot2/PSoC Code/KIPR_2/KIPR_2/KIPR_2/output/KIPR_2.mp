@@ -1,6 +1,10 @@
 Project:      output/KIPR_2
 Build Number: 0
+<<<<<<< HEAD
+Date:         Tue May 17 14:41:12 2016
+=======
 Date:         Sat May 21 11:24:44 2016
+>>>>>>> ae86f57a005c503fd14e9f37c1a8ded556015337
 Compiler:     ICCM8C
 Version:      7.05.00
 
