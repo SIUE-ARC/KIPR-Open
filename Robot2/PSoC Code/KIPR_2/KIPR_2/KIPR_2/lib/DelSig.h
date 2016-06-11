@@ -1,12 +1,12 @@
 //*****************************************************************************
 //*****************************************************************************
 //  FILENAME: DelSig.h
-//   Version: 1.50, Updated on 2014/7/14 at 8:11:19
+//   Version: 1.50, Updated on 2015/3/4 at 22:25:16
 //
 //  DESCRIPTION:  C declarations for the DelSig User Module with a 2nd-order
 //                modulator based on a type-2 dcecimator
 //-----------------------------------------------------------------------------
-//      Copyright (c) Cypress Semiconductor 2014. All Rights Reserved.
+//      Copyright (c) Cypress Semiconductor 2015. All Rights Reserved.
 //*****************************************************************************
 //*****************************************************************************
 #ifndef DelSig_INCLUDE

@@ -37,3 +37,9 @@ Robot2/PSoC/KIPR/KIPR/output
 *.dbg
 *.orig
 *.cmx
+
+# Directories
+Robot2/PSoC Code/KIPR_2/KIPR_2/Templates
+Robot2/PSoC Code/KIPR_2/KIPR_2/KIPR_2/backup/
+Robot2/PSoC Code/KIPR_2/KIPR_2/KIPR_2/obj/
+Robot2/PSoC Code/KIPR_2/KIPR_2/KIPR_2/output/
