@@ -48,9 +48,9 @@
 #define OP_AMP_BIAS            0x0     // Op amp bias level
 #define OP_AMP_BIAS_MASK       0x40    // Op amp bias level mask
 #define OP_AMP_BIAS_JUST       0x0     // Op amp bias level justified
-#define REF_MUX                0x0     // Ref mux setting
+#define REF_MUX                0x6     // Ref mux setting
 #define REF_MUX_MASK           0x38    // Ref mux setting mask
-#define REF_MUX_JUST           0x0     // Ref mux setting justified
+#define REF_MUX_JUST           0x30    // Ref mux setting justified
 #define AGND_BYPASS            0x0     // AGndBypass setting
 #define AGND_BYPASS_MASK       0x40    // AGndBypass setting mask
 #define AGND_BYPASS_JUST       0x0     // AGndBypass setting justified
@@ -63,11 +63,11 @@
 //
 // register initial values
 //
-#define ANALOG_IO_CONTROL      0x0     //Analog IO Control register (ABF_CR)
-#define PORT_0_GLOBAL_SELECT   0x8a    //Port 0 global select register (PRT0GS)
-#define PORT_0_DRIVE_0         0x8a    //Port 0 drive mode 0 register (PRT0DM0)
-#define PORT_0_DRIVE_1         0x75    //Port 0 drive mode 1 register (PRT0DM1)
-#define PORT_0_DRIVE_2         0x75    //Port 0 drive mode 1 register (PRT0DM2)
+#define ANALOG_IO_CONTROL      0x80    //Analog IO Control register (ABF_CR)
+#define PORT_0_GLOBAL_SELECT   0x88    //Port 0 global select register (PRT0GS)
+#define PORT_0_DRIVE_0         0x88    //Port 0 drive mode 0 register (PRT0DM0)
+#define PORT_0_DRIVE_1         0x77    //Port 0 drive mode 1 register (PRT0DM1)
+#define PORT_0_DRIVE_2         0x77    //Port 0 drive mode 1 register (PRT0DM2)
 #define PORT_0_INTENABLE       0x0     //Port 0 interrupt enable register (PRT0IE)
 #define PORT_0_INTCTRL_0       0x0     //Port 0 interrupt control 0 register (PRT0IC0)
 #define PORT_0_INTCTRL_1       0x0     //Port 0 interrupt control 1 register (PRT0IC1)

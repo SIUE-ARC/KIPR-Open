@@ -14,10 +14,12 @@
 ; =============================================================================
  
 include "PSoCGPIOINT.inc"
+include "DelSig_1.inc"
 include "ENC1A_NEDGE.inc"
 include "ENC1A_PEDGE.inc"
 include "ENC1B_NEDGE.inc"
 include "ENC1B_PEDGE.inc"
+include "LightSensor.inc"
 include "PWMA.inc"
 include "PWMB.inc"
 include "Servo0.inc"

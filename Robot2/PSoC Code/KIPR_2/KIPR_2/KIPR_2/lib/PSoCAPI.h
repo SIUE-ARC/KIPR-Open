@@ -18,10 +18,12 @@
 #define __PSOCAPI_H
 
 #include "PSoCGPIOINT.h"
+#include "DelSig_1.h"
 #include "ENC1A_NEDGE.h"
 #include "ENC1A_PEDGE.h"
 #include "ENC1B_NEDGE.h"
 #include "ENC1B_PEDGE.h"
+#include "LightSensor.h"
 #include "PWMA.h"
 #include "PWMB.h"
 #include "Servo0.h"

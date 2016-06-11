@@ -78,9 +78,9 @@
  0000           OP_AMP_BIAS:			equ	0h	;Op amp bias level
  0040           OP_AMP_BIAS_MASK:		equ	40h	;Op amp bias level mask
  0000           OP_AMP_BIAS_JUST:		equ	0h	;Op amp bias level justified
- 0000           REF_MUX:				equ	0h	;Ref mux setting
+ 0006           REF_MUX:				equ	6h	;Ref mux setting
  0038           REF_MUX_MASK:			equ	38h	;Ref mux setting mask
- 0000           REF_MUX_JUST:			equ	0h	;Ref mux setting justified
+ 0030           REF_MUX_JUST:			equ	30h	;Ref mux setting justified
  0000           AGND_BYPASS:				equ	0h	;AGndBypass setting
  0040           AGND_BYPASS_MASK:			equ	40h	;AGndBypass setting mask
  0000           AGND_BYPASS_JUST:			equ	0h	;AGndBypass setting justified
@@ -93,11 +93,11 @@
  0000           ;
  0000           ; register initial values
  0000           ;
- 0000           ANALOG_IO_CONTROL:		equ 0h	;Analog IO Control register (ABF_CR)
- 008A           PORT_0_GLOBAL_SELECT:	equ 8ah	;Port 0 global select register (PRT0GS)
- 008A           PORT_0_DRIVE_0:			equ 8ah	;Port 0 drive mode 0 register (PRT0DM0)
- 0075           PORT_0_DRIVE_1:			equ 75h	;Port 0 drive mode 1 register (PRT0DM1)
- 0075           PORT_0_DRIVE_2:			equ 75h	;Port 0 drive mode 2 register (PRT0DM2)
+ 0080           ANALOG_IO_CONTROL:		equ 80h	;Analog IO Control register (ABF_CR)
+ 0088           PORT_0_GLOBAL_SELECT:	equ 88h	;Port 0 global select register (PRT0GS)
+ 0088           PORT_0_DRIVE_0:			equ 88h	;Port 0 drive mode 0 register (PRT0DM0)
+ 0077           PORT_0_DRIVE_1:			equ 77h	;Port 0 drive mode 1 register (PRT0DM1)
+ 0077           PORT_0_DRIVE_2:			equ 77h	;Port 0 drive mode 2 register (PRT0DM2)
  0000           PORT_0_INTENABLE:		equ 0h	;Port 0 interrupt enable register (PRT0IE)
  0000           PORT_0_INTCTRL_0:		equ 0h	;Port 0 interrupt control 0 register (PRT0IC0)
  0000           PORT_0_INTCTRL_1:		equ 0h	;Port 0 interrupt control 1 register (PRT0IC1)
@@ -1542,9 +1542,9 @@
  004F 7E            reti
  0050           
                     org   50h                      ;PSoC Block DBB30 Interrupt Vector
-                    // call     void_handler
- 0050 7E            reti
- 0051           
+ 0050 7D0000        ljmp        _DelSig_1_ADConversion_ISR
+ 0053 7E            reti
+ 0054           
                     org   54h                      ;PSoC Block DBB31 Interrupt Vector
  0054 7D0000        ljmp _encoder1_ISR
  0057 7E            reti
