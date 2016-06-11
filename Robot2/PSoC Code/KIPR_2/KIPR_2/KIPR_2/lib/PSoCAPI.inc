@@ -14,7 +14,7 @@
 ; =============================================================================
  
 include "PSoCGPIOINT.inc"
-include "DelSig_1.inc"
+include "DelSig.inc"
 include "ENC1A_NEDGE.inc"
 include "ENC1A_PEDGE.inc"
 include "ENC1B_NEDGE.inc"

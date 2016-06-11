@@ -194,7 +194,7 @@ ENDIF
     reti
 
     org   50h                      ;PSoC Block DBB30 Interrupt Vector
-    ljmp	_DelSig_1_ADConversion_ISR
+    ljmp	_DelSig_ADConversion_ISR
     reti
 
     org   54h                      ;PSoC Block DBB31 Interrupt Vector

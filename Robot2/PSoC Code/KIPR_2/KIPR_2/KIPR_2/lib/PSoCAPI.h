@@ -18,7 +18,7 @@
 #define __PSOCAPI_H
 
 #include "PSoCGPIOINT.h"
-#include "DelSig_1.h"
+#include "DelSig.h"
 #include "ENC1A_NEDGE.h"
 #include "ENC1A_PEDGE.h"
 #include "ENC1B_NEDGE.h"

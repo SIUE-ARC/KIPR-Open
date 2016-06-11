@@ -1919,7 +1919,7 @@
  0000           ; Constants for VelTimer user defined values
  0000           ;--------------------------------------------------
  0000           
- 0000           VelTimer_PERIOD:                           equ 0x0
+ FFFFFF           VelTimer_PERIOD:                           equ 0xffffff
  0000           VelTimer_COMPARE_VALUE:                    equ 0x0
  0000           
  0000           

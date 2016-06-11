@@ -1540,9 +1540,9 @@ T 00 46 26 E7 2B 00 29 4E 2A 03 4B 00 49 1F 4A E7
 R 00 00 00 01
 T 00 54 4F 00 4D 4E 4E 03 3F 00 3D 00 3E 00 3B 00
 R 00 00 00 01
-T 00 62 39 00 3A 00 5B 00 59 00 5A 00 57 00 55 00
+T 00 62 39 00 3A 00 5B 00 59 FF 5A 00 57 00 55 FF
 R 00 00 00 01
-T 00 70 56 00 5F 04 5D 00 5E 00 60 2A 66 00 63 35
+T 00 70 56 00 5F 06 5D FF 5E 00 60 2A 66 00 63 35
 R 00 00 00 01
 T 00 7E 65 00 E6 01 E7 46 D6 00 B0 10 B1 00 B2 00
 R 00 00 00 01
@@ -1566,9 +1566,9 @@ T 00 FC 47 48 01 49 16 4A 40 4C 21 4D 36 4E 47 3C
 R 00 00 00 01
 T 01 0A 05 3D F1 3E 40 38 0D 39 01 3A 45 58 00 59
 R 00 00 00 01
-T 01 18 30 5A 00 54 00 55 00 56 00 5C 20 5D 30 5E
+T 01 18 34 5A 80 54 00 55 04 56 80 5C 20 5D 34 5E
 R 00 00 00 01
-T 01 26 00 61 00 69 00 60 00 62 80 67 33 68 33 63
+T 01 26 80 61 00 69 00 60 00 62 80 67 33 68 33 63
 R 00 00 00 01
 T 01 34 00 66 00 D1 00 D3 00 D0 00 D2 00 E1 B1 E2
 R 00 00 00 01
@@ -2155,31 +2155,31 @@ R 00 00 00 01
 .start
 XH
 H 3 areas 5 global symbols
-M delsig_1int.asm
+M delsigint.asm
 A text size 0 flags 0
-dbfile lib/delsig_1int.asm
+dbfile lib/delsigint.asm
 dbfunc 0 ? 0 I
-dbfile DelSig_1.inc
+dbfile DelSig.inc
 dbfunc 0 ? 0 I
 dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
-dbfile ./lib/DelSig_1.inc
+dbfile ./lib/DelSig.inc
 dbfunc 0 ? 0 I
-dbfile lib/delsig_1int.asm
+dbfile lib/delsigint.asm
 dbfunc 0 ? 0 I
 dbfile memory.inc
 dbfunc 0 ? 0 I
-dbfile lib/delsig_1int.asm
+dbfile lib/delsigint.asm
 dbfunc 0 ? 0 I
 dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 A InterruptRAM size 3 flags 20
-S DelSig_1_iResult Def0000
-S _DelSig_1_iResult Def0000
-S DelSig_1_bfStatus Def0002
-S _DelSig_1_bfStatus Def0002
+S _DelSig_bfStatus Def0002
+S DelSig_iResult Def0000
+S _DelSig_iResult Def0000
+S DelSig_bfStatus Def0002
 A UserModules size 27 flags 0
-dbfile lib/delsig_1int.asm
+dbfile lib/delsigint.asm
 dbfunc 0 ? 0 I
 dbline 57 0
 dbline 2 1
@@ -2199,7 +2199,7 @@ dbline 6C 1F
 dbline 6E 22
 dbline 7B 25
 dbline 7C 26
-S _DelSig_1_ADConversion_ISR Def0000
+S _DelSig_ADConversion_ISR Def0000
 T 00 00 08 62 DC EF 5D E4 39 04 C0 0B 5D E5 55
 R 00 00 00 02
 T 00 0D 00 00 03 55 00 01 FF 80 07 53 00 00 5D E5
@@ -2212,28 +2212,28 @@ R 00 00 00 02 01 02 00 01
 .start
 XH
 H 2 areas 2C global symbols
-M delsig_1.asm
-S DelSig_1_iResult Ref0000
-S DelSig_1_bfStatus Ref0000
+M delsig.asm
+S DelSig_iResult Ref0000
+S DelSig_bfStatus Ref0000
 A text size 0 flags 0
-dbfile lib/delsig_1.asm
+dbfile lib/delsig.asm
 dbfunc 0 ? 0 I
-dbfile DelSig_1.inc
+dbfile DelSig.inc
 dbfunc 0 ? 0 I
 dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
-dbfile ./lib/DelSig_1.inc
+dbfile ./lib/DelSig.inc
 dbfunc 0 ? 0 I
-dbfile lib/delsig_1.asm
+dbfile lib/delsig.asm
 dbfunc 0 ? 0 I
 dbfile memory.inc
 dbfunc 0 ? 0 I
-dbfile lib/delsig_1.asm
+dbfile lib/delsig.asm
 dbfunc 0 ? 0 I
 dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 A UserModules size 5E flags 0
-dbfile lib/delsig_1.asm
+dbfile lib/delsig.asm
 dbfunc 0 ? 0 I
 dbline 58 0
 dbline 59 1
@@ -2280,48 +2280,48 @@ dbline 12C 57
 dbline 12E 5A
 dbline 148 5B
 dbline 14A 5D
-S _DelSig_1_StartAD Def0021
-S DelSig_1_iGetData Def0046
-S _DelSig_1_Stop Def001A
-S DelSig_1_Start Def0000
-S DelSig_1_wGetData Def0046
-S DelSig_1_WritePulseWidth Def005B
-S DelSig_1_fIsDataAvailable Def002F
-S $sb$DelSig_1_iGetData Def0046
-S $se$DelSig_1_iGetData Def0054
-S $sb$DelSig_1_Start Def0000
-S DelSig_1_StopAD Def0028
-S $se$DelSig_1_Start Def001A
-S $sb$DelSig_1_WritePulseWidth Def005B
-S $se$DelSig_1_WritePulseWidth Def005E
-S DelSig_1_SetPower Def0000
-S $sb$DelSig_1_fIsDataAvailable Def002F
-S $se$DelSig_1_fIsDataAvailable Def0035
-S $sb$DelSig_1_StopAD Def0028
-S $se$DelSig_1_StopAD Def002F
-S DelSig_1_ClearFlag Def0054
-S _DelSig_1_iGetData Def0046
-S DelSig_1_iGetDataClearFlag Def0035
-S _DelSig_1_Start Def0000
-S _DelSig_1_wGetData Def0046
-S DelSig_1_wGetDataClearFlag Def0035
-S _DelSig_1_WritePulseWidth Def005B
-S _DelSig_1_fIsDataAvailable Def002F
-S $sb$DelSig_1_ClearFlag Def0054
-S $se$DelSig_1_ClearFlag Def005B
-S $sb$DelSig_1_iGetDataClearFlag Def0035
-S $se$DelSig_1_iGetDataClearFlag Def0046
-S _DelSig_1_StopAD Def0028
-S DelSig_1_StartAD Def0021
-S _DelSig_1_SetPower Def0000
-S DelSig_1_Stop Def001A
-S $sb$DelSig_1_StartAD Def0021
-S $se$DelSig_1_StartAD Def0028
-S _DelSig_1_ClearFlag Def0054
-S $sb$DelSig_1_Stop Def001A
-S _DelSig_1_iGetDataClearFlag Def0035
-S $se$DelSig_1_Stop Def0021
-S _DelSig_1_wGetDataClearFlag Def0035
+S _DelSig_Start Def0000
+S _DelSig_wGetData Def0046
+S DelSig_wGetDataClearFlag Def0035
+S _DelSig_WritePulseWidth Def005B
+S _DelSig_fIsDataAvailable Def002F
+S $sb$DelSig_ClearFlag Def0054
+S $se$DelSig_ClearFlag Def005B
+S $sb$DelSig_iGetDataClearFlag Def0035
+S $se$DelSig_iGetDataClearFlag Def0046
+S _DelSig_StopAD Def0028
+S DelSig_StartAD Def0021
+S _DelSig_SetPower Def0000
+S DelSig_Stop Def001A
+S $sb$DelSig_StartAD Def0021
+S $se$DelSig_StartAD Def0028
+S _DelSig_ClearFlag Def0054
+S $sb$DelSig_Stop Def001A
+S _DelSig_iGetDataClearFlag Def0035
+S $se$DelSig_Stop Def0021
+S _DelSig_wGetDataClearFlag Def0035
+S _DelSig_StartAD Def0021
+S DelSig_iGetData Def0046
+S _DelSig_Stop Def001A
+S DelSig_Start Def0000
+S DelSig_wGetData Def0046
+S DelSig_WritePulseWidth Def005B
+S DelSig_fIsDataAvailable Def002F
+S $sb$DelSig_iGetData Def0046
+S $se$DelSig_iGetData Def0054
+S $sb$DelSig_Start Def0000
+S DelSig_StopAD Def0028
+S $se$DelSig_Start Def001A
+S $sb$DelSig_WritePulseWidth Def005B
+S $se$DelSig_WritePulseWidth Def005E
+S DelSig_SetPower Def0000
+S $sb$DelSig_fIsDataAvailable Def002F
+S $se$DelSig_fIsDataAvailable Def0035
+S $sb$DelSig_StopAD Def0028
+S $se$DelSig_StopAD Def002F
+S DelSig_ClearFlag Def0054
+S _DelSig_iGetData Def0046
+S DelSig_iGetDataClearFlag Def0035
 T 00 00 4F 21 03 08 5D 83 21 FC 2B 00 60 83 5D 93
 R 00 00 00 01
 T 00 0E 21 FC 2B 00 60 93 18 70 3F 71 C0 7F 41 83

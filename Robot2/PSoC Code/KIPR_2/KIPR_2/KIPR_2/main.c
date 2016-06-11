@@ -181,6 +181,7 @@ void main(void)
 void init(void)
 {
 	BYTE debug_conf;
+	BYTE misc8_start[3], misc7_start[3];
 	
 	//enable the positive edge and falling edge paramers
 	ENC1A_PEDGE_Start();
@@ -234,28 +235,41 @@ void init(void)
 	
 	MISC8_DriveMode_1_ADDR |= MISC8_MASK;
 	
+	//wait for drive modes to change.
+	for(i = 0; i < 1000; i++);
+	
 	//read the debug inputs, if they are high then they are
 	//being purposefully asserted to enter debug mode.
-	debug_conf = (MISC7_Data_ADDR & MISC7_MASK) | (MISC8_Data_ADDR & MISC8_MASK);
+	debug_conf &= ((MISC7_Data_ADDR & MISC7_MASK) | (MISC8_Data_ADDR & MISC8_MASK));
 	
 	if (debug_conf == debug_mask)
 		debug = TRUE;
 	
 	//afterwards reset MISC pins to their intended state
+	misc7_start[0] = MISC7_DriveMode_0_ADDR;
+	misc7_start[1] = MISC7_DriveMode_1_ADDR;
+	misc7_start[2] = MISC7_DriveMode_2_ADDR;
+	
 	MISC7_DriveMode_0_ADDR &= ~MISC7_MASK;
 	MISC7_DriveMode_1_ADDR &= ~MISC7_MASK;
 	MISC7_DriveMode_2_ADDR &= ~MISC7_MASK;
+	
+	misc8_start[0] = MISC8_DriveMode_0_ADDR;
+	misc8_start[1] = MISC8_DriveMode_1_ADDR;
+	misc8_start[2] = MISC8_DriveMode_2_ADDR;
 	
 	MISC8_DriveMode_0_ADDR &= ~MISC8_MASK;
 	MISC8_DriveMode_1_ADDR &= ~MISC8_MASK;
 	MISC8_DriveMode_2_ADDR &= ~MISC8_MASK;
 	
-	//set MISC7 and MISC8 to HIGH-Z Analog
-	MISC7_DriveMode_2_ADDR |= MISC7_MASK;
-	MISC7_DriveMode_1_ADDR |= MISC7_MASK;
+	//set MISC7 and MISC8 to original pin mux state
+	MISC7_DriveMode_2_ADDR |= misc7_start[2];
+	MISC7_DriveMode_1_ADDR |= misc7_start[1];
+	MISC7_DriveMode_0_ADDR |= misc7_start[0];
 	
-	MISC8_DriveMode_2_ADDR |= MISC8_MASK;
-	MISC8_DriveMode_1_ADDR |= MISC8_MASK;
+	MISC8_DriveMode_2_ADDR |= misc8_start[2];
+	MISC8_DriveMode_1_ADDR |= misc8_start[1];
+	MISC8_DriveMode_0_ADDR |= misc8_start[0];
 }
 
 /* Calculates the velocity in RPMs and returns the value */

@@ -65,7 +65,7 @@ extern void VelTimer_CaptureCounter(DWORD * pdwCount);       // Obsolete
 // Constants for VelTimer user defined values
 //--------------------------------------------------
 
-#define VelTimer_PERIOD                        ( 0x0 )
+#define VelTimer_PERIOD                        ( 0xffffff )
 #define VelTimer_COMPARE_VALUE                 ( 0x0 )
 
 

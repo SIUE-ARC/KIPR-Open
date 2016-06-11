@@ -26,7 +26,7 @@ VelTimer_INT_MASK:                         equ 0x80
 ; Constants for VelTimer user defined values
 ;--------------------------------------------------
 
-VelTimer_PERIOD:                           equ 0x0
+VelTimer_PERIOD:                           equ 0xffffff
 VelTimer_COMPARE_VALUE:                    equ 0x0
 
 

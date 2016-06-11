@@ -1542,7 +1542,7 @@
  004F 7E            reti
  0050           
                     org   50h                      ;PSoC Block DBB30 Interrupt Vector
- 0050 7D0000        ljmp        _DelSig_1_ADConversion_ISR
+ 0050 7D0000        ljmp        _DelSig_ADConversion_ISR
  0053 7E            reti
  0054           
                     org   54h                      ;PSoC Block DBB31 Interrupt Vector

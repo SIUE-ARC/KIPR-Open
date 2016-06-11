@@ -4,7 +4,7 @@
    C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8ssc.inc\
    C:\Users\Hobo\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\lib\GLOBAL~1.INC\
    C:\Users\Hobo\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\memory.inc
-./obj/main.o :  ./lib/DelSig_1.h ./lib/ENC1A_~1.H ./lib/ENC1A_~2.H\
+./obj/main.o :  ./lib/DelSig.h ./lib/ENC1A_~1.H ./lib/ENC1A_~2.H\
    ./lib/ENC1B_~1.H ./lib/ENC1B_~2.H ./lib/LIGHTS~1.H ./lib/PSoCAPI.h\
    ./lib/PSOCGP~1.H ./lib/PWMA.h ./lib/PWMB.h ./lib/Servo0.h\
    ./lib/Servo1.h ./lib/UART.h ./lib/VelTimer.h\
@@ -13,10 +13,10 @@
    C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/_const.h\
    C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/limits.h\
    C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/stdlib.h
-./lib/obj/delsig_1.o :  ./lib/DelSig_1.inc\
+./lib/obj/delsig.o :  ./lib/DelSig.inc\
    C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc\
    C:\Users\Hobo\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\memory.inc
-./lib/obj/delsig_1int.o :  ./lib/DelSig_1.inc\
+./lib/obj/delsigint.o :  ./lib/DelSig.inc\
    C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C29~1/m8c.inc\
    C:\Users\Hobo\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\memory.inc
 ./lib/obj/enc1a_nedge.o :  ./lib/ENC1A_~1.INC\

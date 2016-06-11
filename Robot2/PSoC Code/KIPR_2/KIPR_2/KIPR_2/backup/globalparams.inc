@@ -77,9 +77,9 @@ ANALOG_POWER_JUST:		equ	5h	;Analog power control justified
 OP_AMP_BIAS:			equ	0h	;Op amp bias level
 OP_AMP_BIAS_MASK:		equ	40h	;Op amp bias level mask
 OP_AMP_BIAS_JUST:		equ	0h	;Op amp bias level justified
-REF_MUX:				equ	0h	;Ref mux setting
+REF_MUX:				equ	6h	;Ref mux setting
 REF_MUX_MASK:			equ	38h	;Ref mux setting mask
-REF_MUX_JUST:			equ	0h	;Ref mux setting justified
+REF_MUX_JUST:			equ	30h	;Ref mux setting justified
 AGND_BYPASS:				equ	0h	;AGndBypass setting
 AGND_BYPASS_MASK:			equ	40h	;AGndBypass setting mask
 AGND_BYPASS_JUST:			equ	0h	;AGndBypass setting justified
@@ -92,11 +92,11 @@ SYSCLK_2_DISABLE_JUST:			equ	0h	;SysClk*2 Disable setting justified
 ;
 ; register initial values
 ;
-ANALOG_IO_CONTROL:		equ 0h	;Analog IO Control register (ABF_CR)
-PORT_0_GLOBAL_SELECT:	equ 8ah	;Port 0 global select register (PRT0GS)
-PORT_0_DRIVE_0:			equ 8ah	;Port 0 drive mode 0 register (PRT0DM0)
-PORT_0_DRIVE_1:			equ 75h	;Port 0 drive mode 1 register (PRT0DM1)
-PORT_0_DRIVE_2:			equ 75h	;Port 0 drive mode 2 register (PRT0DM2)
+ANALOG_IO_CONTROL:		equ 80h	;Analog IO Control register (ABF_CR)
+PORT_0_GLOBAL_SELECT:	equ 88h	;Port 0 global select register (PRT0GS)
+PORT_0_DRIVE_0:			equ 88h	;Port 0 drive mode 0 register (PRT0DM0)
+PORT_0_DRIVE_1:			equ 77h	;Port 0 drive mode 1 register (PRT0DM1)
+PORT_0_DRIVE_2:			equ 77h	;Port 0 drive mode 2 register (PRT0DM2)
 PORT_0_INTENABLE:		equ 0h	;Port 0 interrupt enable register (PRT0IE)
 PORT_0_INTCTRL_0:		equ 0h	;Port 0 interrupt control 0 register (PRT0IC0)
 PORT_0_INTCTRL_1:		equ 0h	;Port 0 interrupt control 1 register (PRT0IC1)
