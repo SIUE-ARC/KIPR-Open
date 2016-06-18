@@ -218,9 +218,10 @@ void init(void)
 	UART_PutCRLF();
 	UART_CPutString("KIPR bots roll out!");
 	UART_PutCRLF();	
+	debug = TRUE;
 		
 	//clear drive mode settings for MISC7
-	MISC7_DriveMode_0_ADDR &= ~MISC7_MASK;
+	/*MISC7_DriveMode_0_ADDR &= ~MISC7_MASK;
 	MISC7_DriveMode_1_ADDR &= ~MISC7_MASK;
 	MISC7_DriveMode_2_ADDR &= ~MISC7_MASK;
 	
@@ -269,7 +270,7 @@ void init(void)
 	
 	MISC8_DriveMode_2_ADDR |= misc8_start[2];
 	MISC8_DriveMode_1_ADDR |= misc8_start[1];
-	MISC8_DriveMode_0_ADDR |= misc8_start[0];
+	MISC8_DriveMode_0_ADDR |= misc8_start[0];*/
 }
 
 /* Calculates the velocity in RPMs and returns the value */
@@ -509,6 +510,8 @@ void action(char command, char* param)
 			BIN1_Data_ADDR |= BIN1_MASK;
 			BIN2_Data_ADDR &= ~BIN2_MASK;
 			break;
+		case 'q': //debug
+			debug = !debug;
 		default : //ERROR
 			if (debug)
 				UART_PutCRLF();
