@@ -205,6 +205,7 @@ void init(void)
 	
 	//start the UART
 	UART_Start(UART_PARITY_NONE);
+	UART_IntCntl(UART_ENABLE_RX_INT);
 	
 	//start the Velocity Timer
 	VelTimer_Start();
