@@ -1161,10 +1161,10 @@
  0000           ; register initial values
  0000           ;
  0080           ANALOG_IO_CONTROL:		equ 80h	;Analog IO Control register (ABF_CR)
- 0088           PORT_0_GLOBAL_SELECT:	equ 88h	;Port 0 global select register (PRT0GS)
- 0088           PORT_0_DRIVE_0:			equ 88h	;Port 0 drive mode 0 register (PRT0DM0)
- 0077           PORT_0_DRIVE_1:			equ 77h	;Port 0 drive mode 1 register (PRT0DM1)
- 0077           PORT_0_DRIVE_2:			equ 77h	;Port 0 drive mode 2 register (PRT0DM2)
+ 008A           PORT_0_GLOBAL_SELECT:	equ 8ah	;Port 0 global select register (PRT0GS)
+ 008A           PORT_0_DRIVE_0:			equ 8ah	;Port 0 drive mode 0 register (PRT0DM0)
+ 0075           PORT_0_DRIVE_1:			equ 75h	;Port 0 drive mode 1 register (PRT0DM1)
+ 0075           PORT_0_DRIVE_2:			equ 75h	;Port 0 drive mode 2 register (PRT0DM2)
  0000           PORT_0_INTENABLE:		equ 0h	;Port 0 interrupt enable register (PRT0IE)
  0000           PORT_0_INTCTRL_0:		equ 0h	;Port 0 interrupt control 0 register (PRT0IC0)
  0000           PORT_0_INTCTRL_1:		equ 0h	;Port 0 interrupt control 1 register (PRT0IC1)

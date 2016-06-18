@@ -258,11 +258,11 @@ LoadConfigTBL_kipr_2_Ordered:
 	M8C_SetBank0
 	mov	reg[00h], 00h		; Port_0_Data register (PRT0DR)
 	M8C_SetBank1
-	mov	reg[00h], 88h		; Port_0_DriveMode_0 register (PRT0DM0)
-	mov	reg[01h], 77h		; Port_0_DriveMode_1 register (PRT0DM1)
+	mov	reg[00h], 8ah		; Port_0_DriveMode_0 register (PRT0DM0)
+	mov	reg[01h], 75h		; Port_0_DriveMode_1 register (PRT0DM1)
 	M8C_SetBank0
-	mov	reg[03h], 77h		; Port_0_DriveMode_2 register (PRT0DM2)
-	mov	reg[02h], 88h		; Port_0_GlobalSelect register (PRT0GS)
+	mov	reg[03h], 75h		; Port_0_DriveMode_2 register (PRT0DM2)
+	mov	reg[02h], 8ah		; Port_0_GlobalSelect register (PRT0GS)
 	M8C_SetBank1
 	mov	reg[02h], 00h		; Port_0_IntCtrl_0 register (PRT0IC0)
 	mov	reg[03h], 00h		; Port_0_IntCtrl_1 register (PRT0IC1)
