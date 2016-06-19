@@ -295,8 +295,8 @@ void action(char command, char* param)
 				UART_PutCRLF();
 			}
 			
-			if ((Servo0_CONTROL_LSB_REG & Servo0_CONTROL_REG_START_BIT) == 0x00) //servo has not been started
-				Servo0_Start();
+			//if ((Servo0_CONTROL_LSB_REG & Servo0_CONTROL_REG_START_BIT) == 0x00) //servo has not been started
+			//	Servo0_Start();
 			
 			Servo0_WritePulseWidth(atoi(param));
 			break;
@@ -309,8 +309,8 @@ void action(char command, char* param)
 				UART_PutCRLF();
 			}
 			
-			if ((Servo1_CONTROL_LSB_REG & Servo1_CONTROL_REG_START_BIT) == 0x00) //servo has not been started
-				Servo1_Start();
+			//if ((Servo1_CONTROL_LSB_REG & Servo1_CONTROL_REG_START_BIT) == 0x00) //servo has not been started
+			//	Servo1_Start();
 			
 			Servo1_WritePulseWidth(atoi(param));
 			break;
@@ -322,7 +322,8 @@ void action(char command, char* param)
 				UART_PutCRLF();
 			}
 			
-			Servo0_Stop();;
+			Servo0_WritePulseWidth(0);
+			//Servo0_Stop();;
 			break;
 		case 'g': //SRV1_STP
 			if (debug)
@@ -332,7 +333,8 @@ void action(char command, char* param)
 				UART_PutCRLF();
 			}
 			
-			Servo1_Stop();
+			Servo1_WritePulseWidth(0);
+			//Servo1_Stop();
 			break;
 		case 'h': //GETC1
 			if (debug)
