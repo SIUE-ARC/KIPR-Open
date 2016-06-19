@@ -79,19 +79,6 @@ Stop		0		0
 If STDBY is asserted (ie. pulled LOW) then all modes are treated as STOP.
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^Debug Mode^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-A debug mode is provided for getting serial print statements to indicate useful data when passing commands
-to the PSoC. To enable this mode assert MISC7 and MISC8 as high at power on. (ie, connect MISC7 and MISC8
-to VCC before powering on).
-
-After the init() function is called their states will be read and a flag will be set according to those states.
-If debug mode is not desired merely leave those pins floating.
-
-MISC7		P1[2]
-MISC8		P1[3]
-
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^Light Sensor^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 MISC1		P0[5]
 
@@ -116,7 +103,7 @@ const double tick_time = 0.0000000208333333;
 const double encoder_res = 0.0357142857142857;
 
 BOOL command_flag 		=	FALSE;
-BOOL debug				=	FALSE;
+BOOL debug				=	TRUE;
 
 int i = 0; //loop var
 
@@ -180,9 +167,6 @@ void main(void)
 
 void init(void)
 {
-	BYTE debug_conf;
-	BYTE misc8_start[3], misc7_start[3];
-	
 	//enable the positive edge and falling edge paramers
 	ENC1A_PEDGE_Start();
 	ENC1B_PEDGE_Start();
@@ -205,7 +189,7 @@ void init(void)
 	
 	//start the UART
 	UART_Start(UART_PARITY_NONE);
-	UART_IntCntl(UART_ENABLE_RX_INT);
+	//UART_IntCntl(UART_ENABLE_RX_INT);
 	
 	//start the Velocity Timer
 	VelTimer_Start();
@@ -219,59 +203,6 @@ void init(void)
 	UART_PutCRLF();
 	UART_CPutString("KIPR bots roll out!");
 	UART_PutCRLF();	
-	debug = TRUE;
-		
-	//clear drive mode settings for MISC7
-	/*MISC7_DriveMode_0_ADDR &= ~MISC7_MASK;
-	MISC7_DriveMode_1_ADDR &= ~MISC7_MASK;
-	MISC7_DriveMode_2_ADDR &= ~MISC7_MASK;
-	
-	//clear drive mode settings for MISC8
-	MISC8_DriveMode_0_ADDR &= ~MISC8_MASK;
-	MISC8_DriveMode_1_ADDR &= ~MISC8_MASK;
-	MISC8_DriveMode_2_ADDR &= ~MISC8_MASK;
-	
-	//now that their settings are cleared set their mode to
-	//HIGH-Z to use them as debug point inputs.
-	MISC7_DriveMode_1_ADDR |= MISC7_MASK;
-	
-	MISC8_DriveMode_1_ADDR |= MISC8_MASK;
-	
-	//wait for drive modes to change.
-	for(i = 0; i < 1000; i++);
-	
-	//read the debug inputs, if they are high then they are
-	//being purposefully asserted to enter debug mode.
-	debug_conf &= ((MISC7_Data_ADDR & MISC7_MASK) | (MISC8_Data_ADDR & MISC8_MASK));
-	
-	if (debug_conf == debug_mask)
-		debug = TRUE;
-	
-	//afterwards reset MISC pins to their intended state
-	misc7_start[0] = MISC7_DriveMode_0_ADDR;
-	misc7_start[1] = MISC7_DriveMode_1_ADDR;
-	misc7_start[2] = MISC7_DriveMode_2_ADDR;
-	
-	MISC7_DriveMode_0_ADDR &= ~MISC7_MASK;
-	MISC7_DriveMode_1_ADDR &= ~MISC7_MASK;
-	MISC7_DriveMode_2_ADDR &= ~MISC7_MASK;
-	
-	misc8_start[0] = MISC8_DriveMode_0_ADDR;
-	misc8_start[1] = MISC8_DriveMode_1_ADDR;
-	misc8_start[2] = MISC8_DriveMode_2_ADDR;
-	
-	MISC8_DriveMode_0_ADDR &= ~MISC8_MASK;
-	MISC8_DriveMode_1_ADDR &= ~MISC8_MASK;
-	MISC8_DriveMode_2_ADDR &= ~MISC8_MASK;
-	
-	//set MISC7 and MISC8 to original pin mux state
-	MISC7_DriveMode_2_ADDR |= misc7_start[2];
-	MISC7_DriveMode_1_ADDR |= misc7_start[1];
-	MISC7_DriveMode_0_ADDR |= misc7_start[0];
-	
-	MISC8_DriveMode_2_ADDR |= misc8_start[2];
-	MISC8_DriveMode_1_ADDR |= misc8_start[1];
-	MISC8_DriveMode_0_ADDR |= misc8_start[0];*/
 }
 
 /* Calculates the velocity in RPMs and returns the value */
