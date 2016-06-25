@@ -99,7 +99,7 @@ MISC1		P0[5]
 const BYTE	debug_mask	=	MISC7_MASK | MISC8_MASK;
 const char 	TERM		=	0x07;
 
-const double tick_time = 0.0000000208333333;
+const double tick_time = 0.000000020833333333;
 const double encoder_res = 0.0357142857142857;
 
 BOOL command_flag 		=	FALSE;
@@ -189,7 +189,6 @@ void init(void)
 	
 	//start the UART
 	UART_Start(UART_PARITY_NONE);
-	//UART_IntCntl(UART_ENABLE_RX_INT);
 	
 	//start the Velocity Timer
 	VelTimer_Start();
@@ -295,9 +294,6 @@ void action(char command, char* param)
 				UART_PutCRLF();
 			}
 			
-			//if ((Servo0_CONTROL_LSB_REG & Servo0_CONTROL_REG_START_BIT) == 0x00) //servo has not been started
-			//	Servo0_Start();
-			
 			Servo0_WritePulseWidth(atoi(param));
 			break;
 		case 'e': //SRV1_POS
@@ -308,9 +304,6 @@ void action(char command, char* param)
 				UART_PutSHexInt(atoi(param));
 				UART_PutCRLF();
 			}
-			
-			//if ((Servo1_CONTROL_LSB_REG & Servo1_CONTROL_REG_START_BIT) == 0x00) //servo has not been started
-			//	Servo1_Start();
 			
 			Servo1_WritePulseWidth(atoi(param));
 			break;
@@ -323,7 +316,6 @@ void action(char command, char* param)
 			}
 			
 			Servo0_WritePulseWidth(0);
-			//Servo0_Stop();;
 			break;
 		case 'g': //SRV1_STP
 			if (debug)
@@ -334,7 +326,6 @@ void action(char command, char* param)
 			}
 			
 			Servo1_WritePulseWidth(0);
-			//Servo1_Stop();
 			break;
 		case 'h': //GETC1
 			if (debug)
@@ -446,6 +437,7 @@ void action(char command, char* param)
 			break;
 		case 'q': //debug
 			debug = !debug;
+			break;
 		default : //ERROR
 			if (debug)
 				UART_PutCRLF();
