@@ -35,6 +35,7 @@ class MotorControl:
         self.__serialConnection.send_command(self.__FORWARD, self.__terminator)
         if self.__DEBUG:
             print("Setting direction to forward.")
+            print(self.__serialConnection.get_response())
 
     def set_direction_Reverse(self):
         self.__is_stopped = False
@@ -42,18 +43,23 @@ class MotorControl:
         self.__serialConnection.send_command(self.__REVERSE, self.__terminator)
         if self.__DEBUG:
             print("Setting direction to reverse.")
+            print(self.__serialConnection.get_response())
 
     def set_direction_Left(self):
         self.__is_left = True
+        self.__serialConnection(self.__LEFT, self.__terminator)
         if self.__DEBUG:
             print("Setting direction to left.")
-        self.__serialConnection(self.__LEFT, self.__terminator)
+            print(self.__serialConnection.get_response())
+
 
     def set_direction_Right(self):
         self.__is_left = True
+        self.__serialConnection(self.__RIGHT, self.__terminator)
         if self.__DEBUG:
             print("Setting direction to Right.")
-        self.__serialConnection(self.__RIGHT, self.__terminator)
+            print(self.__serialConnection.get_response())
+
 
     def move_at_velocity(self, velocity):
         pass
@@ -62,6 +68,7 @@ class MotorControl:
         self.__serialConnection.send_command(self.__MOV, percentage, self.__terminator)
         if self.__DEBUG:
             print("Moving at " + str(percentage) + " %")
+            print(self.__serialConnection.get_response())
 
     def stop(self):
         if self.__is_stopped is Not True:
@@ -69,6 +76,7 @@ class MotorControl:
             self.serialConnection.send_command(self.__STOP, self.__terminator)
             if self.__DEBUG:
                 print("Stopping")
+                print(self.__serialConnection.get_response())
         else:
             if self.__DEBUG:
                 print("System is already stopped, ignoring command.")
@@ -80,32 +88,37 @@ class MotorControl:
             self.__serialConnection.send_command(self.__GETV, self.__terminator)
             if self.__DEBUG:
                 print("Getting current velocity.")
+                print(self.__serialConnection.get_response())
             # TODO confirm the result should be a double
             return float(self.__serialConnection.get_response())
 
     def get_encoder_1_count(self):
+        self.__serialConnection.send_command(self.__ENCODER_1_COUNT, self.__terminator)
         if self.__DEBUG:
             print("Getting encoder 1 count.")
-        self.__serialConnection.send_command(self.__ENCODER_1_COUNT, self.__terminator)
+            print(self.__serialConnection.get_response())
         # TODO confirm result
         return float(self.__serialConnection.get_response())
 
     def get_encoder_2_count(self):
+        self.__serialConnection.send_command(self.__ENCODER_2_COUNT, self.__terminator)
         if self.__DEBUG:
             print("Getting encoder 2 count.")
-        self.__serialConnection.send_command(self.__ENCODER_2_COUNT, self.__terminator)
+            print(self.__serialConnection.get_response())
         # TODO confirm result
         return float(self.__serialConnection.get_response())
 
     def reset_encoder_1_count(self):
+        self.__serialConnection.send_command(self.__RESET_ENCODER_1_COUNT)
         if self.__DEBUG:
             print("Resetting encoder 1 count")
-        self.__serialConnection.send_command(self.__RESET_ENCODER_1_COUNT)
+            print(self.__serialConnection.get_response())
 
     def reset_encoder_2_count(self):
+        self.__serialConnection.send_command(self.__RESET_ENCODER_2_COUNT)
         if self.__DEBUG:
             print("Resetting encoder 2 count")
-        self.__serialConnection.send_command(self.__RESET_ENCODER_2_COUNT)
+            print(self.__serialConnection.get_response())
 
     def reset_encoders_count(self):
         if self.__DEBUG:
