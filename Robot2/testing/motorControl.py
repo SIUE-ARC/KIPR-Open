@@ -1,11 +1,13 @@
 __author__ = 'Ryan Owens'
+__Creation_Date__ ='06/25/2016'
+__Last_Update__ = '06/25/2016'
 
 import sys
 import serial
 import time
 
 class MotorControl:
-    def __init__(self, serialConnection, command_terminator):
+    def __init__(self, serialConnection, command_terminator, debug=True):
         self.__serialConnection = serialConnection
         self.__terminator = command_terminator
         self.__MAV = "a"
@@ -21,10 +23,10 @@ class MotorControl:
         self.__LEFT = "o"
         self.__RIGHT = "p"
 
-        self.__DEBUG = True
+        self.__DEBUG = debug
         self.__is_moving_forward = False
         self.__is_left = False;
-        self.__is_stopped = False
+        self.__is_stopped = True
         self.stop()
 
     def set_direction_Forward(self):

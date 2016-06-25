@@ -1,4 +1,6 @@
-__author__ = 'ryanvade'
+__author__ = 'Ryan Owens'
+__Creation_Date__ = '11/02/2015'
+__Last_Update__ = '06/25/2016'
 
 import sys
 import serial
