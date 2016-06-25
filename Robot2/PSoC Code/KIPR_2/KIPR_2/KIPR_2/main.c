@@ -391,10 +391,10 @@ void action(char command, char* param)
 				UART_PutCRLF();
 			}
 			
-			AIN1_Data_ADDR &= AIN1_MASK;
-			AIN2_Data_ADDR &= AIN2_MASK;
-			BIN1_Data_ADDR |= ~BIN1_MASK;
-			BIN2_Data_ADDR |= ~BIN2_MASK;
+			AIN1_Data_ADDR |= AIN1_MASK;
+			AIN2_Data_ADDR &= ~AIN2_MASK;
+			BIN1_Data_ADDR |= BIN1_MASK;
+			BIN2_Data_ADDR &= ~BIN2_MASK;
 			break;
 		case 'n': //BACKWARD
 			if (debug)
@@ -405,8 +405,8 @@ void action(char command, char* param)
 			}
 			
 			AIN1_Data_ADDR &= ~AIN1_MASK;
-			AIN2_Data_ADDR &= ~AIN2_MASK;
-			BIN1_Data_ADDR |= BIN1_MASK;
+			AIN2_Data_ADDR |= AIN2_MASK;
+			BIN1_Data_ADDR &= ~BIN1_MASK;
 			BIN2_Data_ADDR |= BIN2_MASK;
 			break;
 		case 'o': //TURNL
