@@ -1,3 +1,6 @@
+__author__ = 'Ryan Owens'
+__Creation_Date__ ='06/25/2016'
+__Last_Update__='06/25/2016'
 from serialCommunication import BaseSerial
 from motorControl import MotorControl
 from servoControl import ServoControl
