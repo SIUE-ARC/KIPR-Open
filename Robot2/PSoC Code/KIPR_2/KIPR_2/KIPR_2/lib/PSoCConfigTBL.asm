@@ -114,7 +114,7 @@ LoadConfigTBL_kipr_2_Bank0:
 ;  Global Register values Bank 0
 	db		60h, 2ah		; AnalogColumnInputSelect register (AMX_IN)
 	db		66h, 00h		; AnalogComparatorControl1 register (CMP_CR1)
-	db		63h, 35h		; AnalogReferenceControl register (ARF_CR)
+	db		63h, 15h		; AnalogReferenceControl register (ARF_CR)
 	db		65h, 00h		; AnalogSyncControl register (ASY_CR)
 	db		e6h, 01h		; DecimatorControl_0 register (DEC_CR0)
 	db		e7h, 46h		; DecimatorControl_1 register (DEC_CR1)

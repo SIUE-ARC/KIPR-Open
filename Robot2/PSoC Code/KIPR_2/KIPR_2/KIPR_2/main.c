@@ -60,7 +60,7 @@ makes calculations a little easier.
 
 The motor driver must be configured for each of our drive modes. The drive modes are defined as follows:
 
-INPUT		1A		1B		2A		2B
+INPUT		1A		2A		1B		2B
 =======================================
 Forward		1		0		1		0
 Backward	0		1		0		1
@@ -116,6 +116,7 @@ signed long int count1 = 0;
 signed long int count2 = 0;
 
 void init(void);
+void waitLDR(void);
 void action(char command, char* param);
 double getVelocity(void);
 
@@ -193,6 +194,10 @@ void init(void)
 	//start the Velocity Timer
 	VelTimer_Start();
 	
+	//start light sensor PGA and ADC.
+	LightSensor_Start(LightSensor_HIGHPOWER);
+	DelSig_Start(DelSig_HIGHPOWER);
+	
 	//enable appropriate interrupts
 	M8C_EnableIntMask(INT_MSK0, INT_MSK0_GPIO);
 	M8C_EnableIntMask(INT_MSK1, INT_MSK1_DBB00);
@@ -202,6 +207,22 @@ void init(void)
 	UART_PutCRLF();
 	UART_CPutString("KIPR bots roll out!");
 	UART_PutCRLF();	
+	
+	waitLDR();
+}
+
+void waitLDR(void)
+{
+	int threshold = 400; //threshold for startup.
+	int vcount = 0; //voltage counter
+	
+	DelSig_StartAD(); //start grabbing samples.
+	while(vcount > threshold) //keep sampling until threshold is hit.
+	{
+		while(!DelSig_fIsDataAvailable()); //wait for sample to be read.
+		vcount = DelSig_iGetDataClearFlag(); //store sample.
+	}
+	DelSig_StopAD();
 }
 
 /* Calculates the velocity in RPMs and returns the value */

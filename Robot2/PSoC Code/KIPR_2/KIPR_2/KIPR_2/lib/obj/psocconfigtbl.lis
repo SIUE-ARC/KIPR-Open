@@ -932,7 +932,7 @@
  0078           ;  Global Register values Bank 0
  0078 602A              db              60h, 2ah                ; AnalogColumnInputSelect register (AMX_IN)
  007A 6600              db              66h, 00h                ; AnalogComparatorControl1 register (CMP_CR1)
- 007C 6335              db              63h, 35h                ; AnalogReferenceControl register (ARF_CR)
+ 007C 6315              db              63h, 15h                ; AnalogReferenceControl register (ARF_CR)
  007E 6500              db              65h, 00h                ; AnalogSyncControl register (ASY_CR)
  0080 E601              db              e6h, 01h                ; DecimatorControl_0 register (DEC_CR0)
  0082 E746              db              e7h, 46h                ; DecimatorControl_1 register (DEC_CR1)
