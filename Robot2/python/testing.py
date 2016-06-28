@@ -8,7 +8,7 @@ import time
 
 port = "/dev/ttyAMA0"
 baud_rate = 115200
-command_terminator = b'\x07'
+command_terminator = "\x07"
 
 serial_connection = BaseSerial(port=port, baud_rate=baud_rate)
 motor_controller = MotorControl(serialConnection=serial_connection, command_terminator=command_terminator, debug=True)
