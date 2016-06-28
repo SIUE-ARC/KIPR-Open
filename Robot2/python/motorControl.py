@@ -73,7 +73,7 @@ class MotorControl:
     def stop(self):
         if self.__is_stopped is False:
             self.__is_stopped = True
-            self.serialConnection.send_command(self.__STOP, self.__terminator)
+            self.__serialConnection.send_command(self.__STOP, self.__terminator)
             if self.__DEBUG:
                 print("Stopping")
                 print(self.__serialConnection.get_response())
