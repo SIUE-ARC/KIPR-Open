@@ -285,7 +285,7 @@ LoadConfigTBL_kipr_2_Ordered:
 	mov	reg[08h], 07h		; Port_2_DriveMode_0 register (PRT2DM0)
 	mov	reg[09h], f8h		; Port_2_DriveMode_1 register (PRT2DM1)
 	M8C_SetBank0
-	mov	reg[0bh], 08h		; Port_2_DriveMode_2 register (PRT2DM2)
+	mov	reg[0bh], 00h		; Port_2_DriveMode_2 register (PRT2DM2)
 	mov	reg[0ah], d1h		; Port_2_GlobalSelect register (PRT2GS)
 	M8C_SetBank1
 	mov	reg[0ah], 28h		; Port_2_IntCtrl_0 register (PRT2IC0)

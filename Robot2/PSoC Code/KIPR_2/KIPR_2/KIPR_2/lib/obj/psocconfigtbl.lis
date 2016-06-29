@@ -1103,7 +1103,7 @@
  0047 620807            mov     reg[08h], 07h           ; Port_2_DriveMode_0 register (PRT2DM0)
  004A 6209F8            mov     reg[09h], f8h           ; Port_2_DriveMode_1 register (PRT2DM1)
  004D 70EF          and   F, ~FLAG_XIO_MASK
- 004F 620B08            mov     reg[0bh], 08h           ; Port_2_DriveMode_2 register (PRT2DM2)
+ 004F 620B00            mov     reg[0bh], 00h           ; Port_2_DriveMode_2 register (PRT2DM2)
  0052 620AD1            mov     reg[0ah], d1h           ; Port_2_GlobalSelect register (PRT2GS)
  0055 7110          or    F, FLAG_XIO_MASK
  0057 620A28            mov     reg[0ah], 28h           ; Port_2_IntCtrl_0 register (PRT2IC0)

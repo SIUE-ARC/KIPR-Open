@@ -91,11 +91,6 @@ MISC1		P0[5]
 #pragma interrupt_handler encoder1_ISR
 #pragma interrupt_handler encoder2_ISR
 
-#define 	stateA1 		0x20
-#define 	stateB1 		0x08
-#define 	stateA2 		0x10
-#define 	stateB2 		0x04
-
 const BYTE	debug_mask	=	MISC7_MASK | MISC8_MASK;
 const char 	TERM		=	0x07;
 
@@ -478,12 +473,16 @@ void encoder1_ISR(void)
 	curPrt1 = (ENC1A_Data_ADDR & (ENC1A_MASK | ENC1B_MASK));
 		
 	//check which state transitioned.
-	if ((prevPrt1 == 0x00) && (curPrt1 == stateA1)) //A low to high
+	if ((prevPrt1 == 0x00) && (curPrt1 == ENC1A_MASK)) //A low to high
 	{
+		UART_CPutString("Enc1 counting up");
+		UART_PutCRLF();
 		count1++;
 	}
-	else if ((prevPrt1 == 0x00) && (curPrt1 == stateB1)) //B low to high
+	else if ((prevPrt1 == 0x00) && (curPrt1 == ENC1B_MASK)) //B low to high
 	{
+		UART_CPutString("Enc1 counting down");
+		UART_PutCRLF();
 		count1--;
 	}
 }
@@ -494,12 +493,16 @@ void encoder2_ISR(void)
 {
 	curPrt2 = (ENC2A_Data_ADDR & (ENC2A_MASK | ENC2B_MASK));	
 		
-	if ((prevPrt2 == 0x00) && (curPrt2 == stateA2))	
+	if ((prevPrt2 == 0x00) && (curPrt2 == ENC2A_MASK))	
 	{
+		UART_CPutString("Enc2 counting up");
+		UART_PutCRLF();
 		count2++;
 	}
-	else if ((prevPrt2 == 0x00) && (curPrt2 == stateB2))
+	else if ((prevPrt2 == 0x00) && (curPrt2 == ENC2B_MASK))
 	{
+		UART_CPutString("Enc2 counting down");
+		UART_PutCRLF();
 		count2--;
 	}
 }

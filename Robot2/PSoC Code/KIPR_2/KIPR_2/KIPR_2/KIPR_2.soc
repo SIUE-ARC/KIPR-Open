@@ -10,9 +10,65 @@
 			<SOURCE_FILE_LIST>
 				<SOURCE_FILE NAME="main.c" TYPE="UserSourceModule" LANGUAGE="C"/>
 				<SOURCE_FILE NAME="flashsecurity.txt" TYPE="TextFile" LANGUAGE="" OVERLAY_NAME=""/>
-				<SOURCE_FILE NAME="psocapi.h" TYPE="LibraryIncludeFile" LANGUAGE="C" OVERLAY_NAME="" USER_FILE="FALSE" PATH_IN_TREE="" FILEMODTIME="290119072" LIBTIME="1"/>
-				<SOURCE_FILE NAME="psocapi.inc" TYPE="LibraryIncludeFile" LANGUAGE="ASM" OVERLAY_NAME="" USER_FILE="FALSE" PATH_IN_TREE="" FILEMODTIME="290119008" LIBTIME="3"/>
+				<SOURCE_FILE NAME="psocapi.h" TYPE="LibraryIncludeFile" LANGUAGE="C" OVERLAY_NAME="" USER_FILE="FALSE" PATH_IN_TREE="" FILEMODTIME="301928712" LIBTIME="1"/>
+				<SOURCE_FILE NAME="psocapi.inc" TYPE="LibraryIncludeFile" LANGUAGE="ASM" OVERLAY_NAME="" USER_FILE="FALSE" PATH_IN_TREE="" FILEMODTIME="301928232" LIBTIME="3"/>
 				<SOURCE_FILE NAME="memory.inc" TYPE="UserIncludeFile" LANGUAGE="ASM" OVERLAY_NAME="" USER_FILE="FALSE" PATH_IN_TREE=""/>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 				<SOURCE_FILE NAME="delsig.h" TYPE="LibraryIncludeFile" LANGUAGE="ASM" OVERLAY_NAME="" USER_FILE="FALSE" PATH_IN_TREE="" FILEMODTIME="195248052" LIBTIME="0"/>
 				<SOURCE_FILE NAME="delsig.inc" TYPE="LibraryIncludeFile" LANGUAGE="ASM" OVERLAY_NAME="" USER_FILE="FALSE" PATH_IN_TREE="" FILEMODTIME="195248052" LIBTIME="0"/>
 				<SOURCE_FILE NAME="delsig.asm" TYPE="LibrarySource" LANGUAGE="ASM" OVERLAY_NAME="" USER_FILE="FALSE" PATH_IN_TREE="" FILEMODTIME="195248052" LIBTIME="0"/>

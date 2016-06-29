@@ -81,7 +81,7 @@
 #define PORT_2_GLOBAL_SELECT   0xd1    //Port 2 global select register (PRT2GS)
 #define PORT_2_DRIVE_0         0x7     //Port 2 drive mode 0 register (PRT2DM0)
 #define PORT_2_DRIVE_1         0xf8    //Port 2 drive mode 1 register (PRT2DM1)
-#define PORT_2_DRIVE_2         0x8     //Port 2 drive mode 2 register (PRT2DM2)
+#define PORT_2_DRIVE_2         0x0     //Port 2 drive mode 2 register (PRT2DM2)
 #define PORT_2_INTENABLE       0x28    //Port 2 interrupt enable register (PRT2IE)
 #define PORT_2_INTCTRL_0       0x28    //Port 2 interrupt control 0 register (PRT2IC0)
 #define PORT_2_INTCTRL_1       0x28    //Port 2 interrupt control 1 register (PRT2IC1)
