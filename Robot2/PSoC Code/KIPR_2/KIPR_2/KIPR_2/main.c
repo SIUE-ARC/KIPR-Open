@@ -401,8 +401,8 @@ void action(char command, char* param)
 			
 			PWMA_WritePulseWidth(0);
 			PWMB_WritePulseWidth(0);
-			PWMA_Stop();
-			PWMB_Stop();
+			//PWMA_Stop();
+			//PWMB_Stop();
 			break;
 		case 'm': //FORWARD
 			if (debug)
