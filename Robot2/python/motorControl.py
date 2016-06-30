@@ -1,6 +1,6 @@
 __author__ = 'Ryan Owens'
 __Creation_Date__ ='06/25/2016'
-__Last_Update__ = '06/28/2016'
+__Last_Update__ = '06/30/2016'
 
 import sys
 import serial
@@ -27,6 +27,19 @@ class MotorControl:
         self.__is_moving_forward = False
         self.__is_left = False;
         self.__is_stopped = True
+
+        # PID
+        self.__then = 0
+        self.__encoder_1_then = 0
+        self.__encoder_2_ then = 0
+        self.__speed_0 = 0
+        self.__speed_1 = 0
+        self.__target_speed_0 = 0
+        self.__target_speed_1 = 0
+        self.__KP_1 = 0
+        self.__KP_2 = 0
+
+
         self.stop()
 
     def set_direction_Forward(self):
@@ -74,6 +87,10 @@ class MotorControl:
         if self.__is_stopped is False:
             self.__is_stopped = True
             self.__serialConnection.send_command(self.__STOP, self.__terminator)
+            self.__speed_0 = 0
+            self.__speed_1 = 0
+            self.__target_speed_0 = 0
+            self.__target_speed_1 = 0
             if self.__DEBUG:
                 print("Stopping")
                 print(self.__serialConnection.get_response())
@@ -125,3 +142,36 @@ class MotorControl:
             print("Resetting both encoder counts.")
         self.reset_encoder_1_count()
         self.reset_encoder_2_count()
+
+    def clamp(self, n, smallest, largest):
+        return max(smallest, min(n, largest))
+
+    def update(self):
+        encoder_1_now = self.get_encoder_1_count()
+        encoder_2_now = self.get_encoder_2_count()
+
+        time_delta = time.perf_counter() - self.__then
+        encoder_1_delta = encoder_1_now - self.__encoder_1_then
+        encoder_2_delta = encoder_2_now - self.__encoder_2_then
+
+        encoder_1_speed = encoder_1_delta / time_delta
+        encoder_2_speed = encoder_2_delta / time_delta
+
+        encoder_1_error = encoder_1_speed - self.__target_speed_0
+        encoder_2_error = encoder_2_speed - self.__target_speed_1
+
+        encoder_1_ctrl = int(clamp(encoder_1_error * self.__KP_1, -1, 1) * 255))
+        encoder_2_ctrl = int(clamp(encoder_2_error * self.__KP_2, -1, 1) * 255))
+
+        self.__serialConnection.send_command(self.__MOV_1, encoder_1_ctrl, self.__terminator)
+        self.__serialConnection.send_command(self.__MOV_1, encoder_1_ctrl, self.__terminator)
+
+        if encoder_1_ctrl > 0:
+            self.__serialConnection.send_command(self.__FORWARD_1, self.__terminator)
+        else:
+            self.__serialConnection.send_command(self.__REVERSE_1, self.__terminator)
+
+        if encoder_2_ctrl > 0:
+            self.__serialConnection.send_command(self.__FORWARD_2, self.__terminator)
+        else:
+            self.__serialConnection.send_command(self.__REVERSE_2, self.__terminator)
