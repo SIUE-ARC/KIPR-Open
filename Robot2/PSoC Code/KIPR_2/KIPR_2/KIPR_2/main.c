@@ -3,7 +3,8 @@
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^Table of commands^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 MAV 	 		'a' //Move at velocity
-MOV 	 		'b' //move at duty cycle
+MOV_0 	 		'b' //move m0 at duty cycle
+MOV_1 	 		'B' //move m1 at duty cycle
 GETV 	 		'c' //get velocity
 SRV0_POS 	 	'd' //set servo positions for servo 0 (starts PWM)
 SRV1_POS 	 	'e' //set servo positions for servo 1 (starts PWM)
@@ -14,8 +15,10 @@ GETC2	 		'i' //get encoder2 count
 RSTC1	 		'j' //reset encoder1 count
 RSTC2	 		'k' //reset encoder2 count
 STOP			'l' //stop motors
-FORWARD			'm' //sets drive mode to forward
-BACKWARD		'n' //sets drive mode to backward
+FORWARD_0		'm' //sets drive mode of m0 to forward
+FORWARD_1		'M' //sets drive mode to m1 forward
+BACKWARD_0		'n' //sets drive mode to m0 backward
+BACKWARD_1		'N' //sets drive mode to m1 backward
 TURNL			'o' //sets drive mode to left turn
 TURNR			'p' //sets drive mode to right turn
 
@@ -276,16 +279,26 @@ void action(char command, char* param)
 			}
 			
 			break;
-		case 'b': //MOV
+		case 'b': //MOV_0
 			if (debug)
 			{
 				UART_PutCRLF();
-				UART_CPutString("Setting PWM duty cycle to: ");
+				UART_CPutString("Setting m0 PWM duty cycle to: ");
 				UART_PutSHexInt(atoi(param));
 				UART_PutCRLF();
 			}
 			
 			PWMA_WritePulseWidth(atoi(param));
+			break;
+		case 'B': //MOV_1
+			if (debug)
+			{
+				UART_PutCRLF();
+				UART_CPutString("Setting m1 PWM duty cycle to: ");
+				UART_PutSHexInt(atoi(param));
+				UART_PutCRLF();
+			}
+			
 			PWMB_WritePulseWidth(atoi(param));
 			break;
 		case 'c': //GETV
@@ -393,35 +406,55 @@ void action(char command, char* param)
 				UART_CPutString("Stopping motors");
 				UART_PutCRLF();
 			}
+			AIN1_Data_ADDR &= ~AIN1_MASK;
+			AIN2_Data_ADDR &= ~AIN2_MASK;
 			
 			PWMA_WritePulseWidth(0);
 			PWMB_WritePulseWidth(0);
 			//PWMA_Stop();
 			//PWMB_Stop();
 			break;
-		case 'm': //FORWARD
+		case 'm': //FORWARD_0
 			if (debug)
 			{
 				UART_PutCRLF();
-				UART_CPutString("Setting drive mode to forward.");
+				UART_CPutString("Setting drive mode of m0 to forward.");
 				UART_PutCRLF();
 			}
 			
 			AIN1_Data_ADDR |= AIN1_MASK;
 			AIN2_Data_ADDR &= ~AIN2_MASK;
-			BIN1_Data_ADDR |= BIN1_MASK;
-			BIN2_Data_ADDR &= ~BIN2_MASK;
 			break;
-		case 'n': //BACKWARD
+		case 'M': //FORWARD_1
 			if (debug)
 			{
 				UART_PutCRLF();
-				UART_CPutString("Setting drive mode to backward.");
+				UART_CPutString("Setting drive mode of m1 to forward.");
+				UART_PutCRLF();
+			}
+			
+			BIN1_Data_ADDR |= BIN1_MASK;
+			BIN2_Data_ADDR &= ~BIN2_MASK;
+			break;
+		case 'n': //BACKWARD_0
+			if (debug)
+			{
+				UART_PutCRLF();
+				UART_CPutString("Setting drive mode of m0 to backward.");
 				UART_PutCRLF();
 			}
 			
 			AIN1_Data_ADDR &= ~AIN1_MASK;
 			AIN2_Data_ADDR |= AIN2_MASK;
+			break;
+		case 'N': //BACKWARD_1
+			if (debug)
+			{
+				UART_PutCRLF();
+				UART_CPutString("Setting drive mode of m1 to backward.");
+				UART_PutCRLF();
+			}
+			
 			BIN1_Data_ADDR &= ~BIN1_MASK;
 			BIN2_Data_ADDR |= BIN2_MASK;
 			break;
