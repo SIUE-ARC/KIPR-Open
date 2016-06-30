@@ -78,7 +78,8 @@ class MotorControl:
         pass
 
     def move_at_percentage(self, percentage):
-        self.__serialConnection.send_command(self.__MOV, percentage, self.__terminator)
+        self.__speed_0 = percentage;
+        self.__speed_1 = percentage;
         if self.__DEBUG:
             print("Moving at " + str(percentage) + " %")
             print(self.__serialConnection.get_response())
