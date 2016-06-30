@@ -6,6 +6,7 @@ from motorControl import MotorControl
 from servoControl import ServoControl
 import time
 
+
 port = "/dev/ttyAMA0"
 baud_rate = 115200
 command_terminator = "\x07"
