@@ -6,6 +6,18 @@ from motorControl import MotorControl
 from servoControl import ServoControl
 import time
 
+try:
+    import RPi.GPIO as GPIO
+except ImportError as e:
+    print(e)
+    sys.exit(1)
+
+GPIO.setmode(GPIO.BOARD)
+LED_PIN = 21
+HIGH = GPIO.HIGH
+LOW = GPIO.LOW
+GPIO.setup(21, GPIO.OUT)
+GPIO.output(LED_PIN, HIGH)
 
 port = "/dev/ttyAMA0"
 baud_rate = 115200
@@ -25,3 +37,5 @@ time.sleep(2)
 motor_controller.stop()
 print("Done")
 serial_connection.close_connection()
+GPIO.output(LED_PIN, LOW)
+GPIO.cleanup()
