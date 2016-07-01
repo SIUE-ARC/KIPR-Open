@@ -194,7 +194,7 @@ ENDIF
     reti
 
     org   50h                      ;PSoC Block DBB30 Interrupt Vector
-    ljmp	_DelSig_ADConversion_ISR
+    // call	void_handler
     reti
 
     org   54h                      ;PSoC Block DBB31 Interrupt Vector
@@ -206,7 +206,7 @@ ENDIF
     reti
 
     org   5Ch                      ;PSoC Block DCB33 Interrupt Vector
-    ljmp	_VelTimer_ISR
+    ljmp	_UltraSonic_ISR
     reti
 
     org   60h                      ;PSoC I2C Interrupt Vector

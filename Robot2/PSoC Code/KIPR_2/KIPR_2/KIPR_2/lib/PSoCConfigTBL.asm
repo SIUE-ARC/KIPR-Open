@@ -20,21 +20,6 @@ export LoadConfigTBL_kipr_2_Bank0
 export LoadConfigTBL_kipr_2_Ordered
 AREA lit(rom, rel)
 LoadConfigTBL_kipr_2_Bank0:
-;  Instance name DelSig, User Module DelSig
-;       Instance name DelSig, Block Name ADC1(ASC10)
-	db		80h, 88h		;DelSig_AtoD1cr0(ASC10CR0)
-	db		81h, 00h		;DelSig_AtoD1cr1(ASC10CR1)
-	db		82h, 00h		;DelSig_AtoD1cr2(ASC10CR2)
-	db		83h, ech		;DelSig_AtoD1cr3(ASC10CR3)
-;       Instance name DelSig, Block Name ADC2(ASD20)
-	db		90h, 90h		;DelSig_AtoD2cr0(ASD20CR0)
-	db		91h, 00h		;DelSig_AtoD2cr1(ASD20CR1)
-	db		92h, 40h		;DelSig_AtoD2cr2(ASD20CR2)
-	db		93h, e0h		;DelSig_AtoD2cr3(ASD20CR3)
-;       Instance name DelSig, Block Name PWM(DBB30)
-	db		53h, 00h		;DelSig_PWM_CR0(DBB30CR0)
-	db		51h, ffh		;DelSig_PWM_DR1(DBB30DR1)
-	db		52h, 01h		;DelSig_PWM_DR2(DBB30DR2)
 ;  Instance name ENC1A_NEDGE, User Module DigInv
 ;       Instance name ENC1A_NEDGE, Block Name DigInv(DBB10)
 	db		33h, 00h		;ENC1A_NEDGE_CONTROL_REG(DBB10CR0)
@@ -55,12 +40,18 @@ LoadConfigTBL_kipr_2_Bank0:
 	db		37h, 03h		;ENC1B_PEDGE_CONTROL_REG(DBB11CR0)
 	db		35h, 00h		;ENC1B_PEDGE_DATA_1_REG(DBB11DR1)
 	db		36h, 00h		;ENC1B_PEDGE_DATA_2_REG(DBB11DR2)
-;  Instance name LightSensor, User Module PGA
-;       Instance name LightSensor, Block Name GAIN(ACB00)
-	db		71h, fdh		;LightSensor_GAIN_CR0(ACB00CR0)
-	db		72h, 21h		;LightSensor_GAIN_CR1(ACB00CR1)
-	db		73h, 20h		;LightSensor_GAIN_CR2(ACB00CR2)
-	db		70h, 00h		;LightSensor_GAIN_CR3(ACB00CR3)
+;  Instance name LDR_ADC, User Module SAR6
+;       Instance name LDR_ADC, Block Name SA(ASC10)
+	db		80h, 00h		;LDR_ADC_CR0(ASC10CR0)
+	db		81h, 5fh		;LDR_ADC_CR1(ASC10CR1)
+	db		82h, 60h		;LDR_ADC_CR2(ASC10CR2)
+	db		83h, 00h		;LDR_ADC_CR3(ASC10CR3)
+;  Instance name LDR_Gain, User Module PGA
+;       Instance name LDR_Gain, Block Name GAIN(ACB00)
+	db		71h, feh		;LDR_Gain_GAIN_CR0(ACB00CR0)
+	db		72h, 21h		;LDR_Gain_GAIN_CR1(ACB00CR1)
+	db		73h, 20h		;LDR_Gain_GAIN_CR2(ACB00CR2)
+	db		70h, 00h		;LDR_Gain_GAIN_CR3(ACB00CR3)
 ;  Instance name PWMA, User Module PWM8
 ;       Instance name PWMA, Block Name PWM8(DCB03)
 	db		2fh, 00h		;PWMA_CONTROL_REG(DCB03CR0)
@@ -71,6 +62,30 @@ LoadConfigTBL_kipr_2_Bank0:
 	db		43h, 00h		;PWMB_CONTROL_REG(DBB20CR0)
 	db		41h, ffh		;PWMB_PERIOD_REG(DBB20DR1)
 	db		42h, 00h		;PWMB_COMPARE_REG(DBB20DR2)
+;  Instance name Reflect0_ADC, User Module SAR6
+;       Instance name Reflect0_ADC, Block Name SA(ASD11)
+	db		84h, 00h		;Reflect0_ADC_CR0(ASD11CR0)
+	db		85h, 9fh		;Reflect0_ADC_CR1(ASD11CR1)
+	db		86h, 60h		;Reflect0_ADC_CR2(ASD11CR2)
+	db		87h, 0ch		;Reflect0_ADC_CR3(ASD11CR3)
+;  Instance name Reflect0_Gain, User Module PGA
+;       Instance name Reflect0_Gain, Block Name GAIN(ACB01)
+	db		75h, feh		;Reflect0_Gain_GAIN_CR0(ACB01CR0)
+	db		76h, 21h		;Reflect0_Gain_GAIN_CR1(ACB01CR1)
+	db		77h, 20h		;Reflect0_Gain_GAIN_CR2(ACB01CR2)
+	db		74h, 00h		;Reflect0_Gain_GAIN_CR3(ACB01CR3)
+;  Instance name Reflect1_ADC, User Module SAR6
+;       Instance name Reflect1_ADC, Block Name SA(ASC12)
+	db		88h, 00h		;Reflect1_ADC_CR0(ASC12CR0)
+	db		89h, 5fh		;Reflect1_ADC_CR1(ASC12CR1)
+	db		8ah, 60h		;Reflect1_ADC_CR2(ASC12CR2)
+	db		8bh, 00h		;Reflect1_ADC_CR3(ASC12CR3)
+;  Instance name Reflect1_Gain, User Module PGA
+;       Instance name Reflect1_Gain, Block Name GAIN(ACB02)
+	db		79h, feh		;Reflect1_Gain_GAIN_CR0(ACB02CR0)
+	db		7ah, 21h		;Reflect1_Gain_GAIN_CR1(ACB02CR1)
+	db		7bh, 20h		;Reflect1_Gain_GAIN_CR2(ACB02CR2)
+	db		78h, 00h		;Reflect1_Gain_GAIN_CR3(ACB02CR3)
 ;  Instance name Servo0, User Module PWM16
 ;       Instance name Servo0, Block Name PWM16_LSB(DBB01)
 	db		27h, 00h		;Servo0_CONTROL_LSB_REG(DBB01CR0)
@@ -98,26 +113,30 @@ LoadConfigTBL_kipr_2_Bank0:
 	db		3bh, 00h		;UART_TX_CONTROL_REG(DCB12CR0)
 	db		39h, 00h		;UART_TX_BUFFER_REG (DCB12DR1)
 	db		3ah, 00h		;UART_(DCB12DR2)
-;  Instance name VelTimer, User Module Timer24
-;       Instance name VelTimer, Block Name TIMER24_ISB(DCB32)
-	db		5bh, 00h		;VelTimer_CONTROL_ISB_REG(DCB32CR0)
-	db		59h, ffh		;VelTimer_PERIOD_ISB_REG(DCB32DR1)
-	db		5ah, 00h		;VelTimer_COMPARE_ISB_REG(DCB32DR2)
-;       Instance name VelTimer, Block Name TIMER24_LSB(DBB31)
-	db		57h, 00h		;VelTimer_CONTROL_LSB_REG(DBB31CR0)
-	db		55h, ffh		;VelTimer_PERIOD_LSB_REG(DBB31DR1)
-	db		56h, 00h		;VelTimer_COMPARE_LSB_REG(DBB31DR2)
-;       Instance name VelTimer, Block Name TIMER24_MSB(DCB33)
-	db		5fh, 06h		;VelTimer_CONTROL_MSB_REG(DCB33CR0)
-	db		5dh, ffh		;VelTimer_PERIOD_MSB_REG(DCB33DR1)
-	db		5eh, 00h		;VelTimer_COMPARE_MSB_REG(DCB33DR2)
+;  Instance name UltraSonic, User Module Timer32
+;       Instance name UltraSonic, Block Name TIMER32_ISB1(DBB31)
+	db		57h, 00h		;UltraSonic_CONTROL_ISB1_REG(DBB31CR0)
+	db		55h, 00h		;UltraSonic_PERIOD_ISB1_REG(DBB31DR1)
+	db		56h, 00h		;UltraSonic_COMPARE_ISB1_REG(DBB31DR2)
+;       Instance name UltraSonic, Block Name TIMER32_ISB2(DCB32)
+	db		5bh, 00h		;UltraSonic_CONTROL_ISB2_REG(DCB32CR0)
+	db		59h, 00h		;UltraSonic_PERIOD_ISB2_REG(DCB32DR1)
+	db		5ah, 00h		;UltraSonic_COMPARE_ISB2_REG(DCB32DR2)
+;       Instance name UltraSonic, Block Name TIMER32_LSB(DBB30)
+	db		53h, 00h		;UltraSonic_CONTROL_LSB_REG(DBB30CR0)
+	db		51h, 00h		;UltraSonic_PERIOD_LSB_REG(DBB30DR1)
+	db		52h, 00h		;UltraSonic_COMPARE_LSB_REG(DBB30DR2)
+;       Instance name UltraSonic, Block Name TIMER32_MSB(DCB33)
+	db		5fh, 04h		;UltraSonic_CONTROL_MSB_REG(DCB33CR0)
+	db		5dh, 00h		;UltraSonic_PERIOD_MSB_REG(DCB33DR1)
+	db		5eh, 00h		;UltraSonic_COMPARE_MSB_REG(DCB33DR2)
 ;  Global Register values Bank 0
-	db		60h, 2ah		; AnalogColumnInputSelect register (AMX_IN)
+	db		60h, 0ah		; AnalogColumnInputSelect register (AMX_IN)
 	db		66h, 00h		; AnalogComparatorControl1 register (CMP_CR1)
 	db		63h, 15h		; AnalogReferenceControl register (ARF_CR)
 	db		65h, 00h		; AnalogSyncControl register (ASY_CR)
-	db		e6h, 01h		; DecimatorControl_0 register (DEC_CR0)
-	db		e7h, 46h		; DecimatorControl_1 register (DEC_CR1)
+	db		e6h, 00h		; DecimatorControl_0 register (DEC_CR0)
+	db		e7h, 40h		; DecimatorControl_1 register (DEC_CR1)
 	db		d6h, 00h		; I2CConfig register (I2C_CFG)
 	db		b0h, 10h		; Row_0_InputMux register (RDI0RI)
 	db		b1h, 00h		; Row_0_InputSync register (RDI0SYN)
@@ -140,7 +159,7 @@ LoadConfigTBL_kipr_2_Bank0:
 	db		c4h, 33h		; Row_2_LogicSelect_1 register (RDI3LT1)
 	db		c5h, 80h		; Row_2_OutputDrive_0 register (RDI2SRO0)
 	db		c6h, 20h		; Row_2_OutputDrive_1 register (RDI2SRO1)
-	db		c8h, 55h		; Row_3_InputMux register (RDI3RI)
+	db		c8h, 54h		; Row_3_InputMux register (RDI3RI)
 	db		c9h, 00h		; Row_3_InputSync register (RDI3SYN)
 	db		cah, 30h		; Row_3_LogicInputAMux register (RDI3IS)
 	db		cbh, 33h		; Row_3_LogicSelect_0 register (RDI3LT0)
@@ -153,13 +172,6 @@ LoadConfigTBL_kipr_2_Bank0:
 	db		6fh, 00h		; TMP_DR3 register (TMP_DR3)
 	db		ffh
 LoadConfigTBL_kipr_2_Bank1:
-;  Instance name DelSig, User Module DelSig
-;       Instance name DelSig, Block Name ADC1(ASC10)
-;       Instance name DelSig, Block Name ADC2(ASD20)
-;       Instance name DelSig, Block Name PWM(DBB30)
-	db		50h, 31h		;DelSig_PWM_FN(DBB30FN)
-	db		51h, 15h		;DelSig_PWM_SL(DBB30IN)
-	db		52h, 40h		;DelSig_PWM_OS(DBB30OU)
 ;  Instance name ENC1A_NEDGE, User Module DigInv
 ;       Instance name ENC1A_NEDGE, Block Name DigInv(DBB10)
 	db		30h, 20h		;ENC1A_NEDGE_FUNC_REG   (DBB10FN)
@@ -180,8 +192,10 @@ LoadConfigTBL_kipr_2_Bank1:
 	db		34h, 22h		;ENC1B_PEDGE_FUNC_REG(DBB11FN)
 	db		35h, c0h		;ENC1B_PEDGE_INPUT_REG(DBB11IN)
 	db		36h, 40h		;ENC1B_PEDGE_OUTPUT_REG(DBB11OU)
-;  Instance name LightSensor, User Module PGA
-;       Instance name LightSensor, Block Name GAIN(ACB00)
+;  Instance name LDR_ADC, User Module SAR6
+;       Instance name LDR_ADC, Block Name SA(ASC10)
+;  Instance name LDR_Gain, User Module PGA
+;       Instance name LDR_Gain, Block Name GAIN(ACB00)
 ;  Instance name PWMA, User Module PWM8
 ;       Instance name PWMA, Block Name PWM8(DCB03)
 	db		2ch, 21h		;PWMA_FUNC_REG(DCB03FN)
@@ -192,6 +206,14 @@ LoadConfigTBL_kipr_2_Bank1:
 	db		40h, 21h		;PWMB_FUNC_REG(DBB20FN)
 	db		41h, 11h		;PWMB_INPUT_REG(DBA20IN)
 	db		42h, 45h		;PWMB_OUTPUT_REG(DBA20OU)
+;  Instance name Reflect0_ADC, User Module SAR6
+;       Instance name Reflect0_ADC, Block Name SA(ASD11)
+;  Instance name Reflect0_Gain, User Module PGA
+;       Instance name Reflect0_Gain, Block Name GAIN(ACB01)
+;  Instance name Reflect1_ADC, User Module SAR6
+;       Instance name Reflect1_ADC, Block Name SA(ASC12)
+;  Instance name Reflect1_Gain, User Module PGA
+;       Instance name Reflect1_Gain, Block Name GAIN(ACB02)
 ;  Instance name Servo0, User Module PWM16
 ;       Instance name Servo0, Block Name PWM16_LSB(DBB01)
 	db		24h, 01h		;Servo0_FUNC_LSB_REG(DBB01FN)
@@ -219,24 +241,28 @@ LoadConfigTBL_kipr_2_Bank1:
 	db		38h, 0dh		;UART_TX_FUNC_REG   (DCB12FN)
 	db		39h, 01h		;UART_TX_INPUT_REG  (DCB12IN)
 	db		3ah, 45h		;UART_TX_OUTPUT_REG (DCB12OU)
-;  Instance name VelTimer, User Module Timer24
-;       Instance name VelTimer, Block Name TIMER24_ISB(DCB32)
-	db		58h, 00h		;VelTimer_FUNC_ISB_REG(DCB32FN)
-	db		59h, 34h		;VelTimer_INPUT_ISB_REG(DCB32IN)
-	db		5ah, 80h		;VelTimer_OUTPUT_ISB_REG(DCB32OU)
-;       Instance name VelTimer, Block Name TIMER24_LSB(DBB31)
-	db		54h, 00h		;VelTimer_FUNC_LSB_REG(DBB31FN)
-	db		55h, 04h		;VelTimer_INPUT_LSB_REG(DBB31IN)
-	db		56h, 80h		;VelTimer_OUTPUT_LSB_REG(DBB31OU)
-;       Instance name VelTimer, Block Name TIMER24_MSB(DCB33)
-	db		5ch, 20h		;VelTimer_FUNC_MSB_REG(DCB33FN)
-	db		5dh, 34h		;VelTimer_INPUT_MSB_REG(DCB33IN)
-	db		5eh, 80h		;VelTimer_OUTPUT_MSB_REG(DCB33OU)
+;  Instance name UltraSonic, User Module Timer32
+;       Instance name UltraSonic, Block Name TIMER32_ISB1(DBB31)
+	db		54h, 00h		;UltraSonic_FUNC_ISB1_REG(DBB31FN)
+	db		55h, 34h		;UltraSonic_INPUT_ISB1_REG(DBB31IN)
+	db		56h, 00h		;UltraSonic_OUTPUT_ISB1_REG(DBB31OU)
+;       Instance name UltraSonic, Block Name TIMER32_ISB2(DCB32)
+	db		58h, 00h		;UltraSonic_FUNC_ISB2_REG(DCB32FN)
+	db		59h, 34h		;UltraSonic_INPUT_ISB2_REG(DCB32IN)
+	db		5ah, 00h		;UltraSonic_OUTPUT_ISB2_REG(DCB32OU)
+;       Instance name UltraSonic, Block Name TIMER32_LSB(DBB30)
+	db		50h, 00h		;UltraSonic_FUNC_LSB_REG(DBB30FN)
+	db		51h, c4h		;UltraSonic_INPUT_LSB_REG(DBB30IN)
+	db		52h, 00h		;UltraSonic_OUTPUT_LSB_REG(DBB30OU)
+;       Instance name UltraSonic, Block Name TIMER32_MSB(DCB33)
+	db		5ch, 20h		;UltraSonic_FUNC_MSB_REG(DCB33FN)
+	db		5dh, 34h		;UltraSonic_INPUT_MSB_REG(DCB33IN)
+	db		5eh, 00h		;UltraSonic_OUTPUT_MSB_REG(DCB33OU)
 ;  Global Register values Bank 1
 	db		61h, 00h		; AnalogClockSelect1 register (CLK_CR1)
 	db		69h, 00h		; AnalogClockSelect2 register (CLK_CR2)
 	db		60h, 00h		; AnalogColumnClockSelect register (CLK_CR0)
-	db		62h, 80h		; AnalogIOControl_0 register (ABF_CR0)
+	db		62h, 00h		; AnalogIOControl_0 register (ABF_CR0)
 	db		67h, 33h		; AnalogLUTControl0 register (ALT_CR0)
 	db		68h, 33h		; AnalogLUTControl1 register (ALT_CR1)
 	db		63h, 00h		; AnalogModulatorControl_0 register (AMD_CR0)
@@ -250,7 +276,7 @@ LoadConfigTBL_kipr_2_Bank1:
 	db		dfh, 19h		; OscillatorControl_3 register (OSC_CR3)
 	db		deh, 00h		; OscillatorControl_4 register (OSC_CR4)
 	db		ddh, 00h		; OscillatorGlobalBusEnableControl register (OSC_GO_EN)
-	db		e7h, a8h		; Type2Decimator_Control register (DEC_CR2)
+	db		e7h, 00h		; Type2Decimator_Control register (DEC_CR2)
 	db		ffh
 AREA psoc_config(rom, rel)
 LoadConfigTBL_kipr_2_Ordered:
@@ -261,8 +287,8 @@ LoadConfigTBL_kipr_2_Ordered:
 	mov	reg[00h], 8ah		; Port_0_DriveMode_0 register (PRT0DM0)
 	mov	reg[01h], 75h		; Port_0_DriveMode_1 register (PRT0DM1)
 	M8C_SetBank0
-	mov	reg[03h], 75h		; Port_0_DriveMode_2 register (PRT0DM2)
-	mov	reg[02h], 8ah		; Port_0_GlobalSelect register (PRT0GS)
+	mov	reg[03h], 74h		; Port_0_DriveMode_2 register (PRT0DM2)
+	mov	reg[02h], 8bh		; Port_0_GlobalSelect register (PRT0GS)
 	M8C_SetBank1
 	mov	reg[02h], 00h		; Port_0_IntCtrl_0 register (PRT0IC0)
 	mov	reg[03h], 00h		; Port_0_IntCtrl_1 register (PRT0IC1)

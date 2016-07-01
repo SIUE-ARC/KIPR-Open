@@ -116,7 +116,7 @@ signed long int count2 = 0;
 void init(void);
 void waitLDR(void);
 void action(char command, char* param);
-double getVelocity(void);
+//double getVelocity(void);
 
 void main(void)
 {
@@ -190,7 +190,7 @@ void init(void)
 	UART_Start(UART_PARITY_NONE);
 	
 	//start the Velocity Timer
-	VelTimer_Start();
+	//VelTimer_Start();
 	
 	//start light sensor PGA and ADC.
 	LightSensor_Start(LightSensor_HIGHPOWER);
@@ -224,7 +224,7 @@ void waitLDR(void)
 }
 
 /* Calculates the velocity in RPMs and returns the value */
-double getVelocity(void)
+/*double getVelocity(void)
 {
 	double vel = 0;
 	DWORD* endTicks; //ending value of counter
@@ -248,7 +248,7 @@ double getVelocity(void)
 	vel = encoder_res*diff/(abs(*initTicks - *endTicks)*tick_time);
 	
 	return vel;	
-}
+}*/
 
 /* Action lookup. Takes the appropriate action for the given command and param.
  * command: the command read from the UART.
@@ -290,7 +290,7 @@ void action(char command, char* param)
 			
 			PWMA_WritePulseWidth(atoi(param));
 			break;
-		case 'B': //MOV_1
+		case 'c': //MOV_1
 			if (debug)
 			{
 				UART_PutCRLF();
@@ -301,7 +301,7 @@ void action(char command, char* param)
 			
 			PWMB_WritePulseWidth(atoi(param));
 			break;
-		case 'c': //GETV
+		/*case 'c': //GETV
 			*param = 0;
 			if (debug)
 			{
@@ -313,7 +313,7 @@ void action(char command, char* param)
 			{
 				UART_PutString(itoa(param, getVelocity(), 10));
 			}
-			break;
+			break;*/
 		case 'd': //SRV0_POS
 			if (debug)
 			{
