@@ -18,17 +18,21 @@
 #define __PSOCAPI_H
 
 #include "PSoCGPIOINT.h"
-#include "DelSig.h"
 #include "ENC1A_NEDGE.h"
 #include "ENC1A_PEDGE.h"
 #include "ENC1B_NEDGE.h"
 #include "ENC1B_PEDGE.h"
-#include "LightSensor.h"
+#include "LDR_ADC.h"
+#include "LDR_Gain.h"
 #include "PWMA.h"
 #include "PWMB.h"
+#include "Reflect0_ADC.h"
+#include "Reflect0_Gain.h"
+#include "Reflect1_ADC.h"
+#include "Reflect1_Gain.h"
 #include "Servo0.h"
 #include "Servo1.h"
 #include "UART.h"
-#include "VelTimer.h"
+#include "UltraSonic.h"
 
 #endif

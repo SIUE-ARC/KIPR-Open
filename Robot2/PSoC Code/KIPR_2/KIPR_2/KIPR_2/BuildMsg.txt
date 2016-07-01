@@ -1,10 +1,6 @@
 Starting MAKE...
 creating project.mk 
 
-lib/delsig.asm
-
-lib/delsigint.asm
-
 lib/enc1a_nedge.asm
 
 lib/enc1a_nedgeint.asm
@@ -21,7 +17,9 @@ lib/enc1b_pedge.asm
 
 lib/enc1b_pedgeint.asm
 
-lib/lightsensor.asm
+lib/ldr_adc.asm
+
+lib/ldr_gain.asm
 
 lib/psocconfig.asm
 
@@ -37,6 +35,14 @@ lib/pwmb.asm
 
 lib/pwmbint.asm
 
+lib/reflect0_adc.asm
+
+lib/reflect0_gain.asm
+
+lib/reflect1_adc.asm
+
+lib/reflect1_gain.asm
+
 lib/servo0.asm
 
 lib/servo0int.asm
@@ -51,48 +57,64 @@ lib/uartint.asm
 
 lib/uartplus.asm
 
-lib/veltimer.asm
+lib/ultrasonic.asm
 
-lib/veltimerint.asm
+lib/ultrasonicint.asm
 
-./boot.asm
+!W C:\Users\BRYANO~1\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c(196):[warning] [MISRA 2200]calling an undeclared function may cause unexpected behavior if the function 
 
-Linking..
+takes or returns values other than int
 
-LMM info: area 'InterruptRAM' uses 5 bytes in SRAM bank 0
+!W C:\Users\BRYANO~1\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c(196):[warning] [MISRA 2714]calling a function without prototype may cause unexpected behavior if the function 
 
-LMM info: area 'UART_RAM' item of 16 bytes allocated in SRAM page 0
+takes or returns values other than int
 
-LMM info: area 'virtual_registers' uses 15 bytes in SRAM page 0
+!E C:\Users\BRYANO~1\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c(196): undeclared identifier `LightSensor_HIGHPOWER'
 
-LMM info: area 'data' item of 4 bytes allocated in SRAM page 0
+!W C:\Users\BRYANO~1\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c(197):[warning] [MISRA 2200]calling an undeclared function may cause unexpected behavior if the function 
 
-LMM info: area 'data' item of 4 bytes allocated in SRAM page 0
+takes or returns values other than int
 
-LMM info: area 'data' item of 2 bytes allocated in SRAM page 0
+!W C:\Users\BRYANO~1\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c(197):[warning] [MISRA 2714]calling a function without prototype may cause unexpected behavior if the function 
 
-LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+takes or returns values other than int
 
-LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+!E C:\Users\BRYANO~1\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c(197): undeclared identifier `DelSig_HIGHPOWER'
 
-LMM info: area 'UART_RAM' item of 1 bytes allocated in SRAM page 0
+!W C:\Users\BRYANO~1\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c(217):[warning] [MISRA 2200]calling an undeclared function may cause unexpected behavior if the function 
 
-LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+takes or returns values other than int
 
-LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+!W C:\Users\BRYANO~1\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c(217):[warning] [MISRA 2714]calling a function without prototype may cause unexpected behavior if the function 
 
-LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+takes or returns values other than int
 
-LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+!W C:\Users\BRYANO~1\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c(220):[warning] [MISRA 2200]calling an undeclared function may cause unexpected behavior if the function 
 
-idata dump at output/KIPR_2.idata
+takes or returns values other than int
 
-  ROM 25% full. 7889 out of 32768 bytes used (does not include absolute areas).
+!W C:\Users\BRYANO~1\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c(220):[warning] [MISRA 2714]calling a function without prototype may cause unexpected behavior if the function 
 
-  RAM 3% full. 53 bytes used (does not include stack usage).
+takes or returns values other than int
 
-Built with ICCM8C STD V7.05.00
+!W C:\Users\BRYANO~1\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c(221):[warning] [MISRA 2200]calling an undeclared function may cause unexpected behavior if the function 
+
+takes or returns values other than int
+
+!W C:\Users\BRYANO~1\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c(221):[warning] [MISRA 2714]calling a function without prototype may cause unexpected behavior if the function 
+
+takes or returns values other than int
+
+!W C:\Users\BRYANO~1\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c(223):[warning] [MISRA 2200]calling an undeclared function may cause unexpected behavior if the function 
+
+takes or returns values other than int
+
+!W C:\Users\BRYANO~1\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\main.c(223):[warning] [MISRA 2714]calling a function without prototype may cause unexpected behavior if the function 
+
+takes or returns values other than int
+
+make: *** [obj/main.o] Error 1
 
  
-KIPR_2 - 0 error(s) 0 warning(s) 21:15:01
+KIPR_2 - 3 error(s) 12 warning(s) 20:36:53
 
