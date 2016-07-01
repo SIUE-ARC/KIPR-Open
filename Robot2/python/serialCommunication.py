@@ -1,6 +1,6 @@
 __author__ = 'Ryan Owens'
 __Creation_Date__ = '11/02/2015'
-__Last_Update__ = '06/25/2016'
+__Last_Update__ = '07/01/2016'
 
 import sys
 import serial
@@ -13,7 +13,7 @@ import time
 #     sys.exit(1)
 
 
-class BaseSerial:
+class SerialCommunication:
     constant_communication = False
 
     def __init__(self, port, baud_rate):
