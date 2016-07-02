@@ -27,6 +27,7 @@ class MotorControl:
         self.__RIGHT = "p"
 
         self.__DEBUG = debug
+        self.__WAIT_FOR_ECHO = False
         self.__is_moving_forward = False
         self.__is_left = False;
         self.__is_stopped = True
@@ -46,64 +47,82 @@ class MotorControl:
         self.stop()
 
     def set_direction_Forward(self):
+        warnings.warn("deprecated, use move_at_velocity or move_at_percentage", DeprecationWarning)
         self.__is_stopped = False
         self.__is_moving_forward = True
         self.__serialConnection.send_command(self.__FORWARD, self.__terminator)
         if self.__DEBUG:
             print("Setting direction to forward.")
-            print(self.__serialConnection.get_response())
+            if self.__WAIT_FOR_ECHO:
+                print(self.__serialConnection.get_response())
 
     def set_direction_Reverse(self):
+        warnings.warn("deprecated, use move_at_velocity or move_at_percentage", DeprecationWarning)
         self.__is_stopped = False
         self.__is_moving_forward = False
         self.__serialConnection.send_command(self.__REVERSE, self.__terminator)
         if self.__DEBUG:
             print("Setting direction to reverse.")
-            print(self.__serialConnection.get_response())
+            if self.__WAIT_FOR_ECHO:
+                print(self.__serialConnection.get_response())
 
     def set_direction_Left(self):
+        warnings.warn("deprecated, use move_at_velocity or move_at_percentage", DeprecationWarning)
         self.__is_left = True
         self.__serialConnection(self.__LEFT, self.__terminator)
         if self.__DEBUG:
             print("Setting direction to left.")
-            print(self.__serialConnection.get_response())
-
+            if self.__WAIT_FOR_ECHO:
+                print(self.__serialConnection.get_response())
 
     def set_direction_Right(self):
+        warnings.warn("deprecated, use move_at_velocity or move_at_percentage", DeprecationWarning)
         self.__is_left = True
         self.__serialConnection(self.__RIGHT, self.__terminator)
         if self.__DEBUG:
             print("Setting direction to Right.")
-            print(self.__serialConnection.get_response())
+            if self.__WAIT_FOR_ECHO:
+                print(self.__serialConnection.get_response())
 
 
     def move_at_velocity(self, velocity):
-        pass
-
-    def move_at_percentage(self, percentage):
         self.__is_stopped = False;
-        self.__target_speed_0 = percentage;
-        self.__target_speed_1 = percentage;
+        if type(velocity) is tuple:
+            self.__target_speed_0 = velocity[0];
+            self.__target_speed_1 = velocity[1];
+        else:
+            self.__target_speed_0 = velocity;
+            self.__target_speed_1 = velocity;
         if self.__DEBUG:
-            print("Moving at " + str(percentage) + " %")
-            print(self.__serialConnection.get_response())
+            print("Moving at " + str(velocity) + " ticks / second")
 
-    def move(self, percent):
+
+    def move_at_percentage(self, percent):
         self.__is_stopped = False
-        leftSpeed = percent[0]
-        rightSpeed = percent[1]
+
+        if type(velocity) is tuple:
+            leftSpeed = int(percent[0] * 250)
+            rightSpeed = int(percent[1] * 250)
+        else:
+            leftSpeed = int(percent * 250)
+            rightSpeed = int(percent * 250)
+
         if leftSpeed > 0:
             self.__serialConnection.send_command(self.__FORWARD_1, self.__terminator)
         else:
             self.__serialConnection.send_command(self.__REVERSE_1, self.__terminator)
+        self.__serialConnection.send_command(self.__MOV_1, abs(leftSpeed), self.__terminator)
 
         if rightSpeed > 0:
             self.__serialConnection.send_command(self.__FORWARD_2, self.__terminator)
         else:
             self.__serialConnection.send_command(self.__REVERSE_2, self.__terminator)
-
         self.__serialConnection.send_command(self.__MOV_2, abs(rightSpeed), self.__terminator)
-        self.__serialConnection.send_command(self.__MOV_1, abs(leftSpeed), self.__terminator)
+
+        if self.__DEBUG:
+            print("Moving at " + str(percent) + " throttle")
+            if self.__WAIT_FOR_ECHO:
+                print(self.__serialConnection.get_response())
 
 
     def stop(self):
@@ -116,22 +135,26 @@ class MotorControl:
             self.__target_speed_1 = 0
             if self.__DEBUG:
                 print("Stopping")
-                print(self.__serialConnection.get_response())
+                if self.__WAIT_FOR_ECHO:
+                    print(self.__serialConnection.get_response())
         else:
             if self.__DEBUG:
                 print("System is already stopped, ignoring command.")
 
     def get_velocity(self):
+        warnings.warn("deprecated, no longer supported by PSoC", DeprecationWarning)
         if self.__is_stopped:
             return 0.0;
         else:
             self.__serialConnection.send_command(self.__GETV, self.__terminator)
             if self.__DEBUG:
                 print("Getting current velocity.")
-                print(self.__serialConnection.get_response())
+                if self.__WAIT_FOR_ECHO:
+                    print(self.__serialConnection.get_response())
             # TODO confirm the result should be a double
             return float(self.__serialConnection.get_response())
 
+    # TODO Cache for a very short amount of time
     def get_encoder_1_count(self):
         self.__serialConnection.send_command(self.__ENCODER_1_COUNT, self.__terminator)
         bites = self.__serialConnection.get_response()
@@ -151,6 +174,7 @@ class MotorControl:
         # TODO confirm result
         return (self.__serialConnection.get_response())
 
+    # TODO Cache for a very short amount of time
     def get_encoder_2_count(self):
         self.__serialConnection.send_command(self.__ENCODER_2_COUNT, self.__terminator)
         bites = self.__serialConnection.get_response()
@@ -172,13 +196,15 @@ class MotorControl:
         self.__serialConnection.send_command(self.__RESET_ENCODER_1_COUNT)
         if self.__DEBUG:
             print("Resetting encoder 1 count")
-            print(self.__serialConnection.get_response())
+            if self.__WAIT_FOR_ECHO:
+                print(self.__serialConnection.get_response())
 
     def reset_encoder_2_count(self):
         self.__serialConnection.send_command(self.__RESET_ENCODER_2_COUNT)
         if self.__DEBUG:
             print("Resetting encoder 2 count")
-            print(self.__serialConnection.get_response())
+            if self.__WAIT_FOR_ECHO:
+                print(self.__serialConnection.get_response())
 
     def reset_encoders_count(self):
         if self.__DEBUG:
