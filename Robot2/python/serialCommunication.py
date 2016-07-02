@@ -82,7 +82,7 @@ class SerialCommunication:
         self.__response_list.append(response)
         self.__expecting_response = False
         self.__expecting_acknowledge = False
-        return str(response)
+        return response
 
     # TODO get_last methods should be replaced
     def get_last_response(self):
