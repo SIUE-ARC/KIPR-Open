@@ -11,8 +11,20 @@ class Command:
         self.__WHEELBASE = 25
         self.__TICKS_PER_CM = 2
 
-    def execute():
+    def execute(self):
         pass
+
+    def then(self, command):
+        self.__next = command
+        return command
+
+    def ifSuccessful(self, command):
+        self.__success = command
+        return self
+
+    def ifFailed(self, command):
+        self.__failed = command
+        return self
 
 class CommandGroup:
     def __init__(self, commands, next):
