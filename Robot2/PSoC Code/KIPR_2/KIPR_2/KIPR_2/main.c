@@ -4,8 +4,7 @@
 
 MAV 	 		'a' //Move at velocity
 MOV_0 	 		'b' //move m0 at duty cycle
-MOV_1 	 		'B' //move m1 at duty cycle
-GETV 	 		'c' //get velocity
+MOV_1 	 		'c' //move m1 at duty cycle
 SRV0_POS 	 	'd' //set servo positions for servo 0 (starts PWM)
 SRV1_POS 	 	'e' //set servo positions for servo 1 (starts PWM)
 SRV0_STP 		'f' //Turns a servo 0 off (stops PWM)
