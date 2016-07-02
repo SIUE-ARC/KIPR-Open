@@ -193,8 +193,6 @@ void init(void)
 	//VelTimer_Start();
 	
 	//start light sensor PGA and ADC.
-	LightSensor_Start(LightSensor_HIGHPOWER);
-	DelSig_Start(DelSig_HIGHPOWER);
 	
 	//enable appropriate interrupts
 	M8C_EnableIntMask(INT_MSK0, INT_MSK0_GPIO);
@@ -214,13 +212,14 @@ void waitLDR(void)
 	int threshold = 400; //threshold for startup.
 	int vcount = 0; //voltage counter
 	
-	DelSig_StartAD(); //start grabbing samples.
+	/*DelSig_StartAD(); //start grabbing samples.
 	while(vcount > threshold) //keep sampling until threshold is hit.
 	{
 		while(!DelSig_fIsDataAvailable()); //wait for sample to be read.
 		vcount = DelSig_iGetDataClearFlag(); //store sample.
 	}
-	DelSig_StopAD();
+	DelSig_StopAD();*/
+	
 }
 
 /* Calculates the velocity in RPMs and returns the value */

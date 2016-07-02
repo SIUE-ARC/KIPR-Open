@@ -26,7 +26,7 @@ UltraSonic_INT_MASK:                       equ 0x80
 ; Constants for UltraSonic user defined values
 ;--------------------------------------------------
 
-UltraSonic_PERIOD:                         equ 0x0
+UltraSonic_PERIOD:                         equ 0xffffffff
 UltraSonic_COMPARE_VALUE:                  equ 0x0
 
 
