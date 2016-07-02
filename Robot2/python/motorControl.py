@@ -11,15 +11,18 @@ class MotorControl:
         self.__serialConnection = serialConnection
         self.__terminator = command_terminator
         self.__MAV = "a"
-        self.__MOV = "b"
+        self.__MOV_1 = "b"
+        self.__MOV_2 = "B"
         self.__GETV = "c"
         self.__STOP = "l"
         self.__ENCODER_1_COUNT = "h"
-        self.__EMCODER_2_COUNT = "i"
+        self.__ENCODER_2_COUNT = "i"
         self.__RESET_ENCODER_1_COUNT = "j"
         self.__RESET_ENCODER_2_COUNT = "k"
-        self.__FORWARD = "m"
-        self.__REVERSE = "n"
+        self.__FORWARD_1 = "m"
+        self.__FORWARD_2 = "M"
+        self.__REVERSE_1 = "n"
+        self.__REVERSE_2 = "N"
         self.__LEFT = "o"
         self.__RIGHT = "p"
 
@@ -31,7 +34,7 @@ class MotorControl:
         # PID
         self.__then = 0
         self.__encoder_1_then = 0
-        self.__encoder_2_ then = 0
+        self.__encoder_2_then = 0
         self.__speed_0 = 0
         self.__speed_1 = 0
         self.__target_speed_0 = 0
@@ -84,6 +87,24 @@ class MotorControl:
             print("Moving at " + str(percentage) + " %")
             print(self.__serialConnection.get_response())
 
+    def move(self, percent):
+        self.__is_stopped = False
+        leftSpeed = percent[0]
+        rightSpeed = percent[1]
+        if leftSpeed > 0:
+            self.__serialConnection.send_command(self.__FORWARD_1, self.__terminator)
+        else:
+            self.__serialConnection.send_command(self.__REVERSE_1, self.__terminator)
+
+        if rightSpeed > 0:
+            self.__serialConnection.send_command(self.__FORWARD_2, self.__terminator)
+        else:
+            self.__serialConnection.send_command(self.__REVERSE_2, self.__terminator)
+
+        self.__serialConnection.send_command(self.__MOV_2, abs(rightSpeed), self.__terminator)
+        self.__serialConnection.send_command(self.__MOV_1, abs(leftSpeed), self.__terminator)
+
+
     def stop(self):
         if self.__is_stopped is False:
             self.__is_stopped = True
@@ -116,7 +137,7 @@ class MotorControl:
             print("Getting encoder 1 count.")
             print(self.__serialConnection.get_response())
         # TODO confirm result
-        return float(self.__serialConnection.get_response())
+        return (self.__serialConnection.get_response())
 
     def get_encoder_2_count(self):
         self.__serialConnection.send_command(self.__ENCODER_2_COUNT, self.__terminator)
@@ -124,7 +145,7 @@ class MotorControl:
             print("Getting encoder 2 count.")
             print(self.__serialConnection.get_response())
         # TODO confirm result
-        return float(self.__serialConnection.get_response())
+        return (self.__serialConnection.get_response())
 
     def reset_encoder_1_count(self):
         self.__serialConnection.send_command(self.__RESET_ENCODER_1_COUNT)
@@ -161,8 +182,8 @@ class MotorControl:
         encoder_1_error = encoder_1_speed - self.__target_speed_0
         encoder_2_error = encoder_2_speed - self.__target_speed_1
 
-        encoder_1_ctrl = int(clamp(encoder_1_error * self.__KP_1, -1, 1) * 255))
-        encoder_2_ctrl = int(clamp(encoder_2_error * self.__KP_2, -1, 1) * 255))
+        encoder_1_ctrl = int(clamp(encoder_1_error * self.__KP_1, -1, 1) * 255)
+        encoder_2_ctrl = int(clamp(encoder_2_error * self.__KP_2, -1, 1) * 255)
 
         self.__serialConnection.send_command(self.__MOV_1, encoder_1_ctrl, self.__terminator)
         self.__serialConnection.send_command(self.__MOV_1, encoder_1_ctrl, self.__terminator)

@@ -21,7 +21,7 @@ class SerialCommunication:
         self.__baud_rate = baud_rate
         self.__expecting_response = False
         self.__expecting_acknowledge = False
-        self.__wait_time_in_seconds = 0.5
+        self.__wait_time_in_seconds = 0.001
 
         try:
             self.__connection = serial.Serial(port, baud_rate, timeout=1)
@@ -76,7 +76,8 @@ class SerialCommunication:
         # get_response should then pop the last item on the queue
         # TODO should the __expecting_reponse always be true to receive a respons?
         while self.__connection.inWaiting() == 0:
-            print("Waiting for response")
+            pass
+#            print("Waiting for response")
         response = self.__connection.read(self.__connection.inWaiting())
         self.__response_list.append(response)
         self.__expecting_response = False

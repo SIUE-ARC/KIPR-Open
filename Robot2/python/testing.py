@@ -6,36 +6,42 @@ from motorControl import MotorControl
 from servoControl import ServoControl
 import time
 
-try:
-    import RPi.GPIO as GPIO
-except ImportError as e:
-    print(e)
-    sys.exit(1)
-
-GPIO.setmode(GPIO.BOARD)
-LED_PIN = 21
-HIGH = GPIO.HIGH
-LOW = GPIO.LOW
-GPIO.setup(21, GPIO.OUT)
-GPIO.output(LED_PIN, HIGH)
-
-port = "/dev/ttyAMA0"
+port = "/dev/ttyACM0"
 baud_rate = 115200
 command_terminator = "\x07"
 
+
 serial_connection = SerialCommunication(port=port, baud_rate=baud_rate)
-motor_controller = MotorControl(serialConnection=serial_connection, command_terminator=command_terminator, debug=True)
-servo_controller = ServoControl(serialConnection=serial_connection, command_terminator=command_terminator, debug=True)
-print("Hello World")
-motor_controller.set_direction_Forward()
-motor_controller.move_at_percentage(200)
-time.sleep(2)
-motor_controller.stop()
-motor_controller.set_direction_Reverse()
-motor_controller.move_at_percentage(200)
-time.sleep(2)
-motor_controller.stop()
-print("Done")
-serial_connection.close_connection()
-GPIO.output(LED_PIN, LOW)
-GPIO.cleanup()
+try:
+	motor_controller = MotorControl(serialConnection=serial_connection, command_terminator=command_terminator, debug=False)
+	servo_controller = ServoControl(serialConnection=serial_connection, command_terminator=command_terminator, debug=False)
+	print("Hello World")
+
+	print(motor_controller.get_encoder_1_count());
+	print(motor_controller.get_encoder_2_count());
+
+	print("Forward")
+	motor_controller.move((60, 60))
+	time.sleep(1)
+	motor_controller.stop()
+	print(motor_controller.get_encoder_1_count());
+	print(motor_controller.get_encoder_2_count());
+
+	motor_controller.move((-60, -60))
+	time.sleep(1)
+	motor_controller.stop()
+	print(motor_controller.get_encoder_1_count());
+	print(motor_controller.get_encoder_2_count());
+
+	motor_controller.move((60, 60))
+	time.sleep(1)
+	motor_controller.stop()
+	print(motor_controller.get_encoder_1_count());
+	print(motor_controller.get_encoder_2_count());
+
+	print("Stop")
+	print("Done")
+
+finally:
+	serial_connection.close_connection()
+
