@@ -35,14 +35,6 @@ lib/pwmb.asm
 
 lib/pwmbint.asm
 
-lib/reflect0_adc.asm
-
-lib/reflect0_gain.asm
-
-lib/reflect1_adc.asm
-
-lib/reflect1_gain.asm
-
 lib/servo0.asm
 
 lib/servo0int.asm
@@ -75,7 +67,13 @@ LMM info: area 'data' item of 4 bytes allocated in SRAM page 0
 
 LMM info: area 'data' item of 4 bytes allocated in SRAM page 0
 
+LMM info: area 'data' item of 4 bytes allocated in SRAM page 0
+
 LMM info: area 'data' item of 2 bytes allocated in SRAM page 0
+
+LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+
+LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
 
 LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
 
@@ -87,18 +85,14 @@ LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
 
 LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
 
-LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
-
-LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
-
 idata dump at output/KIPR_2.idata
 
-  ROM 16% full. 5041 out of 32768 bytes used (does not include absolute areas).
+  ROM 19% full. 5991 out of 32768 bytes used (does not include absolute areas).
 
-  RAM 3% full. 50 bytes used (does not include stack usage).
+  RAM 4% full. 54 bytes used (does not include stack usage).
 
 Built with ICCM8C STD V7.05.00
 
  
-KIPR_2 - 0 error(s) 0 warning(s) 16:32:12
+KIPR_2 - 0 error(s) 0 warning(s) 17:56:03
 

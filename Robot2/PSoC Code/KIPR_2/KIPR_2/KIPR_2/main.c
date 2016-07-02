@@ -84,6 +84,25 @@ If STDBY is asserted (ie. pulled LOW) then all modes are treated as STOP.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^Light Sensor^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 MISC1		P0[5]
 
+This is connected to an LDR voltage divider that feeds a programmable gain amplifier. This PGA is used as the
+input to an ADC that samples the voltage. Once the voltage is below the threshold we can start the robot.
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^Line Following^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MISC3		P0[0]
+MISC5		P0[5]
+
+When over the white the reflective sensors output +5V (logic high) and over black they put out ~0V (logic low).
+Using this we can determine if we are on the line or not and take corrective measures to keep the robot on the
+line.
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^HC SR-04^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MISC4		P0[2] 
+
+Trigger and echo are tied to this pin. Pinmode is set as output and driven high to start the pulse and then
+reset to input to wait for the echo. A timer interrupt will trigger that will be used to determine the size
+of the pulse and get the distance to an object.
 */
 
 #include <stdlib.h>
@@ -92,6 +111,7 @@ MISC1		P0[5]
 
 #pragma interrupt_handler encoder1_ISR
 #pragma interrupt_handler encoder2_ISR
+#pragma interrupt_handler distance_ISR
 
 const BYTE	debug_mask	=	MISC7_MASK | MISC8_MASK;
 const char 	TERM		=	0x07;
@@ -112,10 +132,13 @@ BYTE prevPrt2;
 signed long int count1 = 0;
 signed long int count2 = 0;
 
+unsigned long pulse = 0;
+
 void init(void);
 void waitLDR(void);
+void lineFollow(void);
+unsigned long ultrasound(void);
 void action(char command, char* param);
-//double getVelocity(void);
 
 void main(void)
 {
@@ -188,10 +211,9 @@ void init(void)
 	//start the UART
 	UART_Start(UART_PARITY_NONE);
 	
-	//start the Velocity Timer
-	//VelTimer_Start();
-	
 	//start light sensor PGA and ADC.
+	LDR_Gain_Start(LDR_Gain_HIGHPOWER);
+	LDR_ADC_Start(LDR_ADC_HIGHPOWER);
 	
 	//enable appropriate interrupts
 	M8C_EnableIntMask(INT_MSK0, INT_MSK0_GPIO);
@@ -208,45 +230,66 @@ void init(void)
 
 void waitLDR(void)
 {
-	int threshold = 400; //threshold for startup.
+	int threshold = 26; //threshold for startup.
 	int vcount = 0; //voltage counter
 	
-	/*DelSig_StartAD(); //start grabbing samples.
 	while(vcount > threshold) //keep sampling until threshold is hit.
 	{
-		while(!DelSig_fIsDataAvailable()); //wait for sample to be read.
-		vcount = DelSig_iGetDataClearFlag(); //store sample.
+		vcount = LDR_ADC_cGetSample();
 	}
-	DelSig_StopAD();*/
+}
+
+void lineFollow(void)
+{
 	
 }
 
-/* Calculates the velocity in RPMs and returns the value */
-/*double getVelocity(void)
+unsigned long ultrasound(void)
 {
-	double vel = 0;
-	DWORD* endTicks; //ending value of counter
-	DWORD* initTicks; //initial counter reg value
-	DWORD ticksDone = 14; //number of ticks til done looping
-	DWORD diff = 0; //difference between current count reg and 
-	signed long initCount = 0;
+	unsigned long distance = 0;
+	unsigned long ticks = 0xffffffff;
 	
-	VelTimer_ReadTimer(initTicks); //read the counter
-	initCount = count1;
+	//We need a 10us high trigger to make a pulse
+	//Set timer to 10us period.
+	UltraSonic_WritePeriod(20);
+	UltraSonic_WriteCompareValue(0);
 	
-	//keep reading the value until the difference between first and current is large enough
-	do 
-	{
-		diff = abs(abs(count1) - abs(initCount));
-	}
-	while(diff > ticksDone);
+	//set drive mode to Strong (output) to drive trigger high.
+	MISC4_DriveMode_0_ADDR |= MISC4_MASK;
+	MISC4_DriveMode_1_ADDR &= ~MISC4_MASK;
+	MISC4_DriveMode_2_ADDR &= ~MISC4_MASK;
 	
-	VelTimer_ReadTimer(endTicks);
+	//make tirgger high to start the pulse
+	MISC4_Data_ADDR |= MISC4_MASK;
 	
-	vel = encoder_res*diff/(abs(*initTicks - *endTicks)*tick_time);
+	//Start timer to allow for a 10us pulse.
+	UltraSonic_Start();
+	while(ticks > 0){UltraSonic_ReadTimer(&ticks);}
+	UltraSonic_Stop();
 	
-	return vel;	
-}*/
+	//set drive mode to HIGH-Z (digital input) to read echo
+	MISC4_DriveMode_0_ADDR &= ~MISC4_MASK;
+	MISC4_DriveMode_1_ADDR |= MISC4_MASK;
+	MISC4_DriveMode_2_ADDR &= ~MISC4_MASK;
+	
+	//Set period to max so we can determine extctly how long the
+	//echo was.
+	UltraSonic_WritePeriod(0xffffffff);
+	UltraSonic_WriteCompareValue(0);
+	UltraSonic_EnableInt();
+	UltraSonic_Start();
+	
+	//distance ISR sets period to 0 upon exiting
+	while(UltraSonic_PERIOD > 0);
+	UltraSonic_Stop();
+	UltraSonic_DisableInt();
+	
+	//distance in cm = us/58
+	//clock source is 2 Mhz (0.5 us) so multiply pulse ticks by two
+	distance = pulse*2/58;
+	
+	return distance;
+}
 
 /* Action lookup. Takes the appropriate action for the given command and param.
  * command: the command read from the UART.
@@ -536,4 +579,13 @@ void encoder2_ISR(void)
 		UART_PutCRLF();
 		count2--;
 	}
+}
+
+void distance_ISR(void)
+{
+	int stop = 0;
+	UltraSonic_ReadTimer(&pulse);
+	while(MISC4_Data_ADDR & MISC4_MASK);
+	pulse -= stop;
+	UltraSonic_WritePeriod(0);
 }

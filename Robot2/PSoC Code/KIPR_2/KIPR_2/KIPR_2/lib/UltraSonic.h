@@ -65,7 +65,7 @@ extern void UltraSonic_CaptureCounter(DWORD * pdwCount);       // Obsolete
 // Constants for UltraSonic user defined values
 //--------------------------------------------------
 
-#define UltraSonic_PERIOD                      ( 0xffffffff )
+#define UltraSonic_PERIOD                      ( 0x0 )
 #define UltraSonic_COMPARE_VALUE               ( 0x0 )
 
 
