@@ -205,27 +205,26 @@ class MotorControl:
         if abs(encoder_2_delta) > 10:
             ignore_2 = True
 
-
         self.__encoder_1_then = encoder_1_now
         self.__encoder_2_then = encoder_2_now
         self.__then += time_delta
 
-        #print("DLT:\t"+str(encoder_1_delta) + "\t" + str(encoder_2_delta))
-
+		# Speed unit is ticks / second
         encoder_1_speed = encoder_1_delta / time_delta
         encoder_2_speed = encoder_2_delta / time_delta
-
-        #print("SPD:\t"+str(encoder_1_speed) + "\t" + str(encoder_2_speed))
 
         encoder_1_error = self.__target_speed_0 - encoder_1_speed
         encoder_2_error = self.__target_speed_1 - encoder_2_speed
 
-        #print("ERR:\t"+str(encoder_1_error) + "\t" + str(encoder_2_error))
-
         encoder_1_ctrl = int(self.clamp(encoder_1_error * self.__KP_1, -1, 1) * 250)
         encoder_2_ctrl = int(self.clamp(encoder_2_error * self.__KP_2, -1, 1) * 250)
 
-        #print("CTL:\t"+str(encoder_1_ctrl) + "\t" + str(encoder_2_ctrl))
+        if self.__debug is True:
+            print("\nUpdate throttle, delta t = " + str(time_delta))
+            print("DLT:\t"+str(encoder_1_delta) + "\t" + str(encoder_2_delta))
+            print("SPD:\t"+str(encoder_1_speed) + "\t" + str(encoder_2_speed))
+            print("ERR:\t"+str(encoder_1_error) + "\t" + str(encoder_2_error))
+            print("CTL:\t"+str(encoder_1_ctrl) + "\t" + str(encoder_2_ctrl))
 
         if ignore_1 is False:
             self.__serialConnection.send_command(self.__MOV_1, encoder_1_ctrl, self.__terminator)
