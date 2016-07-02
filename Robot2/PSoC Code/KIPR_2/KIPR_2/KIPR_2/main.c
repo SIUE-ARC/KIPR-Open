@@ -137,7 +137,7 @@ unsigned long pulse = 0;
 void init(void);
 void waitLDR(void);
 void lineFollow(void);
-unsigned long ultrasound(void);
+unsigned int ultrasound(void);
 void action(char command, char* param);
 
 void main(void)
@@ -226,6 +226,8 @@ void init(void)
 	UART_PutCRLF();	
 	
 	waitLDR();
+	LDR_Gain_Stop();
+	LDR_ADC_Stop();
 }
 
 void waitLDR(void)
@@ -237,6 +239,7 @@ void waitLDR(void)
 	{
 		vcount = LDR_ADC_cGetSample();
 	}
+	UART_CPutString("on");
 }
 
 void lineFollow(void)
@@ -244,9 +247,9 @@ void lineFollow(void)
 	
 }
 
-unsigned long ultrasound(void)
+unsigned int ultrasound(void)
 {
-	unsigned long distance = 0;
+	unsigned int distance = 0;
 	unsigned long ticks = 0xffffffff;
 	
 	//We need a 10us high trigger to make a pulse
@@ -527,6 +530,23 @@ void action(char command, char* param)
 			break;
 		case 'q': //debug
 			debug = !debug;
+			break;
+		case 'r'://ultrasound
+			if (debug)
+			{
+				UART_PutCRLF();
+				UART_CPutString("Starting ultrasonic ping");
+				UART_PutCRLF();
+				UART_CPutString("Distance: ");
+			}
+			itoa(param, ultrasound(), 10);
+			UART_PutString(param);
+			
+			if (debug)
+			{
+				UART_CPutString(" cm");
+				UART_PutCRLF();
+			}
 			break;
 		default : //ERROR
 			if (debug)
