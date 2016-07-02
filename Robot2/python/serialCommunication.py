@@ -21,7 +21,7 @@ class SerialCommunication:
         self.__baud_rate = baud_rate
         self.__expecting_response = False
         self.__expecting_acknowledge = False
-        self.__wait_time_in_seconds = 0.001
+        self.__wait_time_in_seconds = 0.0005
 
         try:
             self.__connection = serial.Serial(port, baud_rate, timeout=1)

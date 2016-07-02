@@ -1,6 +1,6 @@
 __author__ = 'Ryan Owens'
 __Creation_Date__ ='06/25/2016'
-__Last_Update__='07/01/2016'
+__Last_Update__='07/02/2016'
 from serialCommunication import SerialCommunication
 from motorControl import MotorControl
 from servoControl import ServoControl
@@ -17,31 +17,17 @@ try:
 	servo_controller = ServoControl(serialConnection=serial_connection, command_terminator=command_terminator, debug=False)
 	print("Hello World")
 
-	print(motor_controller.get_encoder_1_count());
-	print(motor_controller.get_encoder_2_count());
 
-	print("Forward")
-	motor_controller.move((60, 60))
-	time.sleep(1)
-	motor_controller.stop()
-	print(motor_controller.get_encoder_1_count());
-	print(motor_controller.get_encoder_2_count());
+	while True:
+		#print(str(motor_controller.get_encoder_1_count()) + "\t" + str(motor_controller.get_encoder_2_count()))
+		motor_controller.move_at_percentage(20)
+		motor_controller.update();
+		time.sleep(0.007);
 
-	motor_controller.move((-60, -60))
-	time.sleep(1)
-	motor_controller.stop()
-	print(motor_controller.get_encoder_1_count());
-	print(motor_controller.get_encoder_2_count());
-
-	motor_controller.move((60, 60))
-	time.sleep(1)
-	motor_controller.stop()
-	print(motor_controller.get_encoder_1_count());
-	print(motor_controller.get_encoder_2_count());
-
-	print("Stop")
-	print("Done")
 
 finally:
+	print(str(motor_controller.get_encoder_1_count()) + "\t" + str(motor_controller.get_encoder_2_count()))
+	motor_controller.stop()
 	serial_connection.close_connection()
+	print("Done")
 

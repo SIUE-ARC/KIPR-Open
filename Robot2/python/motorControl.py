@@ -1,6 +1,6 @@
 __author__ = 'Ryan Owens'
 __Creation_Date__ ='06/25/2016'
-__Last_Update__ = '07/01/2016'
+__Last_Update__ = '07/02/2016'
 
 import sys
 import serial
@@ -39,8 +39,8 @@ class MotorControl:
         self.__speed_1 = 0
         self.__target_speed_0 = 0
         self.__target_speed_1 = 0
-        self.__KP_1 = 0
-        self.__KP_2 = 0
+        self.__KP_1 = 0.04
+        self.__KP_2 = 0.04
 
 
         self.stop()
@@ -81,8 +81,9 @@ class MotorControl:
         pass
 
     def move_at_percentage(self, percentage):
-        self.__speed_0 = percentage;
-        self.__speed_1 = percentage;
+        self.__is_stopped = False;
+        self.__target_speed_0 = percentage;
+        self.__target_speed_1 = percentage;
         if self.__DEBUG:
             print("Moving at " + str(percentage) + " %")
             print(self.__serialConnection.get_response())
@@ -133,17 +134,37 @@ class MotorControl:
 
     def get_encoder_1_count(self):
         self.__serialConnection.send_command(self.__ENCODER_1_COUNT, self.__terminator)
+        bites = self.__serialConnection.get_response()
+
+        ticks = int(bites, 16)
+
+        if(ticks > (1 << 16) / 2):
+            ticks = -((1 << 16) - ticks)
+
         if self.__DEBUG:
             print("Getting encoder 1 count.")
-            print(self.__serialConnection.get_response())
+            print(ticks)
+
+        # TODO Debug why is this one twice as much?
+        return int(ticks / 2)
+
         # TODO confirm result
         return (self.__serialConnection.get_response())
 
     def get_encoder_2_count(self):
         self.__serialConnection.send_command(self.__ENCODER_2_COUNT, self.__terminator)
+        bites = self.__serialConnection.get_response()
+
+        ticks = int(bites, 16)
+
+        if(ticks > (1 << 16) / 2):
+            ticks = -((1 << 16) - ticks)
+
         if self.__DEBUG:
             print("Getting encoder 2 count.")
-            print(self.__serialConnection.get_response())
+            print(ticks)
+        return ticks
+
         # TODO confirm result
         return (self.__serialConnection.get_response())
 
@@ -176,24 +197,46 @@ class MotorControl:
         encoder_1_delta = encoder_1_now - self.__encoder_1_then
         encoder_2_delta = encoder_2_now - self.__encoder_2_then
 
+        ignore_1 = False
+        if abs(encoder_1_delta) > 10:
+            ignore_1 = True
+
+        ignore_2 = False
+        if abs(encoder_2_delta) > 10:
+            ignore_2 = True
+
+
+        self.__encoder_1_then = encoder_1_now
+        self.__encoder_2_then = encoder_2_now
+        self.__then += time_delta
+
+        #print("DLT:\t"+str(encoder_1_delta) + "\t" + str(encoder_2_delta))
+
         encoder_1_speed = encoder_1_delta / time_delta
         encoder_2_speed = encoder_2_delta / time_delta
 
-        encoder_1_error = encoder_1_speed - self.__target_speed_0
-        encoder_2_error = encoder_2_speed - self.__target_speed_1
+        #print("SPD:\t"+str(encoder_1_speed) + "\t" + str(encoder_2_speed))
 
-        encoder_1_ctrl = int(clamp(encoder_1_error * self.__KP_1, -1, 1) * 255)
-        encoder_2_ctrl = int(clamp(encoder_2_error * self.__KP_2, -1, 1) * 255)
+        encoder_1_error = self.__target_speed_0 - encoder_1_speed
+        encoder_2_error = self.__target_speed_1 - encoder_2_speed
 
-        self.__serialConnection.send_command(self.__MOV_1, encoder_1_ctrl, self.__terminator)
-        self.__serialConnection.send_command(self.__MOV_1, encoder_1_ctrl, self.__terminator)
+        #print("ERR:\t"+str(encoder_1_error) + "\t" + str(encoder_2_error))
 
-        if encoder_1_ctrl > 0:
-            self.__serialConnection.send_command(self.__FORWARD_1, self.__terminator)
-        else:
-            self.__serialConnection.send_command(self.__REVERSE_1, self.__terminator)
+        encoder_1_ctrl = int(self.clamp(encoder_1_error * self.__KP_1, -1, 1) * 250)
+        encoder_2_ctrl = int(self.clamp(encoder_2_error * self.__KP_2, -1, 1) * 250)
 
-        if encoder_2_ctrl > 0:
-            self.__serialConnection.send_command(self.__FORWARD_2, self.__terminator)
-        else:
-            self.__serialConnection.send_command(self.__REVERSE_2, self.__terminator)
+        #print("CTL:\t"+str(encoder_1_ctrl) + "\t" + str(encoder_2_ctrl))
+
+        if ignore_1 is False:
+            self.__serialConnection.send_command(self.__MOV_1, encoder_1_ctrl, self.__terminator)
+            if encoder_1_ctrl > 0:
+                self.__serialConnection.send_command(self.__FORWARD_1, self.__terminator)
+            else:
+                self.__serialConnection.send_command(self.__REVERSE_1, self.__terminator)
+
+        if ignore_2 is False:
+            self.__serialConnection.send_command(self.__MOV_2, encoder_2_ctrl, self.__terminator)
+            if encoder_2_ctrl > 0:
+                self.__serialConnection.send_command(self.__FORWARD_2, self.__terminator)
+            else:
+                self.__serialConnection.send_command(self.__REVERSE_2, self.__terminator)
