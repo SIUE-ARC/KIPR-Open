@@ -128,13 +128,13 @@ BYTE curPrt1;
 BYTE prevPrt1;
 BYTE curPrt2;
 BYTE prevPrt2;
+BOOL CW1 = 0;
+BOOL CW2 = 0;
 
 signed long int count1 = 0;
 signed long int count2 = 0;
 
 unsigned long pulse = 0;
-
-int stop = 0;
 
 void init(void);
 void waitLDR(void);
@@ -256,7 +256,7 @@ unsigned int ultrasound(void)
 	
 	//We need a 10us high trigger to make a pulse
 	//Set timer to 10us period.
-	UltraSonic_WritePeriod(1);
+	UltraSonic_WritePeriod(20);
 	UltraSonic_WriteCompareValue(0);
 	
 	//set drive mode to Strong (output) to drive trigger high.
@@ -267,12 +267,6 @@ unsigned int ultrasound(void)
 	//make tirgger high to start the pulse
 	MISC4_Data_ADDR |= MISC4_MASK;
 	
-	if (debug)
-	{
-		UART_PutCRLF();
-		UART_CPutString("Ultrasonic is high");
-	}
-	
 	//Start timer to allow for a 10us pulse.
 	UltraSonic_Start();
 	while(ticks > 0){UltraSonic_ReadTimer(&ticks);}
@@ -282,12 +276,6 @@ unsigned int ultrasound(void)
 	MISC4_DriveMode_0_ADDR &= ~MISC4_MASK;
 	MISC4_DriveMode_1_ADDR |= MISC4_MASK;
 	MISC4_DriveMode_2_ADDR &= ~MISC4_MASK;
-	
-	if (debug)
-	{
-		UART_PutCRLF();
-		UART_CPutString("Ultrasonic is low");
-	}
 	
 	//Set period to max so we can determine extctly how long the
 	//echo was.
@@ -303,15 +291,7 @@ unsigned int ultrasound(void)
 	
 	//distance in cm = us/58
 	//clock source is 2 Mhz (0.5 us) so multiply pulse ticks by two
-	distance = pulse*0.0345;
-	
-	if (debug)
-	{
-		UART_PutCRLF();
-		UART_CPutString("PULSE ");
-		UART_PutSHexInt(pulse);
-		UART_PutCRLF();
-	}
+	distance = pulse*2/58;
 	
 	return distance;
 }
@@ -367,19 +347,6 @@ void action(char command, char* param)
 			
 			PWMB_WritePulseWidth(atoi(param));
 			break;
-		/*case 'c': //GETV
-			*param = 0;
-			if (debug)
-			{
-				UART_PutCRLF();
-				UART_PutString(itoa(param, getVelocity(), 10));
-				UART_PutCRLF();
-			}
-			else 
-			{
-				UART_PutString(itoa(param, getVelocity(), 10));
-			}
-			break;*/
 		case 'd': //SRV0_POS
 			if (debug)
 			{
@@ -552,9 +519,6 @@ void action(char command, char* param)
 			break;
 		case 'q': //debug
 			debug = !debug;
-			UART_PutCRLF();
-			UART_PutSHexInt(debug);
-			UART_PutCRLF();
 			break;
 		case 'r'://ultrasound
 			if (debug)
@@ -590,38 +554,15 @@ void encoder1_ISR(void)
 {
 	//grab the new state of the encoder register.
 	curPrt1 = (ENC1A_Data_ADDR & (ENC1A_MASK | ENC1B_MASK));
-	if (debug)
+	CW1 = (prevPrt1 >> 5) ^ (curPrt1 >> 4); //determine CW or CCW
+
+	if (CW1) //clowise rotation
 	{
-		UART_PutCRLF();
-		UART_CPutString("prevPrt1: ");
-		UART_PutSHexInt(prevPrt1);
-	}
-		
-	//check which state transitioned.
-	if ((prevPrt1 == 0x00) && (curPrt1 == ENC1A_MASK)) //A low to high
-	{
-		if (debug)
-		{
-			UART_CPutString("U ");
-			//UART_PutCRLF();
-		}
 		count1++;
 	}
-	else if ((prevPrt1 == 0x00) && (curPrt1 == ENC1B_MASK)) //B low to high
+	else //counter-clocwise rotation.
 	{
-		if (debug)
-		{
-		UART_CPutString("D ");
-		//UART_PutCRLF();
-		}
 		count1--;
-	}
-	if (debug)
-	{
-		UART_PutCRLF();
-		UART_CPutString("Encoder 1 count: ");
-		UART_PutSHexInt(count1);
-		UART_PutCRLF();
 	}
 }
 
@@ -629,50 +570,22 @@ void encoder1_ISR(void)
 //to the encoder1_ISR
 void encoder2_ISR(void)
 {
-	curPrt2 = (ENC2A_Data_ADDR & (ENC2A_MASK | ENC2B_MASK));
-	if (debug)
+	curPrt2 = (ENC2A_Data_ADDR & (ENC2A_MASK | ENC2B_MASK));	
+	CW2 = (prevPrt2 >> 5) ^ (curPrt2 >> 4); //determine CW or CCW
+	
+	if (CW2)
 	{
-		UART_PutCRLF();
-		UART_CPutString("prevPrt2: ");
-		UART_PutSHexInt(prevPrt1);
-	}
-		
-	if ((prevPrt2 == 0x00) && (curPrt2 == ENC2A_MASK))	
-	{
-		if (debug)
-		{
-			UART_CPutString("U ");
-			//UART_PutCRLF();
-		}
 		count2++;
 	}
-	else if ((prevPrt2 == 0x00) && (curPrt2 == ENC2B_MASK))
+	else
 	{
-		if (debug)
-		{
-			UART_CPutString("D ");
-			//UART_PutCRLF();
-		}
 		count2--;
-	}
-	if (debug)
-	{
-		UART_PutCRLF();
-		UART_CPutString("Encoder 2 count: ");
-		UART_PutSHexInt(count2);
-		UART_PutCRLF();
 	}
 }
 
 void distance_ISR(void)
 {
-	if (debug)
-	{
-		UART_PutCRLF();
-		UART_CPutString("Inside the distance ISR");
-		UART_PutCRLF();
-	}
-	stop = 0;
+	int stop = 0;
 	UltraSonic_ReadTimer(&pulse);
 	while(MISC4_Data_ADDR & MISC4_MASK);
 	pulse -= stop;
