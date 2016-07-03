@@ -120,7 +120,7 @@ const double tick_time = 0.000000020833333333;
 const double encoder_res = 0.0357142857142857;
 
 BOOL command_flag 		=	FALSE;
-BOOL debug				=	TRUE;
+BOOL debug				=	FALSE;
 
 int i = 0; //loop var
 
@@ -253,7 +253,7 @@ void waitLDR(void)
 
 void lineFollow(void)
 {
-	
+	//todo
 }
 
 unsigned int ultrasound(void)
