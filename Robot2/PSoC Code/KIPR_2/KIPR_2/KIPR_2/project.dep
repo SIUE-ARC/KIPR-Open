@@ -6,8 +6,7 @@
    C:\Users\BRYANO~1\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\memory.inc
 ./obj/main.o :  ./lib/ENC1A_~1.H ./lib/ENC1A_~2.H ./lib/ENC1B_~1.H\
    ./lib/ENC1B_~2.H ./lib/LDR_ADC.h ./lib/LDR_Gain.h ./lib/PSoCAPI.h\
-   ./lib/PSOCGP~1.H ./lib/PWMA.h ./lib/PWMB.h ./lib/REFLEC~1.H\
-   ./lib/REFLEC~2.H ./lib/REFLEC~3.H ./lib/REFLEC~4.H ./lib/Servo0.h\
+   ./lib/PSOCGP~1.H ./lib/PWMA.h ./lib/PWMB.h ./lib/Servo0.h\
    ./lib/Servo1.h ./lib/UART.h ./lib/ULTRAS~1.H\
    C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/M8C.h\
    C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.h\
@@ -61,18 +60,6 @@
    C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc\
    C:\Users\BRYANO~1\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\memory.inc
 ./lib/obj/pwmbint.o :  ./lib/PWMB.inc\
-   C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc\
-   C:\Users\BRYANO~1\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\memory.inc
-./lib/obj/reflect0_adc.o :  ./lib/REFLEC~1.INC\
-   C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc\
-   C:\Users\BRYANO~1\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\memory.inc
-./lib/obj/reflect0_gain.o :  ./lib/REFLEC~2.INC\
-   C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc\
-   C:\Users\BRYANO~1\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\memory.inc
-./lib/obj/reflect1_adc.o :  ./lib/REFLEC~3.INC\
-   C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc\
-   C:\Users\BRYANO~1\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\memory.inc
-./lib/obj/reflect1_gain.o :  ./lib/REFLEC~4.INC\
    C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc\
    C:\Users\BRYANO~1\DOCUME~1\GitHub\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\memory.inc
 ./lib/obj/servo0.o :  ./lib/Servo0.inc\

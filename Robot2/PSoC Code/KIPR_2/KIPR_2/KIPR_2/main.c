@@ -4,8 +4,7 @@
 
 MAV 	 		'a' //Move at velocity
 MOV_0 	 		'b' //move m0 at duty cycle
-MOV_1 	 		'B' //move m1 at duty cycle
-GETV 	 		'c' //get velocity
+MOV_1 	 		'c' //move m1 at duty cycle
 SRV0_POS 	 	'd' //set servo positions for servo 0 (starts PWM)
 SRV1_POS 	 	'e' //set servo positions for servo 1 (starts PWM)
 SRV0_STP 		'f' //Turns a servo 0 off (stops PWM)
@@ -85,6 +84,25 @@ If STDBY is asserted (ie. pulled LOW) then all modes are treated as STOP.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^Light Sensor^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 MISC1		P0[5]
 
+This is connected to an LDR voltage divider that feeds a programmable gain amplifier. This PGA is used as the
+input to an ADC that samples the voltage. Once the voltage is below the threshold we can start the robot.
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^Line Following^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MISC3		P0[0]
+MISC5		P0[5]
+
+When over the white the reflective sensors output +5V (logic high) and over black they put out ~0V (logic low).
+Using this we can determine if we are on the line or not and take corrective measures to keep the robot on the
+line.
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^HC SR-04^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MISC4		P0[2] 
+
+Trigger and echo are tied to this pin. Pinmode is set as output and driven high to start the pulse and then
+reset to input to wait for the echo. A timer interrupt will trigger that will be used to determine the size
+of the pulse and get the distance to an object.
 */
 
 #include <stdlib.h>
@@ -93,6 +111,7 @@ MISC1		P0[5]
 
 #pragma interrupt_handler encoder1_ISR
 #pragma interrupt_handler encoder2_ISR
+#pragma interrupt_handler distance_ISR
 
 const BYTE	debug_mask	=	MISC7_MASK | MISC8_MASK;
 const char 	TERM		=	0x07;
@@ -101,7 +120,9 @@ const double tick_time = 0.000000020833333333;
 const double encoder_res = 0.0357142857142857;
 
 BOOL command_flag 		=	FALSE;
-BOOL debug				=	TRUE;
+BOOL debug				=	FALSE;
+BOOL encoder1_last_changed = FALSE;
+BOOL encoder2_last_changed = FALSE;
 
 int i = 0; //loop var
 
@@ -113,10 +134,15 @@ BYTE prevPrt2;
 signed long int count1 = 0;
 signed long int count2 = 0;
 
+unsigned long pulse = 0;
+
+int stop = 0;
+
 void init(void);
 void waitLDR(void);
+void lineFollow(void);
+unsigned int ultrasound(void);
 void action(char command, char* param);
-//double getVelocity(void);
 
 void main(void)
 {
@@ -189,10 +215,9 @@ void init(void)
 	//start the UART
 	UART_Start(UART_PARITY_NONE);
 	
-	//start the Velocity Timer
-	//VelTimer_Start();
-	
 	//start light sensor PGA and ADC.
+	LDR_Gain_Start(LDR_Gain_HIGHPOWER);
+	LDR_ADC_Start(LDR_ADC_HIGHPOWER);
 	
 	//enable appropriate interrupts
 	M8C_EnableIntMask(INT_MSK0, INT_MSK0_GPIO);
@@ -205,49 +230,93 @@ void init(void)
 	UART_PutCRLF();	
 	
 	waitLDR();
+	LDR_Gain_Stop();
+	LDR_ADC_Stop();
 }
 
 void waitLDR(void)
 {
-	int threshold = 400; //threshold for startup.
+	int threshold = 26; //threshold for startup.
 	int vcount = 0; //voltage counter
 	
-	/*DelSig_StartAD(); //start grabbing samples.
 	while(vcount > threshold) //keep sampling until threshold is hit.
 	{
-		while(!DelSig_fIsDataAvailable()); //wait for sample to be read.
-		vcount = DelSig_iGetDataClearFlag(); //store sample.
+		vcount = LDR_ADC_cGetSample();
 	}
-	DelSig_StopAD();*/
-	
+	UART_CPutString("on");
 }
 
-/* Calculates the velocity in RPMs and returns the value */
-/*double getVelocity(void)
+void lineFollow(void)
 {
-	double vel = 0;
-	DWORD* endTicks; //ending value of counter
-	DWORD* initTicks; //initial counter reg value
-	DWORD ticksDone = 14; //number of ticks til done looping
-	DWORD diff = 0; //difference between current count reg and 
-	signed long initCount = 0;
+	//todo
+}
+
+unsigned int ultrasound(void)
+{
+	unsigned int distance = 0;
+	unsigned long ticks = 0xffffffff;
 	
-	VelTimer_ReadTimer(initTicks); //read the counter
-	initCount = count1;
+	//We need a 10us high trigger to make a pulse
+	//Set timer to 10us period.
+	UltraSonic_WritePeriod(1);
+	UltraSonic_WriteCompareValue(0);
 	
-	//keep reading the value until the difference between first and current is large enough
-	do 
+	//set drive mode to Strong (output) to drive trigger high.
+	MISC4_DriveMode_0_ADDR |= MISC4_MASK;
+	MISC4_DriveMode_1_ADDR &= ~MISC4_MASK;
+	MISC4_DriveMode_2_ADDR &= ~MISC4_MASK;
+	
+	//make tirgger high to start the pulse
+	MISC4_Data_ADDR |= MISC4_MASK;
+	
+	if (debug)
 	{
-		diff = abs(abs(count1) - abs(initCount));
+		UART_PutCRLF();
+		UART_CPutString("Ultrasonic is high");
 	}
-	while(diff > ticksDone);
 	
-	VelTimer_ReadTimer(endTicks);
+	//Start timer to allow for a 10us pulse.
+	UltraSonic_Start();
+	while(ticks > 0){UltraSonic_ReadTimer(&ticks);}
+	UltraSonic_Stop();
 	
-	vel = encoder_res*diff/(abs(*initTicks - *endTicks)*tick_time);
+	//set drive mode to HIGH-Z (digital input) to read echo
+	MISC4_DriveMode_0_ADDR &= ~MISC4_MASK;
+	MISC4_DriveMode_1_ADDR |= MISC4_MASK;
+	MISC4_DriveMode_2_ADDR &= ~MISC4_MASK;
 	
-	return vel;	
-}*/
+	if (debug)
+	{
+		UART_PutCRLF();
+		UART_CPutString("Ultrasonic is low");
+	}
+	
+	//Set period to max so we can determine extctly how long the
+	//echo was.
+	UltraSonic_WritePeriod(0xffffffff);
+	UltraSonic_WriteCompareValue(0);
+	UltraSonic_EnableInt();
+	UltraSonic_Start();
+	
+	//distance ISR sets period to 0 upon exiting
+	while(UltraSonic_PERIOD > 0);
+	UltraSonic_Stop();
+	UltraSonic_DisableInt();
+	
+	//distance in cm = us/58
+	//clock source is 2 Mhz (0.5 us) so multiply pulse ticks by two
+	distance = pulse*0.0345;
+	
+	if (debug)
+	{
+		UART_PutCRLF();
+		UART_CPutString("PULSE ");
+		UART_PutSHexInt(pulse);
+		UART_PutCRLF();
+	}
+	
+	return distance;
+}
 
 /* Action lookup. Takes the appropriate action for the given command and param.
  * command: the command read from the UART.
@@ -485,6 +554,26 @@ void action(char command, char* param)
 			break;
 		case 'q': //debug
 			debug = !debug;
+			UART_PutCRLF();
+			UART_PutSHexInt(debug);
+			UART_PutCRLF();
+			break;
+		case 'r'://ultrasound
+			if (debug)
+			{
+				UART_PutCRLF();
+				UART_CPutString("Starting ultrasonic ping");
+				UART_PutCRLF();
+				UART_CPutString("Distance: ");
+			}
+			itoa(param, ultrasound(), 10);
+			UART_PutString(param);
+			
+			if (debug)
+			{
+				UART_CPutString(" cm");
+				UART_PutCRLF();
+			}
 			break;
 		default : //ERROR
 			if (debug)
@@ -503,19 +592,84 @@ void encoder1_ISR(void)
 {
 	//grab the new state of the encoder register.
 	curPrt1 = (ENC1A_Data_ADDR & (ENC1A_MASK | ENC1B_MASK));
+	if (debug)
+	{
+		UART_PutCRLF();
+		UART_CPutString("prevPrt1: ");
+		UART_PutSHexInt(prevPrt1);
+	}
+	
+	if ((prevPrt1 & ENC1A_MASK) != (curPrt1 & ENC1A_MASK))
+	{
+		if (encoder1_last_changed == TRUE)
+		{
+			if (debug)
+			{
+				UART_CPutString("noise on A");
+				//UART_PutCRLF();
+			}
+			return ;
+		}else 
+		{
+			encoder1_last_changed = TRUE;
+		}
+	}else if ((prevPrt1 & ENC1B_MASK) != (curPrt1 & ENC1B_MASK))
+	{
+		if (encoder1_last_changed == FALSE)
+		{
+			if (debug)
+			{
+				UART_CPutString("noise on ");
+				//UART_PutCRLF();
+			}
+			return;
+		}else
+		{
+			encoder1_last_changed = FALSE;
+		}
+	}
 		
 	//check which state transitioned.
 	if ((prevPrt1 == 0x00) && (curPrt1 == ENC1A_MASK)) //A low to high
 	{
-		UART_CPutString("Enc1 counting up");
-		UART_PutCRLF();
+		if (debug)
+		{
+			UART_CPutString("U prevPrt1=0x00");
+			//UART_PutCRLF();
+		}
 		count1++;
 	}
 	else if ((prevPrt1 == 0x00) && (curPrt1 == ENC1B_MASK)) //B low to high
 	{
-		UART_CPutString("Enc1 counting down");
-		UART_PutCRLF();
+		if (debug)
+		{
+		UART_CPutString("D prevPrt1=0x00");
+		//UART_PutCRLF();
+		}
 		count1--;
+	}else if ((prevPrt1 == (ENC1A_MASK | ENC1B_MASK)) && (curPrt1 == ENC1B_MASK))
+	{
+		if (debug)
+		{
+			UART_CPutString("U ");
+			//UART_PutCRLF();
+		}
+		count1++;	
+	}else if ((prevPrt1 == (ENC1A_MASK | ENC1B_MASK)) && (curPrt1 == ENC1A_MASK))
+	{
+		if (debug)
+		{
+		UART_CPutString("D ");
+		//UART_PutCRLF();
+		}
+		count1--;
+	}
+	if (debug)
+	{
+		UART_PutCRLF();
+		UART_CPutString("Encoder 1 count: ");
+		UART_PutSHexInt(count1);
+		UART_PutCRLF();
 	}
 }
 
@@ -523,18 +677,98 @@ void encoder1_ISR(void)
 //to the encoder1_ISR
 void encoder2_ISR(void)
 {
-	curPrt2 = (ENC2A_Data_ADDR & (ENC2A_MASK | ENC2B_MASK));	
-		
+	curPrt2 = (ENC2A_Data_ADDR & (ENC2A_MASK | ENC2B_MASK));
+	if (debug)
+	{
+		UART_PutCRLF();
+		UART_CPutString("prevPrt2: ");
+		UART_PutSHexInt(prevPrt1);
+	}
+	if ((prevPrt2 & ENC2A_MASK) != (curPrt2 & ENC2A_MASK))
+	{
+		if (encoder2_last_changed == TRUE)
+		{
+			if (debug)
+			{
+				UART_CPutString("noise on A");
+				//UART_PutCRLF();
+			}
+			return ;
+		}else 
+		{
+			encoder2_last_changed = TRUE;
+		}
+	}else if ((prevPrt2 & ENC2B_MASK) != (curPrt2 & ENC2B_MASK))
+	{
+		if (encoder2_last_changed == FALSE)
+		{
+			if (debug)
+			{
+				UART_CPutString("noise on ");
+				//UART_PutCRLF();
+			}
+			return;
+		}else
+		{
+			encoder2_last_changed = FALSE;
+		}
+	}
+	
 	if ((prevPrt2 == 0x00) && (curPrt2 == ENC2A_MASK))	
 	{
-		UART_CPutString("Enc2 counting up");
-		UART_PutCRLF();
+		if (debug)
+		{
+			UART_CPutString("U prevPrt2=0x00");
+			//UART_PutCRLF();
+		}
 		count2++;
 	}
 	else if ((prevPrt2 == 0x00) && (curPrt2 == ENC2B_MASK))
 	{
-		UART_CPutString("Enc2 counting down");
-		UART_PutCRLF();
+		if (debug)
+		{
+			UART_CPutString("D prevPrt2=0x00");
+			//UART_PutCRLF();
+		}
+		count2--;
+	}else if ((prevPrt2 == (ENC2A_MASK | ENC2B_MASK)) && (curPrt2 == ENC2B_MASK))
+	{
+		if (debug)
+		{
+			UART_CPutString("U ");
+			//UART_PutCRLF();
+		}
+		count2++;	
+	}else if ((prevPrt2 == (ENC2A_MASK | ENC2B_MASK)) && (curPrt2 == ENC2A_MASK))
+	{
+		if (debug)
+		{
+		UART_CPutString("D ");
+		//UART_PutCRLF();
+		}
 		count2--;
 	}
+	
+	if (debug)
+	{
+		UART_PutCRLF();
+		UART_CPutString("Encoder 2 count: ");
+		UART_PutSHexInt(count2);
+		UART_PutCRLF();
+	}
+}
+
+void distance_ISR(void)
+{
+	if (debug)
+	{
+		UART_PutCRLF();
+		UART_CPutString("Inside the distance ISR");
+		UART_PutCRLF();
+	}
+	stop = 0;
+	UltraSonic_ReadTimer(&pulse);
+	while(MISC4_Data_ADDR & MISC4_MASK);
+	pulse -= stop;
+	UltraSonic_WritePeriod(0);
 }

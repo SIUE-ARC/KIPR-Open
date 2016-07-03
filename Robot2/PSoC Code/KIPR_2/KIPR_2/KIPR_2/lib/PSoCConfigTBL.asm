@@ -62,30 +62,6 @@ LoadConfigTBL_kipr_2_Bank0:
 	db		43h, 00h		;PWMB_CONTROL_REG(DBB20CR0)
 	db		41h, ffh		;PWMB_PERIOD_REG(DBB20DR1)
 	db		42h, 00h		;PWMB_COMPARE_REG(DBB20DR2)
-;  Instance name Reflect0_ADC, User Module SAR6
-;       Instance name Reflect0_ADC, Block Name SA(ASD11)
-	db		84h, 00h		;Reflect0_ADC_CR0(ASD11CR0)
-	db		85h, 9fh		;Reflect0_ADC_CR1(ASD11CR1)
-	db		86h, 60h		;Reflect0_ADC_CR2(ASD11CR2)
-	db		87h, 0ch		;Reflect0_ADC_CR3(ASD11CR3)
-;  Instance name Reflect0_Gain, User Module PGA
-;       Instance name Reflect0_Gain, Block Name GAIN(ACB01)
-	db		75h, feh		;Reflect0_Gain_GAIN_CR0(ACB01CR0)
-	db		76h, 21h		;Reflect0_Gain_GAIN_CR1(ACB01CR1)
-	db		77h, 20h		;Reflect0_Gain_GAIN_CR2(ACB01CR2)
-	db		74h, 00h		;Reflect0_Gain_GAIN_CR3(ACB01CR3)
-;  Instance name Reflect1_ADC, User Module SAR6
-;       Instance name Reflect1_ADC, Block Name SA(ASC12)
-	db		88h, 00h		;Reflect1_ADC_CR0(ASC12CR0)
-	db		89h, 5fh		;Reflect1_ADC_CR1(ASC12CR1)
-	db		8ah, 60h		;Reflect1_ADC_CR2(ASC12CR2)
-	db		8bh, 00h		;Reflect1_ADC_CR3(ASC12CR3)
-;  Instance name Reflect1_Gain, User Module PGA
-;       Instance name Reflect1_Gain, Block Name GAIN(ACB02)
-	db		79h, feh		;Reflect1_Gain_GAIN_CR0(ACB02CR0)
-	db		7ah, 21h		;Reflect1_Gain_GAIN_CR1(ACB02CR1)
-	db		7bh, 20h		;Reflect1_Gain_GAIN_CR2(ACB02CR2)
-	db		78h, 00h		;Reflect1_Gain_GAIN_CR3(ACB02CR3)
 ;  Instance name Servo0, User Module PWM16
 ;       Instance name Servo0, Block Name PWM16_LSB(DBB01)
 	db		27h, 00h		;Servo0_CONTROL_LSB_REG(DBB01CR0)
@@ -116,19 +92,19 @@ LoadConfigTBL_kipr_2_Bank0:
 ;  Instance name UltraSonic, User Module Timer32
 ;       Instance name UltraSonic, Block Name TIMER32_ISB1(DBB31)
 	db		57h, 00h		;UltraSonic_CONTROL_ISB1_REG(DBB31CR0)
-	db		55h, ffh		;UltraSonic_PERIOD_ISB1_REG(DBB31DR1)
+	db		55h, 00h		;UltraSonic_PERIOD_ISB1_REG(DBB31DR1)
 	db		56h, 00h		;UltraSonic_COMPARE_ISB1_REG(DBB31DR2)
 ;       Instance name UltraSonic, Block Name TIMER32_ISB2(DCB32)
 	db		5bh, 00h		;UltraSonic_CONTROL_ISB2_REG(DCB32CR0)
-	db		59h, ffh		;UltraSonic_PERIOD_ISB2_REG(DCB32DR1)
+	db		59h, 00h		;UltraSonic_PERIOD_ISB2_REG(DCB32DR1)
 	db		5ah, 00h		;UltraSonic_COMPARE_ISB2_REG(DCB32DR2)
 ;       Instance name UltraSonic, Block Name TIMER32_LSB(DBB30)
 	db		53h, 00h		;UltraSonic_CONTROL_LSB_REG(DBB30CR0)
-	db		51h, ffh		;UltraSonic_PERIOD_LSB_REG(DBB30DR1)
+	db		51h, 00h		;UltraSonic_PERIOD_LSB_REG(DBB30DR1)
 	db		52h, 00h		;UltraSonic_COMPARE_LSB_REG(DBB30DR2)
 ;       Instance name UltraSonic, Block Name TIMER32_MSB(DCB33)
 	db		5fh, 06h		;UltraSonic_CONTROL_MSB_REG(DCB33CR0)
-	db		5dh, ffh		;UltraSonic_PERIOD_MSB_REG(DCB33DR1)
+	db		5dh, 00h		;UltraSonic_PERIOD_MSB_REG(DCB33DR1)
 	db		5eh, 00h		;UltraSonic_COMPARE_MSB_REG(DCB33DR2)
 ;  Global Register values Bank 0
 	db		60h, 0ah		; AnalogColumnInputSelect register (AMX_IN)
@@ -206,14 +182,6 @@ LoadConfigTBL_kipr_2_Bank1:
 	db		40h, 21h		;PWMB_FUNC_REG(DBB20FN)
 	db		41h, 11h		;PWMB_INPUT_REG(DBA20IN)
 	db		42h, 45h		;PWMB_OUTPUT_REG(DBA20OU)
-;  Instance name Reflect0_ADC, User Module SAR6
-;       Instance name Reflect0_ADC, Block Name SA(ASD11)
-;  Instance name Reflect0_Gain, User Module PGA
-;       Instance name Reflect0_Gain, Block Name GAIN(ACB01)
-;  Instance name Reflect1_ADC, User Module SAR6
-;       Instance name Reflect1_ADC, Block Name SA(ASC12)
-;  Instance name Reflect1_Gain, User Module PGA
-;       Instance name Reflect1_Gain, Block Name GAIN(ACB02)
 ;  Instance name Servo0, User Module PWM16
 ;       Instance name Servo0, Block Name PWM16_LSB(DBB01)
 	db		24h, 01h		;Servo0_FUNC_LSB_REG(DBB01FN)
@@ -244,20 +212,20 @@ LoadConfigTBL_kipr_2_Bank1:
 ;  Instance name UltraSonic, User Module Timer32
 ;       Instance name UltraSonic, Block Name TIMER32_ISB1(DBB31)
 	db		54h, 00h		;UltraSonic_FUNC_ISB1_REG(DBB31FN)
-	db		55h, 34h		;UltraSonic_INPUT_ISB1_REG(DBB31IN)
-	db		56h, 80h		;UltraSonic_OUTPUT_ISB1_REG(DBB31OU)
+	db		55h, 35h		;UltraSonic_INPUT_ISB1_REG(DBB31IN)
+	db		56h, 40h		;UltraSonic_OUTPUT_ISB1_REG(DBB31OU)
 ;       Instance name UltraSonic, Block Name TIMER32_ISB2(DCB32)
 	db		58h, 00h		;UltraSonic_FUNC_ISB2_REG(DCB32FN)
-	db		59h, 34h		;UltraSonic_INPUT_ISB2_REG(DCB32IN)
-	db		5ah, 80h		;UltraSonic_OUTPUT_ISB2_REG(DCB32OU)
+	db		59h, 35h		;UltraSonic_INPUT_ISB2_REG(DCB32IN)
+	db		5ah, 40h		;UltraSonic_OUTPUT_ISB2_REG(DCB32OU)
 ;       Instance name UltraSonic, Block Name TIMER32_LSB(DBB30)
 	db		50h, 00h		;UltraSonic_FUNC_LSB_REG(DBB30FN)
-	db		51h, c4h		;UltraSonic_INPUT_LSB_REG(DBB30IN)
-	db		52h, 80h		;UltraSonic_OUTPUT_LSB_REG(DBB30OU)
+	db		51h, c5h		;UltraSonic_INPUT_LSB_REG(DBB30IN)
+	db		52h, 40h		;UltraSonic_OUTPUT_LSB_REG(DBB30OU)
 ;       Instance name UltraSonic, Block Name TIMER32_MSB(DCB33)
 	db		5ch, 20h		;UltraSonic_FUNC_MSB_REG(DCB33FN)
-	db		5dh, 34h		;UltraSonic_INPUT_MSB_REG(DCB33IN)
-	db		5eh, 80h		;UltraSonic_OUTPUT_MSB_REG(DCB33OU)
+	db		5dh, 35h		;UltraSonic_INPUT_MSB_REG(DCB33IN)
+	db		5eh, 40h		;UltraSonic_OUTPUT_MSB_REG(DCB33OU)
 ;  Global Register values Bank 1
 	db		61h, 00h		; AnalogClockSelect1 register (CLK_CR1)
 	db		69h, 00h		; AnalogClockSelect2 register (CLK_CR2)
@@ -287,7 +255,7 @@ LoadConfigTBL_kipr_2_Ordered:
 	mov	reg[00h], 8ah		; Port_0_DriveMode_0 register (PRT0DM0)
 	mov	reg[01h], 75h		; Port_0_DriveMode_1 register (PRT0DM1)
 	M8C_SetBank0
-	mov	reg[03h], 74h		; Port_0_DriveMode_2 register (PRT0DM2)
+	mov	reg[03h], 60h		; Port_0_DriveMode_2 register (PRT0DM2)
 	mov	reg[02h], 8bh		; Port_0_GlobalSelect register (PRT0GS)
 	M8C_SetBank1
 	mov	reg[02h], 00h		; Port_0_IntCtrl_0 register (PRT0IC0)
