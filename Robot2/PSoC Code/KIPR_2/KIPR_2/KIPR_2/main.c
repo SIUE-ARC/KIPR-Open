@@ -120,7 +120,7 @@ const double tick_time = 0.000000020833333333;
 const double encoder_res = 0.0357142857142857;
 
 BOOL command_flag 		=	FALSE;
-BOOL debug				=	TRUE;
+BOOL debug				=	FALSE;
 BOOL encoder1_last_changed = FALSE;
 BOOL encoder2_last_changed = FALSE;
 
@@ -601,8 +601,13 @@ void encoder1_ISR(void)
 	
 	if ((prevPrt1 & ENC1A_MASK) != (curPrt1 & ENC1A_MASK))
 	{
-		if (encoder1_last_changed == FALSE)
+		if (encoder1_last_changed == TRUE)
 		{
+			if (debug)
+			{
+				UART_CPutString("noise on A");
+				//UART_PutCRLF();
+			}
 			return ;
 		}else 
 		{
@@ -610,8 +615,13 @@ void encoder1_ISR(void)
 		}
 	}else if ((prevPrt1 & ENC1B_MASK) != (curPrt1 & ENC1B_MASK))
 	{
-		if (encoder1_last_changed == TRUE)
+		if (encoder1_last_changed == FALSE)
 		{
+			if (debug)
+			{
+				UART_CPutString("noise on ");
+				//UART_PutCRLF();
+			}
 			return;
 		}else
 		{
@@ -624,7 +634,7 @@ void encoder1_ISR(void)
 	{
 		if (debug)
 		{
-			UART_CPutString("U ");
+			UART_CPutString("U prevPrt1=0x00");
 			//UART_PutCRLF();
 		}
 		count1++;
@@ -633,7 +643,7 @@ void encoder1_ISR(void)
 	{
 		if (debug)
 		{
-		UART_CPutString("D ");
+		UART_CPutString("D prevPrt1=0x00");
 		//UART_PutCRLF();
 		}
 		count1--;
@@ -676,8 +686,13 @@ void encoder2_ISR(void)
 	}
 	if ((prevPrt2 & ENC2A_MASK) != (curPrt2 & ENC2A_MASK))
 	{
-		if (encoder2_last_changed == FALSE)
+		if (encoder2_last_changed == TRUE)
 		{
+			if (debug)
+			{
+				UART_CPutString("noise on A");
+				//UART_PutCRLF();
+			}
 			return ;
 		}else 
 		{
@@ -685,12 +700,17 @@ void encoder2_ISR(void)
 		}
 	}else if ((prevPrt2 & ENC2B_MASK) != (curPrt2 & ENC2B_MASK))
 	{
-		if (encoder2_last_changed == TRUE)
+		if (encoder2_last_changed == FALSE)
 		{
+			if (debug)
+			{
+				UART_CPutString("noise on ");
+				//UART_PutCRLF();
+			}
 			return;
-		}else 
+		}else
 		{
-			encoder1_last_changed = FALSE;
+			encoder2_last_changed = FALSE;
 		}
 	}
 	
@@ -698,7 +718,7 @@ void encoder2_ISR(void)
 	{
 		if (debug)
 		{
-			UART_CPutString("U ");
+			UART_CPutString("U prevPrt2=0x00");
 			//UART_PutCRLF();
 		}
 		count2++;
@@ -707,7 +727,7 @@ void encoder2_ISR(void)
 	{
 		if (debug)
 		{
-			UART_CPutString("D ");
+			UART_CPutString("D prevPrt2=0x00");
 			//UART_PutCRLF();
 		}
 		count2--;
