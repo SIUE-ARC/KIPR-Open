@@ -225,7 +225,10 @@ void init(void)
 	//enable appropriate interrupts
 	M8C_EnableIntMask(INT_MSK0, INT_MSK0_GPIO);
 	M8C_EnableIntMask(INT_MSK1, INT_MSK1_DBB00);
+	M8C_EnableIntMask(INT_MSK1, INT_MSK1_DBB10);
 	M8C_EnableIntMask(INT_MSK1, INT_MSK1_DBB11);
+	M8C_EnableIntMask(INT_MSK2, INT_MSK2_DBB21);
+	M8C_EnableIntMask(INT_MSK2, INT_MSK2_DBB30)
 	M8C_EnableGInt;
 	
 	UART_PutCRLF();
