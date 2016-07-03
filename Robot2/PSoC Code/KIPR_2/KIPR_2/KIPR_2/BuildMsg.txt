@@ -1,104 +1,154 @@
 Starting MAKE...
-creating project.mk 
+creating project.mk -- no changes
 
-lib/enc1a_nedge.asm
 
-lib/enc1a_nedgeint.asm
+lib/enc1a_nedge.asm
 
-lib/enc1a_pedge.asm
 
-lib/enc1a_pedgeint.asm
+lib/enc1a_nedgeint.asm
 
-lib/enc1b_nedge.asm
 
-lib/enc1b_nedgeint.asm
+lib/enc1a_pedge.asm
 
-lib/enc1b_pedge.asm
 
-lib/enc1b_pedgeint.asm
+lib/enc1a_pedgeint.asm
 
-lib/ldr_adc.asm
 
-lib/ldr_gain.asm
+lib/enc1b_nedge.asm
 
-lib/psocconfig.asm
 
-lib/psocconfigtbl.asm
+lib/enc1b_nedgeint.asm
 
-lib/psocgpioint.asm
 
-lib/pwma.asm
+lib/enc1b_pedge.asm
 
-lib/pwmaint.asm
 
-lib/pwmb.asm
+lib/enc1b_pedgeint.asm
 
-lib/pwmbint.asm
 
-lib/servo0.asm
+lib/ldr_adc.asm
 
-lib/servo0int.asm
 
-lib/servo1.asm
+lib/ldr_gain.asm
 
-lib/servo1int.asm
 
-lib/uart.asm
+lib/psocconfig.asm
 
-lib/uartint.asm
 
-lib/uartplus.asm
+lib/psocconfigtbl.asm
 
-lib/ultrasonic.asm
 
-lib/ultrasonicint.asm
+lib/psocgpioint.asm
 
-./boot.asm
 
-Linking..
+lib/pwma.asm
 
-LMM info: area 'InterruptRAM' uses 2 bytes in SRAM bank 0
 
-LMM info: area 'UART_RAM' item of 16 bytes allocated in SRAM page 0
+lib/pwmaint.asm
 
-LMM info: area 'virtual_registers' uses 15 bytes in SRAM page 0
 
-LMM info: area 'data' item of 4 bytes allocated in SRAM page 0
+lib/pwmb.asm
 
-LMM info: area 'data' item of 4 bytes allocated in SRAM page 0
 
-LMM info: area 'data' item of 4 bytes allocated in SRAM page 0
+lib/pwmbint.asm
 
-LMM info: area 'data' item of 4 bytes allocated in SRAM page 0
 
-LMM info: area 'data' item of 2 bytes allocated in SRAM page 0
+lib/servo0.asm
 
-LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
 
-LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+lib/servo0int.asm
 
-LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
 
-LMM info: area 'UART_RAM' item of 1 bytes allocated in SRAM page 0
+lib/servo1.asm
 
-LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
 
-LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+lib/servo1int.asm
 
-LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
 
-LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+lib/uart.asm
 
-LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
 
-idata dump at output/KIPR_2.idata
+lib/uartint.asm
 
-  ROM 25% full. 7890 out of 32768 bytes used (does not include absolute areas).
 
-  RAM 4% full. 60 bytes used (does not include stack usage).
+lib/uartplus.asm
 
-Built with ICCM8C STD V7.05.00
+
+lib/ultrasonic.asm
+
+
+lib/ultrasonicint.asm
+
+
+./boot.asm
+
+
+Linking..
+
+
+LMM info: area 'InterruptRAM' uses 2 bytes in SRAM bank 0
+
+
+LMM info: area 'UART_RAM' item of 16 bytes allocated in SRAM page 0
+
+
+LMM info: area 'virtual_registers' uses 15 bytes in SRAM page 0
+
+
+LMM info: area 'data' item of 4 bytes allocated in SRAM page 0
+
+
+LMM info: area 'data' item of 4 bytes allocated in SRAM page 0
+
+
+LMM info: area 'data' item of 4 bytes allocated in SRAM page 0
+
+
+LMM info: area 'data' item of 2 bytes allocated in SRAM page 0
+
+
+LMM info: area 'data' item of 2 bytes allocated in SRAM page 0
+
+
+LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+
+
+LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+
+
+LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+
+
+LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+
+
+LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+
+
+LMM info: area 'UART_RAM' item of 1 bytes allocated in SRAM page 0
+
+
+LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+
+
+LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+
+
+LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+
+
+idata dump at output/KIPR_2.idata
+
+
+  ROM 28% full. 8926 out of 32768 bytes used (does not include absolute areas).
+
+
+  RAM 4% full. 58 bytes used (does not include stack usage).
+
+
+Built with ICCM8C STD V7.05.00
+
 
  
-KIPR_2 - 0 error(s) 0 warning(s) 14:01:50
+KIPR_2 - 0 error(s) 0 warning(s) 16:54:55
 

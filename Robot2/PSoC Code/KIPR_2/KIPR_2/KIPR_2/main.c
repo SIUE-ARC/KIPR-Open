@@ -121,21 +121,22 @@ const double encoder_res = 0.0357142857142857;
 
 BOOL command_flag 		=	FALSE;
 BOOL debug				=	FALSE;
+BOOL encoder1_last_changed = FALSE;
+BOOL encoder2_last_changed = FALSE;
 
 int i = 0; //loop var
 
-BYTE A1;
-BYTE B1;
-BYTE A2;
-BYTE B2;
-BYTE CW1;
-BYTE CW2;
+BYTE curPrt1;
+BYTE prevPrt1;
+BYTE curPrt2;
+BYTE prevPrt2;
 
 signed long int count1 = 0;
 signed long int count2 = 0;
 
 unsigned long pulse = 0;
-unsigned long stop = 0;
+
+int stop = 0;
 
 void init(void);
 void waitLDR(void);
@@ -150,15 +151,12 @@ void main(void)
 	char data;
 	
 	init();
-
-	B1 = ENC1B_Data_ADDR & ENC1B_MASK;
-	B2 = ENC2B_Data_ADDR & ENC2B_MASK;
 	
 	while(1)
 	{
 		//read the state of encoders. this will be needed if we interrupt.
-		//prevPrt1 = (ENC1A_Data_ADDR & (ENC1A_MASK | ENC1B_MASK));
-		//prevPrt2 = (ENC2A_Data_ADDR & (ENC2A_MASK | ENC2B_MASK));
+		prevPrt1 = (ENC1A_Data_ADDR & (ENC1A_MASK | ENC1B_MASK));
+		prevPrt2 = (ENC2A_Data_ADDR & (ENC2A_MASK | ENC2B_MASK));
 		
 		data = UART_cReadChar(); //check for data
 		
@@ -224,10 +222,7 @@ void init(void)
 	//enable appropriate interrupts
 	M8C_EnableIntMask(INT_MSK0, INT_MSK0_GPIO);
 	M8C_EnableIntMask(INT_MSK1, INT_MSK1_DBB00);
-	M8C_EnableIntMask(INT_MSK1, INT_MSK1_DBB10);
 	M8C_EnableIntMask(INT_MSK1, INT_MSK1_DBB11);
-	M8C_EnableIntMask(INT_MSK2, INT_MSK2_DBB21);
-	M8C_EnableIntMask(INT_MSK2, INT_MSK2_DBB30)
 	M8C_EnableGInt;
 	
 	UART_PutCRLF();
@@ -374,6 +369,19 @@ void action(char command, char* param)
 			
 			PWMB_WritePulseWidth(atoi(param));
 			break;
+		/*case 'c': //GETV
+			*param = 0;
+			if (debug)
+			{
+				UART_PutCRLF();
+				UART_PutString(itoa(param, getVelocity(), 10));
+				UART_PutCRLF();
+			}
+			else 
+			{
+				UART_PutString(itoa(param, getVelocity(), 10));
+			}
+			break;*/
 		case 'd': //SRV0_POS
 			if (debug)
 			{
@@ -471,6 +479,8 @@ void action(char command, char* param)
 			
 			PWMA_WritePulseWidth(0);
 			PWMB_WritePulseWidth(0);
+			//PWMA_Stop();
+			//PWMB_Stop();
 			break;
 		case 'm': //FORWARD_0
 			if (debug)
@@ -581,38 +591,171 @@ void action(char command, char* param)
 void encoder1_ISR(void)
 {
 	//grab the new state of the encoder register.
-	A1 = ENC1A_Data_ADDR & ENC1A_MASK;
-	CW1 = (B1 >> 5) ^ (A1 >> 4);
-	
-	//check which state transitioned.
-	if (CW1) //Clockwise
+	curPrt1 = (ENC1A_Data_ADDR & (ENC1A_MASK | ENC1B_MASK));
+	if (debug)
 	{
+		UART_PutCRLF();
+		UART_CPutString("prevPrt1: ");
+		UART_PutSHexInt(prevPrt1);
+	}
+	
+	if ((prevPrt1 & ENC1A_MASK) != (curPrt1 & ENC1A_MASK))
+	{
+		if (encoder1_last_changed == TRUE)
+		{
+			if (debug)
+			{
+				UART_CPutString("noise on A");
+				//UART_PutCRLF();
+			}
+			return ;
+		}else 
+		{
+			encoder1_last_changed = TRUE;
+		}
+	}else if ((prevPrt1 & ENC1B_MASK) != (curPrt1 & ENC1B_MASK))
+	{
+		if (encoder1_last_changed == FALSE)
+		{
+			if (debug)
+			{
+				UART_CPutString("noise on ");
+				//UART_PutCRLF();
+			}
+			return;
+		}else
+		{
+			encoder1_last_changed = FALSE;
+		}
+	}
+		
+	//check which state transitioned.
+	if ((prevPrt1 == 0x00) && (curPrt1 == ENC1A_MASK)) //A low to high
+	{
+		if (debug)
+		{
+			UART_CPutString("U prevPrt1=0x00");
+			//UART_PutCRLF();
+		}
 		count1++;
 	}
-	else //Counterclockwise
+	else if ((prevPrt1 == 0x00) && (curPrt1 == ENC1B_MASK)) //B low to high
 	{
+		if (debug)
+		{
+		UART_CPutString("D prevPrt1=0x00");
+		//UART_PutCRLF();
+		}
+		count1--;
+	}else if ((prevPrt1 == (ENC1A_MASK | ENC1B_MASK)) && (curPrt1 == ENC1B_MASK))
+	{
+		if (debug)
+		{
+			UART_CPutString("U ");
+			//UART_PutCRLF();
+		}
+		count1++;	
+	}else if ((prevPrt1 == (ENC1A_MASK | ENC1B_MASK)) && (curPrt1 == ENC1A_MASK))
+	{
+		if (debug)
+		{
+		UART_CPutString("D ");
+		//UART_PutCRLF();
+		}
 		count1--;
 	}
-	B1 = ENC1B_Data_ADDR & ENC1B_MASK; //get new B value
+	if (debug)
+	{
+		UART_PutCRLF();
+		UART_CPutString("Encoder 1 count: ");
+		UART_PutSHexInt(count1);
+		UART_PutCRLF();
+	}
 }
 
 //Encoder 2 interrupts are generated directly by the GPIO interrupt. Logically equivalent
 //to the encoder1_ISR
 void encoder2_ISR(void)
 {
-	A2 = ENC2A_Data_ADDR & ENC2A_MASK;
-	CW2 = (B2 >> 5) ^ (A2 >> 4);
-	
-	if (CW2)	
+	curPrt2 = (ENC2A_Data_ADDR & (ENC2A_MASK | ENC2B_MASK));
+	if (debug)
 	{
+		UART_PutCRLF();
+		UART_CPutString("prevPrt2: ");
+		UART_PutSHexInt(prevPrt1);
+	}
+	if ((prevPrt2 & ENC2A_MASK) != (curPrt2 & ENC2A_MASK))
+	{
+		if (encoder2_last_changed == TRUE)
+		{
+			if (debug)
+			{
+				UART_CPutString("noise on A");
+				//UART_PutCRLF();
+			}
+			return ;
+		}else 
+		{
+			encoder2_last_changed = TRUE;
+		}
+	}else if ((prevPrt2 & ENC2B_MASK) != (curPrt2 & ENC2B_MASK))
+	{
+		if (encoder2_last_changed == FALSE)
+		{
+			if (debug)
+			{
+				UART_CPutString("noise on ");
+				//UART_PutCRLF();
+			}
+			return;
+		}else
+		{
+			encoder2_last_changed = FALSE;
+		}
+	}
+	
+	if ((prevPrt2 == 0x00) && (curPrt2 == ENC2A_MASK))	
+	{
+		if (debug)
+		{
+			UART_CPutString("U prevPrt2=0x00");
+			//UART_PutCRLF();
+		}
 		count2++;
 	}
-	else
+	else if ((prevPrt2 == 0x00) && (curPrt2 == ENC2B_MASK))
 	{
+		if (debug)
+		{
+			UART_CPutString("D prevPrt2=0x00");
+			//UART_PutCRLF();
+		}
+		count2--;
+	}else if ((prevPrt2 == (ENC2A_MASK | ENC2B_MASK)) && (curPrt2 == ENC2B_MASK))
+	{
+		if (debug)
+		{
+			UART_CPutString("U ");
+			//UART_PutCRLF();
+		}
+		count2++;	
+	}else if ((prevPrt2 == (ENC2A_MASK | ENC2B_MASK)) && (curPrt2 == ENC2A_MASK))
+	{
+		if (debug)
+		{
+		UART_CPutString("D ");
+		//UART_PutCRLF();
+		}
 		count2--;
 	}
 	
-	B2 = ENC2B_Data_ADDR & ENC2B_MASK;
+	if (debug)
+	{
+		UART_PutCRLF();
+		UART_CPutString("Encoder 2 count: ");
+		UART_PutSHexInt(count2);
+		UART_PutCRLF();
+	}
 }
 
 void distance_ISR(void)
@@ -626,7 +769,6 @@ void distance_ISR(void)
 	stop = 0;
 	UltraSonic_ReadTimer(&pulse);
 	while(MISC4_Data_ADDR & MISC4_MASK);
-	UltraSonic_ReadTimer(&stop);
 	pulse -= stop;
 	UltraSonic_WritePeriod(0);
 }
