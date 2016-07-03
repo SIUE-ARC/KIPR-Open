@@ -135,8 +135,7 @@ signed long int count1 = 0;
 signed long int count2 = 0;
 
 unsigned long pulse = 0;
-
-int stop = 0;
+unsigned long stop = 0;
 
 void init(void);
 void waitLDR(void);
@@ -375,19 +374,6 @@ void action(char command, char* param)
 			
 			PWMB_WritePulseWidth(atoi(param));
 			break;
-		/*case 'c': //GETV
-			*param = 0;
-			if (debug)
-			{
-				UART_PutCRLF();
-				UART_PutString(itoa(param, getVelocity(), 10));
-				UART_PutCRLF();
-			}
-			else 
-			{
-				UART_PutString(itoa(param, getVelocity(), 10));
-			}
-			break;*/
 		case 'd': //SRV0_POS
 			if (debug)
 			{
@@ -485,8 +471,6 @@ void action(char command, char* param)
 			
 			PWMA_WritePulseWidth(0);
 			PWMB_WritePulseWidth(0);
-			//PWMA_Stop();
-			//PWMB_Stop();
 			break;
 		case 'm': //FORWARD_0
 			if (debug)
@@ -642,6 +626,7 @@ void distance_ISR(void)
 	stop = 0;
 	UltraSonic_ReadTimer(&pulse);
 	while(MISC4_Data_ADDR & MISC4_MASK);
+	UltraSonic_ReadTimer(&stop);
 	pulse -= stop;
 	UltraSonic_WritePeriod(0);
 }
