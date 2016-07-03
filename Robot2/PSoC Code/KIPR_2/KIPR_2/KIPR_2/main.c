@@ -121,6 +121,8 @@ const double encoder_res = 0.0357142857142857;
 
 BOOL command_flag 		=	FALSE;
 BOOL debug				=	TRUE;
+BOOL encoder1_last_changed = FALSE;
+BOOL encoder2_last_changed = FALSE;
 
 int i = 0; //loop var
 
@@ -596,6 +598,26 @@ void encoder1_ISR(void)
 		UART_CPutString("prevPrt1: ");
 		UART_PutSHexInt(prevPrt1);
 	}
+	
+	if ((prevPrt1 & ENC1A_MASK) != (curPrt1 & ENC1A_MASK))
+	{
+		if (encoder1_last_changed == FALSE)
+		{
+			return ;
+		}else 
+		{
+			encoder1_last_changed = TRUE;
+		}
+	}else if ((prevPrt1 & ENC1B_MASK) != (curPrt1 & ENC1B_MASK))
+	{
+		if (encoder1_last_changed == TRUE)
+		{
+			return;
+		}else
+		{
+			encoder1_last_changed = FALSE;
+		}
+	}
 		
 	//check which state transitioned.
 	if ((prevPrt1 == 0x00) && (curPrt1 == ENC1A_MASK)) //A low to high
@@ -608,6 +630,22 @@ void encoder1_ISR(void)
 		count1++;
 	}
 	else if ((prevPrt1 == 0x00) && (curPrt1 == ENC1B_MASK)) //B low to high
+	{
+		if (debug)
+		{
+		UART_CPutString("D ");
+		//UART_PutCRLF();
+		}
+		count1--;
+	}else if ((prevPrt1 == (ENC1A_MASK | ENC1B_MASK)) && (curPrt1 == ENC1B_MASK))
+	{
+		if (debug)
+		{
+			UART_CPutString("U ");
+			//UART_PutCRLF();
+		}
+		count1++;	
+	}else if ((prevPrt1 == (ENC1A_MASK | ENC1B_MASK)) && (curPrt1 == ENC1A_MASK))
 	{
 		if (debug)
 		{
@@ -636,7 +674,26 @@ void encoder2_ISR(void)
 		UART_CPutString("prevPrt2: ");
 		UART_PutSHexInt(prevPrt1);
 	}
-		
+	if ((prevPrt2 & ENC2A_MASK) != (curPrt2 & ENC2A_MASK))
+	{
+		if (encoder2_last_changed == FALSE)
+		{
+			return ;
+		}else 
+		{
+			encoder2_last_changed = TRUE;
+		}
+	}else if ((prevPrt2 & ENC2B_MASK) != (curPrt2 & ENC2B_MASK))
+	{
+		if (encoder2_last_changed == TRUE)
+		{
+			return;
+		}else 
+		{
+			encoder1_last_changed = FALSE;
+		}
+	}
+	
 	if ((prevPrt2 == 0x00) && (curPrt2 == ENC2A_MASK))	
 	{
 		if (debug)
@@ -654,7 +711,24 @@ void encoder2_ISR(void)
 			//UART_PutCRLF();
 		}
 		count2--;
+	}else if ((prevPrt2 == (ENC2A_MASK | ENC2B_MASK)) && (curPrt2 == ENC2B_MASK))
+	{
+		if (debug)
+		{
+			UART_CPutString("U ");
+			//UART_PutCRLF();
+		}
+		count2++;	
+	}else if ((prevPrt2 == (ENC2A_MASK | ENC2B_MASK)) && (curPrt2 == ENC2A_MASK))
+	{
+		if (debug)
+		{
+		UART_CPutString("D ");
+		//UART_PutCRLF();
+		}
+		count2--;
 	}
+	
 	if (debug)
 	{
 		UART_PutCRLF();
