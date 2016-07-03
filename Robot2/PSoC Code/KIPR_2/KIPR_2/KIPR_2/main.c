@@ -600,14 +600,20 @@ void encoder1_ISR(void)
 	//check which state transitioned.
 	if ((prevPrt1 == 0x00) && (curPrt1 == ENC1A_MASK)) //A low to high
 	{
-		UART_CPutString("U ");
-		//UART_PutCRLF();
+		if (debug)
+		{
+			UART_CPutString("U ");
+			//UART_PutCRLF();
+		}
 		count1++;
 	}
 	else if ((prevPrt1 == 0x00) && (curPrt1 == ENC1B_MASK)) //B low to high
 	{
+		if (debug)
+		{
 		UART_CPutString("D ");
 		//UART_PutCRLF();
+		}
 		count1--;
 	}
 	if (debug)
@@ -633,14 +639,20 @@ void encoder2_ISR(void)
 		
 	if ((prevPrt2 == 0x00) && (curPrt2 == ENC2A_MASK))	
 	{
-		UART_CPutString("U ");
-		//UART_PutCRLF();
+		if (debug)
+		{
+			UART_CPutString("U ");
+			//UART_PutCRLF();
+		}
 		count2++;
 	}
 	else if ((prevPrt2 == 0x00) && (curPrt2 == ENC2B_MASK))
 	{
-		UART_CPutString("D ");
-		//UART_PutCRLF();
+		if (debug)
+		{
+			UART_CPutString("D ");
+			//UART_PutCRLF();
+		}
 		count2--;
 	}
 	if (debug)
