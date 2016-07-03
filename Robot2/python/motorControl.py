@@ -12,7 +12,7 @@ class MotorControl:
         self.__terminator = command_terminator
         self.__MAV = "a"
         self.__MOV_1 = "b"
-        self.__MOV_2 = "B"
+        self.__MOV_2 = "c"
         self.__GETV = "c"
         self.__STOP = "l"
         self.__ENCODER_1_COUNT = "h"
@@ -40,8 +40,10 @@ class MotorControl:
         self.__speed_1 = 0
         self.__target_speed_0 = 0
         self.__target_speed_1 = 0
-        self.__KP_1 = 0.04
-        self.__KP_2 = 0.04
+        self.__left_throttle = 0
+        self.__right_throttle = 0
+        self.__KP_1 = 1
+        self.__KP_2 = 1
 
 
         self.stop()
@@ -100,7 +102,7 @@ class MotorControl:
     def move_at_percentage(self, percent):
         self.__is_stopped = False
 
-        if type(velocity) is tuple:
+        if type(percent) is tuple:
             leftSpeed = int(percent[0] * 250)
             rightSpeed = int(percent[1] * 250)
         else:
@@ -141,6 +143,12 @@ class MotorControl:
             if self.__DEBUG:
                 print("System is already stopped, ignoring command.")
 
+    def start_line_following(direction):
+        pass
+
+    def stop_line_following():
+        pass
+
     def get_velocity(self):
         warnings.warn("deprecated, no longer supported by PSoC", DeprecationWarning)
         if self.__is_stopped:
@@ -169,10 +177,7 @@ class MotorControl:
             print(ticks)
 
         # TODO Debug why is this one twice as much?
-        return int(ticks / 2)
-
-        # TODO confirm result
-        return (self.__serialConnection.get_response())
+        return int(ticks)
 
     # TODO Cache for a very short amount of time
     def get_encoder_2_count(self):
@@ -188,9 +193,6 @@ class MotorControl:
             print("Getting encoder 2 count.")
             print(ticks)
         return ticks
-
-        # TODO confirm result
-        return (self.__serialConnection.get_response())
 
     def reset_encoder_1_count(self):
         self.__serialConnection.send_command(self.__RESET_ENCODER_1_COUNT)
@@ -216,19 +218,26 @@ class MotorControl:
         return max(smallest, min(n, largest))
 
     def update(self):
-        encoder_1_now = self.get_encoder_1_count()
-        encoder_2_now = self.get_encoder_2_count()
+        try:
+            encoder_1_now = self.get_encoder_1_count()
+        except:
+            ignore_1 = True
+
+        try:
+            encoder_2_now = self.get_encoder_2_count()
+        except:
+            ignore_2 = True
 
         time_delta = time.perf_counter() - self.__then
         encoder_1_delta = encoder_1_now - self.__encoder_1_then
         encoder_2_delta = encoder_2_now - self.__encoder_2_then
 
         ignore_1 = False
-        if abs(encoder_1_delta) > 10:
+        if abs(encoder_1_delta) > 20:
             ignore_1 = True
 
         ignore_2 = False
-        if abs(encoder_2_delta) > 10:
+        if abs(encoder_2_delta) > 20:
             ignore_2 = True
 
         self.__encoder_1_then = encoder_1_now
@@ -242,26 +251,26 @@ class MotorControl:
         encoder_1_error = self.__target_speed_0 - encoder_1_speed
         encoder_2_error = self.__target_speed_1 - encoder_2_speed
 
-        encoder_1_ctrl = int(self.clamp(encoder_1_error * self.__KP_1, -1, 1) * 250)
-        encoder_2_ctrl = int(self.clamp(encoder_2_error * self.__KP_2, -1, 1) * 250)
-
-        if self.__debug is True:
-            print("\nUpdate throttle, delta t = " + str(time_delta))
-            print("DLT:\t"+str(encoder_1_delta) + "\t" + str(encoder_2_delta))
-            print("SPD:\t"+str(encoder_1_speed) + "\t" + str(encoder_2_speed))
-            print("ERR:\t"+str(encoder_1_error) + "\t" + str(encoder_2_error))
-            print("CTL:\t"+str(encoder_1_ctrl) + "\t" + str(encoder_2_ctrl))
-
         if ignore_1 is False:
-            self.__serialConnection.send_command(self.__MOV_1, encoder_1_ctrl, self.__terminator)
-            if encoder_1_ctrl > 0:
+            self.__left_throttle += int((encoder_1_error * self.__KP_1))
+            self.__serialConnection.send_command(self.__MOV_1, self.__left_throttle, self.__terminator)
+            if self.__left_throttle > 0:
                 self.__serialConnection.send_command(self.__FORWARD_1, self.__terminator)
             else:
                 self.__serialConnection.send_command(self.__REVERSE_1, self.__terminator)
 
         if ignore_2 is False:
-            self.__serialConnection.send_command(self.__MOV_2, encoder_2_ctrl, self.__terminator)
-            if encoder_2_ctrl > 0:
+            self.__right_throttle += int((encoder_2_error * self.__KP_2))
+            self.__serialConnection.send_command(self.__MOV_2, self.__right_throttle, self.__terminator)
+            if self.__right_throttle > 0:
                 self.__serialConnection.send_command(self.__FORWARD_2, self.__terminator)
             else:
                 self.__serialConnection.send_command(self.__REVERSE_2, self.__terminator)
+
+        if self.__DEBUG is False:
+            print("\nUpdate throttle, delta t = " + str(time_delta))
+            print("DLT:\t"+str(encoder_1_delta) + "\t" + str(encoder_2_delta))
+            print("SPD:\t"+str(encoder_1_speed) + "\t" + str(encoder_2_speed))
+            print("ERR:\t"+str(encoder_1_error) + "\t" + str(encoder_2_error))
+            print("THR:\t"+str(self.__left_throttle) + "\t" + str(self.__right_throttle))
+
