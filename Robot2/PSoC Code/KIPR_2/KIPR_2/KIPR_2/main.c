@@ -345,7 +345,9 @@ void action(char command, char* param)
 				UART_PutSHexInt(atoi(param));
 				UART_PutCRLF();
 			}
-			
+			UART_PutCLRF();
+			UART_PutString("ack");
+			UART_PutCLRF();
 			break;
 		case 'b': //MOV_0
 			if (debug)
@@ -355,7 +357,9 @@ void action(char command, char* param)
 				UART_PutSHexInt(atoi(param));
 				UART_PutCRLF();
 			}
-			
+			UART_PutCLRF();
+			UART_PutString("ack");
+			UART_PutCLRF();
 			PWMA_WritePulseWidth(atoi(param));
 			break;
 		case 'c': //MOV_1
@@ -366,7 +370,9 @@ void action(char command, char* param)
 				UART_PutSHexInt(atoi(param));
 				UART_PutCRLF();
 			}
-			
+			UART_PutCLRF();
+			UART_PutString("ack");
+			UART_PutCLRF();
 			PWMB_WritePulseWidth(atoi(param));
 			break;
 		/*case 'c': //GETV
@@ -390,7 +396,9 @@ void action(char command, char* param)
 				UART_PutSHexInt(atoi(param));
 				UART_PutCRLF();
 			}
-			
+			UART_PutCLRF();
+			UART_PutString("ack");
+			UART_PutCLRF();
 			Servo0_WritePulseWidth(atoi(param));
 			break;
 		case 'e': //SRV1_POS
@@ -401,7 +409,9 @@ void action(char command, char* param)
 				UART_PutSHexInt(atoi(param));
 				UART_PutCRLF();
 			}
-			
+			UART_PutCLRF();
+			UART_PutString("ack");
+			UART_PutCLRF();
 			Servo1_WritePulseWidth(atoi(param));
 			break;
 		case 'f': //SRV0_STP
@@ -411,7 +421,9 @@ void action(char command, char* param)
 				UART_CPutString("Stopping PWM for servo 0.");
 				UART_PutCRLF();
 			}
-			
+			UART_PutCLRF();
+			UART_PutString("ack");
+			UART_PutCLRF();
 			Servo0_WritePulseWidth(0);
 			break;
 		case 'g': //SRV1_STP
@@ -421,7 +433,9 @@ void action(char command, char* param)
 				UART_CPutString("Stopping PWM for servo 1.");
 				UART_PutCRLF();
 			}
-			
+			UART_PutCLRF();
+			UART_PutString("ack");
+			UART_PutCLRF();
 			Servo1_WritePulseWidth(0);
 			break;
 		case 'h': //GETC1
@@ -454,7 +468,9 @@ void action(char command, char* param)
 				UART_CPutString("Resetting count1");
 				UART_PutCRLF();
 			}
-			
+			UART_PutCLRF();
+			UART_PutString("ack");
+			UART_PutCLRF();
 			count1 = 0;
 			break;
 		case 'k': //RSTC2
@@ -464,7 +480,9 @@ void action(char command, char* param)
 				UART_CPutString("Resetting count2");
 				UART_PutCRLF();
 			}
-			
+			UART_PutCLRF();
+			UART_PutString("ack");
+			UART_PutCLRF();
 			count2 = 0;
 			break;
 		case 'l': //STOP
@@ -474,6 +492,9 @@ void action(char command, char* param)
 				UART_CPutString("Stopping motors");
 				UART_PutCRLF();
 			}
+			UART_PutCLRF();
+			UART_PutString("ack");
+			UART_PutCLRF();
 			AIN1_Data_ADDR &= ~AIN1_MASK;
 			AIN2_Data_ADDR &= ~AIN2_MASK;
 			
@@ -489,7 +510,9 @@ void action(char command, char* param)
 				UART_CPutString("Setting drive mode of m0 to forward.");
 				UART_PutCRLF();
 			}
-			
+			UART_PutCLRF();
+			UART_PutString("ack");
+			UART_PutCLRF();
 			AIN1_Data_ADDR |= AIN1_MASK;
 			AIN2_Data_ADDR &= ~AIN2_MASK;
 			break;
@@ -500,7 +523,9 @@ void action(char command, char* param)
 				UART_CPutString("Setting drive mode of m1 to forward.");
 				UART_PutCRLF();
 			}
-			
+			UART_PutCLRF();
+			UART_PutString("ack");
+			UART_PutCLRF();
 			BIN1_Data_ADDR |= BIN1_MASK;
 			BIN2_Data_ADDR &= ~BIN2_MASK;
 			break;
@@ -511,7 +536,9 @@ void action(char command, char* param)
 				UART_CPutString("Setting drive mode of m0 to backward.");
 				UART_PutCRLF();
 			}
-			
+			UART_PutCLRF();
+			UART_PutString("ack");
+			UART_PutCLRF();
 			AIN1_Data_ADDR &= ~AIN1_MASK;
 			AIN2_Data_ADDR |= AIN2_MASK;
 			break;
@@ -522,7 +549,9 @@ void action(char command, char* param)
 				UART_CPutString("Setting drive mode of m1 to backward.");
 				UART_PutCRLF();
 			}
-			
+			UART_PutCLRF();
+			UART_PutString("ack");
+			UART_PutCLRF();
 			BIN1_Data_ADDR &= ~BIN1_MASK;
 			BIN2_Data_ADDR |= BIN2_MASK;
 			break;
@@ -533,7 +562,9 @@ void action(char command, char* param)
 				UART_CPutString("Setting drive mode to left.");
 				UART_PutCRLF();
 			}
-			
+			UART_PutCLRF();
+			UART_PutString("ack");
+			UART_PutCLRF();
 			AIN1_Data_ADDR |= AIN1_MASK;
 			AIN2_Data_ADDR &= ~AIN2_MASK;
 			BIN1_Data_ADDR &= ~BIN1_MASK;
@@ -546,7 +577,9 @@ void action(char command, char* param)
 				UART_CPutString("Setting drive mode to right.");
 				UART_PutCRLF();
 			}
-			
+			UART_PutCLRF();
+			UART_PutString("ack");
+			UART_PutCLRF();
 			AIN1_Data_ADDR &= ~AIN1_MASK;
 			AIN2_Data_ADDR |= AIN2_MASK;
 			BIN1_Data_ADDR |= BIN1_MASK;
@@ -566,6 +599,9 @@ void action(char command, char* param)
 				UART_PutCRLF();
 				UART_CPutString("Distance: ");
 			}
+			UART_PutCLRF();
+			UART_PutString("ack");
+			UART_PutCLRF();
 			itoa(param, ultrasound(), 10);
 			UART_PutString(param);
 			
