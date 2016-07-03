@@ -1,0 +1,9 @@
+[Unit]
+Description=Robot 2 autostart script
+Requires=networking.service
+
+[Service]
+ExecStart=/usr/bin/python3 /path/to/script
+
+[Install]
+WantedBy=multi-user.target
