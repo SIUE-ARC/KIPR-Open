@@ -23,7 +23,7 @@ class Command:
     def then(self, command):
         self.__next = command
         self.__success = command
-        self.__failed =
+        self.__failed = command
         return command
 
     def ifSuccessful(self, command):
