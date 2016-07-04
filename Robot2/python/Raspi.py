@@ -20,7 +20,7 @@ class Raspi:
         self.__output_pins = []
         self.__input_pins = []
         self._DEBUG = debug
-        for i in range(1, 26):
+        for i in range(1, 40):
             # If we change a pin to output/input don't allow it to be changed again
             self.__mode_set.append(False)
 
@@ -28,7 +28,7 @@ class Raspi:
         GPIO.setwarnings(False) # no warnings about output pin modes
 
     def set_pin_to_output(self, pin):
-        if 1 < pin < 26:
+        if 1 < pin < 40:
             if self.__mode_set[pin] is False:
                 self.__mode_set[pin] = True
                 self.__output_pins.append(pin)
@@ -39,7 +39,7 @@ class Raspi:
             print(str(pin) + " is not a valid pin")
 
     def set_pin_to_input(self, pin):
-        if 1 < pin < 26:
+        if 1 < pin < 40:
             if self.__mode_set[pin] is False:
                 self.__mode_set[pin] = True
                 self.__input_pins.append(pin)
