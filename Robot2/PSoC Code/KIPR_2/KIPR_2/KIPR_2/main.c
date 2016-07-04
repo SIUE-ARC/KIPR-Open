@@ -137,6 +137,7 @@ signed long int count2 = 0;
 unsigned long pulse = 0;
 
 int stop = 0;
+char ack[4] = "ack";
 
 void init(void);
 void waitLDR(void);
@@ -345,9 +346,9 @@ void action(char command, char* param)
 				UART_PutSHexInt(atoi(param));
 				UART_PutCRLF();
 			}
-			UART_PutCLRF();
-			UART_PutString("ack");
-			UART_PutCLRF();
+			UART_PutCRLF();
+			UART_CPutString("ack");
+			UART_PutCRLF();
 			break;
 		case 'b': //MOV_0
 			if (debug)
@@ -357,9 +358,9 @@ void action(char command, char* param)
 				UART_PutSHexInt(atoi(param));
 				UART_PutCRLF();
 			}
-			UART_PutCLRF();
-			UART_PutString("ack");
-			UART_PutCLRF();
+			UART_PutCRLF();
+			UART_CPutString("ack");
+			UART_PutCRLF();
 			PWMA_WritePulseWidth(atoi(param));
 			break;
 		case 'c': //MOV_1
@@ -370,9 +371,9 @@ void action(char command, char* param)
 				UART_PutSHexInt(atoi(param));
 				UART_PutCRLF();
 			}
-			UART_PutCLRF();
-			UART_PutString("ack");
-			UART_PutCLRF();
+			UART_PutCRLF();
+			UART_CPutString("ack");
+			UART_PutCRLF();
 			PWMB_WritePulseWidth(atoi(param));
 			break;
 		/*case 'c': //GETV
@@ -380,12 +381,12 @@ void action(char command, char* param)
 			if (debug)
 			{
 				UART_PutCRLF();
-				UART_PutString(itoa(param, getVelocity(), 10));
+				UART_CPutString(itoa(param, getVelocity(), 10));
 				UART_PutCRLF();
 			}
 			else 
 			{
-				UART_PutString(itoa(param, getVelocity(), 10));
+				UART_CPutString(itoa(param, getVelocity(), 10));
 			}
 			break;*/
 		case 'd': //SRV0_POS
@@ -396,9 +397,9 @@ void action(char command, char* param)
 				UART_PutSHexInt(atoi(param));
 				UART_PutCRLF();
 			}
-			UART_PutCLRF();
-			UART_PutString("ack");
-			UART_PutCLRF();
+			UART_PutCRLF();
+			UART_CPutString("ack");
+			UART_PutCRLF();
 			Servo0_WritePulseWidth(atoi(param));
 			break;
 		case 'e': //SRV1_POS
@@ -409,9 +410,9 @@ void action(char command, char* param)
 				UART_PutSHexInt(atoi(param));
 				UART_PutCRLF();
 			}
-			UART_PutCLRF();
-			UART_PutString("ack");
-			UART_PutCLRF();
+			UART_PutCRLF();
+			UART_CPutString("ack");
+			UART_PutCRLF();
 			Servo1_WritePulseWidth(atoi(param));
 			break;
 		case 'f': //SRV0_STP
@@ -421,9 +422,9 @@ void action(char command, char* param)
 				UART_CPutString("Stopping PWM for servo 0.");
 				UART_PutCRLF();
 			}
-			UART_PutCLRF();
-			UART_PutString("ack");
-			UART_PutCLRF();
+			UART_PutCRLF();
+			UART_CPutString("ack");
+			UART_PutCRLF();
 			Servo0_WritePulseWidth(0);
 			break;
 		case 'g': //SRV1_STP
@@ -433,9 +434,9 @@ void action(char command, char* param)
 				UART_CPutString("Stopping PWM for servo 1.");
 				UART_PutCRLF();
 			}
-			UART_PutCLRF();
-			UART_PutString("ack");
-			UART_PutCLRF();
+			UART_PutCRLF();
+			UART_CPutString("ack");
+			UART_PutCRLF();
 			Servo1_WritePulseWidth(0);
 			break;
 		case 'h': //GETC1
@@ -468,9 +469,9 @@ void action(char command, char* param)
 				UART_CPutString("Resetting count1");
 				UART_PutCRLF();
 			}
-			UART_PutCLRF();
-			UART_PutString("ack");
-			UART_PutCLRF();
+			UART_PutCRLF();
+			UART_CPutString("ack");
+			UART_PutCRLF();
 			count1 = 0;
 			break;
 		case 'k': //RSTC2
@@ -480,9 +481,9 @@ void action(char command, char* param)
 				UART_CPutString("Resetting count2");
 				UART_PutCRLF();
 			}
-			UART_PutCLRF();
-			UART_PutString("ack");
-			UART_PutCLRF();
+			UART_PutCRLF();
+			UART_CPutString("ack");
+			UART_PutCRLF();
 			count2 = 0;
 			break;
 		case 'l': //STOP
@@ -492,9 +493,9 @@ void action(char command, char* param)
 				UART_CPutString("Stopping motors");
 				UART_PutCRLF();
 			}
-			UART_PutCLRF();
-			UART_PutString("ack");
-			UART_PutCLRF();
+			UART_PutCRLF();
+			UART_CPutString("ack");
+			UART_PutCRLF();
 			AIN1_Data_ADDR &= ~AIN1_MASK;
 			AIN2_Data_ADDR &= ~AIN2_MASK;
 			
@@ -510,9 +511,9 @@ void action(char command, char* param)
 				UART_CPutString("Setting drive mode of m0 to forward.");
 				UART_PutCRLF();
 			}
-			UART_PutCLRF();
-			UART_PutString("ack");
-			UART_PutCLRF();
+			UART_PutCRLF();
+			UART_CPutString("ack");
+			UART_PutCRLF();
 			AIN1_Data_ADDR |= AIN1_MASK;
 			AIN2_Data_ADDR &= ~AIN2_MASK;
 			break;
@@ -523,9 +524,9 @@ void action(char command, char* param)
 				UART_CPutString("Setting drive mode of m1 to forward.");
 				UART_PutCRLF();
 			}
-			UART_PutCLRF();
-			UART_PutString("ack");
-			UART_PutCLRF();
+			UART_PutCRLF();
+			UART_CPutString("ack");
+			UART_PutCRLF();
 			BIN1_Data_ADDR |= BIN1_MASK;
 			BIN2_Data_ADDR &= ~BIN2_MASK;
 			break;
@@ -536,9 +537,9 @@ void action(char command, char* param)
 				UART_CPutString("Setting drive mode of m0 to backward.");
 				UART_PutCRLF();
 			}
-			UART_PutCLRF();
-			UART_PutString("ack");
-			UART_PutCLRF();
+			UART_PutCRLF();
+			UART_CPutString("ack");
+			UART_PutCRLF();
 			AIN1_Data_ADDR &= ~AIN1_MASK;
 			AIN2_Data_ADDR |= AIN2_MASK;
 			break;
@@ -549,9 +550,9 @@ void action(char command, char* param)
 				UART_CPutString("Setting drive mode of m1 to backward.");
 				UART_PutCRLF();
 			}
-			UART_PutCLRF();
-			UART_PutString("ack");
-			UART_PutCLRF();
+			UART_PutCRLF();
+			UART_CPutString("ack");
+			UART_PutCRLF();
 			BIN1_Data_ADDR &= ~BIN1_MASK;
 			BIN2_Data_ADDR |= BIN2_MASK;
 			break;
@@ -562,9 +563,9 @@ void action(char command, char* param)
 				UART_CPutString("Setting drive mode to left.");
 				UART_PutCRLF();
 			}
-			UART_PutCLRF();
-			UART_PutString("ack");
-			UART_PutCLRF();
+			UART_PutCRLF();
+			UART_CPutString("ack");
+			UART_PutCRLF();
 			AIN1_Data_ADDR |= AIN1_MASK;
 			AIN2_Data_ADDR &= ~AIN2_MASK;
 			BIN1_Data_ADDR &= ~BIN1_MASK;
@@ -577,9 +578,9 @@ void action(char command, char* param)
 				UART_CPutString("Setting drive mode to right.");
 				UART_PutCRLF();
 			}
-			UART_PutCLRF();
-			UART_PutString("ack");
-			UART_PutCLRF();
+			UART_PutCRLF();
+			UART_CPutString("ack");
+			UART_PutCRLF();
 			AIN1_Data_ADDR &= ~AIN1_MASK;
 			AIN2_Data_ADDR |= AIN2_MASK;
 			BIN1_Data_ADDR |= BIN1_MASK;
@@ -599,9 +600,9 @@ void action(char command, char* param)
 				UART_PutCRLF();
 				UART_CPutString("Distance: ");
 			}
-			UART_PutCLRF();
-			UART_PutString("ack");
-			UART_PutCLRF();
+			UART_PutCRLF();
+			UART_CPutString("ack");
+			UART_PutCRLF();
 			itoa(param, ultrasound(), 10);
 			UART_PutString(param);
 			
