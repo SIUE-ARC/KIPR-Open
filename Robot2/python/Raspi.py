@@ -2,6 +2,9 @@ __authors__ = 'Ryan Owens'
 __Creation_Date__ = '07/03/2016'
 __Last_Update__ = '07/03/2016'
 
+#29,31,33,35,
+#37, 12
+#40
 try:
     import RPi.GPIO as GPIO
 except RuntimeError:
@@ -40,7 +43,7 @@ class Raspi:
                 self.__mode_set[pin] = True
                 self.__input_pins.append(pin)
                 GPIO.setup(pin, self.__IN)
-            elif self.__DEBUG is True:
+            elif self._DEBUG is True:
                 print("Unable to set " +  str(pin) + " to input, it has already been set")
         elif self._DEBUG is True:
             print(str(pin) + " is not a valid pin")
