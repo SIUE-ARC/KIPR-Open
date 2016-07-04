@@ -12,6 +12,7 @@ except RuntimeError:
 
 class Raspi:
     def __init__(self, debug = True):
+        super().__init__(debug = debug)
         self.__HIGH = GPIO.HIGH
         self.__LOW = GPIO.LOW
         self.__IN = GPIO.IN
