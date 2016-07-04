@@ -1,19 +1,22 @@
-import math
+__authors__ = 'Zach Anderson Ryan Owens'
+__Creation_Date__ = '07/02/2016'
+__Last_Update__ = '07/03/2016'
 from Command import Command
+import math
 
 # Moves `distance` cm at a rate of `speed` cm/s. Upon completion schedules `next`
 # to be executed
 class Drive(Command):
-    def __init__(self, motor_control, speed = 0, distance = 0, next = None):
-        super().__init__(motor_control)
+    def __init__(self, motor_controller, speed = 0, distance = 0, next = None):
+        super().__init__(motor_controller = motor_controller, next = next)
         # Need to know speed in ticks / second
         # cm / second * ticks / cm = ticks / second
         self.__speed_ticks = speed * self.__TICKS_PER_CM
-        self.__next = next
         self.__target_ticks = distance * self.__TICKS_PER_CM
         self.__started = False
         self.__start_ticks_1
         self.__start_ticks_2
+        self.__previous_movement = 0
 
     def execute(self):
         if self.__started is False:
@@ -27,18 +30,23 @@ class Drive(Command):
         error = target_ticks - avgDelta
 
         if abs(error) < TOLERANCE:
-            return self.__next
+            return self._COMPLETE
 
-        # TODO Need to add proportinal constant?
+        elif abs(error) < self.__previous_movement:
+            return self._FAILURE
         else:
-            motor_control.mav(self.__speed_ticks * signum(error), self.__speed_ticks * signum(error))
+            # TODO Need to add proportinal constant?
+            #self.__motor_controller.mav(self.__speed_ticks * signum(error), self.__speed_ticks * signum(error))
+            self.__previous_movement = abs(error)
+            return self._IN_PROGRESS
+
 
 
 # Turns `angle` degrees at a rate of `speed` degrees/s where `angle` < 0 means counter clockwise.
 # Schedules `next` to be executed upon completion
 class Turn(Command):
     def __init__(self, motor_controller, angle = 0, speed = 0, next = None):
-        super().__init__(motor_controller)
+        super().__init__(motor_controller = motor_controller, next = next)
 
         radius = self.__WHEELBASE / 2
 
@@ -54,8 +62,8 @@ class Turn(Command):
         self.__start_ticks_1
         self.__start_ticks_2
         self.__started = False
-        self.__next = next;
-        
+        self.__previous_movement = 0
+
 
     def execute(self):
         if self.__started is False:
@@ -73,11 +81,22 @@ class Turn(Command):
         error = self.__target_ticks - avgDelta
 
         if abs(error) < TOLERANCE:
-            return self.__next
+            return self._COMPLETE
 
-        # TODO Need to add proportinal constant?
+        elif abs(error) < self.__previous_movement:
+            return self._FAILURE
         else:
+            # TODO Need to add proportinal constant?
             # If we need to turn left, error < 0, left motor should go backwards and right
             # motor should go forwards
-            motor_control.mav(self.__speed_ticks * signum(error), self.__speed_ticks * -signum(error))
+            #self.motor_controller.mav(self.__speed_ticks * signum(error), self.__speed_ticks * -signum(error))
+            self.__previous_movement = abs(error)
+            return self._IN_PROGRESS
 
+class Stop(Command):
+    def __init__(self, motor_controller, next = None):
+        super().__init__(motor_controller = motor_controller, next = next)
+
+    def execute(self):
+        self.__motor_controller.stop()
+        return self._COMPLETE
