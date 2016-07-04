@@ -1,6 +1,6 @@
 __author__ = 'Ryan Owens'
 __Creation_Date__ = '11/02/2015'
-__Last_Update__ = '07/01/2016'
+__Last_Update__ = '07/04/2016'
 
 import sys
 import serial
