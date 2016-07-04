@@ -1,6 +1,6 @@
 __authors__ = 'Ryan Owens'
 __Creation_Date__ = '07/03/2016'
-__Last_Update__ = '07/03/2016
+__Last_Update__ = '07/03/2016'
 
 try:
     import RPi.GPIO as GPIO
