@@ -69,3 +69,10 @@ class Raspi:
 
     def raspi_version(self):
         return GPIO.VERSION
+
+    def set_all_pins_to_low(self):
+        for x in range(1, 28):
+            self.set_all_pins_to_low(x)
+
+    def end(self):
+        GPIO.cleanup()
