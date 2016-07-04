@@ -12,7 +12,6 @@ except RuntimeError:
 
 class Raspi:
     def __init__(self, debug = True):
-        super().__init__(debug = debug)
         self.__HIGH = GPIO.HIGH
         self.__LOW = GPIO.LOW
         self.__IN = GPIO.IN
@@ -20,6 +19,7 @@ class Raspi:
         self.__mode_set = []
         self.__output_pins = []
         self.__input_pins = []
+        self._DEBUG = debug
         for i in range(1, 26):
             # If we change a pin to output/input don't allow it to be changed again
             self.__mode_set.append(False)
