@@ -48,19 +48,19 @@ class Raspi:
     def set_pin_to_high(self, pin):
         if pin in self.__output_pins:
             GPIO.output(pin, self.__HIGH)
-        else:
+        elif self._DEBUG is True:
             print("Pin is not in the list of output pins.")
 
     def set_pin_to_low(self, pin):
         if pin in self.__output_pins:
             GPIO.output(pin, self.__LOW)
-        elif self._DEBUG = True:
+        elif self._DEBUG is True:
             print("Pin is not in the list of output pins.")
 
     def get_pin_input(self, pin):
         if pin in self.__input_pins:
             return GPIO.input(pin)
-        elif self._DEBUG:
+        elif self._DEBUG is True:
             print("Pin is not in the list of input pins.")
 
     def raspi_info(self):
