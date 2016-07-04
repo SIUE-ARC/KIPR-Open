@@ -3,6 +3,7 @@ __Creation_Date__ = '07/02/2016'
 __Last_Update__ = '07/03/2016'
 from Command import Command
 import math
+import serial
 
 # Moves `distance` cm at a rate of `speed` cm/s. Upon completion schedules `next`
 # to be executed
@@ -17,6 +18,7 @@ class Drive(Command):
         self.__start_ticks_1
         self.__start_ticks_2
         self.__previous_movement = 0
+        self.__try_get_reponse = 3
 
     def execute(self):
         if self.__started is False:
@@ -36,11 +38,23 @@ class Drive(Command):
             return self._FAILURE
         else:
             # TODO Need to add proportinal constant?
-            #self.__motor_controller.mav(self.__speed_ticks * signum(error), self.__speed_ticks * signum(error))
-            self.__previous_movement = abs(error)
-            return self._IN_PROGRESS
-
-
+            if self.__try_get_reponse > 0:
+                try:
+                    if self.__motor_controller.mav(self.__speed_ticks * signum(error), self.__speed_ticks * signum(error)) is True:
+                        # got the ACK
+                        self.__previous_movement = abs(error)
+                        self.__try_get_reponse = -1
+                    else:
+                        # got the NACK
+                        try_get_reponse -= 1
+                        return self._IN_PROGRESS
+                except:
+                    raise
+            elif self.__try_get_reponse == 0:
+                # to many tries
+                return self._FAILURE
+            # Got ACK and are done
+            return self._COMPLETE
 
 # Turns `angle` degrees at a rate of `speed` degrees/s where `angle` < 0 means counter clockwise.
 # Schedules `next` to be executed upon completion
@@ -63,6 +77,7 @@ class Turn(Command):
         self.__start_ticks_2
         self.__started = False
         self.__previous_movement = 0
+        self.__try_get_reponse = 3
 
 
     def execute(self):
@@ -89,14 +104,37 @@ class Turn(Command):
             # TODO Need to add proportinal constant?
             # If we need to turn left, error < 0, left motor should go backwards and right
             # motor should go forwards
-            #self.motor_controller.mav(self.__speed_ticks * signum(error), self.__speed_ticks * -signum(error))
-            self.__previous_movement = abs(error)
-            return self._IN_PROGRESS
+            if self.__try_get_reponse > 0:
+                try:
+                    if self.motor_controller.mav(self.__speed_ticks * signum(error), self.__speed_ticks * -signum(error)) is True:
+                        self.__previous_movement = abs(error)
+                        self.__try_get_reponse = -1
+                    else:
+                        try_get_reponse -= 1
+                        return self._IN_PROGRESS
+                except:
+                    raise
+            elif self.__try_get_reponse == 0:
+                return self._FAILURE
+            return self._COMPLETE
 
 class Stop(Command):
     def __init__(self, motor_controller, next = None):
         super().__init__(motor_controller = motor_controller, next = next)
+        self.__try_get_reponse = 3
 
     def execute(self):
         self.__motor_controller.stop()
+        if self.__try_get_reponse > 0:
+            try:
+                if self.__motor_controller.stop() is True:
+                    self.__previous_movement = abs(error)
+                    self.__try_get_reponse = -1
+                else:
+                    try_get_reponse -= 1
+                    return self._IN_PROGRESS
+            except:
+                raise
+        elif self.__try_get_reponse == 0:
+            return self._FAILURE
         return self._COMPLETE

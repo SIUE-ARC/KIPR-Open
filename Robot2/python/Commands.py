@@ -1,6 +1,6 @@
 __authors__ = 'Ryan Owens Zach Anderson'
 __Creation_Date__ ='06/30/2016'
-__Last_Update__ = '07/02/2016'
+__Last_Update__ = '07/04/2016'
 
 class Command:
     def __init__(self, motor_controller = None, servo_controller = None, sensor_controller = None, next = None, raspi = None, debug = True):
@@ -15,6 +15,7 @@ class Command:
         self._FAILURE = "F"
         self._IN_PROGRESS = "IP"
         self._raspi = raspi
+        self._ACK = "ack"
 
     def execute(self):
         pass

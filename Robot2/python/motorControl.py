@@ -1,9 +1,8 @@
-__author__ = 'Ryan Owens'
+__authors__ = 'Ryan Owens Zach Anderson'
 __Creation_Date__ ='06/25/2016'
-__Last_Update__ = '07/02/2016'
+__Last_Update__ = '07/04/2016'
 
 import sys
-import serial
 import time
 
 class MotorControl:
@@ -50,41 +49,54 @@ class MotorControl:
 
     def set_direction_Forward(self):
         warnings.warn("deprecated, use move_at_velocity or move_at_percentage", DeprecationWarning)
-        self.__is_stopped = False
-        self.__is_moving_forward = True
-        self.__serialConnection.send_command(self.__FORWARD, self.__terminator)
         if self.__DEBUG:
             print("Setting direction to forward.")
-            if self.__WAIT_FOR_ECHO:
-                print(self.__serialConnection.get_response())
+        try:
+            response = self.__serialConnection.send_command(self.__FORWARD, self.__terminator)
+            if response is True:
+                self.__is_stopped = False
+                self.__is_moving_forward = True
+            return response
+        except:
+            raise
+
 
     def set_direction_Reverse(self):
         warnings.warn("deprecated, use move_at_velocity or move_at_percentage", DeprecationWarning)
-        self.__is_stopped = False
-        self.__is_moving_forward = False
-        self.__serialConnection.send_command(self.__REVERSE, self.__terminator)
         if self.__DEBUG:
             print("Setting direction to reverse.")
-            if self.__WAIT_FOR_ECHO:
-                print(self.__serialConnection.get_response())
+        try:
+            response = self.__serialConnection.send_command(self.__REVERSE,self.__terminator)
+            if response is True:
+                self.__is_stopped = False
+                self.__is_moving_forward = False
+            return response
+        except:
+            raise
 
     def set_direction_Left(self):
         warnings.warn("deprecated, use move_at_velocity or move_at_percentage", DeprecationWarning)
-        self.__is_left = True
-        self.__serialConnection(self.__LEFT, self.__terminator)
         if self.__DEBUG:
             print("Setting direction to left.")
-            if self.__WAIT_FOR_ECHO:
-                print(self.__serialConnection.get_response())
+        try:
+            response = self.__serialConnection.send_command(self.__LEFT, self.__terminator)
+            if response is True:
+                self.__is_left = True
+            return response
+        except:
+            raise
 
     def set_direction_Right(self):
         warnings.warn("deprecated, use move_at_velocity or move_at_percentage", DeprecationWarning)
-        self.__is_left = True
-        self.__serialConnection(self.__RIGHT, self.__terminator)
         if self.__DEBUG:
             print("Setting direction to Right.")
-            if self.__WAIT_FOR_ECHO:
-                print(self.__serialConnection.get_response())
+        try:
+            response = self.__serialConnection(self.__RIGHT, self.__terminator)
+            if response is True:
+                self.__is_left = False
+            return response
+        except:
+            raise
 
 
     def move_at_velocity(self, velocity):
@@ -97,6 +109,7 @@ class MotorControl:
             self.__target_speed_1 = velocity;
         if self.__DEBUG:
             print("Moving at " + str(velocity) + " ticks / second")
+        return True
 
 
     def move_at_percentage(self, percent):
@@ -110,35 +123,65 @@ class MotorControl:
             rightSpeed = int(percent * 250)
 
         if leftSpeed > 0:
-            self.__serialConnection.send_command(self.__FORWARD_1, self.__terminator)
+            try:
+                if self.__serialConnection.send_command(self.__FORWARD_1, self.__terminator) is False:
+                    return False
+            except:
+                raise
         else:
-            self.__serialConnection.send_command(self.__REVERSE_1, self.__terminator)
-        self.__serialConnection.send_command(self.__MOV_1, abs(leftSpeed), self.__terminator)
+            try:
+                if self.__serialConnection.send_command(self.__REVERSE_1, self.__terminator) is False:
+                    return False
+            except:
+                raise
+
+        try:
+            if self.__serialConnection.send_command(self.__MOV_1, abs(leftSpeed), self.__terminator) is False:
+                return False
+        except:
+            raise
 
         if rightSpeed > 0:
-            self.__serialConnection.send_command(self.__FORWARD_2, self.__terminator)
+            try:
+                if self.__serialConnection.send_command(self.__FORWARD_2, self.__terminator) is False:
+                    return False
+            except:
+                raise
         else:
-            self.__serialConnection.send_command(self.__REVERSE_2, self.__terminator)
-        self.__serialConnection.send_command(self.__MOV_2, abs(rightSpeed), self.__terminator)
+            try:
+            if self.__serialConnection.send_command(self.__REVERSE_2, self.__terminator) is False:
+                return False
+            except:
+                raise
+
+        try:
+            if self.__serialConnection.send_command(self.__MOV_2, abs(rightSpeed), self.__terminator) is False:
+                return False
+            except:
+                raise
 
         if self.__DEBUG:
             print("Moving at " + str(percent) + " throttle")
-            if self.__WAIT_FOR_ECHO:
-                print(self.__serialConnection.get_response())
+
+        return True
 
 
     def stop(self):
         if self.__is_stopped is False:
-            self.__is_stopped = True
-            self.__serialConnection.send_command(self.__STOP, self.__terminator)
-            self.__speed_0 = 0
-            self.__speed_1 = 0
-            self.__target_speed_0 = 0
-            self.__target_speed_1 = 0
-            if self.__DEBUG:
-                print("Stopping")
-                if self.__WAIT_FOR_ECHO:
-                    print(self.__serialConnection.get_response())
+            try:
+                if self.__serialConnection.send_command(self.__STOP, self.__terminator) is True:
+                    self.__is_stopped = True
+                    self.__speed_0 = 0
+                    self.__speed_1 = 0
+                    self.__target_speed_0 = 0
+                    self.__target_speed_1 = 0
+                    if self.__DEBUG:
+                        print("Stopping")
+                    return True
+                else:
+                    return False
+            except:
+                raise
         else:
             if self.__DEBUG:
                 print("System is already stopped, ignoring command.")
@@ -154,19 +197,21 @@ class MotorControl:
         if self.__is_stopped:
             return 0.0;
         else:
-            self.__serialConnection.send_command(self.__GETV, self.__terminator)
+            try:
+                response = self.__serialConnection.send_command(self.__GETV, self.__terminator, check_result = False)
+            except:
+                raise
             if self.__DEBUG:
                 print("Getting current velocity.")
-                if self.__WAIT_FOR_ECHO:
-                    print(self.__serialConnection.get_response())
             # TODO confirm the result should be a double
-            return float(self.__serialConnection.get_response())
+            return float(response)
 
     # TODO Cache for a very short amount of time
     def get_encoder_1_count(self):
-        self.__serialConnection.send_command(self.__ENCODER_1_COUNT, self.__terminator)
-        bites = self.__serialConnection.get_response()
-
+        try:
+            bites = self.__serialConnection.send_command(self.__ENCODER_1_COUNT, self.__terminator, check_result = False)
+        except:
+            raise
         ticks = int(bites, 16)
 
         if(ticks > (1 << 16) / 2):
@@ -181,8 +226,10 @@ class MotorControl:
 
     # TODO Cache for a very short amount of time
     def get_encoder_2_count(self):
-        self.__serialConnection.send_command(self.__ENCODER_2_COUNT, self.__terminator)
-        bites = self.__serialConnection.get_response()
+        try:
+            bites = self.__serialConnection.send_command(self.__ENCODER_2_COUNT, self.__terminator, check_result = False)
+        except:
+            raise
 
         ticks = int(bites, 16)
 
@@ -195,24 +242,32 @@ class MotorControl:
         return ticks
 
     def reset_encoder_1_count(self):
-        self.__serialConnection.send_command(self.__RESET_ENCODER_1_COUNT)
+        try:
+            if self.__serialConnection.send_command(self.__RESET_ENCODER_1_COUNT) is False:
+                return False
+        except:
+            raise
         if self.__DEBUG:
             print("Resetting encoder 1 count")
-            if self.__WAIT_FOR_ECHO:
-                print(self.__serialConnection.get_response())
+        return True
 
     def reset_encoder_2_count(self):
-        self.__serialConnection.send_command(self.__RESET_ENCODER_2_COUNT)
+        try:
+            if self.__serialConnection.send_command(self.__RESET_ENCODER_2_COUNT) is False:
+                return False
+        except:
+            raise
         if self.__DEBUG:
             print("Resetting encoder 2 count")
-            if self.__WAIT_FOR_ECHO:
-                print(self.__serialConnection.get_response())
+        return True
 
     def reset_encoders_count(self):
         if self.__DEBUG:
             print("Resetting both encoder counts.")
-        self.reset_encoder_1_count()
-        self.reset_encoder_2_count()
+        try:
+            return self.reset_encoder_1_count() and self.reset_encoder_2_count()
+        except:
+            raise
 
     def clamp(self, n, smallest, largest):
         return max(smallest, min(n, largest))
@@ -253,19 +308,44 @@ class MotorControl:
 
         if ignore_1 is False:
             self.__left_throttle += int((encoder_1_error * self.__KP_1))
-            self.__serialConnection.send_command(self.__MOV_1, self.__left_throttle, self.__terminator)
+            try:
+                if self.__serialConnection.send_command(self.__MOV_1, self.__left_throttle, self.__terminator) is False:
+                    return False
+            except:
+                raise
+
             if self.__left_throttle > 0:
-                self.__serialConnection.send_command(self.__FORWARD_1, self.__terminator)
+                try:
+                    if self.__serialConnection.send_command(self.__FORWARD_1, self.__terminator) is False:
+                        return False
+                except:
+                    raise
             else:
-                self.__serialConnection.send_command(self.__REVERSE_1, self.__terminator)
+                try:
+                    if self.__serialConnection.send_command(self.__REVERSE_1, self.__terminator) is False:
+                        return False
+                except:
+                    raise
 
         if ignore_2 is False:
             self.__right_throttle += int((encoder_2_error * self.__KP_2))
-            self.__serialConnection.send_command(self.__MOV_2, self.__right_throttle, self.__terminator)
+            try:
+                if self.__serialConnection.send_command(self.__MOV_2, self.__right_throttle, self.__terminator) is False:
+                    return false:
+            except:
+                raise
             if self.__right_throttle > 0:
-                self.__serialConnection.send_command(self.__FORWARD_2, self.__terminator)
+                try:
+                    if self.__serialConnection.send_command(self.__FORWARD_2, self.__terminator) is False:
+                        return False
+                except:
+                    raise
             else:
-                self.__serialConnection.send_command(self.__REVERSE_2, self.__terminator)
+                try:
+                    if self.__serialConnection.send_command(self.__REVERSE_2, self.__terminator) is False:
+                        return False
+                except:
+                    raise
 
         if self.__DEBUG is False:
             print("\nUpdate throttle, delta t = " + str(time_delta))
@@ -273,4 +353,3 @@ class MotorControl:
             print("SPD:\t"+str(encoder_1_speed) + "\t" + str(encoder_2_speed))
             print("ERR:\t"+str(encoder_1_error) + "\t" + str(encoder_2_error))
             print("THR:\t"+str(self.__left_throttle) + "\t" + str(self.__right_throttle))
-

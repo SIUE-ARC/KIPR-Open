@@ -12,16 +12,23 @@ import time
 #     print(e)
 #     sys.exit(1)
 
+class UnknownResult(IOError):
+    def __init__(self, message):
+        super().__init__(message)
 
 class SerialCommunication:
     constant_communication = False
 
-    def __init__(self, port, baud_rate):
+    def __init__(self, port, baud_rate, should_expect_a_result = True):
         self.__port = port
         self.__baud_rate = baud_rate
         self.__expecting_response = False
         self.__expecting_acknowledge = False
         self.__wait_time_in_seconds = 0.0005
+        self.__timeout_for_response = 0.0005
+        self.__wait_for_resp = should_expect_a_result
+        self._ACK = "ack"
+        self._NACK = "fu1337"
 
         try:
             self.__connection = serial.Serial(port, baud_rate, timeout=1)
@@ -41,7 +48,7 @@ class SerialCommunication:
             self.flush()
             print("Connection Established on:" + self.__port + " At " + str(self.__baud_rate))
 
-    def send_command(self, character_code, parameter1=None, parameter2=None):
+    def send_command(self, character_code, parameter1=None, parameter2=None, check_result = True):
         # TODO put send code in separate thread
         # TODO should all of the try/catches be used? They are expensive.
         try:
@@ -64,25 +71,43 @@ class SerialCommunication:
                 self.__parameter_list.append(str(parameter2))
             except serial.SerialTimeoutException as e:
                 print(e)
-        self.__expecting_acknowledge = True
         time.sleep(self.__wait_time_in_seconds)
+
+        if self.__wait_for_resp is True:
+            try:
+                return self.get_response(check_result)
+            except:
+                raise
 
     def start_constant_communication(self):
         # TODO process for constant listening on separate thread
         self.constant_communication = True
 
-    def get_response(self):
+    def get_response(self, check_result = True):
         # TODO make a private get response thread to update the queue
         # get_response should then pop the last item on the queue
         # TODO should the __expecting_reponse always be true to receive a respons?
-        while self.__connection.inWaiting() == 0:
-            pass
+        start_time = time.perf_counter()
+        curr_time = start_time
+        while (self.__connection.inWaiting() == 0) and (curr_time - start_time < self.__timeout_for_response):
+            curr_time = time.perf_counter()
 #            print("Waiting for response")
-        response = self.__connection.read(self.__connection.inWaiting())
-        self.__response_list.append(response)
-        self.__expecting_response = False
-        self.__expecting_acknowledge = False
-        return response
+        if self.__connection.inWaiting() == 0:
+            raise serial.SerialException("Timeout on reading from port " + str(self.__port))
+        else:
+            response = self.__connection.read(self.__connection.inWaiting())
+            self.__response_list.append(response)
+            self.__expecting_response = False
+            self.__expecting_acknowledge = False
+            if check_result is True:
+                if self._ACK in response:
+                    return True
+                elif self._NACK in response:
+                    return False
+                else:
+                    raise UnknownResult("Result is nether an ACK or NACK")
+            else:
+                return response
 
     # TODO get_last methods should be replaced
     def get_last_response(self):
