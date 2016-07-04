@@ -15,7 +15,7 @@ class Raspi:
         self.__OUT = GPIO.OUT
         self.__mode_set = []
         self.__output_pins = []
-        self.__input_pins = []
+        self.__input_pins = [27]
         for i in range(1, 26):
             # If we change a pin to output/input don't allow it to be changed again
             self.__mode_set[i] = False
