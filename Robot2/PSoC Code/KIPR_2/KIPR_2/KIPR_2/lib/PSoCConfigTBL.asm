@@ -135,7 +135,7 @@ LoadConfigTBL_kipr_2_Bank0:
 	db		c4h, 33h		; Row_2_LogicSelect_1 register (RDI3LT1)
 	db		c5h, 80h		; Row_2_OutputDrive_0 register (RDI2SRO0)
 	db		c6h, 20h		; Row_2_OutputDrive_1 register (RDI2SRO1)
-	db		c8h, 54h		; Row_3_InputMux register (RDI3RI)
+	db		c8h, 44h		; Row_3_InputMux register (RDI3RI)
 	db		c9h, 00h		; Row_3_InputSync register (RDI3SYN)
 	db		cah, 30h		; Row_3_LogicInputAMux register (RDI3IS)
 	db		cbh, 33h		; Row_3_LogicSelect_0 register (RDI3LT0)
@@ -220,7 +220,7 @@ LoadConfigTBL_kipr_2_Bank1:
 	db		5ah, 40h		;UltraSonic_OUTPUT_ISB2_REG(DCB32OU)
 ;       Instance name UltraSonic, Block Name TIMER32_LSB(DBB30)
 	db		50h, 00h		;UltraSonic_FUNC_LSB_REG(DBB30FN)
-	db		51h, c5h		;UltraSonic_INPUT_LSB_REG(DBB30IN)
+	db		51h, e5h		;UltraSonic_INPUT_LSB_REG(DBB30IN)
 	db		52h, 40h		;UltraSonic_OUTPUT_LSB_REG(DBB30OU)
 ;       Instance name UltraSonic, Block Name TIMER32_MSB(DCB33)
 	db		5ch, 20h		;UltraSonic_FUNC_MSB_REG(DCB33FN)
@@ -255,8 +255,8 @@ LoadConfigTBL_kipr_2_Ordered:
 	mov	reg[00h], 8ah		; Port_0_DriveMode_0 register (PRT0DM0)
 	mov	reg[01h], 75h		; Port_0_DriveMode_1 register (PRT0DM1)
 	M8C_SetBank0
-	mov	reg[03h], 60h		; Port_0_DriveMode_2 register (PRT0DM2)
-	mov	reg[02h], 8bh		; Port_0_GlobalSelect register (PRT0GS)
+	mov	reg[03h], 61h		; Port_0_DriveMode_2 register (PRT0DM2)
+	mov	reg[02h], 8eh		; Port_0_GlobalSelect register (PRT0GS)
 	M8C_SetBank1
 	mov	reg[02h], 00h		; Port_0_IntCtrl_0 register (PRT0IC0)
 	mov	reg[03h], 00h		; Port_0_IntCtrl_1 register (PRT0IC1)
