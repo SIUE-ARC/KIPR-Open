@@ -148,7 +148,7 @@ class DriveBackUntilTouch(Command):
         self.__pin = pin
 
     def execute(self):
-        if self.__try_get_reponse > 0 && self._raspi.get_pin_input(self.__pin) != 1:
+        if self.__try_get_reponse > 0 and self._raspi.get_pin_input(self.__pin) != 1:
             if self.__started is True:
                 # have not reached the number of tries and the bumper is not pressed
                 return self._IN_PROGRESS
@@ -179,7 +179,7 @@ class DriveForwardUntilTouch(Command):
         self.__pin = pin
 
     def execute(self):
-        if self.__try_get_reponse > 0 && self._raspi.get_pin_input(self.__pin) != 1:
+        if self.__try_get_reponse > 0 and self._raspi.get_pin_input(self.__pin) != 1:
             if self.__started is True:
                 # have not reached the number of tries and the bumper is not pressed
                 return self._IN_PROGRESS
