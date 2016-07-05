@@ -1,6 +1,6 @@
 __authors__ = 'Ryan Owens Zach Anderson'
 __Creation_Date__ ='06/25/2016'
-__Last_Update__ = '07/04/2016'
+__Last_Update__ = '07/05/2016'
 
 import sys
 import time
@@ -43,6 +43,8 @@ class MotorControl:
         self.__right_throttle = 0
         self.__KP_1 = 1
         self.__KP_2 = 1
+
+        self.__pid_enabled = False
 
 
         self.stop()
@@ -272,6 +274,18 @@ class MotorControl:
     def clamp(self, n, smallest, largest):
         return max(smallest, min(n, largest))
 
+    def enable(self):
+        self.__enable_pid = True
+
+    def disable(self):
+        self.__enable_pid = False
+    
+    def get_left_velcity(self):
+        return self.__left_speed
+    
+    def get_right_velocity(self):
+        return self.__right_speed
+
     def update(self):
         try:
             encoder_1_now = self.get_encoder_1_count()
@@ -287,65 +301,70 @@ class MotorControl:
         encoder_1_delta = encoder_1_now - self.__encoder_1_then
         encoder_2_delta = encoder_2_now - self.__encoder_2_then
 
-        ignore_1 = False
-        if abs(encoder_1_delta) > 20:
-            ignore_1 = True
-
-        ignore_2 = False
-        if abs(encoder_2_delta) > 20:
-            ignore_2 = True
-
         self.__encoder_1_then = encoder_1_now
         self.__encoder_2_then = encoder_2_now
         self.__then += time_delta
 
-		# Speed unit is ticks / second
+        # Speed unit is ticks / second
         encoder_1_speed = encoder_1_delta / time_delta
         encoder_2_speed = encoder_2_delta / time_delta
 
-        encoder_1_error = self.__target_speed_0 - encoder_1_speed
-        encoder_2_error = self.__target_speed_1 - encoder_2_speed
+        ignore_1 = False
+        if abs(encoder_1_delta) > 20:
+            ignore_1 = True
+        else:
+            self.__left_speed = encoder_1_speed
 
-        if ignore_1 is False:
-            self.__left_throttle += int((encoder_1_error * self.__KP_1))
-            try:
-                if self.__serialConnection.send_command(self.__MOV_1, self.__left_throttle, self.__terminator) is False:
-                    return False
-            except:
-                raise
+        ignore_2 = False
+        if abs(encoder_2_delta) > 20:
+            ignore_2 = True
+        else:
+            self.__left_speed = encoder_2_speed
 
-            if self.__left_throttle > 0:
+        if self.__enable_pid is True:
+            encoder_1_error = self.__target_speed_0 - encoder_1_speed
+            encoder_2_error = self.__target_speed_1 - encoder_2_speed
+
+            if ignore_1 is False:
+                self.__left_throttle += int((encoder_1_error * self.__KP_1))
                 try:
-                    if self.__serialConnection.send_command(self.__FORWARD_1, self.__terminator) is False:
-                        return False
-                except:
-                    raise
-            else:
-                try:
-                    if self.__serialConnection.send_command(self.__REVERSE_1, self.__terminator) is False:
+                    if self.__serialConnection.send_command(self.__MOV_1, self.__left_throttle, self.__terminator) is False:
                         return False
                 except:
                     raise
 
-        if ignore_2 is False:
-            self.__right_throttle += int((encoder_2_error * self.__KP_2))
-            try:
-                if self.__serialConnection.send_command(self.__MOV_2, self.__right_throttle, self.__terminator) is False:
-                    return false:
-            except:
-                raise
-            if self.__right_throttle > 0:
+                if self.__left_throttle > 0:
+                    try:
+                        if self.__serialConnection.send_command(self.__FORWARD_1, self.__terminator) is False:
+                            return False
+                    except:
+                        raise
+                else:
+                    try:
+                        if self.__serialConnection.send_command(self.__REVERSE_1, self.__terminator) is False:
+                            return False
+                    except:
+                        raise
+
+            if ignore_2 is False:
+                self.__right_throttle += int((encoder_2_error * self.__KP_2))
                 try:
-                    if self.__serialConnection.send_command(self.__FORWARD_2, self.__terminator) is False:
-                        return False
+                    if self.__serialConnection.send_command(self.__MOV_2, self.__right_throttle, self.__terminator) is False:
+                        return false:
                 except:
                     raise
-            else:
-                try:
-                    if self.__serialConnection.send_command(self.__REVERSE_2, self.__terminator) is False:
-                        return False
-                except:
-                    raise
+                if self.__right_throttle > 0:
+                    try:
+                        if self.__serialConnection.send_command(self.__FORWARD_2, self.__terminator) is False:
+                            return False
+                    except:
+                        raise
+                else:
+                    try:
+                        if self.__serialConnection.send_command(self.__REVERSE_2, self.__terminator) is False:
+                            return False
+                    except:
+                        raise
 
         if self.__DEBUG is False:
             print("\nUpdate throttle, delta t = " + str(time_delta))

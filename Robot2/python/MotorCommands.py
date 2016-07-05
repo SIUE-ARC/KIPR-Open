@@ -200,3 +200,30 @@ class DriveForwardUntilTouch(Command):
                 return self._FAILURE
         # Got ACK and are done
         return self._COMPLETE
+
+# Drive until the robot is pressed against a pipe on both sides
+class SquareUp(Command):
+    def __init__(self, motor_controller, speed):
+        super().__init__(motor_controller = motor_controller)
+        self.__speed = speed
+    
+    def execute(self):
+        # Turn off PID, we will be driving manually
+        self.__motorController.disable()
+
+        leftSpeed = speed
+        rightSpeed = speed
+
+        # If either motor is already against a wall, don't move that motor
+        if abs(self.__motor_controller.get_left_velocity()) < 10:
+            leftSpeed = 0
+        if abs(self.__motor_controller.get_right_velocity()) < 10:
+            rightSpeed = 0
+
+        # If both motors are against the wall, we are done
+        if leftSpeed == 0 and rightSpeed == 0:
+            self.__motorController.enable()
+            return self._COMPLETE
+        else:
+            self.__motorController.move_at_percentage((leftSpeed, rightSpeed))
+            return self._IN_PROGRESS
