@@ -102,5 +102,5 @@ idata dump at output/KIPR_2.idata
 Built with ICCM8C STD V7.05.00
 
  
-KIPR_2 - 0 error(s) 0 warning(s) 17:48:15
+KIPR_2 - 0 error(s) 0 warning(s) 18:08:16
 
