@@ -25,7 +25,7 @@ class SerialCommunication:
         self.__expecting_response = False
         self.__expecting_acknowledge = False
         self.__wait_time_in_seconds = 0.0005
-        self.__timeout_for_response = 0.0005
+        self.__timeout_for_response = 0.005
         self.__wait_for_resp = should_expect_a_result
         self._ACK = "ack"
         self._NACK = "fu1337"
@@ -95,7 +95,7 @@ class SerialCommunication:
         if self.__connection.inWaiting() == 0:
             raise serial.SerialException("Timeout on reading from port " + str(self.__port))
         else:
-            response = self.__connection.read(self.__connection.inWaiting())
+            response = self.__connection.read(self.__connection.inWaiting()).decode("utf-8")
             self.__response_list.append(response)
             self.__expecting_response = False
             self.__expecting_acknowledge = False
