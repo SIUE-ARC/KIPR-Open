@@ -4,22 +4,15 @@
    C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8ssc.inc\
    C:\Users\zaander\Desktop\KIPR\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\lib\GLOBAL~1.INC\
    C:\Users\zaander\Desktop\KIPR\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\memory.inc
-./obj/main.o :  ./lib/DigBuf_2.h ./lib/ENC1A_~1.H ./lib/ENC1A_~2.H\
-   ./lib/ENC1B_~1.H ./lib/ENC1B_~2.H ./lib/LDR_ADC.h ./lib/LDR_Gain.h\
-   ./lib/PSoCAPI.h ./lib/PSOCGP~1.H ./lib/PWMA.h ./lib/PWMB.h\
-   ./lib/Servo0.h ./lib/Servo1.h ./lib/UART.h ./lib/ULTRAS~2.H\
-   ./lib/ULTRAS~1.H\
+./obj/main.o :  ./lib/ENC1A_~1.H ./lib/ENC1A_~2.H ./lib/ENC1B_~1.H\
+   ./lib/ENC1B_~2.H ./lib/LDR_ADC.h ./lib/LDR_Gain.h ./lib/PSoCAPI.h\
+   ./lib/PSOCGP~1.H ./lib/PWMA.h ./lib/PWMB.h ./lib/Servo0.h\
+   ./lib/Servo1.h ./lib/UART.h ./lib/ULTRAS~1.H\
    C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/M8C.h\
    C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.h\
    C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/_const.h\
    C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/limits.h\
    C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/stdlib.h
-./lib/obj/digbuf_2.o :  ./lib/DigBuf_2.inc\
-   C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc\
-   C:\Users\zaander\Desktop\KIPR\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\memory.inc
-./lib/obj/digbuf_2int.o : \
-   C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc\
-   C:\Users\zaander\Desktop\KIPR\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\memory.inc
 ./lib/obj/enc1a_nedge.o :  ./lib/ENC1A_~1.INC\
    C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc\
    C:\Users\zaander\Desktop\KIPR\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\memory.inc
@@ -88,12 +81,9 @@
    C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc\
    C:\Users\zaander\Desktop\KIPR\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\memory.inc
 ./lib/obj/uartplus.o : 
-./lib/obj/ultrasonic.o :  ./lib/ULTRAS~2.INC\
+./lib/obj/ultrasonic.o :  ./lib/ULTRAS~1.INC\
    C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc\
    C:\Users\zaander\Desktop\KIPR\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\memory.inc
 ./lib/obj/ultrasonicint.o :  ./lib/ULTRAS~1.INC\
-   C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc\
-   C:\Users\zaander\Desktop\KIPR\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\memory.inc
-./lib/obj/ultrasonicintint.o : \
    C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc\
    C:\Users\zaander\Desktop\KIPR\KIPR-O~1\Robot2\PSOCCO~1\KIPR_2\KIPR_2\KIPR_2\memory.inc
