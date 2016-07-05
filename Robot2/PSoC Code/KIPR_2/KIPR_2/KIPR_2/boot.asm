@@ -198,11 +198,11 @@ ENDIF
     reti
 
     org   54h                      ;PSoC Block DBB31 Interrupt Vector
-	// call	void_handler
+	ljmp	_PseudoEncoder_ISR
     reti
 
     org   58h                      ;PSoC Block DCB32 Interrupt Vector
-    // call	void_handler
+    ljmp _UltraSonic_ISR
     reti
 
     org   5Ch                      ;PSoC Block DCB33 Interrupt Vector

@@ -112,6 +112,7 @@ of the pulse and get the distance to an object.
 #pragma interrupt_handler encoder1_ISR
 #pragma interrupt_handler encoder2_ISR
 #pragma interrupt_handler distance_ISR
+#pragma interrupt_handler Ultrasonic_ISR
 
 const BYTE	debug_mask	=	MISC7_MASK | MISC8_MASK;
 const char 	TERM		=	0x07;
@@ -134,7 +135,7 @@ BYTE prevPrt2;
 signed long int count1 = 0;
 signed long int count2 = 0;
 
-unsigned long pulse = 0;
+unsigned int pulse = 0;
 
 int stop = 0;
 char ack[4] = "ack";
@@ -220,10 +221,20 @@ void init(void)
 	LDR_Gain_Start(LDR_Gain_HIGHPOWER);
 	LDR_ADC_Start(LDR_ADC_HIGHPOWER);
 	
+	//start the interrupt buffer for the HC-SR04
+	UltrasonicInt_Start();
+	
+	//start the interrupt buffer for the psuedo encoder.
+	PseudoEncoder_Start();
+	
 	//enable appropriate interrupts
 	M8C_EnableIntMask(INT_MSK0, INT_MSK0_GPIO);
 	M8C_EnableIntMask(INT_MSK1, INT_MSK1_DBB00);
+	M8C_EnableIntMask(INT_MSK1, INT_MSK1_DBB10);
 	M8C_EnableIntMask(INT_MSK1, INT_MSK1_DBB11);
+	M8C_EnableIntMask(INT_MSK2, INT_MSK2_DBB21);
+	M8C_EnableIntMask(INT_MSK2, INT_MSK2_DBB30);
+	M8C_EnableIntMask(INT_MSK2, INT_MSK2_DBB31);
 	M8C_EnableGInt;
 	
 	UART_PutCRLF();
@@ -290,7 +301,7 @@ void lineFollow(void)
 unsigned int ultrasound(void)
 {
 	unsigned int distance = 0;
-	unsigned long ticks = 0xffffffff;
+	unsigned long ticks = 0xffff;
 	
 	//We need a 10us high trigger to make a pulse
 	//Set timer to 10us period.
@@ -313,7 +324,7 @@ unsigned int ultrasound(void)
 	
 	//Start timer to allow for a 10us pulse.
 	UltraSonic_Start();
-	while(ticks > 0){UltraSonic_ReadTimer(&ticks);}
+	while(ticks > 0){ticks = UltraSonic_wReadTimer();}
 	UltraSonic_Stop();
 	
 	//set drive mode to HIGH-Z (digital input) to read echo
@@ -329,15 +340,15 @@ unsigned int ultrasound(void)
 	
 	//Set period to max so we can determine extctly how long the
 	//echo was.
-	UltraSonic_WritePeriod(0xffffffff);
+	UltraSonic_WritePeriod(0xffff);
 	UltraSonic_WriteCompareValue(0);
-	UltraSonic_EnableInt();
+	UltrasonicInt_EnableInt();
 	UltraSonic_Start();
 	
 	//distance ISR sets period to 0 upon exiting
 	while(UltraSonic_PERIOD > 0);
 	UltraSonic_Stop();
-	UltraSonic_DisableInt();
+	UltrasonicInt_DisableInt();
 	
 	//distance in cm = us/58
 	//clock source is 2 Mhz (0.5 us) so multiply pulse ticks by two
@@ -411,19 +422,6 @@ void action(char command, char* param)
 			UART_PutCRLF();
 			PWMB_WritePulseWidth(atoi(param));
 			break;
-		/*case 'c': //GETV
-			*param = 0;
-			if (debug)
-			{
-				UART_PutCRLF();
-				UART_CPutString(itoa(param, getVelocity(), 10));
-				UART_PutCRLF();
-			}
-			else 
-			{
-				UART_CPutString(itoa(param, getVelocity(), 10));
-			}
-			break;*/
 		case 'd': //SRV0_POS
 			if (debug)
 			{
@@ -839,8 +837,10 @@ void distance_ISR(void)
 		UART_PutCRLF();
 	}
 	stop = 0;
-	UltraSonic_ReadTimer(&pulse);
+	pulse = UltraSonic_wReadTimer();
 	while(MISC4_Data_ADDR & MISC4_MASK);
+	stop = UltraSonic_wReadTimer();
 	pulse -= stop;
 	UltraSonic_WritePeriod(0);
 }
+void UltraSonic_ISR(void){}

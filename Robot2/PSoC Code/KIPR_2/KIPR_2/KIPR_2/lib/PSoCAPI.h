@@ -26,9 +26,11 @@
 #include "LDR_Gain.h"
 #include "PWMA.h"
 #include "PWMB.h"
+#include "PseudoEncoder.h"
 #include "Servo0.h"
 #include "Servo1.h"
 #include "UART.h"
 #include "UltraSonic.h"
+#include "UltrasonicInt.h"
 
 #endif

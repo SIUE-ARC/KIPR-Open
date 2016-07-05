@@ -200,7 +200,7 @@ ENDIF
     reti
 
     org   58h                      ;PSoC Block DCB32 Interrupt Vector
-    `@INTERRUPT_22`
+    ljmp _UltraSonic_ISR
     reti
 
     org   5Ch                      ;PSoC Block DCB33 Interrupt Vector
