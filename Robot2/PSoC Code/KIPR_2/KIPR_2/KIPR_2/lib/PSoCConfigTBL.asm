@@ -137,7 +137,7 @@ LoadConfigTBL_kipr_2_Bank0:
 	db		c4h, 33h		; Row_2_LogicSelect_1 register (RDI3LT1)
 	db		c5h, 80h		; Row_2_OutputDrive_0 register (RDI2SRO0)
 	db		c6h, 20h		; Row_2_OutputDrive_1 register (RDI2SRO1)
-	db		c8h, 54h		; Row_3_InputMux register (RDI3RI)
+	db		c8h, 84h		; Row_3_InputMux register (RDI3RI)
 	db		c9h, 00h		; Row_3_InputSync register (RDI3SYN)
 	db		cah, 30h		; Row_3_LogicInputAMux register (RDI3IS)
 	db		cbh, 33h		; Row_3_LogicSelect_0 register (RDI3LT0)
@@ -187,7 +187,7 @@ LoadConfigTBL_kipr_2_Bank1:
 ;  Instance name PseudoEncoder, User Module DigBuf
 ;       Instance name PseudoEncoder, Block Name DigBuf(DBB31)
 	db		54h, 22h		;PseudoEncoder_FUNC_REG(DBB31FN)
-	db		55h, e0h		;PseudoEncoder_INPUT_REG(DBB31IN)
+	db		55h, f0h		;PseudoEncoder_INPUT_REG(DBB31IN)
 	db		56h, 40h		;PseudoEncoder_OUTPUT_REG(DBB31OU)
 ;  Instance name Servo0, User Module PWM16
 ;       Instance name Servo0, Block Name PWM16_LSB(DBB01)
@@ -259,8 +259,8 @@ LoadConfigTBL_kipr_2_Ordered:
 	mov	reg[00h], 8ah		; Port_0_DriveMode_0 register (PRT0DM0)
 	mov	reg[01h], 75h		; Port_0_DriveMode_1 register (PRT0DM1)
 	M8C_SetBank0
-	mov	reg[03h], 21h		; Port_0_DriveMode_2 register (PRT0DM2)
-	mov	reg[02h], ceh		; Port_0_GlobalSelect register (PRT0GS)
+	mov	reg[03h], 61h		; Port_0_DriveMode_2 register (PRT0DM2)
+	mov	reg[02h], 8eh		; Port_0_GlobalSelect register (PRT0GS)
 	M8C_SetBank1
 	mov	reg[02h], 00h		; Port_0_IntCtrl_0 register (PRT0IC0)
 	mov	reg[03h], 00h		; Port_0_IntCtrl_1 register (PRT0IC1)
@@ -271,8 +271,8 @@ LoadConfigTBL_kipr_2_Ordered:
 	mov	reg[04h], f0h		; Port_1_DriveMode_0 register (PRT1DM0)
 	mov	reg[05h], 0fh		; Port_1_DriveMode_1 register (PRT1DM1)
 	M8C_SetBank0
-	mov	reg[07h], 0fh		; Port_1_DriveMode_2 register (PRT1DM2)
-	mov	reg[06h], 20h		; Port_1_GlobalSelect register (PRT1GS)
+	mov	reg[07h], 07h		; Port_1_DriveMode_2 register (PRT1DM2)
+	mov	reg[06h], 28h		; Port_1_GlobalSelect register (PRT1GS)
 	M8C_SetBank1
 	mov	reg[06h], 00h		; Port_1_IntCtrl_0 register (PRT1IC0)
 	mov	reg[07h], 00h		; Port_1_IntCtrl_1 register (PRT1IC1)

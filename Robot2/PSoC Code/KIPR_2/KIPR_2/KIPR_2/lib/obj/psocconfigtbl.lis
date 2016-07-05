@@ -955,7 +955,7 @@
  00A2 C433              db              c4h, 33h                ; Row_2_LogicSelect_1 register (RDI3LT1)
  00A4 C580              db              c5h, 80h                ; Row_2_OutputDrive_0 register (RDI2SRO0)
  00A6 C620              db              c6h, 20h                ; Row_2_OutputDrive_1 register (RDI2SRO1)
- 00A8 C854              db              c8h, 54h                ; Row_3_InputMux register (RDI3RI)
+ 00A8 C884              db              c8h, 84h                ; Row_3_InputMux register (RDI3RI)
  00AA C900              db              c9h, 00h                ; Row_3_InputSync register (RDI3SYN)
  00AC CA30              db              cah, 30h                ; Row_3_LogicInputAMux register (RDI3IS)
  00AE CB33              db              cbh, 33h                ; Row_3_LogicSelect_0 register (RDI3LT0)
@@ -1005,7 +1005,7 @@
  00E3           ;  Instance name PseudoEncoder, User Module DigBuf
  00E3           ;       Instance name PseudoEncoder, Block Name DigBuf(DBB31)
  00E3 5422              db              54h, 22h                ;PseudoEncoder_FUNC_REG(DBB31FN)
- 00E5 55E0              db              55h, e0h                ;PseudoEncoder_INPUT_REG(DBB31IN)
+ 00E5 55F0              db              55h, f0h                ;PseudoEncoder_INPUT_REG(DBB31IN)
  00E7 5640              db              56h, 40h                ;PseudoEncoder_OUTPUT_REG(DBB31OU)
  00E9           ;  Instance name Servo0, User Module PWM16
  00E9           ;       Instance name Servo0, Block Name PWM16_LSB(DBB01)
@@ -1077,8 +1077,8 @@
  0007 62008A            mov     reg[00h], 8ah           ; Port_0_DriveMode_0 register (PRT0DM0)
  000A 620175            mov     reg[01h], 75h           ; Port_0_DriveMode_1 register (PRT0DM1)
  000D 70EF          and   F, ~FLAG_XIO_MASK
- 000F 620321            mov     reg[03h], 21h           ; Port_0_DriveMode_2 register (PRT0DM2)
- 0012 6202CE            mov     reg[02h], ceh           ; Port_0_GlobalSelect register (PRT0GS)
+ 000F 620361            mov     reg[03h], 61h           ; Port_0_DriveMode_2 register (PRT0DM2)
+ 0012 62028E            mov     reg[02h], 8eh           ; Port_0_GlobalSelect register (PRT0GS)
  0015 7110          or    F, FLAG_XIO_MASK
  0017 620200            mov     reg[02h], 00h           ; Port_0_IntCtrl_0 register (PRT0IC0)
  001A 620300            mov     reg[03h], 00h           ; Port_0_IntCtrl_1 register (PRT0IC1)
@@ -1089,8 +1089,8 @@
  0027 6204F0            mov     reg[04h], f0h           ; Port_1_DriveMode_0 register (PRT1DM0)
  002A 62050F            mov     reg[05h], 0fh           ; Port_1_DriveMode_1 register (PRT1DM1)
  002D 70EF          and   F, ~FLAG_XIO_MASK
- 002F 62070F            mov     reg[07h], 0fh           ; Port_1_DriveMode_2 register (PRT1DM2)
- 0032 620620            mov     reg[06h], 20h           ; Port_1_GlobalSelect register (PRT1GS)
+ 002F 620707            mov     reg[07h], 07h           ; Port_1_DriveMode_2 register (PRT1DM2)
+ 0032 620628            mov     reg[06h], 28h           ; Port_1_GlobalSelect register (PRT1GS)
  0035 7110          or    F, FLAG_XIO_MASK
  0037 620600            mov     reg[06h], 00h           ; Port_1_IntCtrl_0 register (PRT1IC0)
  003A 620700            mov     reg[07h], 00h           ; Port_1_IntCtrl_1 register (PRT1IC1)
