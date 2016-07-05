@@ -118,7 +118,7 @@ class Turn(Command):
                 return self._FAILURE
             return self._COMPLETE
 
-class Stop(Command):
+class StopMotors(Command):
     def __init__(self, motor_controller, next = None):
         super().__init__(motor_controller = motor_controller, next = next)
         self.__try_get_reponse = 3
@@ -137,4 +137,66 @@ class Stop(Command):
                 raise
         elif self.__try_get_reponse == 0:
             return self._FAILURE
+        return self._COMPLETE
+
+class DriveBackUntilTouch(Command):
+    def __init__(self, motor_controller, raspi, pin):
+        super().__init__(motor_controller = motor_controller, raspi = raspi)
+        self.__started = False
+        self.__speed = 100 # set a speed
+        self.__try_get_reponse = 3
+        self.__pin = pin
+
+    def execute(self):
+        if self.__try_get_reponse > 0 && self._raspi.get_pin_input(self.__pin) != 1:
+            if self.__started is True:
+                # have not reached the number of tries and the bumper is not pressed
+                return self._IN_PROGRESS
+            else:
+                try:
+                    if self.__motor_controller.mav(-self.__speed, -self.__speed) is True:
+                        # got the ACK
+                        self.__started = True
+                        self.__try_get_reponse = -1
+                    else:
+                        # got the NACK
+                        try_get_reponse -= 1
+                        return self._IN_PROGRESS
+                except:
+                    raise
+        elif self.__try_get_reponse == 0:
+                # to many tries
+                return self._FAILURE
+        # Got ACK and are done
+        return self._COMPLETE
+
+class DriveForwardUntilTouch(Command):
+    def __init__(self, motor_controller, raspi, pin):
+        super().__init__(motor_controller = motor_controller, raspi = raspi)
+        self.__started = False
+        self.__speed = 100 # set a speed
+        self.__try_get_reponse = 3
+        self.__pin = pin
+
+    def execute(self):
+        if self.__try_get_reponse > 0 && self._raspi.get_pin_input(self.__pin) != 1:
+            if self.__started is True:
+                # have not reached the number of tries and the bumper is not pressed
+                return self._IN_PROGRESS
+            else:
+                try:
+                    if self.__motor_controller.mav(self.__speed, self.__speed) is True:
+                        # got the ACK
+                        self.__started = True
+                        self.__try_get_reponse = -1
+                    else:
+                        # got the NACK
+                        try_get_reponse -= 1
+                        return self._IN_PROGRESS
+                except:
+                    raise
+        elif self.__try_get_reponse == 0:
+                # to many tries
+                return self._FAILURE
+        # Got ACK and are done
         return self._COMPLETE

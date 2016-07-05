@@ -62,7 +62,7 @@ class ServoControl:
         except:
             raise
 
-    def stop_servos(self):
+    def stop(self):
         if self._DEBUG:
             print("Stopping Servos.")
         try:

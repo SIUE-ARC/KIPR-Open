@@ -1,15 +1,15 @@
 __authors__ = 'Ryan Owens'
 __Creation_Date__ = '07/03/2016'
-__Last_Update__ = '07/03/2016'
+__Last_Update__ = '07/04/2016'
 
 from Commands import Command
 
 # read fron/back Bumper
 class RaiseTrunk(Command):
-    def __init__(self, Raspi = None, winch_forward = -1, winch_backward = -1,  debug = True):
+    def __init__(self, Raspi = None, pin_1 = -1, pin_2 = -1,  debug = True):
         super().__init__(raspi = Raspi, debug = debug)
-        self.__pin1 = winch_forward
-        self.__pin2 = winch_backwared
+        self.__pin1 = pin_1
+        self.__pin2 = pin_2
 
     def execute():
         self._raspi.set_pin_to_output(self.__pin1)
@@ -19,10 +19,10 @@ class RaiseTrunk(Command):
         return self._COMPLETE
 
 class LowerTrunk(Command):
-    def __init__(self, Raspi = None, winch_forward = -1, winch_backward = -1,  debug = True):
+    def __init__(self, Raspi = None, pin_1 = -1, pin_2 = -1,  debug = True):
         super().__init__(raspi = Raspi, debug = debug)
-        self.__pin1 = winch_forward
-        self.__pin2 = winch_backwared
+        self.__pin1 = pin_1
+        self.__pin2 = pin_2
 
     def execute():
         self._raspi.set_pin_to_output(self.__pin1)
@@ -32,10 +32,10 @@ class LowerTrunk(Command):
         return self._COMPLETE
 
 class StartConveyorbelt(Command):
-    def __init__(self, Raspi = None, conveyor_forward = -1, conveyor_backward = -1, debug = True):
+    def __init__(self, Raspi = None, pin_1 = -1, pin_2 = -1, debug = True):
         super().__init__(raspi = Raspi, debug = debug)
-        self.__pin1 = conveyor_forward
-        self.__pin2 = conveyor_backward
+        self.__pin1 = pin_1
+        self.__pin2 = pin_2
 
     def execute():
         self._raspi.set_pin_to_output(self.__pin1)
@@ -45,10 +45,10 @@ class StartConveyorbelt(Command):
         return self._COMPLETE
 
 class StopConveyorbelt(Command):
-    def __init__(self, Raspi = None, conveyor_forward = -1, conveyor_backward = -1, debug = True):
+    def __init__(self, Raspi = None, pin_1 = -1, pin_2 = -1, debug = True):
         super().__init__(raspi = Raspi, debug = debug)
-        self.__pin1 = conveyor_forward
-        self.__pin2 = conveyor_backward
+        self.__pin1 = pin_1
+        self.__pin2 = pin_2
 
     def execute():
         self._raspi.set_pin_to_output(self.__pin1)
@@ -58,9 +58,9 @@ class StopConveyorbelt(Command):
         return self._COMPLETE
 
 class ReadFrontBumper(Command):
-    def __init__(self, Raspi = None, front_bumper_pin = -1, debug = True):
+    def __init__(self, Raspi = None, pin_1 = -1, debug = True):
         super().__init__(raspi = Raspi, debug = debug)
-        self.__pin = front_bumper_pin
+        self.__pin = pin_1
         self._input = None
 
     def execute():
@@ -69,9 +69,9 @@ class ReadFrontBumper(Command):
         return self._COMPLETE
 
 class ReadRearBumper(Command):
-    def __init__(self, Raspi = None, rear_bumper_pin = -1, debug = True):
+    def __init__(self, Raspi = None, pin_1 = -1, debug = True):
         super().__init__(raspi = Raspi, debug = debug)
-        self.__pin = rear_bumper_pin
+        self.__pin = pin_1
         self._input = None
 
     def execute():

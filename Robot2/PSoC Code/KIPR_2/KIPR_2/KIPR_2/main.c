@@ -238,7 +238,8 @@ void init(void)
 void waitLDR(void)
 {
 	int threshold = 26; //threshold for startup.
-	int vcount = 0; //voltage counter
+	//int vcount = 0; //voltage counter
+	int vcount = LDR_ADC_cGetSample(); //voltage counter
 	
 	while(vcount > threshold) //keep sampling until threshold is hit.
 	{
@@ -250,6 +251,40 @@ void waitLDR(void)
 void lineFollow(void)
 {
 	//todo
+	/*
+	if(left is off and right is on)
+	{
+		if(center is on and forward)
+		{
+			// turn clock wise
+		}else
+		{
+			// turn counter clock wise
+		}
+	}else if(right is on and left is off)
+	{
+		if (center is on and forward)
+		{
+			// turn counter clock wise
+		}else
+		{
+			// turn clock wise
+		}
+	}else
+	{
+		// Neither is on black...
+		if(center is on and forward)
+		{
+			// drive straight backward
+		}else if(center is on and backward)
+		{
+			// drive straight backward
+		}else
+		{
+			// spin ?
+		}
+	}
+	*/
 }
 
 unsigned int ultrasound(void)

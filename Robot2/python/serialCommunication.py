@@ -109,6 +109,11 @@ class SerialCommunication:
             else:
                 return response
 
+    def wait_for_response(self):
+        while self.__connection.inWaiting() == 0:
+            time.sleep(0.0005)
+        return self.__connection.read(self.__connection.inWaiting())
+
     # TODO get_last methods should be replaced
     def get_last_response(self):
         return self.__response_list[-1]

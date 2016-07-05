@@ -1,17 +1,18 @@
 __authors__ = 'Zach Anderson Ryan Owens'
 __Creation_Date__ ='06/30/2016'
-__Last_Update__ = '07/02/2016'
+__Last_Update__ = '07/04/2016'
 
 from serialCommunication import SerialCommunication
 from servoControl import ServoControl
 from motorControl import MotorControl
 from sensorControl import SensorControl
 
-from Commands import CommandGroup
+from Commands import Command, CommandGroup
+from BucketCommands import RaiseBucket, LowerBucket, StopBucket
+from MotorCommands import Drive, Turn, StopMotors, DriveBackUntilTouch, DriveForwardUntilTouch
+from RaspiCommands import RaiseTrunk, LowerTrunk, StartConveyorbelt, StopConveyorbelt, ReadFrontBumper, ReadRearBumper
 
-from DriveCommand import Drive
-from DriveCommand import Turn
-
+import time
 
 def first(command):
     return command
@@ -26,31 +27,29 @@ motor_controller = MotorControl(serialConnection=serial_connection, command_term
 servo_controller = ServoControl(serialConnection=serial_connection, command_terminator=command_terminator, debug=True)
 sensor_controller = SensorControl(serialConnection=serial_connection, command_terminator=command_terminator, degug=True)
 
-while(no_light()):
-    pass # shouldn't enter too tight of a loop with the sleep in SerialCommunication
-
-start_time = now()
-
-activeCommand = 
-first(WaitForLight)
-.then(DriveBackUntilTouch)
+activeCommand = first(DriveBackUntilTouch())
 .then(CommandGroup([Turn(90, speed), LowerTrunk()])
-.then(PickUpBalls())
+.then(StartConveyorbelt())
     .ifSuccessful(
         Turn(90, speed)
         .then(Drive(-10, speed))
         .then(FollowLineBackwards())
-        .then(DumpBucket())
-        .then(Stop()))
+        .then(RaiseBucket())
     .ifFailure(
         DriveBackUntilTouch()
         .then(Drive(10, speed))
         .then(Turn(90, speed))
         .then(DriveBackUntilTouch())
-        .then(DumpBucket())
-        .then(Stop())
+        .then(LowerBucket())
+    .then(StopConveyorbelt())
+    .then(StopMotors())
+    .then(LowerTrunk())
+    .then(LowerBucket())
 
-while(now() - start_time < GAME_TIME):
+GAME_TIME -= (time.perf_counter() + sensorControl.wait_for_light())
+start_time = time.perf_counter()
+
+while(time.perf_counter() - start_time < GAME_TIME):
     ret = activeCommand.execute();
 
     if ret is not None:
@@ -60,6 +59,7 @@ while(now() - start_time < GAME_TIME):
     motorControl.update();
 
 motorControl.stop();
+servo_controller.stop()
 
 # Wait for light
 # Drive backward until pipe
