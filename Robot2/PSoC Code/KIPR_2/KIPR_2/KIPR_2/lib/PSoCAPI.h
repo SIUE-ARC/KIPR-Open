@@ -18,7 +18,6 @@
 #define __PSOCAPI_H
 
 #include "PSoCGPIOINT.h"
-#include "DigBuf_2.h"
 #include "ENC1A_NEDGE.h"
 #include "ENC1A_PEDGE.h"
 #include "ENC1B_NEDGE.h"
@@ -31,6 +30,5 @@
 #include "Servo1.h"
 #include "UART.h"
 #include "UltraSonic.h"
-#include "UltrasonicInt.h"
 
 #endif

@@ -192,7 +192,7 @@ ENDIF
     reti
 
     org   50h                      ;PSoC Block DBB30 Interrupt Vector
-    `@INTERRUPT_20`
+    ljmp _distance_ISR
     reti
 
     org   54h                      ;PSoC Block DBB31 Interrupt Vector
@@ -200,7 +200,7 @@ ENDIF
     reti
 
     org   58h                      ;PSoC Block DCB32 Interrupt Vector
-	ljmp _distance_ISR
+    `@INTERRUPT_22`
     reti
 
     org   5Ch                      ;PSoC Block DCB33 Interrupt Vector
