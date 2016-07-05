@@ -6,6 +6,7 @@ from serialCommunication import SerialCommunication
 from servoControl import ServoControl
 from motorControl import MotorControl
 from sensorControl import SensorControl
+from Raspi import Raspi
 
 from Commands import Command, CommandGroup
 from BucketCommands import RaiseBucket, LowerBucket, StopBucket
@@ -22,10 +23,18 @@ port = "/dev/ttyACM0"
 baud_rate = 115200
 command_terminator = "\x07"
 
+# Add a list of PSOC pins below this so we can directly access them
+
+# Add a list of Raspi pins below this so we can directly access them
+LED_PIN = 21
+
+raspi = Raspi(led_pin = LED_PIN, debug = True) # Turns on LED as well
 serial_connection = SerialCommunication(port=port, baud_rate=baud_rate)
 motor_controller = MotorControl(serialConnection=serial_connection, command_terminator=command_terminator, debug=True)
 servo_controller = ServoControl(serialConnection=serial_connection, command_terminator=command_terminator, debug=True)
 sensor_controller = SensorControl(serialConnection=serial_connection, command_terminator=command_terminator, degug=True)
+
+# Need to add arguments to the class constructors
 
 activeCommand = first(DriveBackUntilTouch())
 .then(CommandGroup([Turn(90, speed), LowerTrunk()])
@@ -49,6 +58,8 @@ activeCommand = first(DriveBackUntilTouch())
 GAME_TIME -= (time.perf_counter() + sensorControl.wait_for_light())
 start_time = time.perf_counter()
 
+# Don't forget to handle TRY-Catch blocks
+
 while(time.perf_counter() - start_time < GAME_TIME):
     ret = activeCommand.execute();
 
@@ -60,6 +71,8 @@ while(time.perf_counter() - start_time < GAME_TIME):
 
 motorControl.stop();
 servo_controller.stop()
+raspi.set_all_pins_to_low()
+raspi.end()
 
 # Wait for light
 # Drive backward until pipe

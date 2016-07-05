@@ -18,3 +18,5 @@ class SensorControl:
         if start_time - curr_time >= self.__WAIT_TIME:
             return False
         return time.perf_counter() - start_time
+
+    # insert functions to get other psoc sensor values below 

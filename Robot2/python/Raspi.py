@@ -8,7 +8,7 @@ except RuntimeError:
     print("Error importing RPi.GPIO!  This is probably because you need superuser privileges.  You can achieve this by using 'sudo' to run your script")
 
 class Raspi:
-    def __init__(self, debug = True):
+    def __init__(self, led_pin = 21, debug = True):
         self.__HIGH = GPIO.HIGH
         self.__LOW = GPIO.LOW
         self.__IN = GPIO.IN
@@ -17,12 +17,14 @@ class Raspi:
         self.__output_pins = []
         self.__input_pins = []
         self._DEBUG = debug
+        self.__LED = led_pin
         for i in range(1, 28):
             # If we change a pin to output/input don't allow it to be changed again
             self.__mode_set.append(False)
 
         GPIO.setmode(GPIO.BCM) # So we can use normal pin numbers
         GPIO.setwarnings(False) # no warnings about output pin modes
+        self.set_led_pin_on()
 
     def set_pin_to_output(self, pin):
         if 1 < pin < 28:
@@ -76,3 +78,7 @@ class Raspi:
 
     def end(self):
         GPIO.cleanup()
+
+    def set_led_pin_on(self):
+        self.set_pin_to_output(self.__LED)
+        self.set_pin_to_high(self.__LED)
