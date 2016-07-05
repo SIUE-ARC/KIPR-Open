@@ -20,11 +20,6 @@ export LoadConfigTBL_kipr_2_Bank0
 export LoadConfigTBL_kipr_2_Ordered
 AREA lit(rom, rel)
 LoadConfigTBL_kipr_2_Bank0:
-;  Instance name DigBuf_2, User Module DigBuf
-;       Instance name DigBuf_2, Block Name DigBuf(DCB33)
-	db		5fh, 03h		;DigBuf_2_CONTROL_REG(DCB33CR0)
-	db		5dh, 00h		;DigBuf_2_DATA_1_REG(DCB33DR1)
-	db		5eh, 00h		;DigBuf_2_DATA_2_REG(DCB33DR2)
 ;  Instance name ENC1A_NEDGE, User Module DigInv
 ;       Instance name ENC1A_NEDGE, Block Name DigInv(DBB10)
 	db		33h, 00h		;ENC1A_NEDGE_CONTROL_REG(DBB10CR0)
@@ -67,6 +62,11 @@ LoadConfigTBL_kipr_2_Bank0:
 	db		43h, 00h		;PWMB_CONTROL_REG(DBB20CR0)
 	db		41h, ffh		;PWMB_PERIOD_REG(DBB20DR1)
 	db		42h, 00h		;PWMB_COMPARE_REG(DBB20DR2)
+;  Instance name PseudoEncoder, User Module DigBuf
+;       Instance name PseudoEncoder, Block Name DigBuf(DBB31)
+	db		57h, 03h		;PseudoEncoder_CONTROL_REG(DBB31CR0)
+	db		55h, 00h		;PseudoEncoder_DATA_1_REG(DBB31DR1)
+	db		56h, 00h		;PseudoEncoder_DATA_2_REG(DBB31DR2)
 ;  Instance name Servo0, User Module PWM16
 ;       Instance name Servo0, Block Name PWM16_LSB(DBB01)
 	db		27h, 00h		;Servo0_CONTROL_LSB_REG(DBB01CR0)
@@ -95,19 +95,19 @@ LoadConfigTBL_kipr_2_Bank0:
 	db		39h, 00h		;UART_TX_BUFFER_REG (DCB12DR1)
 	db		3ah, 00h		;UART_(DCB12DR2)
 ;  Instance name UltraSonic, User Module Timer16
-;       Instance name UltraSonic, Block Name TIMER16_LSB(DBB30)
-	db		53h, 00h		;UltraSonic_CONTROL_LSB_REG(DBB30CR0)
-	db		51h, 00h		;UltraSonic_PERIOD_LSB_REG(DBB30DR1)
-	db		52h, 00h		;UltraSonic_COMPARE_LSB_REG(DBB30DR2)
-;       Instance name UltraSonic, Block Name TIMER16_MSB(DBB31)
-	db		57h, 04h		;UltraSonic_CONTROL_MSB_REG(DBB31CR0)
-	db		55h, 00h		;UltraSonic_PERIOD_MSB_REG(DBB31DR1)
-	db		56h, 00h		;UltraSonic_COMPARE_MSB_REG(DBB31DR2)
+;       Instance name UltraSonic, Block Name TIMER16_LSB(DCB32)
+	db		5bh, 00h		;UltraSonic_CONTROL_LSB_REG(DCB32CR0)
+	db		59h, 00h		;UltraSonic_PERIOD_LSB_REG(DCB32DR1)
+	db		5ah, 00h		;UltraSonic_COMPARE_LSB_REG(DCB32DR2)
+;       Instance name UltraSonic, Block Name TIMER16_MSB(DCB33)
+	db		5fh, 04h		;UltraSonic_CONTROL_MSB_REG(DCB33CR0)
+	db		5dh, 00h		;UltraSonic_PERIOD_MSB_REG(DCB33DR1)
+	db		5eh, 00h		;UltraSonic_COMPARE_MSB_REG(DCB33DR2)
 ;  Instance name UltrasonicInt, User Module DigBuf
-;       Instance name UltrasonicInt, Block Name DigBuf(DCB32)
-	db		5bh, 03h		;UltrasonicInt_CONTROL_REG(DCB32CR0)
-	db		59h, 00h		;UltrasonicInt_DATA_1_REG(DCB32DR1)
-	db		5ah, 00h		;UltrasonicInt_DATA_2_REG(DCB32DR2)
+;       Instance name UltrasonicInt, Block Name DigBuf(DBB30)
+	db		53h, 03h		;UltrasonicInt_CONTROL_REG(DBB30CR0)
+	db		51h, 00h		;UltrasonicInt_DATA_1_REG(DBB30DR1)
+	db		52h, 00h		;UltrasonicInt_DATA_2_REG(DBB30DR2)
 ;  Global Register values Bank 0
 	db		60h, 0ah		; AnalogColumnInputSelect register (AMX_IN)
 	db		66h, 00h		; AnalogComparatorControl1 register (CMP_CR1)
@@ -137,7 +137,7 @@ LoadConfigTBL_kipr_2_Bank0:
 	db		c4h, 33h		; Row_2_LogicSelect_1 register (RDI3LT1)
 	db		c5h, 80h		; Row_2_OutputDrive_0 register (RDI2SRO0)
 	db		c6h, 20h		; Row_2_OutputDrive_1 register (RDI2SRO1)
-	db		c8h, 44h		; Row_3_InputMux register (RDI3RI)
+	db		c8h, 54h		; Row_3_InputMux register (RDI3RI)
 	db		c9h, 00h		; Row_3_InputSync register (RDI3SYN)
 	db		cah, 30h		; Row_3_LogicInputAMux register (RDI3IS)
 	db		cbh, 33h		; Row_3_LogicSelect_0 register (RDI3LT0)
@@ -150,11 +150,6 @@ LoadConfigTBL_kipr_2_Bank0:
 	db		6fh, 00h		; TMP_DR3 register (TMP_DR3)
 	db		ffh
 LoadConfigTBL_kipr_2_Bank1:
-;  Instance name DigBuf_2, User Module DigBuf
-;       Instance name DigBuf_2, Block Name DigBuf(DCB33)
-	db		5ch, 22h		;DigBuf_2_FUNC_REG(DCB33FN)
-	db		5dh, 00h		;DigBuf_2_INPUT_REG(DCB33IN)
-	db		5eh, 00h		;DigBuf_2_OUTPUT_REG(DCB33OU)
 ;  Instance name ENC1A_NEDGE, User Module DigInv
 ;       Instance name ENC1A_NEDGE, Block Name DigInv(DBB10)
 	db		30h, 20h		;ENC1A_NEDGE_FUNC_REG   (DBB10FN)
@@ -189,6 +184,11 @@ LoadConfigTBL_kipr_2_Bank1:
 	db		40h, 21h		;PWMB_FUNC_REG(DBB20FN)
 	db		41h, 11h		;PWMB_INPUT_REG(DBA20IN)
 	db		42h, 45h		;PWMB_OUTPUT_REG(DBA20OU)
+;  Instance name PseudoEncoder, User Module DigBuf
+;       Instance name PseudoEncoder, Block Name DigBuf(DBB31)
+	db		54h, 22h		;PseudoEncoder_FUNC_REG(DBB31FN)
+	db		55h, e0h		;PseudoEncoder_INPUT_REG(DBB31IN)
+	db		56h, 40h		;PseudoEncoder_OUTPUT_REG(DBB31OU)
 ;  Instance name Servo0, User Module PWM16
 ;       Instance name Servo0, Block Name PWM16_LSB(DBB01)
 	db		24h, 01h		;Servo0_FUNC_LSB_REG(DBB01FN)
@@ -217,19 +217,19 @@ LoadConfigTBL_kipr_2_Bank1:
 	db		39h, 01h		;UART_TX_INPUT_REG  (DCB12IN)
 	db		3ah, 45h		;UART_TX_OUTPUT_REG (DCB12OU)
 ;  Instance name UltraSonic, User Module Timer16
-;       Instance name UltraSonic, Block Name TIMER16_LSB(DBB30)
-	db		50h, 00h		;UltraSonic_FUNC_LSB_REG(DBB30FN)
-	db		51h, 05h		;UltraSonic_INPUT_LSB_REG(DBB30IN)
-	db		52h, 00h		;UltraSonic_OUTPUT_LSB_REG(DBB30OU)
-;       Instance name UltraSonic, Block Name TIMER16_MSB(DBB31)
-	db		54h, 20h		;UltraSonic_FUNC_MSB_REG(DBB31FN)
-	db		55h, 35h		;UltraSonic_INPUT_MSB_REG(DBB31IN)
-	db		56h, 00h		;UltraSonic_OUTPUT_MSB_REG(DBB31OU)
+;       Instance name UltraSonic, Block Name TIMER16_LSB(DCB32)
+	db		58h, 00h		;UltraSonic_FUNC_LSB_REG(DCB32FN)
+	db		59h, 05h		;UltraSonic_INPUT_LSB_REG(DCB32IN)
+	db		5ah, 40h		;UltraSonic_OUTPUT_LSB_REG(DCB32OU)
+;       Instance name UltraSonic, Block Name TIMER16_MSB(DCB33)
+	db		5ch, 28h		;UltraSonic_FUNC_MSB_REG(DCB33FN)
+	db		5dh, 35h		;UltraSonic_INPUT_MSB_REG(DCB33IN)
+	db		5eh, 40h		;UltraSonic_OUTPUT_MSB_REG(DCB33OU)
 ;  Instance name UltrasonicInt, User Module DigBuf
-;       Instance name UltrasonicInt, Block Name DigBuf(DCB32)
-	db		58h, 22h		;UltrasonicInt_FUNC_REG(DCB32FN)
-	db		59h, e0h		;UltrasonicInt_INPUT_REG(DCB32IN)
-	db		5ah, 00h		;UltrasonicInt_OUTPUT_REG(DCB32OU)
+;       Instance name UltrasonicInt, Block Name DigBuf(DBB30)
+	db		50h, 22h		;UltrasonicInt_FUNC_REG(DBB30FN)
+	db		51h, e0h		;UltrasonicInt_INPUT_REG(DBB30IN)
+	db		52h, 40h		;UltrasonicInt_OUTPUT_REG(DBB30OU)
 ;  Global Register values Bank 1
 	db		61h, 00h		; AnalogClockSelect1 register (CLK_CR1)
 	db		69h, 00h		; AnalogClockSelect2 register (CLK_CR2)
@@ -259,8 +259,8 @@ LoadConfigTBL_kipr_2_Ordered:
 	mov	reg[00h], 8ah		; Port_0_DriveMode_0 register (PRT0DM0)
 	mov	reg[01h], 75h		; Port_0_DriveMode_1 register (PRT0DM1)
 	M8C_SetBank0
-	mov	reg[03h], 61h		; Port_0_DriveMode_2 register (PRT0DM2)
-	mov	reg[02h], 8eh		; Port_0_GlobalSelect register (PRT0GS)
+	mov	reg[03h], 21h		; Port_0_DriveMode_2 register (PRT0DM2)
+	mov	reg[02h], ceh		; Port_0_GlobalSelect register (PRT0GS)
 	M8C_SetBank1
 	mov	reg[02h], 00h		; Port_0_IntCtrl_0 register (PRT0IC0)
 	mov	reg[03h], 00h		; Port_0_IntCtrl_1 register (PRT0IC1)
@@ -283,8 +283,8 @@ LoadConfigTBL_kipr_2_Ordered:
 	mov	reg[08h], 07h		; Port_2_DriveMode_0 register (PRT2DM0)
 	mov	reg[09h], f8h		; Port_2_DriveMode_1 register (PRT2DM1)
 	M8C_SetBank0
-	mov	reg[0bh], 00h		; Port_2_DriveMode_2 register (PRT2DM2)
-	mov	reg[0ah], d1h		; Port_2_GlobalSelect register (PRT2GS)
+	mov	reg[0bh], 40h		; Port_2_DriveMode_2 register (PRT2DM2)
+	mov	reg[0ah], 91h		; Port_2_GlobalSelect register (PRT2GS)
 	M8C_SetBank1
 	mov	reg[0ah], 28h		; Port_2_IntCtrl_0 register (PRT2IC0)
 	mov	reg[0bh], 28h		; Port_2_IntCtrl_1 register (PRT2IC1)

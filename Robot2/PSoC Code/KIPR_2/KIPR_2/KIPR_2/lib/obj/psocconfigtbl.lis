@@ -838,53 +838,53 @@
                 export LoadConfigTBL_kipr_2_Ordered
                 AREA lit(rom, rel)
  0000           LoadConfigTBL_kipr_2_Bank0:
- 0000           ;  Instance name DigBuf_2, User Module DigBuf
- 0000           ;       Instance name DigBuf_2, Block Name DigBuf(DCB33)
- 0000 5F03              db              5fh, 03h                ;DigBuf_2_CONTROL_REG(DCB33CR0)
- 0002 5D00              db              5dh, 00h                ;DigBuf_2_DATA_1_REG(DCB33DR1)
- 0004 5E00              db              5eh, 00h                ;DigBuf_2_DATA_2_REG(DCB33DR2)
- 0006           ;  Instance name ENC1A_NEDGE, User Module DigInv
- 0006           ;       Instance name ENC1A_NEDGE, Block Name DigInv(DBB10)
- 0006 3300              db              33h, 00h                ;ENC1A_NEDGE_CONTROL_REG(DBB10CR0)
- 0008 3100              db              31h, 00h                ;ENC1A_NEDGE_PERIOD_REG (DBB10DR1)
- 000A 3200              db              32h, 00h                ;ENC1A_NEDGE_COMPARE_REG(DBB10DR2)
- 000C           ;  Instance name ENC1A_PEDGE, User Module DigBuf
- 000C           ;       Instance name ENC1A_PEDGE, Block Name DigBuf(DBB00)
- 000C 2303              db              23h, 03h                ;ENC1A_PEDGE_CONTROL_REG(DBB00CR0)
- 000E 2100              db              21h, 00h                ;ENC1A_PEDGE_DATA_1_REG(DBB00DR1)
- 0010 2200              db              22h, 00h                ;ENC1A_PEDGE_DATA_2_REG(DBB00DR2)
- 0012           ;  Instance name ENC1B_NEDGE, User Module DigInv
- 0012           ;       Instance name ENC1B_NEDGE, Block Name DigInv(DBB21)
- 0012 4700              db              47h, 00h                ;ENC1B_NEDGE_CONTROL_REG(DBB21CR0)
- 0014 4500              db              45h, 00h                ;ENC1B_NEDGE_PERIOD_REG (DBB21DR1)
- 0016 4600              db              46h, 00h                ;ENC1B_NEDGE_COMPARE_REG(DBB21DR2)
- 0018           ;  Instance name ENC1B_PEDGE, User Module DigBuf
- 0018           ;       Instance name ENC1B_PEDGE, Block Name DigBuf(DBB11)
- 0018 3703              db              37h, 03h                ;ENC1B_PEDGE_CONTROL_REG(DBB11CR0)
- 001A 3500              db              35h, 00h                ;ENC1B_PEDGE_DATA_1_REG(DBB11DR1)
- 001C 3600              db              36h, 00h                ;ENC1B_PEDGE_DATA_2_REG(DBB11DR2)
- 001E           ;  Instance name LDR_ADC, User Module SAR6
- 001E           ;       Instance name LDR_ADC, Block Name SA(ASC10)
- 001E 8000              db              80h, 00h                ;LDR_ADC_CR0(ASC10CR0)
- 0020 815F              db              81h, 5fh                ;LDR_ADC_CR1(ASC10CR1)
- 0022 8260              db              82h, 60h                ;LDR_ADC_CR2(ASC10CR2)
- 0024 8300              db              83h, 00h                ;LDR_ADC_CR3(ASC10CR3)
- 0026           ;  Instance name LDR_Gain, User Module PGA
- 0026           ;       Instance name LDR_Gain, Block Name GAIN(ACB00)
- 0026 71FE              db              71h, feh                ;LDR_Gain_GAIN_CR0(ACB00CR0)
- 0028 7221              db              72h, 21h                ;LDR_Gain_GAIN_CR1(ACB00CR1)
- 002A 7320              db              73h, 20h                ;LDR_Gain_GAIN_CR2(ACB00CR2)
- 002C 7000              db              70h, 00h                ;LDR_Gain_GAIN_CR3(ACB00CR3)
- 002E           ;  Instance name PWMA, User Module PWM8
- 002E           ;       Instance name PWMA, Block Name PWM8(DCB03)
- 002E 2F00              db              2fh, 00h                ;PWMA_CONTROL_REG(DCB03CR0)
- 0030 2DFF              db              2dh, ffh                ;PWMA_PERIOD_REG(DCB03DR1)
- 0032 2E00              db              2eh, 00h                ;PWMA_COMPARE_REG(DCB03DR2)
- 0034           ;  Instance name PWMB, User Module PWM8
- 0034           ;       Instance name PWMB, Block Name PWM8(DBB20)
- 0034 4300              db              43h, 00h                ;PWMB_CONTROL_REG(DBB20CR0)
- 0036 41FF              db              41h, ffh                ;PWMB_PERIOD_REG(DBB20DR1)
- 0038 4200              db              42h, 00h                ;PWMB_COMPARE_REG(DBB20DR2)
+ 0000           ;  Instance name ENC1A_NEDGE, User Module DigInv
+ 0000           ;       Instance name ENC1A_NEDGE, Block Name DigInv(DBB10)
+ 0000 3300              db              33h, 00h                ;ENC1A_NEDGE_CONTROL_REG(DBB10CR0)
+ 0002 3100              db              31h, 00h                ;ENC1A_NEDGE_PERIOD_REG (DBB10DR1)
+ 0004 3200              db              32h, 00h                ;ENC1A_NEDGE_COMPARE_REG(DBB10DR2)
+ 0006           ;  Instance name ENC1A_PEDGE, User Module DigBuf
+ 0006           ;       Instance name ENC1A_PEDGE, Block Name DigBuf(DBB00)
+ 0006 2303              db              23h, 03h                ;ENC1A_PEDGE_CONTROL_REG(DBB00CR0)
+ 0008 2100              db              21h, 00h                ;ENC1A_PEDGE_DATA_1_REG(DBB00DR1)
+ 000A 2200              db              22h, 00h                ;ENC1A_PEDGE_DATA_2_REG(DBB00DR2)
+ 000C           ;  Instance name ENC1B_NEDGE, User Module DigInv
+ 000C           ;       Instance name ENC1B_NEDGE, Block Name DigInv(DBB21)
+ 000C 4700              db              47h, 00h                ;ENC1B_NEDGE_CONTROL_REG(DBB21CR0)
+ 000E 4500              db              45h, 00h                ;ENC1B_NEDGE_PERIOD_REG (DBB21DR1)
+ 0010 4600              db              46h, 00h                ;ENC1B_NEDGE_COMPARE_REG(DBB21DR2)
+ 0012           ;  Instance name ENC1B_PEDGE, User Module DigBuf
+ 0012           ;       Instance name ENC1B_PEDGE, Block Name DigBuf(DBB11)
+ 0012 3703              db              37h, 03h                ;ENC1B_PEDGE_CONTROL_REG(DBB11CR0)
+ 0014 3500              db              35h, 00h                ;ENC1B_PEDGE_DATA_1_REG(DBB11DR1)
+ 0016 3600              db              36h, 00h                ;ENC1B_PEDGE_DATA_2_REG(DBB11DR2)
+ 0018           ;  Instance name LDR_ADC, User Module SAR6
+ 0018           ;       Instance name LDR_ADC, Block Name SA(ASC10)
+ 0018 8000              db              80h, 00h                ;LDR_ADC_CR0(ASC10CR0)
+ 001A 815F              db              81h, 5fh                ;LDR_ADC_CR1(ASC10CR1)
+ 001C 8260              db              82h, 60h                ;LDR_ADC_CR2(ASC10CR2)
+ 001E 8300              db              83h, 00h                ;LDR_ADC_CR3(ASC10CR3)
+ 0020           ;  Instance name LDR_Gain, User Module PGA
+ 0020           ;       Instance name LDR_Gain, Block Name GAIN(ACB00)
+ 0020 71FE              db              71h, feh                ;LDR_Gain_GAIN_CR0(ACB00CR0)
+ 0022 7221              db              72h, 21h                ;LDR_Gain_GAIN_CR1(ACB00CR1)
+ 0024 7320              db              73h, 20h                ;LDR_Gain_GAIN_CR2(ACB00CR2)
+ 0026 7000              db              70h, 00h                ;LDR_Gain_GAIN_CR3(ACB00CR3)
+ 0028           ;  Instance name PWMA, User Module PWM8
+ 0028           ;       Instance name PWMA, Block Name PWM8(DCB03)
+ 0028 2F00              db              2fh, 00h                ;PWMA_CONTROL_REG(DCB03CR0)
+ 002A 2DFF              db              2dh, ffh                ;PWMA_PERIOD_REG(DCB03DR1)
+ 002C 2E00              db              2eh, 00h                ;PWMA_COMPARE_REG(DCB03DR2)
+ 002E           ;  Instance name PWMB, User Module PWM8
+ 002E           ;       Instance name PWMB, Block Name PWM8(DBB20)
+ 002E 4300              db              43h, 00h                ;PWMB_CONTROL_REG(DBB20CR0)
+ 0030 41FF              db              41h, ffh                ;PWMB_PERIOD_REG(DBB20DR1)
+ 0032 4200              db              42h, 00h                ;PWMB_COMPARE_REG(DBB20DR2)
+ 0034           ;  Instance name PseudoEncoder, User Module DigBuf
+ 0034           ;       Instance name PseudoEncoder, Block Name DigBuf(DBB31)
+ 0034 5703              db              57h, 03h                ;PseudoEncoder_CONTROL_REG(DBB31CR0)
+ 0036 5500              db              55h, 00h                ;PseudoEncoder_DATA_1_REG(DBB31DR1)
+ 0038 5600              db              56h, 00h                ;PseudoEncoder_DATA_2_REG(DBB31DR2)
  003A           ;  Instance name Servo0, User Module PWM16
  003A           ;       Instance name Servo0, Block Name PWM16_LSB(DBB01)
  003A 2700              db              27h, 00h                ;Servo0_CONTROL_LSB_REG(DBB01CR0)
@@ -913,19 +913,19 @@
  005A 3900              db              39h, 00h                ;UART_TX_BUFFER_REG (DCB12DR1)
  005C 3A00              db              3ah, 00h                ;UART_(DCB12DR2)
  005E           ;  Instance name UltraSonic, User Module Timer16
- 005E           ;       Instance name UltraSonic, Block Name TIMER16_LSB(DBB30)
- 005E 5300              db              53h, 00h                ;UltraSonic_CONTROL_LSB_REG(DBB30CR0)
- 0060 5100              db              51h, 00h                ;UltraSonic_PERIOD_LSB_REG(DBB30DR1)
- 0062 5200              db              52h, 00h                ;UltraSonic_COMPARE_LSB_REG(DBB30DR2)
- 0064           ;       Instance name UltraSonic, Block Name TIMER16_MSB(DBB31)
- 0064 5704              db              57h, 04h                ;UltraSonic_CONTROL_MSB_REG(DBB31CR0)
- 0066 5500              db              55h, 00h                ;UltraSonic_PERIOD_MSB_REG(DBB31DR1)
- 0068 5600              db              56h, 00h                ;UltraSonic_COMPARE_MSB_REG(DBB31DR2)
+ 005E           ;       Instance name UltraSonic, Block Name TIMER16_LSB(DCB32)
+ 005E 5B00              db              5bh, 00h                ;UltraSonic_CONTROL_LSB_REG(DCB32CR0)
+ 0060 5900              db              59h, 00h                ;UltraSonic_PERIOD_LSB_REG(DCB32DR1)
+ 0062 5A00              db              5ah, 00h                ;UltraSonic_COMPARE_LSB_REG(DCB32DR2)
+ 0064           ;       Instance name UltraSonic, Block Name TIMER16_MSB(DCB33)
+ 0064 5F04              db              5fh, 04h                ;UltraSonic_CONTROL_MSB_REG(DCB33CR0)
+ 0066 5D00              db              5dh, 00h                ;UltraSonic_PERIOD_MSB_REG(DCB33DR1)
+ 0068 5E00              db              5eh, 00h                ;UltraSonic_COMPARE_MSB_REG(DCB33DR2)
  006A           ;  Instance name UltrasonicInt, User Module DigBuf
- 006A           ;       Instance name UltrasonicInt, Block Name DigBuf(DCB32)
- 006A 5B03              db              5bh, 03h                ;UltrasonicInt_CONTROL_REG(DCB32CR0)
- 006C 5900              db              59h, 00h                ;UltrasonicInt_DATA_1_REG(DCB32DR1)
- 006E 5A00              db              5ah, 00h                ;UltrasonicInt_DATA_2_REG(DCB32DR2)
+ 006A           ;       Instance name UltrasonicInt, Block Name DigBuf(DBB30)
+ 006A 5303              db              53h, 03h                ;UltrasonicInt_CONTROL_REG(DBB30CR0)
+ 006C 5100              db              51h, 00h                ;UltrasonicInt_DATA_1_REG(DBB30DR1)
+ 006E 5200              db              52h, 00h                ;UltrasonicInt_DATA_2_REG(DBB30DR2)
  0070           ;  Global Register values Bank 0
  0070 600A              db              60h, 0ah                ; AnalogColumnInputSelect register (AMX_IN)
  0072 6600              db              66h, 00h                ; AnalogComparatorControl1 register (CMP_CR1)
@@ -955,7 +955,7 @@
  00A2 C433              db              c4h, 33h                ; Row_2_LogicSelect_1 register (RDI3LT1)
  00A4 C580              db              c5h, 80h                ; Row_2_OutputDrive_0 register (RDI2SRO0)
  00A6 C620              db              c6h, 20h                ; Row_2_OutputDrive_1 register (RDI2SRO1)
- 00A8 C844              db              c8h, 44h                ; Row_3_InputMux register (RDI3RI)
+ 00A8 C854              db              c8h, 54h                ; Row_3_InputMux register (RDI3RI)
  00AA C900              db              c9h, 00h                ; Row_3_InputSync register (RDI3SYN)
  00AC CA30              db              cah, 30h                ; Row_3_LogicInputAMux register (RDI3IS)
  00AE CB33              db              cbh, 33h                ; Row_3_LogicSelect_0 register (RDI3LT0)
@@ -968,45 +968,45 @@
  00BC 6F00              db              6fh, 00h                ; TMP_DR3 register (TMP_DR3)
  00BE FF                db              ffh
  00BF           LoadConfigTBL_kipr_2_Bank1:
- 00BF           ;  Instance name DigBuf_2, User Module DigBuf
- 00BF           ;       Instance name DigBuf_2, Block Name DigBuf(DCB33)
- 00BF 5C22              db              5ch, 22h                ;DigBuf_2_FUNC_REG(DCB33FN)
- 00C1 5D00              db              5dh, 00h                ;DigBuf_2_INPUT_REG(DCB33IN)
- 00C3 5E00              db              5eh, 00h                ;DigBuf_2_OUTPUT_REG(DCB33OU)
- 00C5           ;  Instance name ENC1A_NEDGE, User Module DigInv
- 00C5           ;       Instance name ENC1A_NEDGE, Block Name DigInv(DBB10)
- 00C5 3020              db              30h, 20h                ;ENC1A_NEDGE_FUNC_REG   (DBB10FN)
- 00C7 310E              db              31h, 0eh                ;ENC1A_NEDGE_INPUT_REG  (DBB10IN)
- 00C9 3240              db              32h, 40h                ;ENC1A_NEDGE_OUTPUT_REG (DBB10OU)
- 00CB           ;  Instance name ENC1A_PEDGE, User Module DigBuf
- 00CB           ;       Instance name ENC1A_PEDGE, Block Name DigBuf(DBB00)
- 00CB 2022              db              20h, 22h                ;ENC1A_PEDGE_FUNC_REG(DBB00FN)
- 00CD 21E0              db              21h, e0h                ;ENC1A_PEDGE_INPUT_REG(DBB00IN)
- 00CF 2240              db              22h, 40h                ;ENC1A_PEDGE_OUTPUT_REG(DBB00OU)
- 00D1           ;  Instance name ENC1B_NEDGE, User Module DigInv
- 00D1           ;       Instance name ENC1B_NEDGE, Block Name DigInv(DBB21)
- 00D1 4420              db              44h, 20h                ;ENC1B_NEDGE_FUNC_REG   (DBB21FN)
- 00D3 450C              db              45h, 0ch                ;ENC1B_NEDGE_INPUT_REG  (DBB21IN)
- 00D5 4640              db              46h, 40h                ;ENC1B_NEDGE_OUTPUT_REG (DBB21OU)
- 00D7           ;  Instance name ENC1B_PEDGE, User Module DigBuf
- 00D7           ;       Instance name ENC1B_PEDGE, Block Name DigBuf(DBB11)
- 00D7 3422              db              34h, 22h                ;ENC1B_PEDGE_FUNC_REG(DBB11FN)
- 00D9 35C0              db              35h, c0h                ;ENC1B_PEDGE_INPUT_REG(DBB11IN)
- 00DB 3640              db              36h, 40h                ;ENC1B_PEDGE_OUTPUT_REG(DBB11OU)
- 00DD           ;  Instance name LDR_ADC, User Module SAR6
- 00DD           ;       Instance name LDR_ADC, Block Name SA(ASC10)
- 00DD           ;  Instance name LDR_Gain, User Module PGA
- 00DD           ;       Instance name LDR_Gain, Block Name GAIN(ACB00)
- 00DD           ;  Instance name PWMA, User Module PWM8
- 00DD           ;       Instance name PWMA, Block Name PWM8(DCB03)
- 00DD 2C21              db              2ch, 21h                ;PWMA_FUNC_REG(DCB03FN)
- 00DF 2D16              db              2dh, 16h                ;PWMA_INPUT_REG(DCB03IN)
- 00E1 2E44              db              2eh, 44h                ;PWMA_OUTPUT_REG(DCB03OU)
- 00E3           ;  Instance name PWMB, User Module PWM8
- 00E3           ;       Instance name PWMB, Block Name PWM8(DBB20)
- 00E3 4021              db              40h, 21h                ;PWMB_FUNC_REG(DBB20FN)
- 00E5 4111              db              41h, 11h                ;PWMB_INPUT_REG(DBA20IN)
- 00E7 4245              db              42h, 45h                ;PWMB_OUTPUT_REG(DBA20OU)
+ 00BF           ;  Instance name ENC1A_NEDGE, User Module DigInv
+ 00BF           ;       Instance name ENC1A_NEDGE, Block Name DigInv(DBB10)
+ 00BF 3020              db              30h, 20h                ;ENC1A_NEDGE_FUNC_REG   (DBB10FN)
+ 00C1 310E              db              31h, 0eh                ;ENC1A_NEDGE_INPUT_REG  (DBB10IN)
+ 00C3 3240              db              32h, 40h                ;ENC1A_NEDGE_OUTPUT_REG (DBB10OU)
+ 00C5           ;  Instance name ENC1A_PEDGE, User Module DigBuf
+ 00C5           ;       Instance name ENC1A_PEDGE, Block Name DigBuf(DBB00)
+ 00C5 2022              db              20h, 22h                ;ENC1A_PEDGE_FUNC_REG(DBB00FN)
+ 00C7 21E0              db              21h, e0h                ;ENC1A_PEDGE_INPUT_REG(DBB00IN)
+ 00C9 2240              db              22h, 40h                ;ENC1A_PEDGE_OUTPUT_REG(DBB00OU)
+ 00CB           ;  Instance name ENC1B_NEDGE, User Module DigInv
+ 00CB           ;       Instance name ENC1B_NEDGE, Block Name DigInv(DBB21)
+ 00CB 4420              db              44h, 20h                ;ENC1B_NEDGE_FUNC_REG   (DBB21FN)
+ 00CD 450C              db              45h, 0ch                ;ENC1B_NEDGE_INPUT_REG  (DBB21IN)
+ 00CF 4640              db              46h, 40h                ;ENC1B_NEDGE_OUTPUT_REG (DBB21OU)
+ 00D1           ;  Instance name ENC1B_PEDGE, User Module DigBuf
+ 00D1           ;       Instance name ENC1B_PEDGE, Block Name DigBuf(DBB11)
+ 00D1 3422              db              34h, 22h                ;ENC1B_PEDGE_FUNC_REG(DBB11FN)
+ 00D3 35C0              db              35h, c0h                ;ENC1B_PEDGE_INPUT_REG(DBB11IN)
+ 00D5 3640              db              36h, 40h                ;ENC1B_PEDGE_OUTPUT_REG(DBB11OU)
+ 00D7           ;  Instance name LDR_ADC, User Module SAR6
+ 00D7           ;       Instance name LDR_ADC, Block Name SA(ASC10)
+ 00D7           ;  Instance name LDR_Gain, User Module PGA
+ 00D7           ;       Instance name LDR_Gain, Block Name GAIN(ACB00)
+ 00D7           ;  Instance name PWMA, User Module PWM8
+ 00D7           ;       Instance name PWMA, Block Name PWM8(DCB03)
+ 00D7 2C21              db              2ch, 21h                ;PWMA_FUNC_REG(DCB03FN)
+ 00D9 2D16              db              2dh, 16h                ;PWMA_INPUT_REG(DCB03IN)
+ 00DB 2E44              db              2eh, 44h                ;PWMA_OUTPUT_REG(DCB03OU)
+ 00DD           ;  Instance name PWMB, User Module PWM8
+ 00DD           ;       Instance name PWMB, Block Name PWM8(DBB20)
+ 00DD 4021              db              40h, 21h                ;PWMB_FUNC_REG(DBB20FN)
+ 00DF 4111              db              41h, 11h                ;PWMB_INPUT_REG(DBA20IN)
+ 00E1 4245              db              42h, 45h                ;PWMB_OUTPUT_REG(DBA20OU)
+ 00E3           ;  Instance name PseudoEncoder, User Module DigBuf
+ 00E3           ;       Instance name PseudoEncoder, Block Name DigBuf(DBB31)
+ 00E3 5422              db              54h, 22h                ;PseudoEncoder_FUNC_REG(DBB31FN)
+ 00E5 55E0              db              55h, e0h                ;PseudoEncoder_INPUT_REG(DBB31IN)
+ 00E7 5640              db              56h, 40h                ;PseudoEncoder_OUTPUT_REG(DBB31OU)
  00E9           ;  Instance name Servo0, User Module PWM16
  00E9           ;       Instance name Servo0, Block Name PWM16_LSB(DBB01)
  00E9 2401              db              24h, 01h                ;Servo0_FUNC_LSB_REG(DBB01FN)
@@ -1035,19 +1035,19 @@
  0109 3901              db              39h, 01h                ;UART_TX_INPUT_REG  (DCB12IN)
  010B 3A45              db              3ah, 45h                ;UART_TX_OUTPUT_REG (DCB12OU)
  010D           ;  Instance name UltraSonic, User Module Timer16
- 010D           ;       Instance name UltraSonic, Block Name TIMER16_LSB(DBB30)
- 010D 5000              db              50h, 00h                ;UltraSonic_FUNC_LSB_REG(DBB30FN)
- 010F 5105              db              51h, 05h                ;UltraSonic_INPUT_LSB_REG(DBB30IN)
- 0111 5200              db              52h, 00h                ;UltraSonic_OUTPUT_LSB_REG(DBB30OU)
- 0113           ;       Instance name UltraSonic, Block Name TIMER16_MSB(DBB31)
- 0113 5420              db              54h, 20h                ;UltraSonic_FUNC_MSB_REG(DBB31FN)
- 0115 5535              db              55h, 35h                ;UltraSonic_INPUT_MSB_REG(DBB31IN)
- 0117 5600              db              56h, 00h                ;UltraSonic_OUTPUT_MSB_REG(DBB31OU)
+ 010D           ;       Instance name UltraSonic, Block Name TIMER16_LSB(DCB32)
+ 010D 5800              db              58h, 00h                ;UltraSonic_FUNC_LSB_REG(DCB32FN)
+ 010F 5905              db              59h, 05h                ;UltraSonic_INPUT_LSB_REG(DCB32IN)
+ 0111 5A40              db              5ah, 40h                ;UltraSonic_OUTPUT_LSB_REG(DCB32OU)
+ 0113           ;       Instance name UltraSonic, Block Name TIMER16_MSB(DCB33)
+ 0113 5C28              db              5ch, 28h                ;UltraSonic_FUNC_MSB_REG(DCB33FN)
+ 0115 5D35              db              5dh, 35h                ;UltraSonic_INPUT_MSB_REG(DCB33IN)
+ 0117 5E40              db              5eh, 40h                ;UltraSonic_OUTPUT_MSB_REG(DCB33OU)
  0119           ;  Instance name UltrasonicInt, User Module DigBuf
- 0119           ;       Instance name UltrasonicInt, Block Name DigBuf(DCB32)
- 0119 5822              db              58h, 22h                ;UltrasonicInt_FUNC_REG(DCB32FN)
- 011B 59E0              db              59h, e0h                ;UltrasonicInt_INPUT_REG(DCB32IN)
- 011D 5A00              db              5ah, 00h                ;UltrasonicInt_OUTPUT_REG(DCB32OU)
+ 0119           ;       Instance name UltrasonicInt, Block Name DigBuf(DBB30)
+ 0119 5022              db              50h, 22h                ;UltrasonicInt_FUNC_REG(DBB30FN)
+ 011B 51E0              db              51h, e0h                ;UltrasonicInt_INPUT_REG(DBB30IN)
+ 011D 5240              db              52h, 40h                ;UltrasonicInt_OUTPUT_REG(DBB30OU)
  011F           ;  Global Register values Bank 1
  011F 6100              db              61h, 00h                ; AnalogClockSelect1 register (CLK_CR1)
  0121 6900              db              69h, 00h                ; AnalogClockSelect2 register (CLK_CR2)
@@ -1077,8 +1077,8 @@
  0007 62008A            mov     reg[00h], 8ah           ; Port_0_DriveMode_0 register (PRT0DM0)
  000A 620175            mov     reg[01h], 75h           ; Port_0_DriveMode_1 register (PRT0DM1)
  000D 70EF          and   F, ~FLAG_XIO_MASK
- 000F 620361            mov     reg[03h], 61h           ; Port_0_DriveMode_2 register (PRT0DM2)
- 0012 62028E            mov     reg[02h], 8eh           ; Port_0_GlobalSelect register (PRT0GS)
+ 000F 620321            mov     reg[03h], 21h           ; Port_0_DriveMode_2 register (PRT0DM2)
+ 0012 6202CE            mov     reg[02h], ceh           ; Port_0_GlobalSelect register (PRT0GS)
  0015 7110          or    F, FLAG_XIO_MASK
  0017 620200            mov     reg[02h], 00h           ; Port_0_IntCtrl_0 register (PRT0IC0)
  001A 620300            mov     reg[03h], 00h           ; Port_0_IntCtrl_1 register (PRT0IC1)
@@ -1101,8 +1101,8 @@
  0047 620807            mov     reg[08h], 07h           ; Port_2_DriveMode_0 register (PRT2DM0)
  004A 6209F8            mov     reg[09h], f8h           ; Port_2_DriveMode_1 register (PRT2DM1)
  004D 70EF          and   F, ~FLAG_XIO_MASK
- 004F 620B00            mov     reg[0bh], 00h           ; Port_2_DriveMode_2 register (PRT2DM2)
- 0052 620AD1            mov     reg[0ah], d1h           ; Port_2_GlobalSelect register (PRT2GS)
+ 004F 620B40            mov     reg[0bh], 40h           ; Port_2_DriveMode_2 register (PRT2DM2)
+ 0052 620A91            mov     reg[0ah], 91h           ; Port_2_GlobalSelect register (PRT2GS)
  0055 7110          or    F, FLAG_XIO_MASK
  0057 620A28            mov     reg[0ah], 28h           ; Port_2_IntCtrl_0 register (PRT2IC0)
  005A 620B28            mov     reg[0bh], 28h           ; Port_2_IntCtrl_1 register (PRT2IC1)

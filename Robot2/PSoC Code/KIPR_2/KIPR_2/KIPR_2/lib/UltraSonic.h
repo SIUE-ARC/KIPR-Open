@@ -64,7 +64,7 @@ extern WORD wUltraSonic_CaptureCounter(void);         // Obsolete
 
 #define UltraSonic_CONTROL_REG_START_BIT       ( 0x01 )
 #define UltraSonic_INT_REG_ADDR                ( 0x0df )
-#define UltraSonic_INT_MASK                    ( 0x20 )
+#define UltraSonic_INT_MASK                    ( 0x80 )
 
 
 //--------------------------------------------------
@@ -79,33 +79,33 @@ extern WORD wUltraSonic_CaptureCounter(void);         // Obsolete
 // Register Addresses for UltraSonic
 //-------------------------------------------------
 
-#pragma ioport  UltraSonic_COUNTER_LSB_REG: 0x050          //Count register LSB
+#pragma ioport  UltraSonic_COUNTER_LSB_REG: 0x058          //Count register LSB
 BYTE            UltraSonic_COUNTER_LSB_REG;
-#pragma ioport  UltraSonic_COUNTER_MSB_REG: 0x054          //Count register MSB
+#pragma ioport  UltraSonic_COUNTER_MSB_REG: 0x05c          //Count register MSB
 BYTE            UltraSonic_COUNTER_MSB_REG;
-#pragma ioport  UltraSonic_PERIOD_LSB_REG:  0x051          //Period register LSB
+#pragma ioport  UltraSonic_PERIOD_LSB_REG:  0x059          //Period register LSB
 BYTE            UltraSonic_PERIOD_LSB_REG;
-#pragma ioport  UltraSonic_PERIOD_MSB_REG:  0x055          //Period register MSB
+#pragma ioport  UltraSonic_PERIOD_MSB_REG:  0x05d          //Period register MSB
 BYTE            UltraSonic_PERIOD_MSB_REG;
-#pragma ioport  UltraSonic_COMPARE_LSB_REG: 0x052          //Compare register LSB
+#pragma ioport  UltraSonic_COMPARE_LSB_REG: 0x05a          //Compare register LSB
 BYTE            UltraSonic_COMPARE_LSB_REG;
-#pragma ioport  UltraSonic_COMPARE_MSB_REG: 0x056          //Compare register MSB
+#pragma ioport  UltraSonic_COMPARE_MSB_REG: 0x05e          //Compare register MSB
 BYTE            UltraSonic_COMPARE_MSB_REG;
-#pragma ioport  UltraSonic_CONTROL_LSB_REG: 0x053          //Control register LSB
+#pragma ioport  UltraSonic_CONTROL_LSB_REG: 0x05b          //Control register LSB
 BYTE            UltraSonic_CONTROL_LSB_REG;
-#pragma ioport  UltraSonic_CONTROL_MSB_REG: 0x057          //Control register MSB
+#pragma ioport  UltraSonic_CONTROL_MSB_REG: 0x05f          //Control register MSB
 BYTE            UltraSonic_CONTROL_MSB_REG;
-#pragma ioport  UltraSonic_FUNC_LSB_REG:    0x150          //Function register LSB
+#pragma ioport  UltraSonic_FUNC_LSB_REG:    0x158          //Function register LSB
 BYTE            UltraSonic_FUNC_LSB_REG;
-#pragma ioport  UltraSonic_FUNC_MSB_REG:    0x154          //Function register MSB
+#pragma ioport  UltraSonic_FUNC_MSB_REG:    0x15c          //Function register MSB
 BYTE            UltraSonic_FUNC_MSB_REG;
-#pragma ioport  UltraSonic_INPUT_LSB_REG:   0x151          //Input register LSB
+#pragma ioport  UltraSonic_INPUT_LSB_REG:   0x159          //Input register LSB
 BYTE            UltraSonic_INPUT_LSB_REG;
-#pragma ioport  UltraSonic_INPUT_MSB_REG:   0x155          //Input register MSB
+#pragma ioport  UltraSonic_INPUT_MSB_REG:   0x15d          //Input register MSB
 BYTE            UltraSonic_INPUT_MSB_REG;
-#pragma ioport  UltraSonic_OUTPUT_LSB_REG:  0x152          //Output register LSB
+#pragma ioport  UltraSonic_OUTPUT_LSB_REG:  0x15a          //Output register LSB
 BYTE            UltraSonic_OUTPUT_LSB_REG;
-#pragma ioport  UltraSonic_OUTPUT_MSB_REG:  0x156          //Output register MSB
+#pragma ioport  UltraSonic_OUTPUT_MSB_REG:  0x15e          //Output register MSB
 BYTE            UltraSonic_OUTPUT_MSB_REG;
 #pragma ioport  UltraSonic_INT_REG:       0x0df            //Interrupt Mask Register
 BYTE            UltraSonic_INT_REG;

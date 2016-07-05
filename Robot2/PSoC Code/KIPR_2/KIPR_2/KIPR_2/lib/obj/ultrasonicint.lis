@@ -1912,20 +1912,20 @@
  0000               add  SP, 0
  0001           UltrasonicInt_CONTROL_REG_START_BIT:       equ 0x01    ; Control register start bit
  00DF           UltrasonicInt_INT_REG:                     equ 0x0df
- 0040           UltrasonicInt_INT_MASK:                    equ 0x40
+ 0010           UltrasonicInt_INT_MASK:                    equ 0x10
  0000           
  0000           
  0000           ;--------------------------------------------------
  0000           ; Register Address Constants for UltrasonicInt
  0000           ;--------------------------------------------------
  0000           
- 0058           UltrasonicInt_DATA_0_REG:              equ 0x58   ; DR0 register
- 0059           UltrasonicInt_DATA_1_REG:              equ 0x59   ; DR1 register
- 005A           UltrasonicInt_DATA_2_REG:              equ 0x5a   ; DR2 register
- 005B           UltrasonicInt_CONTROL_REG:             equ 0x5b   ; Control register
- 0058           UltrasonicInt_FUNC_REG:                equ 0x58   ; Function register
- 0059           UltrasonicInt_INPUT_REG:               equ 0x59   ; Input register
- 005A           UltrasonicInt_OUTPUT_REG:              equ 0x5a   ; Output register
+ 0050           UltrasonicInt_DATA_0_REG:              equ 0x50   ; DR0 register
+ 0051           UltrasonicInt_DATA_1_REG:              equ 0x51   ; DR1 register
+ 0052           UltrasonicInt_DATA_2_REG:              equ 0x52   ; DR2 register
+ 0053           UltrasonicInt_CONTROL_REG:             equ 0x53   ; Control register
+ 0050           UltrasonicInt_FUNC_REG:                equ 0x50   ; Function register
+ 0051           UltrasonicInt_INPUT_REG:               equ 0x51   ; Input register
+ 0052           UltrasonicInt_OUTPUT_REG:              equ 0x52   ; Output register
  0000           
  0000           
  0000           ;--------------------------------------------------
@@ -2009,7 +2009,7 @@
                    ; Nothing to do
                    ENDIF ; RAM_USE_CLASS_4
                 
- 0000 43DF40        or    reg[UltrasonicInt_INT_REG], UltrasonicInt_INT_MASK               ; enable specified interrupt enable bit
+ 0000 43DF10        or    reg[UltrasonicInt_INT_REG], UltrasonicInt_INT_MASK               ; enable specified interrupt enable bit
                    IF ( RAM_USE_CLASS_1 & RAM_USE_CLASS_1 )
                    ; Nothing to do
                    ENDIF ; RAM_USE_CLASS_1
@@ -2100,7 +2100,7 @@
                    ; Nothing to do
                    ENDIF ; RAM_USE_CLASS_4
                 
- 0004 41DFBF        and   reg[UltrasonicInt_INT_REG], ~UltrasonicInt_INT_MASK              ; disable specified interrupt enable bit
+ 0004 41DFEF        and   reg[UltrasonicInt_INT_REG], ~UltrasonicInt_INT_MASK              ; disable specified interrupt enable bit
                    IF ( RAM_USE_CLASS_1 & RAM_USE_CLASS_1 )
                    ; Nothing to do
                    ENDIF ; RAM_USE_CLASS_1
@@ -2190,7 +2190,7 @@
                    ; Nothing to do
                    ENDIF ; RAM_USE_CLASS_4
                 
- 0008 435B01       or    reg[UltrasonicInt_CONTROL_REG],  UltrasonicInt_CONTROL_REG_START_BIT
+ 0008 435301       or    reg[UltrasonicInt_CONTROL_REG],  UltrasonicInt_CONTROL_REG_START_BIT
                    IF ( RAM_USE_CLASS_1 & RAM_USE_CLASS_1 )
                    ; Nothing to do
                    ENDIF ; RAM_USE_CLASS_1
@@ -2280,7 +2280,7 @@
                    ; Nothing to do
                    ENDIF ; RAM_USE_CLASS_4
                 
- 000C 415BFE       and   reg[UltrasonicInt_CONTROL_REG], ~UltrasonicInt_CONTROL_REG_START_BIT
+ 000C 4153FE       and   reg[UltrasonicInt_CONTROL_REG], ~UltrasonicInt_CONTROL_REG_START_BIT
                    IF ( RAM_USE_CLASS_1 & RAM_USE_CLASS_1 )
                    ; Nothing to do
                    ENDIF ; RAM_USE_CLASS_1

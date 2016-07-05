@@ -19,7 +19,7 @@ include "m8c.inc"
 
 UltraSonic_CONTROL_REG_START_BIT:          equ 0x01    ; Control register start bit
 UltraSonic_INT_REG:                        equ 0x0df
-UltraSonic_INT_MASK:                       equ 0x20
+UltraSonic_INT_MASK:                       equ 0x80
 
 
 ;--------------------------------------------------
@@ -34,20 +34,20 @@ UltraSonic_COMPARE_VALUE:                  equ 0x0
 ; Register Address Constants for UltraSonic
 ;--------------------------------------------------
 
-UltraSonic_COUNTER_LSB_REG:            equ 0x50   ; DR0 Counter register
-UltraSonic_COUNTER_MSB_REG:            equ 0x54
-UltraSonic_PERIOD_LSB_REG:             equ 0x51   ; DR1 Period register
-UltraSonic_PERIOD_MSB_REG:             equ 0x55
-UltraSonic_COMPARE_LSB_REG:            equ 0x52   ; DR2 CompareValue register
-UltraSonic_COMPARE_MSB_REG:            equ 0x56
-UltraSonic_CONTROL_LSB_REG:            equ 0x53   ; Control register
-UltraSonic_CONTROL_MSB_REG:            equ 0x57
-UltraSonic_FUNC_LSB_REG:               equ 0x50   ; Function register
-UltraSonic_FUNC_MSB_REG:               equ 0x54
-UltraSonic_INPUT_LSB_REG:              equ 0x51   ; Input register
-UltraSonic_INPUT_MSB_REG:              equ 0x55
-UltraSonic_OUTPUT_LSB_REG:             equ 0x52   ; Output register
-UltraSonic_OUTPUT_MSB_REG:             equ 0x56
+UltraSonic_COUNTER_LSB_REG:            equ 0x58   ; DR0 Counter register
+UltraSonic_COUNTER_MSB_REG:            equ 0x5c
+UltraSonic_PERIOD_LSB_REG:             equ 0x59   ; DR1 Period register
+UltraSonic_PERIOD_MSB_REG:             equ 0x5d
+UltraSonic_COMPARE_LSB_REG:            equ 0x5a   ; DR2 CompareValue register
+UltraSonic_COMPARE_MSB_REG:            equ 0x5e
+UltraSonic_CONTROL_LSB_REG:            equ 0x5b   ; Control register
+UltraSonic_CONTROL_MSB_REG:            equ 0x5f
+UltraSonic_FUNC_LSB_REG:               equ 0x58   ; Function register
+UltraSonic_FUNC_MSB_REG:               equ 0x5c
+UltraSonic_INPUT_LSB_REG:              equ 0x59   ; Input register
+UltraSonic_INPUT_MSB_REG:              equ 0x5d
+UltraSonic_OUTPUT_LSB_REG:             equ 0x5a   ; Output register
+UltraSonic_OUTPUT_MSB_REG:             equ 0x5e
 
 
 ;--------------------------------------------------

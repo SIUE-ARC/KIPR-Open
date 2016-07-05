@@ -2,6 +2,12 @@ Starting MAKE...
 creating project.mk 
 
 
+lib/digbuf_2.asm
+
+
+lib/digbuf_2int.asm
+
+
 lib/enc1a_nedge.asm
 
 
@@ -30,6 +36,12 @@ lib/ldr_adc.asm
 
 
 lib/ldr_gain.asm
+
+
+lib/pseudoencoder.asm
+
+
+lib/pseudoencoderint.asm
 
 
 lib/psocconfig.asm
@@ -80,6 +92,9 @@ lib/ultrasonic.asm
 lib/ultrasonicint.asm
 
 
+lib/ultrasonicintint.asm
+
+
 ./boot.asm
 
 
@@ -104,7 +119,7 @@ LMM info: area 'data' item of 4 bytes allocated in SRAM page 0
 LMM info: area 'data' item of 4 bytes allocated in SRAM page 0
 
 
-LMM info: area 'data' item of 4 bytes allocated in SRAM page 0
+LMM info: area 'data' item of 2 bytes allocated in SRAM page 0
 
 
 LMM info: area 'data' item of 2 bytes allocated in SRAM page 0
@@ -143,15 +158,15 @@ LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
 idata dump at output/KIPR_2.idata
 
 
-  ROM 29% full. 9248 out of 32768 bytes used (does not include absolute areas).
+  ROM 29% full. 9178 out of 32768 bytes used (does not include absolute areas).
 
 
-  RAM 4% full. 62 bytes used (does not include stack usage).
+  RAM 4% full. 60 bytes used (does not include stack usage).
 
 
 Built with ICCM8C STD V7.05.00
 
 
  
-KIPR_2 - 0 error(s) 0 warning(s) 18:08:16
+KIPR_2 - 0 error(s) 0 warning(s) 18:38:12
 
