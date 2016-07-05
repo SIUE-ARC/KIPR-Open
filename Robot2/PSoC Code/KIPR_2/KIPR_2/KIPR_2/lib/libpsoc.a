@@ -1,15 +1,37 @@
 .start
 XH
 H 3 areas 1 global symbols
+M ultrasonicintint.asm
+A text size 0 flags 0
+dbfile lib/ultrasonicintint.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/ultrasonicintint.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
+dbfunc 0 ? 0 I
+A InterruptRAM size 0 flags 20
+A UserModules size 1 flags 0
+dbfile lib/ultrasonicintint.asm
+dbfunc 0 ? 0 I
+dbline 58 0
+S _UltrasonicInt_ISR Def0000
+T 00 00 7E
+R 00 00 00 02
+.end
+.start
+XH
+H 3 areas 10 global symbols
 M ultrasonicint.asm
 A text size 0 flags 0
 dbfile lib/ultrasonicint.asm
 dbfunc 0 ? 0 I
-dbfile UltraSonic.inc
+dbfile UltrasonicInt.inc
 dbfunc 0 ? 0 I
 dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
-dbfile ./lib/UltraSonic.inc
+dbfile ./lib/UltrasonicInt.inc
 dbfunc 0 ? 0 I
 dbfile lib/ultrasonicint.asm
 dbfunc 0 ? 0 I
@@ -19,18 +41,42 @@ dbfile lib/ultrasonicint.asm
 dbfunc 0 ? 0 I
 dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
-A InterruptRAM size 0 flags 20
-A UserModules size 1 flags 0
+A bss size 0 flags 20
+A UserModules size 10 flags 0
 dbfile lib/ultrasonicint.asm
 dbfunc 0 ? 0 I
-dbline 5A 0
-S _UltraSonic_ISR Def0000
-T 00 00 7E
+dbline 2 0
+dbline 4D 3
+dbline 2 4
+dbline 68 7
+dbline 2 8
+dbline 82 B
+dbline 2 C
+dbline 9C F
+S _UltrasonicInt_Start Def0008
+S UltrasonicInt_EnableInt Def0000
+S $sb$UltrasonicInt_EnableInt Def0000
+S $se$UltrasonicInt_EnableInt Def0004
+S UltrasonicInt_Stop Def000C
+S $sb$UltrasonicInt_Stop Def000C
+S $se$UltrasonicInt_Stop Def0010
+S _UltrasonicInt_EnableInt Def0000
+S UltrasonicInt_DisableInt Def0004
+S $sb$UltrasonicInt_DisableInt Def0004
+S $se$UltrasonicInt_DisableInt Def0008
+S _UltrasonicInt_Stop Def000C
+S UltrasonicInt_Start Def0008
+S $sb$UltrasonicInt_Start Def0008
+S $se$UltrasonicInt_Start Def000C
+S _UltrasonicInt_DisableInt Def0004
+T 00 00 43 DF 40 7F 41 DF BF 7F 43 5B 01 7F 41 5B
+R 00 00 00 02
+T 00 0E FE 7F
 R 00 00 00 02
 .end
 .start
 XH
-H 3 areas 28 global symbols
+H 3 areas 2E global symbols
 M ultrasonic.asm
 A text size 0 flags 0
 dbfile lib/ultrasonic.asm
@@ -50,177 +96,124 @@ dbfunc 0 ? 0 I
 dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
 dbfunc 0 ? 0 I
 A kipr_2_RAM size 0 flags 20
-A UserModules size B9 flags 0
+A UserModules size 60 flags 0
 dbfile lib/ultrasonic.asm
 dbfunc 0 ? 0 I
 dbline 2 0
-dbline 5F 3
+dbline 66 3
 dbline 2 4
-dbline 7B 7
+dbline 82 7
 dbline 2 8
-dbline 97 B
+dbline 9E B
 dbline 2 C
-dbline B3 F
-dbline D1 10
-dbline D2 11
-dbline D3 13
-dbline D4 15
-dbline D5 17
-dbline D6 19
-dbline D7 1B
-dbline D8 1D
-dbline D9 1F
-dbline 3 21
-dbline 4 23
-dbline DB 25
-dbline F7 26
-dbline F8 27
-dbline F9 29
-dbline FA 2B
-dbline FB 2D
-dbline FC 2F
-dbline FD 31
-dbline FE 33
-dbline FF 35
-dbline 3 37
-dbline 4 39
-dbline 101 3B
-dbline 3 3C
-dbline 3 3E
-dbline 121 40
-dbline 122 42
-dbline 123 44
-dbline 124 46
-dbline 125 48
-dbline 126 4A
-dbline 127 4C
-dbline 128 4E
-dbline 3 50
-dbline 4 52
-dbline 12A 54
-dbline 3 55
-dbline 3 57
-dbline 160 59
-dbline 161 5B
-dbline 164 5C
-dbline 165 5E
-dbline 166 5F
-dbline 167 61
-dbline 168 62
-dbline 169 64
-dbline 16A 65
-dbline 16B 67
-dbline 170 68
-dbline 174 6A
-dbline 175 6C
-dbline 176 6E
-dbline 177 70
-dbline 178 72
-dbline 179 74
-dbline 17A 76
-dbline 17B 78
-dbline 17E 7A
-dbline 17F 7C
-dbline 180 7F
-dbline 181 81
-dbline 183 83
-dbline 2 84
-dbline 2 86
-dbline 18C 89
-dbline 18D 8A
-dbline 18E 8C
-dbline 18F 8D
-dbline 190 8F
-dbline 191 90
-dbline 192 92
-dbline 193 93
-dbline 196 95
-dbline 197 96
-dbline 19A 98
-dbline 3 99
-dbline 4 9B
-dbline 19F 9D
-dbline 3 9E
-dbline 3 A0
-dbline 1CF A2
-dbline 1D3 A4
-dbline 1D4 A6
-dbline 1D5 A8
-dbline 1D6 AA
-dbline 1D7 AC
-dbline 1D8 AE
-dbline 1D9 B0
-dbline 1DA B2
-dbline 3 B4
-dbline 4 B6
-dbline 1DC B8
-S $se$UltraSonic_ReadTimer Def00B9
-S _UltraSonic_ReadCompareValue Def003C
-S UltraSonic_ReadTimerSaveCV Def0055
+dbline BA F
+dbline D5 10
+dbline D6 12
+dbline D7 13
+dbline D9 15
+dbline F5 16
+dbline F6 18
+dbline F7 19
+dbline F9 1B
+dbline 114 1C
+dbline 115 1E
+dbline 116 1F
+dbline 118 21
+dbline 14C 22
+dbline 14D 23
+dbline 14E 25
+dbline 14F 27
+dbline 150 28
+dbline 151 2A
+dbline 152 2B
+dbline 153 2D
+dbline 154 2E
+dbline 156 30
+dbline 157 32
+dbline 158 34
+dbline 159 36
+dbline 15A 38
+dbline 15B 3A
+dbline 15C 3D
+dbline 15D 3F
+dbline 15F 41
+dbline 2 43
+dbline 2 45
+dbline 162 48
+dbline 163 49
+dbline 164 4B
+dbline 165 4C
+dbline 166 4E
+dbline 167 4F
+dbline 168 51
+dbline 169 52
+dbline 3 53
+dbline 4 55
+dbline 16B 57
+dbline 194 58
+dbline 197 5A
+dbline 198 5C
+dbline 199 5D
+dbline 19B 5F
 S UltraSonic_Stop Def000C
-S UltraSonic_CaptureCounter Def009E
-S _UltraSonic_ReadCounter Def0055
-S $sb$UltraSonic_ReadTimerSaveCV Def0055
+S wUltraSonic_ReadCompareValue Def001C
+S UltraSonic_wReadCompareValue Def001C
 S $sb$UltraSonic_Stop Def000C
-S $se$UltraSonic_ReadTimerSaveCV Def009E
 S $se$UltraSonic_Stop Def0010
 S _UltraSonic_WritePeriod Def0010
-S UltraSonic_WriteCompareValue Def0026
+S UltraSonic_WriteCompareValue Def0016
 S _UltraSonic_EnableInt Def0000
-S _UltraSonic_ReadTimer Def009E
+S wUltraSonic_ReadCounter Def0022
+S $sb$UltraSonic_wReadCompareValue Def001C
+S $se$UltraSonic_wReadCompareValue Def0022
 S UltraSonic_DisableInt Def0004
-S $sb$_UltraSonic_WritePeriod Def0010
-S $se$_UltraSonic_WritePeriod Def0026
+S $sb$UltraSonic_WriteCompareValue Def0016
+S $se$UltraSonic_WriteCompareValue Def001C
+S wUltraSonic_ReadTimer Def0058
+S UltraSonic_wReadTimer Def0058
 S $sb$UltraSonic_DisableInt Def0004
 S $se$UltraSonic_DisableInt Def0008
-S _UltraSonic_ReadTimerSaveCV Def0055
 S _UltraSonic_Stop Def000C
 S UltraSonic_Start Def0008
-S _UltraSonic_CaptureCounter Def009E
+S $sb$UltraSonic_wReadTimer Def0058
+S $se$UltraSonic_wReadTimer Def0060
+S _wUltraSonic_ReadCompareValue Def001C
+S _UltraSonic_wReadCompareValue Def001C
+S wUltraSonic_ReadTimerSaveCV Def0022
+S UltraSonic_wReadTimerSaveCV Def0022
 S $sb$UltraSonic_Start Def0008
+S wUltraSonic_CaptureCounter Def0058
 S $se$UltraSonic_Start Def000C
-S _UltraSonic_WriteCompareValue Def0026
+S _UltraSonic_WriteCompareValue Def0016
+S _wUltraSonic_ReadCounter Def0022
+S $sb$UltraSonic_wReadTimerSaveCV Def0022
+S $se$UltraSonic_wReadTimerSaveCV Def0058
 S _UltraSonic_DisableInt Def0004
-S UltraSonic_ReadCompareValue Def003C
-S $sb$_UltraSonic_WriteCompareValue Def0026
-S $se$_UltraSonic_WriteCompareValue Def003C
-S UltraSonic_ReadCounter Def0055
-S $sb$UltraSonic_ReadCompareValue Def003C
-S $se$UltraSonic_ReadCompareValue Def0055
+S _wUltraSonic_ReadTimer Def0058
+S _UltraSonic_wReadTimer Def0058
 S _UltraSonic_Start Def0008
 S UltraSonic_WritePeriod Def0010
 S UltraSonic_EnableInt Def0000
-S UltraSonic_ReadTimer Def009E
+S _wUltraSonic_ReadTimerSaveCV Def0022
+S _UltraSonic_wReadTimerSaveCV Def0022
+S _wUltraSonic_CaptureCounter Def0058
+S $sb$UltraSonic_WritePeriod Def0010
+S $se$UltraSonic_WritePeriod Def0016
 S $sb$UltraSonic_EnableInt Def0000
 S $se$UltraSonic_EnableInt Def0004
-S $sb$UltraSonic_ReadTimer Def009E
-T 00 00 43 DF 80 7F 41 DF 7F 7F 43 53 01 7F 41 53
+T 00 00 43 DF 20 7F 41 DF DF 7F 43 53 01 7F 41 53
 R 00 00 00 02
-T 00 0E FE 7F 4F 52 FA 60 5D 52 FB 60 59 52 FC 60
+T 00 0E FE 7F 60 51 5B 60 55 7F 60 52 5B 60 56 7F
 R 00 00 00 02
-T 00 1C 55 52 FD 60 51 70 3F 71 C0 7F 4F 52 FA 60
+T 00 1C 5D 56 5C 5D 52 7F 4F 38 03 5D 53 08 5D 52
 R 00 00 00 02
-T 00 2A 5E 52 FB 60 5A 52 FC 60 56 52 FD 60 52 70
+T 00 2A 08 5D 56 08 5D 50 5D 56 54 01 5D 52 54 02
 R 00 00 00 02
-T 00 38 3F 71 C0 7F 70 BF 60 D3 5D 5E 54 00 5D 5A
+T 00 38 50 00 49 F7 01 A0 03 50 01 54 00 70 FE 41
 R 00 00 00 02
-T 00 46 54 01 5D 56 54 02 5D 52 54 03 70 3F 71 C0
+T 00 46 53 FE 18 60 56 18 60 52 18 60 53 18 20 70
 R 00 00 00 02
-T 00 54 7F 70 BF 60 D3 5D 53 08 5D 5E 08 5D 5A 08
-R 00 00 00 02
-T 00 62 5D 56 08 5D 52 08 5D 50 5D 5E 54 00 5D 5A
-R 00 00 00 02
-T 00 70 54 01 5D 56 54 02 5D 52 54 03 50 00 49 F7
-R 00 00 00 02
-T 00 7E 01 A0 03 50 01 5C 70 FE 41 53 FE 18 60 52
-R 00 00 00 02
-T 00 8C 18 60 56 18 60 5A 18 60 5E 18 60 53 10 70
-R 00 00 00 02
-T 00 9A 3F 71 C0 7E 70 BF 60 D3 5D 50 5D 5E 54 00
-R 00 00 00 02
-T 00 A8 5D 5A 54 01 5D 56 54 02 5D 52 54 03 70 3F
-R 00 00 00 02
-T 00 B6 71 C0 7F
+T 00 54 3F 71 C0 7E 5D 50 5D 56 5C 5D 52 7F
 R 00 00 00 02
 .end
 .start
@@ -1442,120 +1435,120 @@ A psoc_config size 105 flags 0
 dbfile lib/psocconfigtbl.asm
 dbfunc 0 ? 0 I
 dbline 2 0
-dbline FD 2
+dbline 101 2
 dbline 2 5
-dbline FF 7
-dbline 100 A
+dbline 103 7
+dbline 104 A
 dbline 2 D
-dbline 102 F
-dbline 103 12
+dbline 106 F
+dbline 107 12
 dbline 2 15
-dbline 105 17
-dbline 106 1A
+dbline 109 17
+dbline 10A 1A
 dbline 2 1D
-dbline 108 1F
-dbline 109 22
+dbline 10C 1F
+dbline 10D 22
 dbline 2 25
-dbline 10B 27
-dbline 10C 2A
+dbline 10F 27
+dbline 110 2A
 dbline 2 2D
-dbline 10E 2F
-dbline 10F 32
+dbline 112 2F
+dbline 113 32
 dbline 2 35
-dbline 111 37
-dbline 112 3A
+dbline 115 37
+dbline 116 3A
 dbline 2 3D
-dbline 114 3F
-dbline 115 42
+dbline 118 3F
+dbline 119 42
 dbline 2 45
-dbline 117 47
-dbline 118 4A
+dbline 11B 47
+dbline 11C 4A
 dbline 2 4D
-dbline 11A 4F
-dbline 11B 52
+dbline 11E 4F
+dbline 11F 52
 dbline 2 55
-dbline 11D 57
-dbline 11E 5A
+dbline 121 57
+dbline 122 5A
 dbline 2 5D
-dbline 120 5F
-dbline 121 62
+dbline 124 5F
+dbline 125 62
 dbline 2 65
-dbline 123 67
-dbline 124 6A
+dbline 127 67
+dbline 128 6A
 dbline 2 6D
-dbline 126 6F
-dbline 127 72
+dbline 12A 6F
+dbline 12B 72
 dbline 2 75
-dbline 129 77
-dbline 12A 7A
+dbline 12D 77
+dbline 12E 7A
 dbline 2 7D
-dbline 12C 7F
-dbline 12D 82
+dbline 130 7F
+dbline 131 82
 dbline 2 85
-dbline 12F 87
-dbline 130 8A
+dbline 133 87
+dbline 134 8A
 dbline 2 8D
-dbline 132 8F
-dbline 133 92
+dbline 136 8F
+dbline 137 92
 dbline 2 95
-dbline 135 97
-dbline 136 9A
+dbline 139 97
+dbline 13A 9A
 dbline 2 9D
-dbline 138 9F
-dbline 139 A2
+dbline 13C 9F
+dbline 13D A2
 dbline 2 A5
-dbline 13B A7
-dbline 13C AA
+dbline 13F A7
+dbline 140 AA
 dbline 2 AD
-dbline 13E AF
-dbline 13F B2
+dbline 142 AF
+dbline 143 B2
 dbline 2 B5
-dbline 141 B7
-dbline 142 BA
+dbline 145 B7
+dbline 146 BA
 dbline 2 BD
-dbline 144 BF
-dbline 145 C2
+dbline 148 BF
+dbline 149 C2
 dbline 2 C5
-dbline 147 C7
-dbline 148 CA
+dbline 14B C7
+dbline 14C CA
 dbline 2 CD
-dbline 14A CF
-dbline 14B D2
+dbline 14E CF
+dbline 14F D2
 dbline 2 D5
-dbline 14D D7
-dbline 14E DA
+dbline 151 D7
+dbline 152 DA
 dbline 2 DD
-dbline 150 DF
-dbline 151 E2
+dbline 154 DF
+dbline 155 E2
 dbline 2 E5
-dbline 153 E7
-dbline 154 EA
+dbline 157 E7
+dbline 158 EA
 dbline 2 ED
-dbline 156 EF
-dbline 157 F2
+dbline 15A EF
+dbline 15B F2
 dbline 2 F5
-dbline 159 F7
-dbline 15A FA
+dbline 15D F7
+dbline 15E FA
 dbline 2 FD
-dbline 15C FF
+dbline 160 FF
 dbline 2 102
-dbline 15E 104
+dbline 162 104
 S LoadConfigTBL_kipr_2_Ordered Def0000
-T 00 00 33 00 31 00 32 00 23 03 21 00 22 00 47 00
+T 00 00 5F 03 5D 00 5E 00 33 00 31 00 32 00 23 03
 R 00 00 00 01
-T 00 0E 45 00 46 00 37 03 35 00 36 00 80 00 81 5F
+T 00 0E 21 00 22 00 47 00 45 00 46 00 37 03 35 00
 R 00 00 00 01
-T 00 1C 82 60 83 00 71 FE 72 21 73 20 70 00 2F 00
+T 00 1C 36 00 80 00 81 5F 82 60 83 00 71 FE 72 21
 R 00 00 00 01
-T 00 2A 2D FF 2E 00 43 00 41 FF 42 00 27 00 25 1F
+T 00 2A 73 20 70 00 2F 00 2D FF 2E 00 43 00 41 FF
 R 00 00 00 01
-T 00 38 26 E7 2B 00 29 4E 2A 03 4B 00 49 1F 4A E7
+T 00 38 42 00 27 00 25 1F 26 E7 2B 00 29 4E 2A 03
 R 00 00 00 01
-T 00 46 4F 00 4D 4E 4E 03 3F 00 3D 00 3E 00 3B 00
+T 00 46 4B 00 49 1F 4A E7 4F 00 4D 4E 4E 03 3F 00
 R 00 00 00 01
-T 00 54 39 00 3A 00 57 00 55 00 56 00 5B 00 59 00
+T 00 54 3D 00 3E 00 3B 00 39 00 3A 00 53 00 51 00
 R 00 00 00 01
-T 00 62 5A 00 53 00 51 00 52 00 5F 06 5D 00 5E 00
+T 00 62 52 00 57 04 55 00 56 00 5B 03 59 00 5A 00
 R 00 00 00 01
 T 00 70 60 0A 66 00 63 15 65 00 E6 00 E7 00 D6 00
 R 00 00 00 01
@@ -1567,21 +1560,21 @@ T 00 9A C0 01 C1 00 C2 20 C3 33 C4 33 C5 80 C6 20
 R 00 00 00 01
 T 00 A8 C8 44 C9 00 CA 30 CB 33 CC 33 CD 00 CE 00
 R 00 00 00 01
-T 00 B6 6C 00 6D 00 6E 00 6F 00 FF 30 20 31 0E 32
+T 00 B6 6C 00 6D 00 6E 00 6F 00 FF 5C 22 5D 00 5E
 R 00 00 00 01
-T 00 C4 40 20 22 21 E0 22 40 44 20 45 0C 46 40 34
+T 00 C4 00 30 20 31 0E 32 40 20 22 21 E0 22 40 44
 R 00 00 00 01
-T 00 D2 22 35 C0 36 40 2C 21 2D 16 2E 44 40 21 41
+T 00 D2 20 45 0C 46 40 34 22 35 C0 36 40 2C 21 2D
 R 00 00 00 01
-T 00 E0 11 42 45 24 01 25 16 26 40 28 21 29 36 2A
+T 00 E0 16 2E 44 40 21 41 11 42 45 24 01 25 16 26
 R 00 00 00 01
-T 00 EE 47 48 01 49 16 4A 40 4C 21 4D 36 4E 47 3C
+T 00 EE 40 28 21 29 36 2A 47 48 01 49 16 4A 40 4C
 R 00 00 00 01
-T 00 FC 05 3D F1 3E 40 38 0D 39 01 3A 45 54 00 55
+T 00 FC 21 4D 36 4E 47 3C 05 3D F1 3E 40 38 0D 39
 R 00 00 00 01
-T 01 0A 35 56 40 58 00 59 35 5A 40 50 00 51 E5 52
+T 01 0A 01 3A 45 50 00 51 05 52 00 54 20 55 35 56
 R 00 00 00 01
-T 01 18 40 5C 20 5D 35 5E 40 61 00 69 00 60 00 62
+T 01 18 00 58 22 59 E0 5A 00 61 00 69 00 60 00 62
 R 00 00 00 01
 T 01 26 00 67 33 68 33 63 00 66 00 D1 00 D3 00 D0
 R 00 00 00 01
@@ -2243,4 +2236,80 @@ T 00 1C 04 70 EF 43 33 01 71 10 18 60 31 18 60 32
 R 00 00 00 01
 T 00 2A 70 EF 62 DB EF 18 60 E1 18 7F 41 33 FE 7F
 R 00 00 00 01
+.end
+.start
+XH
+H 3 areas 1 global symbols
+M digbuf_2int.asm
+A text size 0 flags 0
+dbfile lib/digbuf_2int.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/digbuf_2int.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
+dbfunc 0 ? 0 I
+A InterruptRAM size 0 flags 20
+A UserModules size 1 flags 0
+dbfile lib/digbuf_2int.asm
+dbfunc 0 ? 0 I
+dbline 58 0
+S _DigBuf_2_ISR Def0000
+T 00 00 7E
+R 00 00 00 02
+.end
+.start
+XH
+H 3 areas 10 global symbols
+M digbuf_2.asm
+A text size 0 flags 0
+dbfile lib/digbuf_2.asm
+dbfunc 0 ? 0 I
+dbfile DigBuf_2.inc
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
+dbfunc 0 ? 0 I
+dbfile ./lib/DigBuf_2.inc
+dbfunc 0 ? 0 I
+dbfile lib/digbuf_2.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/digbuf_2.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1/m8c.inc
+dbfunc 0 ? 0 I
+A bss size 0 flags 20
+A UserModules size 10 flags 0
+dbfile lib/digbuf_2.asm
+dbfunc 0 ? 0 I
+dbline 2 0
+dbline 4D 3
+dbline 2 4
+dbline 68 7
+dbline 2 8
+dbline 82 B
+dbline 2 C
+dbline 9C F
+S DigBuf_2_DisableInt Def0004
+S $sb$DigBuf_2_DisableInt Def0004
+S $se$DigBuf_2_DisableInt Def0008
+S _DigBuf_2_Stop Def000C
+S DigBuf_2_Start Def0008
+S $sb$DigBuf_2_Start Def0008
+S $se$DigBuf_2_Start Def000C
+S _DigBuf_2_DisableInt Def0004
+S _DigBuf_2_Start Def0008
+S DigBuf_2_EnableInt Def0000
+S $sb$DigBuf_2_EnableInt Def0000
+S $se$DigBuf_2_EnableInt Def0004
+S DigBuf_2_Stop Def000C
+S $sb$DigBuf_2_Stop Def000C
+S $se$DigBuf_2_Stop Def0010
+S _DigBuf_2_EnableInt Def0000
+T 00 00 43 DF 80 7F 41 DF 7F 7F 43 5F 01 7F 41 5F
+R 00 00 00 02
+T 00 0E FE 7F
+R 00 00 00 02
 .end

@@ -1,14 +1,14 @@
 PROJNAME=KIPR_2
 DEVICE=CY8C29466
 BASEDEVICE=CY8C29000
-PROJPATH=C:/Users/ryowens/Desktop/KIPR-O~1/Robot2/PSOCCO~1/KIPR_2/KIPR_2/KIPR_2
+PROJPATH=C:/Users/zaander/Desktop/KIPR/KIPR-O~1/Robot2/PSOCCO~1/KIPR_2/KIPR_2/KIPR_2
 PSOCDIR=C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1
 INCLUDE_PATH=C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C29~1
 CSRCS= main.c
 LIBCSRCS=
 STDCSRCS=
 ASMSRCS=
-LIBASMSRCS= enc1a_nedge.asm enc1a_nedgeint.asm enc1a_pedge.asm enc1a_pedgeint.asm enc1b_nedge.asm enc1b_nedgeint.asm enc1b_pedge.asm enc1b_pedgeint.asm ldr_adc.asm ldr_gain.asm psocconfig.asm psocconfigtbl.asm psocgpioint.asm pwma.asm pwmaint.asm pwmb.asm pwmbint.asm servo0.asm servo0int.asm servo1.asm servo1int.asm uart.asm uartint.asm uartplus.asm ultrasonic.asm ultrasonicint.asm
+LIBASMSRCS= digbuf_2.asm digbuf_2int.asm enc1a_nedge.asm enc1a_nedgeint.asm enc1a_pedge.asm enc1a_pedgeint.asm enc1b_nedge.asm enc1b_nedgeint.asm enc1b_pedge.asm enc1b_pedgeint.asm ldr_adc.asm ldr_gain.asm psocconfig.asm psocconfigtbl.asm psocgpioint.asm pwma.asm pwmaint.asm pwmb.asm pwmbint.asm servo0.asm servo0int.asm servo1.asm servo1int.asm uart.asm uartint.asm uartplus.asm ultrasonic.asm ultrasonicint.asm ultrasonicintint.asm
 STDASMSRCS=
 OBJECT_SOURCES= main.c
 FILLVALUE=0x30

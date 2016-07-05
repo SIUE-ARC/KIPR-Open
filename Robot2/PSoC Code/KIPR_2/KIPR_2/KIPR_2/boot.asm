@@ -194,19 +194,19 @@ ENDIF
     reti
 
     org   50h                      ;PSoC Block DBB30 Interrupt Vector
-    ljmp _distance_ISR
-    reti
-
-    org   54h                      ;PSoC Block DBB31 Interrupt Vector
-	// call	void_handler
-    reti
-
-    org   58h                      ;PSoC Block DCB32 Interrupt Vector
     // call	void_handler
     reti
 
+    org   54h                      ;PSoC Block DBB31 Interrupt Vector
+	ljmp	_UltraSonic_ISR
+    reti
+
+    org   58h                      ;PSoC Block DCB32 Interrupt Vector
+	ljmp _distance_ISR
+    reti
+
     org   5Ch                      ;PSoC Block DCB33 Interrupt Vector
-    ljmp	_UltraSonic_ISR
+    ljmp	_DigBuf_2_ISR
     reti
 
     org   60h                      ;PSoC I2C Interrupt Vector

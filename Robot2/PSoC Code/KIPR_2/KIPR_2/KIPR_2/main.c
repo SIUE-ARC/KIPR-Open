@@ -199,6 +199,8 @@ void init(void)
 	ENC1A_NEDGE_Start();
 	ENC1B_NEDGE_Start();
 	
+	UltrasonicInt_Start();
+	
 	//enable the falling edge and positive edge interrupts for Encoder 1
 	ENC1A_PEDGE_EnableInt();
 	ENC1B_PEDGE_EnableInt();
@@ -224,6 +226,7 @@ void init(void)
 	M8C_EnableIntMask(INT_MSK0, INT_MSK0_GPIO);
 	M8C_EnableIntMask(INT_MSK1, INT_MSK1_DBB00);
 	M8C_EnableIntMask(INT_MSK1, INT_MSK1_DBB11);
+	M8C_EnableIntMask(INT_MSK2, INT_MSK2_DCB32);
 	M8C_EnableGInt;
 	
 	UART_PutCRLF();
@@ -290,7 +293,7 @@ void lineFollow(void)
 unsigned int ultrasound(void)
 {
 	unsigned int distance = 0;
-	unsigned long ticks = 0xffffffff;
+	unsigned int ticks = 0xffff;
 	
 	//We need a 10us high trigger to make a pulse
 	//Set timer to 10us period.
@@ -313,7 +316,7 @@ unsigned int ultrasound(void)
 	
 	//Start timer to allow for a 10us pulse.
 	UltraSonic_Start();
-	while(ticks > 0){UltraSonic_ReadTimer(&ticks);}
+	while(ticks > 0){ticks = UltraSonic_wReadTimer();}
 	UltraSonic_Stop();
 	
 	//set drive mode to HIGH-Z (digital input) to read echo
@@ -329,15 +332,15 @@ unsigned int ultrasound(void)
 	
 	//Set period to max so we can determine extctly how long the
 	//echo was.
-	UltraSonic_WritePeriod(0xffffffff);
+	UltraSonic_WritePeriod(0xffff);
 	UltraSonic_WriteCompareValue(0);
-	UltraSonic_EnableInt();
+	UltrasonicInt_EnableInt();
 	UltraSonic_Start();
 	
 	//distance ISR sets period to 0 upon exiting
 	while(UltraSonic_PERIOD > 0);
 	UltraSonic_Stop();
-	UltraSonic_DisableInt();
+	UltrasonicInt_DisableInt();
 	
 	//distance in cm = us/58
 	//clock source is 2 Mhz (0.5 us) so multiply pulse ticks by two
@@ -832,6 +835,9 @@ void encoder2_ISR(void)
 
 void distance_ISR(void)
 {
+	UART_PutCRLF();
+	UART_CPutString("Inside the distance ISR");
+	UART_PutCRLF();
 	if (debug)
 	{
 		UART_PutCRLF();
@@ -839,7 +845,7 @@ void distance_ISR(void)
 		UART_PutCRLF();
 	}
 	stop = 0;
-	UltraSonic_ReadTimer(&pulse);
+	pulse = UltraSonic_wReadTimer();
 	while(MISC4_Data_ADDR & MISC4_MASK);
 	pulse -= stop;
 	UltraSonic_WritePeriod(0);

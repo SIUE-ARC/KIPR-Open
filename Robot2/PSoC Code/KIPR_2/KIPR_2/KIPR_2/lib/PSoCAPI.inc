@@ -14,6 +14,7 @@
 ; =============================================================================
  
 include "PSoCGPIOINT.inc"
+include "DigBuf_2.inc"
 include "ENC1A_NEDGE.inc"
 include "ENC1A_PEDGE.inc"
 include "ENC1B_NEDGE.inc"
@@ -26,3 +27,4 @@ include "Servo0.inc"
 include "Servo1.inc"
 include "UART.inc"
 include "UltraSonic.inc"
+include "UltrasonicInt.inc"
