@@ -95,7 +95,7 @@ class SerialCommunication:
         if self.__connection.inWaiting() == 0:
             raise serial.SerialException("Timeout on reading from port " + str(self.__port))
         else:
-            response = self.__connection.read(self.__connection.inWaiting())
+            response = self.__connection.read(self.__connection.inWaiting()).decode("utf8")
             self.__response_list.append(response)
             self.__expecting_response = False
             self.__expecting_acknowledge = False
