@@ -301,11 +301,11 @@ void lineFollow(void)
 unsigned int ultrasound(void)
 {
 	unsigned int distance = 0;
-	unsigned long ticks = 0xffff;
+	//unsigned long ticks = 0xffff;
 	
 	//We need a 10us high trigger to make a pulse
 	//Set timer to 10us period.
-	UltraSonic_WritePeriod(1);
+	UltraSonic_WritePeriod(20);
 	UltraSonic_WriteCompareValue(0);
 	
 	//set drive mode to Strong (output) to drive trigger high.
@@ -313,18 +313,18 @@ unsigned int ultrasound(void)
 	MISC4_DriveMode_1_ADDR &= ~MISC4_MASK;
 	MISC4_DriveMode_2_ADDR &= ~MISC4_MASK;
 	
-	//make tirgger high to start the pulse
-	MISC4_Data_ADDR |= MISC4_MASK;
-	
 	if (debug)
 	{
 		UART_PutCRLF();
 		UART_CPutString("Ultrasonic is high");
 	}
 	
+	//make tirgger high to start the pulse
+	MISC4_Data_ADDR |= MISC4_MASK;
+	
 	//Start timer to allow for a 10us pulse.
 	UltraSonic_Start();
-	while(ticks > 0){ticks = UltraSonic_wReadTimer();}
+	while(!(MISC7_Data_ADDR & MISC7_MASK)){}
 	UltraSonic_Stop();
 	
 	//drive pin low again before changing modes.
@@ -833,17 +833,17 @@ void encoder2_ISR(void)
 
 void distance_ISR(void)
 {
-	if (debug)
-	{
-		UART_PutCRLF();
-		UART_CPutString("Inside the distance ISR");
-		UART_PutCRLF();
-	}
 	stop = 0;
 	pulse = UltraSonic_wReadTimer();
 	while(MISC4_Data_ADDR & MISC4_MASK);
 	stop = UltraSonic_wReadTimer();
 	pulse -= stop;
 	UltraSonic_WritePeriod(0);
+	if (debug)
+	{
+		UART_PutCRLF();
+		UART_CPutString("Inside the distance ISR");
+		UART_PutCRLF();
+	}
 }
 void UltraSonic_ISR(void){}
