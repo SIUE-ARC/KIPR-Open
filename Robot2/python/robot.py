@@ -34,41 +34,44 @@ motor_controller = MotorControl(serialConnection=serial_connection, command_term
 servo_controller = ServoControl(serialConnection=serial_connection, command_terminator=command_terminator, debug=True)
 sensor_controller = SensorControl(serialConnection=serial_connection, command_terminator=command_terminator, degug=True)
 
-# Need to add arguments to the class constructors
+# # Need to add arguments to the class constructors
+#
+# activeCommand = first(DriveBackUntilTouch())
+# .then(CommandGroup([Turn(90, speed), LowerTrunk()])
+# .then(StartConveyorbelt())
+#     .ifSuccessful(
+#         Turn(90, speed)
+#         .then(Drive(-10, speed))
+#         .then(FollowLineBackwards())
+#         .then(RaiseBucket())
+#     .ifFailure(
+#         DriveBackUntilTouch()
+#         .then(Drive(10, speed))
+#         .then(Turn(90, speed))
+#         .then(DriveBackUntilTouch())
+#         .then(LowerBucket())
+#     .then(StopConveyorbelt())
+#     .then(StopMotors())
+#     .then(LowerTrunk())
+#     .then(LowerBucket())
+#
+# GAME_TIME -= (time.perf_counter() + sensorControl.wait_for_light())
+# start_time = time.perf_counter()
+#
+# # Don't forget to handle TRY-Catch blocks
+#
+# while(time.perf_counter() - start_time < GAME_TIME):
+#     ret = activeCommand.execute();
+#
+#     if ret is not None:
+#         activeCommand = ret;
+#
+#     # Update PID
+#     motorControl.update();
 
-activeCommand = first(DriveBackUntilTouch())
-.then(CommandGroup([Turn(90, speed), LowerTrunk()])
-.then(StartConveyorbelt())
-    .ifSuccessful(
-        Turn(90, speed)
-        .then(Drive(-10, speed))
-        .then(FollowLineBackwards())
-        .then(RaiseBucket())
-    .ifFailure(
-        DriveBackUntilTouch()
-        .then(Drive(10, speed))
-        .then(Turn(90, speed))
-        .then(DriveBackUntilTouch())
-        .then(LowerBucket())
-    .then(StopConveyorbelt())
-    .then(StopMotors())
-    .then(LowerTrunk())
-    .then(LowerBucket())
-
-GAME_TIME -= (time.perf_counter() + sensorControl.wait_for_light())
-start_time = time.perf_counter()
-
-# Don't forget to handle TRY-Catch blocks
-
-while(time.perf_counter() - start_time < GAME_TIME):
-    ret = activeCommand.execute();
-
-    if ret is not None:
-        activeCommand = ret;
-
-    # Update PID
-    motorControl.update();
-
+dfut = DriveForwardUntilTouch(motor_controller, raspi)
+while(True):
+    dfut.execute()
 motorControl.stop();
 servo_controller.stop()
 raspi.set_all_pins_to_low()

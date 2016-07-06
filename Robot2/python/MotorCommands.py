@@ -140,12 +140,12 @@ class StopMotors(Command):
         return self._COMPLETE
 
 class DriveBackUntilTouch(Command):
-    def __init__(self, motor_controller, raspi, pin):
+    def __init__(self, motor_controller, raspi):
         super().__init__(motor_controller = motor_controller, raspi = raspi)
         self.__started = False
         self.__speed = 100 # set a speed
         self.__try_get_reponse = 3
-        self.__pin = pin
+        self.__pin = 7
 
     def execute(self):
         if self.__try_get_reponse > 0 and self._raspi.get_pin_input(self.__pin) != 1:
@@ -171,12 +171,12 @@ class DriveBackUntilTouch(Command):
         return self._COMPLETE
 
 class DriveForwardUntilTouch(Command):
-    def __init__(self, motor_controller, raspi, pin):
+    def __init__(self, motor_controller, raspi):
         super().__init__(motor_controller = motor_controller, raspi = raspi)
         self.__started = False
         self.__speed = 100 # set a speed
         self.__try_get_reponse = 3
-        self.__pin = pin
+        self.__pin = 18
 
     def execute(self):
         if self.__try_get_reponse > 0 and self._raspi.get_pin_input(self.__pin) != 1:
@@ -185,7 +185,7 @@ class DriveForwardUntilTouch(Command):
                 return self._IN_PROGRESS
             else:
                 try:
-                    if self.__motor_controller.mav(self.__speed, self.__speed) is True:
+                    if self.__motor_controller.move_at_percentage(0.5) is True:
                         # got the ACK
                         self.__started = True
                         self.__try_get_reponse = -1
@@ -206,7 +206,7 @@ class SquareUp(Command):
     def __init__(self, motor_controller, speed):
         super().__init__(motor_controller = motor_controller)
         self.__speed = speed
-    
+
     def execute(self):
         # Turn off PID, we will be driving manually
         self.__motorController.disable()
