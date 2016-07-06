@@ -209,7 +209,7 @@ class SquareUp(Command):
 
     def execute(self):
         # Turn off PID, we will be driving manually
-        self.__motorController.disable()
+        self._motorController.disable()
 
         leftSpeed = speed
         rightSpeed = speed
@@ -222,8 +222,8 @@ class SquareUp(Command):
 
         # If both motors are against the wall, we are done
         if leftSpeed == 0 and rightSpeed == 0:
-            self.__motorController.enable()
+            self._motorController.enable()
             return self._COMPLETE
         else:
-            self.__motorController.move_at_percentage((leftSpeed, rightSpeed))
+            self._motorController.move_at_percentage((leftSpeed, rightSpeed))
             return self._IN_PROGRESS
