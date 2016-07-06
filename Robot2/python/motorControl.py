@@ -153,14 +153,14 @@ class MotorControl:
             try:
                 if self.__serialConnection.send_command(self.__REVERSE_2, self.__terminator) is False:
                     return False
-                except:
-                    raise
+            except:
+                raise
 
         try:
             if self.__serialConnection.send_command(self.__MOV_2, abs(rightSpeed), self.__terminator) is False:
                 return False
-            except:
-                raise
+        except:
+            raise
 
         if self.__DEBUG:
             print("Moving at " + str(percent) + " throttle")
