@@ -212,6 +212,8 @@ class MotorControl:
     def get_encoder_1_count(self):
         try:
             bites = self.__serialConnection.send_command(self.__ENCODER_1_COUNT, self.__terminator, check_result = False)
+            if bites is False:
+                return False
         except:
             raise
         ticks = int(bites, 16)
@@ -279,10 +281,10 @@ class MotorControl:
 
     def disable(self):
         self.__enable_pid = False
-    
+
     def get_left_velcity(self):
         return self.__left_speed
-    
+
     def get_right_velocity(self):
         return self.__right_speed
 

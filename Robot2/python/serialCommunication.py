@@ -99,15 +99,13 @@ class SerialCommunication:
             self.__response_list.append(response)
             self.__expecting_response = False
             self.__expecting_acknowledge = False
-            if check_result is True:
-                if self._ACK in response:
-                    return True
-                elif self._NACK in response:
-                    return False
-                else:
-                    raise UnknownResult("Result is nether an ACK or NACK")
-            else:
-                return response
+
+        if self._NACK in reponse:
+            return False
+        elif self._ACK in response and check_result is True:
+            return True
+        else:
+            return response
 
     def wait_for_response(self):
         while self.__connection.inWaiting() == 0:
