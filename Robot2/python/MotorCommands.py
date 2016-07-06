@@ -1,7 +1,7 @@
 __authors__ = 'Zach Anderson Ryan Owens'
 __Creation_Date__ = '07/02/2016'
 __Last_Update__ = '07/04/2016'
-from Command import Command
+from Commands import Command
 import math
 import serial
 
