@@ -185,7 +185,7 @@ class DriveForwardUntilTouch(Command):
                 return self._IN_PROGRESS
             else:
                 try:
-                    if self.__motor_controller.move_at_percentage(0.5) is True:
+                    if self._motor_controller.move_at_percentage(0.5) is True:
                         # got the ACK
                         self.__started = True
                         self.__try_get_reponse = -1
