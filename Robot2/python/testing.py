@@ -22,21 +22,26 @@ try:
     last1Ticks = 0
     last2Ticks = 0
     print("Hello World")
-    motor_controller.move_at_velocity(30)
+    speed = 0
     while True:
-        leftTicks = motor_controller.get_encoder_1_count()
-        time.sleep(0.1);
-        rightTicks = motor_controller.get_encoder_2_count()
+        try:
+            motor_controller.move_at_percentage((speed, speed))
+        except:
+            print("Failure")
+        #leftTicks = motor_controller.get_encoder_1_count()
+        #rightTicks = motor_controller.get_encoder_2_count()
 
         #if leftTicks != last1Ticks or rightTicks != last2Ticks:
             #print(str(leftTicks) + " = " + str(leftTicks / TICKS_PER_DEG) + "\t" + str(rightTicks) + " = " + str(rightTicks /TICKS_PER_DEG))
-            #print(str(leftTicks) + "\t" + str(rightTicks))
+        #print(str(leftTicks) + "\t" + str(rightTicks))
 
-        last1Ticks = leftTicks
-        last2Ticks = rightTicks
-        time.sleep(0.1);
-        motor_controller.update();
+     #   last1Ticks = leftTicks
+      #  last2Ticks = rightTicks
+        #motor_controller.update();
 
+        speed += 0.01
+        speed = min(1.0, speed)
+        print(speed)
         time.sleep(0.1);
 
 
