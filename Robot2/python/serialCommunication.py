@@ -100,7 +100,7 @@ class SerialCommunication:
             self.__expecting_response = False
             self.__expecting_acknowledge = False
 
-        if self._NACK in reponse:
+        if self._NACK in response:
             return False
         elif self._ACK in response and check_result is True:
             return True
