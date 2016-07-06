@@ -102,7 +102,7 @@ class SerialCommunication:
 
         if self._NACK in response:
             return False
-        elif self._ACK in response and check_result is True:
+        elif self._ACK in response:
             return True
         else:
             return response
