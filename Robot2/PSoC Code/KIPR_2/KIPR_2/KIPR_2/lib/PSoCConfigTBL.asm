@@ -143,7 +143,7 @@ LoadConfigTBL_kipr_2_Bank0:
 	db		cbh, 33h		; Row_3_LogicSelect_0 register (RDI3LT0)
 	db		cch, 33h		; Row_3_LogicSelect_1 register (RDI3LT1)
 	db		cdh, 00h		; Row_3_OutputDrive_0 register (RDI3SRO0)
-	db		ceh, 00h		; Row_3_OutputDrive_1 register (RDI3SRO1)
+	db		ceh, 04h		; Row_3_OutputDrive_1 register (RDI3SRO1)
 	db		6ch, 00h		; TMP_DR0 register (TMP_DR0)
 	db		6dh, 00h		; TMP_DR1 register (TMP_DR1)
 	db		6eh, 00h		; TMP_DR2 register (TMP_DR2)
@@ -224,7 +224,7 @@ LoadConfigTBL_kipr_2_Bank1:
 ;       Instance name UltraSonic, Block Name TIMER16_MSB(DCB33)
 	db		5ch, 28h		;UltraSonic_FUNC_MSB_REG(DCB33FN)
 	db		5dh, 35h		;UltraSonic_INPUT_MSB_REG(DCB33IN)
-	db		5eh, 40h		;UltraSonic_OUTPUT_MSB_REG(DCB33OU)
+	db		5eh, 70h		;UltraSonic_OUTPUT_MSB_REG(DCB33OU)
 ;  Instance name UltrasonicInt, User Module DigBuf
 ;       Instance name UltrasonicInt, Block Name DigBuf(DBB30)
 	db		50h, 22h		;UltrasonicInt_FUNC_REG(DBB30FN)
@@ -268,11 +268,11 @@ LoadConfigTBL_kipr_2_Ordered:
 	mov	reg[01h], 00h		; Port_0_IntEn register (PRT0IE)
 	mov	reg[04h], 10h		; Port_1_Data register (PRT1DR)
 	M8C_SetBank1
-	mov	reg[04h], f0h		; Port_1_DriveMode_0 register (PRT1DM0)
-	mov	reg[05h], 0fh		; Port_1_DriveMode_1 register (PRT1DM1)
+	mov	reg[04h], f4h		; Port_1_DriveMode_0 register (PRT1DM0)
+	mov	reg[05h], 0bh		; Port_1_DriveMode_1 register (PRT1DM1)
 	M8C_SetBank0
-	mov	reg[07h], 07h		; Port_1_DriveMode_2 register (PRT1DM2)
-	mov	reg[06h], 28h		; Port_1_GlobalSelect register (PRT1GS)
+	mov	reg[07h], 03h		; Port_1_DriveMode_2 register (PRT1DM2)
+	mov	reg[06h], 2ch		; Port_1_GlobalSelect register (PRT1GS)
 	M8C_SetBank1
 	mov	reg[06h], 00h		; Port_1_IntCtrl_0 register (PRT1IC0)
 	mov	reg[07h], 00h		; Port_1_IntCtrl_1 register (PRT1IC1)

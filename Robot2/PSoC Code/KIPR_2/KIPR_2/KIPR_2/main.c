@@ -301,7 +301,7 @@ void lineFollow(void)
 unsigned int ultrasound(void)
 {
 	unsigned int distance = 0;
-	unsigned long ticks = 0xffff;
+	//unsigned long ticks = 0xffff;
 	
 	//We need a 10us high trigger to make a pulse
 	//Set timer to 10us period.
@@ -324,7 +324,7 @@ unsigned int ultrasound(void)
 	
 	//Start timer to allow for a 10us pulse.
 	UltraSonic_Start();
-	while(ticks > 0){ticks = UltraSonic_wReadTimer();}
+	while(!(MISC7_Data_ADDR & MISC7_MASK)){}
 	UltraSonic_Stop();
 	
 	//drive pin low again before changing modes.
