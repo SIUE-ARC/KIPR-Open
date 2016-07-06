@@ -19,7 +19,7 @@ def first(command):
     return command
 
 GAME_TIME = 110
-port = "/dev/ttyACM0"
+port = "/dev/ttyAMA0"
 baud_rate = 115200
 command_terminator = "\x07"
 
@@ -32,7 +32,7 @@ raspi = Raspi(led_pin = LED_PIN, debug = True) # Turns on LED as well
 serial_connection = SerialCommunication(port=port, baud_rate=baud_rate)
 motor_controller = MotorControl(serialConnection=serial_connection, command_terminator=command_terminator, debug=True)
 servo_controller = ServoControl(serialConnection=serial_connection, command_terminator=command_terminator, debug=True)
-sensor_controller = SensorControl(serialConnection=serial_connection, command_terminator=command_terminator, degug=True)
+sensor_controller = SensorControl(serialConnection=serial_connection, command_terminator=command_terminator, debug=True)
 
 # # Need to add arguments to the class constructors
 #
