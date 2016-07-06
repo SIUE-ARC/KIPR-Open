@@ -101,12 +101,12 @@ LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
 
 idata dump at output/KIPR_2.idata
 
-  ROM 29% full. 9178 out of 32768 bytes used (does not include absolute areas).
+  ROM 29% full. 9181 out of 32768 bytes used (does not include absolute areas).
 
   RAM 4% full. 60 bytes used (does not include stack usage).
 
 Built with ICCM8C STD V7.05.00
 
  
-KIPR_2 - 0 error(s) 0 warning(s) 18:50:37
+KIPR_2 - 0 error(s) 0 warning(s) 19:19:40
 

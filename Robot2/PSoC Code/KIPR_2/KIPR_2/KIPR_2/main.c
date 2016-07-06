@@ -327,6 +327,9 @@ unsigned int ultrasound(void)
 	while(ticks > 0){ticks = UltraSonic_wReadTimer();}
 	UltraSonic_Stop();
 	
+	//drive pin low again before changing modes.
+	MISC4_Data_ADDR &= ~MISC4_MASK;
+	
 	//set drive mode to HIGH-Z (digital input) to read echo
 	MISC4_DriveMode_0_ADDR &= ~MISC4_MASK;
 	MISC4_DriveMode_1_ADDR |= MISC4_MASK;
@@ -342,13 +345,13 @@ unsigned int ultrasound(void)
 	//echo was.
 	UltraSonic_WritePeriod(0xffff);
 	UltraSonic_WriteCompareValue(0);
-	UltrasonicInt_EnableInt();
 	UltraSonic_Start();
+	UltrasonicInt_EnableInt();
 	
 	//distance ISR sets period to 0 upon exiting
 	while(UltraSonic_PERIOD > 0);
-	UltraSonic_Stop();
 	UltrasonicInt_DisableInt();
+	UltraSonic_Stop();
 	
 	//distance in cm = us/58
 	//clock source is 2 Mhz (0.5 us) so multiply pulse ticks by two
