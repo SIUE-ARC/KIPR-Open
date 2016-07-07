@@ -95,7 +95,7 @@ class SerialCommunication:
         if self.__connection.inWaiting() == 0:
             raise serial.SerialException("Timeout on reading from port " + str(self.__port))
         else:
-            response = self.__connection.read(self.__connection.inWaiting())
+            response = self.__connection.read(self.__connection.inWaiting()).decode("utf-8")
             self.__response_list.append(response)
             self.__expecting_response = False
             self.__expecting_acknowledge = False
@@ -107,7 +107,7 @@ class SerialCommunication:
                 else:
                     raise UnknownResult("Result is nether an ACK or NACK")
             else:
-                return response
+                return response.replace(self._ACK, "")
 
     def wait_for_response(self):
         while self.__connection.inWaiting() == 0:
