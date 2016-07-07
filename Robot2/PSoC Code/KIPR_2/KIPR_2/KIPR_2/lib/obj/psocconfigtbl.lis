@@ -961,7 +961,7 @@
  00AE CB33              db              cbh, 33h                ; Row_3_LogicSelect_0 register (RDI3LT0)
  00B0 CC33              db              cch, 33h                ; Row_3_LogicSelect_1 register (RDI3LT1)
  00B2 CD00              db              cdh, 00h                ; Row_3_OutputDrive_0 register (RDI3SRO0)
- 00B4 CE00              db              ceh, 00h                ; Row_3_OutputDrive_1 register (RDI3SRO1)
+ 00B4 CE04              db              ceh, 04h                ; Row_3_OutputDrive_1 register (RDI3SRO1)
  00B6 6C00              db              6ch, 00h                ; TMP_DR0 register (TMP_DR0)
  00B8 6D00              db              6dh, 00h                ; TMP_DR1 register (TMP_DR1)
  00BA 6E00              db              6eh, 00h                ; TMP_DR2 register (TMP_DR2)
@@ -1042,7 +1042,7 @@
  0113           ;       Instance name UltraSonic, Block Name TIMER16_MSB(DCB33)
  0113 5C28              db              5ch, 28h                ;UltraSonic_FUNC_MSB_REG(DCB33FN)
  0115 5D35              db              5dh, 35h                ;UltraSonic_INPUT_MSB_REG(DCB33IN)
- 0117 5E40              db              5eh, 40h                ;UltraSonic_OUTPUT_MSB_REG(DCB33OU)
+ 0117 5E70              db              5eh, 70h                ;UltraSonic_OUTPUT_MSB_REG(DCB33OU)
  0119           ;  Instance name UltrasonicInt, User Module DigBuf
  0119           ;       Instance name UltrasonicInt, Block Name DigBuf(DBB30)
  0119 5022              db              50h, 22h                ;UltrasonicInt_FUNC_REG(DBB30FN)
@@ -1086,11 +1086,11 @@
  001F 620100            mov     reg[01h], 00h           ; Port_0_IntEn register (PRT0IE)
  0022 620410            mov     reg[04h], 10h           ; Port_1_Data register (PRT1DR)
  0025 7110          or    F, FLAG_XIO_MASK
- 0027 6204F0            mov     reg[04h], f0h           ; Port_1_DriveMode_0 register (PRT1DM0)
- 002A 62050F            mov     reg[05h], 0fh           ; Port_1_DriveMode_1 register (PRT1DM1)
+ 0027 6204F4            mov     reg[04h], f4h           ; Port_1_DriveMode_0 register (PRT1DM0)
+ 002A 62050B            mov     reg[05h], 0bh           ; Port_1_DriveMode_1 register (PRT1DM1)
  002D 70EF          and   F, ~FLAG_XIO_MASK
- 002F 620707            mov     reg[07h], 07h           ; Port_1_DriveMode_2 register (PRT1DM2)
- 0032 620628            mov     reg[06h], 28h           ; Port_1_GlobalSelect register (PRT1GS)
+ 002F 620703            mov     reg[07h], 03h           ; Port_1_DriveMode_2 register (PRT1DM2)
+ 0032 62062C            mov     reg[06h], 2ch           ; Port_1_GlobalSelect register (PRT1GS)
  0035 7110          or    F, FLAG_XIO_MASK
  0037 620600            mov     reg[06h], 00h           ; Port_1_IntCtrl_0 register (PRT1IC0)
  003A 620700            mov     reg[07h], 00h           ; Port_1_IntCtrl_1 register (PRT1IC1)

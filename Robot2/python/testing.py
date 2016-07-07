@@ -6,7 +6,7 @@ from motorControl import MotorControl
 from servoControl import ServoControl
 import time
 
-port = "/dev/ttyACM0"
+port = "/dev/ttyAMA0"
 baud_rate = 115200
 command_terminator = "\x07"
 
@@ -28,8 +28,8 @@ try:
             motor_controller.move_at_percentage((speed, speed))
         except:
             print("Failure")
-        #leftTicks = motor_controller.get_encoder_1_count()
-        #rightTicks = motor_controller.get_encoder_2_count()
+        leftTicks = motor_controller.get_encoder_1_count()
+        rightTicks = motor_controller.get_encoder_2_count()
 
         #if leftTicks != last1Ticks or rightTicks != last2Ticks:
             #print(str(leftTicks) + " = " + str(leftTicks / TICKS_PER_DEG) + "\t" + str(rightTicks) + " = " + str(rightTicks /TICKS_PER_DEG))
@@ -37,14 +37,16 @@ try:
 
      #   last1Ticks = leftTicks
       #  last2Ticks = rightTicks
-        #motor_controller.update();
-
+        #motor_controller.update()
+        print("encoder 1 ticks: " + str(leftTicks))
+        print("encoder 2 ticks: " + str(rightTicks))
         speed += 0.01
-        speed = min(1.0, speed)
+        speed = min(0.6, speed)
         print(speed)
-        time.sleep(0.1);
+        time.sleep(0.1)
 
-
+except KeyboardInterrupt:
+    print("\nKeyboard Interrupt caught")
 finally:
     print(str(motor_controller.get_encoder_1_count()) + "\t" + str(motor_controller.get_encoder_2_count()))
     motor_controller.stop()

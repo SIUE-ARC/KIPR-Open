@@ -19,7 +19,7 @@ def first(command):
     return command
 
 GAME_TIME = 110
-port = "/dev/ttyACM0"
+port = "/dev/ttyAMA0"
 baud_rate = 115200
 command_terminator = "\x07"
 
@@ -32,43 +32,46 @@ raspi = Raspi(led_pin = LED_PIN, debug = True) # Turns on LED as well
 serial_connection = SerialCommunication(port=port, baud_rate=baud_rate)
 motor_controller = MotorControl(serialConnection=serial_connection, command_terminator=command_terminator, debug=True)
 servo_controller = ServoControl(serialConnection=serial_connection, command_terminator=command_terminator, debug=True)
-sensor_controller = SensorControl(serialConnection=serial_connection, command_terminator=command_terminator, degug=True)
+sensor_controller = SensorControl(serialConnection=serial_connection, command_terminator=command_terminator, debug=True)
 
-# Need to add arguments to the class constructors
+# # Need to add arguments to the class constructors
+#
+# activeCommand = first(DriveBackUntilTouch())
+# .then(CommandGroup([Turn(90, speed), LowerTrunk()])
+# .then(StartConveyorbelt())
+#     .ifSuccessful(
+#         Turn(90, speed)
+#         .then(Drive(-10, speed))
+#         .then(FollowLineBackwards())
+#         .then(RaiseBucket())
+#     .ifFailure(
+#         DriveBackUntilTouch()
+#         .then(Drive(10, speed))
+#         .then(Turn(90, speed))
+#         .then(DriveBackUntilTouch())
+#         .then(LowerBucket())
+#     .then(StopConveyorbelt())
+#     .then(StopMotors())
+#     .then(LowerTrunk())
+#     .then(LowerBucket())
+#
+# GAME_TIME -= (time.perf_counter() + sensorControl.wait_for_light())
+# start_time = time.perf_counter()
+#
+# # Don't forget to handle TRY-Catch blocks
+#
+# while(time.perf_counter() - start_time < GAME_TIME):
+#     ret = activeCommand.execute();
+#
+#     if ret is not None:
+#         activeCommand = ret;
+#
+#     # Update PID
+#     motorControl.update();
 
-activeCommand = first(DriveBackUntilTouch())
-.then(CommandGroup([Turn(90, speed), LowerTrunk()])
-.then(StartConveyorbelt())
-    .ifSuccessful(
-        Turn(90, speed)
-        .then(Drive(-10, speed))
-        .then(FollowLineBackwards())
-        .then(RaiseBucket())
-    .ifFailure(
-        DriveBackUntilTouch()
-        .then(Drive(10, speed))
-        .then(Turn(90, speed))
-        .then(DriveBackUntilTouch())
-        .then(LowerBucket())
-    .then(StopConveyorbelt())
-    .then(StopMotors())
-    .then(LowerTrunk())
-    .then(LowerBucket())
-
-GAME_TIME -= (time.perf_counter() + sensorControl.wait_for_light())
-start_time = time.perf_counter()
-
-# Don't forget to handle TRY-Catch blocks
-
-while(time.perf_counter() - start_time < GAME_TIME):
-    ret = activeCommand.execute();
-
-    if ret is not None:
-        activeCommand = ret;
-
-    # Update PID
-    motorControl.update();
-
+dfut = DriveForwardUntilTouch(motor_controller, raspi)
+while(True):
+    dfut.execute()
 motorControl.stop();
 servo_controller.stop()
 raspi.set_all_pins_to_low()
